@@ -15,8 +15,8 @@ public class Appointment {
 	int endhour; 
 	int endmin;
 	
-	public Appointment(int appointmentID, String patient, String doctor, int day, int month, int year, int starthour, int startmin) {
-
+	public Appointment(int appointmentID, String patient, String doctor, int day, int month, int year, int starthour, int startmin, int endhour, int endmin) {
+		
 		this.appointmentID = appointmentID;
 		this.patient = patient; 
 		this.doctor = doctor; 
@@ -25,21 +25,14 @@ public class Appointment {
 		this.year = year;
 		this.starthour = starthour; 
 		this.startmin = startmin; 
-		
-		//endhour and endmin are set here automatically (30 mins) 
-		if (startmin == 0) {				//example 4:00
-			endhour = starthour;			//end: 4:30
-			endmin = startmin + 30;
-		}
-		else if (startmin == 30) {		    //example 5:30
-			endhour = starthour + 1;		//end: 6:00
-			endmin = 0;
-		}
+		this.endhour = endhour; 
+		this.endmin = endmin;
 	}
 	
 	public void printAppointment() {
-		System.out.println("Appointment No: " + appointmentID + ",Patient: " + patient + ", Doctor: " + doctor  + ", On " + month + "/" 
-				+ day + "/" + year + ", At " + starthour + ":" + startmin);
+		System.out.println("Appointment No: " + appointmentID + ", Patient: " + patient + ", Doctor: " + doctor); 
+		System.out.println(" On " + month + "/" + day + "/" + year );
+		System.out.println(" From " + starthour + ":" + startmin + ", To " + endhour + ":" + endmin);
 	}
 	
 	public int getAppointmentID() {
@@ -109,9 +102,17 @@ public class Appointment {
 	public int getEndHour() {
 		return endhour;
 	}
+	
+	public void setEndHour(int endhour) {
+		this.endhour = endhour; 
+	}
 
 	public int getEndMin() {
 		return endmin;
 	}
 	
+	public void setEndMin(int endmin) {
+		this.endmin = endmin;
+	}
+
 }
