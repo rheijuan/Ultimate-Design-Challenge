@@ -2,18 +2,18 @@ package database;
 
 public class Appointment {
 
-	int appointmentID;
-	String patient; 
-	String doctor; 
+	private int appointmentID;
+	private String patient; 
+	private String doctor; 
 	
-	int day; 
-	int month; 
-	int year; 
+	private int day; 
+	private int month; 
+	private int year; 
 	
-	int starthour; 
-	int startmin;
-	int endhour; 
-	int endmin;
+	private int starthour; 
+	private int startmin;
+	private int endhour; 
+	private int endmin;
 	
 	public Appointment(int appointmentID, String patient, String doctor, int day, int month, int year, int starthour, int startmin, int endhour, int endmin) {
 		
@@ -31,7 +31,7 @@ public class Appointment {
 	
 	public void printAppointment() {
 		System.out.println("Appointment No: " + appointmentID + ", Patient: " + patient + ", Doctor: " + doctor); 
-		System.out.println(" On " + month + "/" + day + "/" + year );
+		System.out.println(" On " + day + "/" + month + "/" + year );
 		System.out.println(" From " + starthour + ":" + startmin + ", To " + endhour + ":" + endmin);
 	}
 	

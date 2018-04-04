@@ -17,6 +17,7 @@ public class DBController {
     private PreparedStatement pst = null; 
    
     private static ObservableList<Appointment> appointments = FXCollections.observableArrayList(); 
+    private static ObservableList<User> users = FXCollections.observableArrayList(); 
 
 	/* --- getAppointments() 
 	 *  Returns the ObservableList of all appointments 
@@ -25,6 +26,12 @@ public class DBController {
     public static ObservableList<Appointment> getAppointments() { 
         return appointments;
     } 
+    /* --- getPatients() 
+	 *  Returns the ObservableList of all patients ( with their login details ) 
+	 */
+    public static ObservableList<User> getUsers() { 
+        return users;
+    }
     
 	/* --- loadAppointments() 
 	 * Loads or refreshes all appointments from the database and load to an ObservableList appointments.
@@ -51,6 +58,33 @@ public class DBController {
         
 		System.out.println("ALL DATA FROM DATABASE READ AND ADDED TO OBSERVABLE LIST");
     }
+
+	/* --- loadUsers() 
+	 * Loads or refreshes all users logged from the database and load to an ObservableList users.
+	 */
+	public void loadUsers() 
+    {
+		 try {
+	            con = ConnectDB.getConnection();
+	        } catch (ClassNotFoundException ex) {
+	            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+	        } catch (SQLException ex) {
+	            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+		
+        try{
+	        pst = con.prepareStatement("SELECT * FROM clinic_tool.users");
+	        rs = pst.executeQuery();
+	        while (rs.next())
+	        	users.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+	        				       //(FORMAT: username, password, name, role (patient, secretary, doc)
+        } catch (SQLException ex){
+          Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+		System.out.println("ALL DATA FROM DATABASE READ AND ADDED TO OBSERVABLE LIST");
+    }
+
 
 	/* --- createAppointment(client, doctor, day, month, year, starthour, startminute) 
 	 * Creates an appointment for a client to the chosen doctor given date and time details (start time only
@@ -86,7 +120,31 @@ public class DBController {
 	       Logger.getLogger(Appointment.class.getName()).log(Level.SEVERE, null, ex);
 	    } 
 	 }
-	 
+	 /* --- createNewUser
+	  * Creates a new user data 
+	  */
+	 public void createNewUser(String username, String password, String name, String role) {
+			 
+		User newUser = new User(username, password, name, role);
+	    users.add(newUser);
+		 
+	    String sql = "INSERT INTO clinic_tool.users VALUES (?, ?, ?, ?)";
+	    try{    
+	    		pst = con.prepareStatement(sql);
+		           
+	    		pst.setString(1, newUser.getUsername());
+	           	pst.setString(2, newUser.getPassword());
+				pst.setString(3, newUser.getName());
+				pst.setString(4, newUser.getRole());
+				
+	            int i = pst.executeUpdate();
+	            if (i==1)
+	                System.out.println("NEW USER ADDED TO DATABASE & OBSERVABLELIST");
+		                
+	    }  catch (SQLException ex){
+		       Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+	    } 
+	 }
 	 /* --- deleteAppointmentForC()  
 	  * When an appointment for a specific time is to be cancelled by a client
 	  */
@@ -157,6 +215,67 @@ public class DBController {
 		   Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
 		 } 
 	}
+
+	 /* --- updateAppointmentDate()  
+	  * When details for an appointment date was modified (parameters contains the name of the patient, new date, 
+	  * same time)
+	 */
+	  public void updateAppointmentDate(String patientname, int day, int month, int year) {
+		    int refID = 0; 
+		    
+		  	for (int i=0; i<appointments.size(); i++) {
+		  		if (patientname.equals(appointments.get(i).getPatient()))
+		  			refID = appointments.get(i).getAppointmentID();
+		  	}
+	    
+	        String sql = "UPDATE clinic_tool.appointments SET Day = ?, Month = ?, Year = ? WHERE AppointmentID = ?";
+	        try{    
+	        	pst = con.prepareStatement(sql);
+	                	        
+	            pst.setInt(1, day);
+				pst.setInt(2, month);
+				pst.setInt(3, year);
+				pst.setInt(4, refID);
+	                
+	            int i = pst.executeUpdate();
+	            if (i==1)
+	               System.out.println("DATA FOR APPOINTMENT DATE UPDATED!!!");
+	                
+	        } catch (SQLException ex){
+	          Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+	        } 
+	  }
+	  
+	  /* --- updateAppointmentTime()  
+	   * When details for an appointment time was modified (parameters contains the name of the patient, new time)
+	   */
+	  public void updateAppointmentTime(String patientname, int starthr, int startmin, int endhr, int endmin) {
+		    int refID = 0; 
+		    
+		  	for (int i=0; i<appointments.size(); i++) {
+		  		if (patientname.equals(appointments.get(i).getPatient()))
+		  			refID = appointments.get(i).getAppointmentID();
+		  	}
+		    
+	        String sql = "UPDATE clinic_tool.appointments SET StartHour = ?, StartMinute = ?, "
+	        		+ "EndHour = ?, EndMinute = ? WHERE Patient = ?";
+	        try{    
+	        	pst = con.prepareStatement(sql);
+	                	        
+	            pst.setInt(1, starthr);
+				pst.setInt(2, startmin);
+				pst.setInt(3, endhr);
+				pst.setInt(4, endmin);
+				pst.setInt(5, refID);
+	                
+	            int i = pst.executeUpdate();
+	            if (i==1)
+	               System.out.println("DATA FOR APPOINTMENT TIME UPDATED!!!");
+	                
+	        } catch (SQLException ex){
+	          Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+	        } 
+	  }
 	 
 	 /* --- filterbyDoctor() 
       * Returns a newly created ObservableList (of appointments) which corresponds to all appointments 
@@ -223,17 +342,6 @@ public class DBController {
 		 return null;
 	 }
 	 
-	 /* --- filterByTimeInterval()  
-	  *  Returns a newly created ObservableList (of appointments) which corresponds to all appointments 
-	  *  taken / to be taken place within a specific time interval.
-	  */
-	 
-	 /* --- updateAppointments()  
-	  * When details for an appointment is modified
-	  * TO BE ADDED SOON HAHAHAHHA
-	 */
-	 
-	 //PROBABLY MORE METHODS WILL BE ADDED
 }
 	    
 	  
