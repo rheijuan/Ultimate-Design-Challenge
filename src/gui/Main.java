@@ -16,7 +16,8 @@ public class Main extends Application {
         dbController.loadUsers();
         dbController.loadAppointments();
 
-        Parent root = FXMLLoader.load(getClass().getResource("loginscreen.fxml"));
+       // Parent root = FXMLLoader.load(getClass().getResource("loginscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("patientscreen.fxml"));
         primaryStage.setTitle("Calendar Application");
         primaryStage.setScene(new Scene(root, 324, 400));
         primaryStage.setResizable(false);
