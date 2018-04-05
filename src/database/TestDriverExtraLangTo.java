@@ -35,12 +35,14 @@ public class TestDriverExtraLangTo { //THIS DRIVER WAS USED TO TEST DBController
 		db.loadUsers();
 		db.loadAppointments();
 		//db.createNewUser("jamesbay", "madwildluv", "James Bay", "Patient");
-		for (int i=0; i<db.getUsers().size(); i++) {
-			db.getUsers().get(i).printUser();
+		for (int i=0; i<db.getDoctors().size(); i++) {
+			db.getDoctors().get(i).printUser();
 		}
+		
+		/*
 		for (int i=0; i<db.getAppointments().size(); i++) {
 			db.getAppointments().get(i).printAppointment();
-		}
+		}*/
 		
 	}
 }

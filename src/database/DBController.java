@@ -26,11 +26,39 @@ public class DBController {
     public static ObservableList<Appointment> getAppointments() { 
         return appointments;
     } 
-    /* --- getPatients() 
+    /* --- getUsers() 
 	 *  Returns the ObservableList of all patients ( with their login details ) 
 	 */
     public static ObservableList<User> getUsers() { 
         return users;
+    }
+    
+    /* --- getPatients()
+     *  Returns the the ObservableList of all patients in the database that is registered to the system.
+     */
+    public static ObservableList<User> getPatients() {
+		 ObservableList<User> patientsOnly = FXCollections.observableArrayList(); 
+		 
+		 for(int i=0; i<users.size(); i++) {
+			 if (users.get(i).getRole().equals("Patient")) {
+				 patientsOnly.add(users.get(i));
+			 }
+		 }
+		 return patientsOnly;
+    }
+
+    /* --- getDoctors()
+     *  Returns an ObservableList of all doctors in the database that is registered to the system. 
+     */
+    public static ObservableList<User> getDoctors() {
+	   	 ObservableList<User> doctorsOnly = FXCollections.observableArrayList(); 
+		 
+		 for(int i=0; i<users.size(); i++) {
+			 if (users.get(i).getRole().equals("Doctor")) {
+				 doctorsOnly.add(users.get(i));
+			 }
+		 }
+		 return doctorsOnly;
     }
     
 	/* --- loadAppointments() 
@@ -51,7 +79,7 @@ public class DBController {
 	        rs = pst.executeQuery();
 	        while (rs.next())
 	        	appointments.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10)));
-	        				       //(FORMAT: appointmentID, patient name,doctor name,day,month,year,starthour,startminute, endhour, endminute)
+	        				     //(FORMAT: appointmentID, patient name,doctor name,day,month,year,starthour,startminute, endhour, endminute)
         } catch (SQLException ex){
           Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
         } 
