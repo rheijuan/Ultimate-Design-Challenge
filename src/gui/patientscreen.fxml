@@ -204,6 +204,7 @@
                               <ListView layoutX="125.0" layoutY="31.0" prefHeight="322.4" prefWidth="590.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
+                        <Button layoutX="527.0" layoutY="382.0" mnemonicParsing="false" text="Cancel Appointment" />
                      </children>
                   </AnchorPane>
                </content>
