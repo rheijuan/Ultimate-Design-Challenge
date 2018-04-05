@@ -37,13 +37,13 @@ public class DBController {
      *  Returns the the ObservableList of all patients in the database that is registered to the system.
      */
     public static ObservableList<User> getPatients() {
-		 ObservableList<User> patientsOnly = FXCollections.observableArrayList(); 
-		 
-		 for(int i=0; i<users.size(); i++) {
-			 if (users.get(i).getRole().equals("Patient")) {
-				 patientsOnly.add(users.get(i));
-			 }
-		 }
+		 ObservableList<User> patientsOnly = FXCollections.observableArrayList();
+
+        for (User user : users) {
+            if (user.getRole().equals("Patient")) {
+                patientsOnly.add(user);
+            }
+        }
 		 return patientsOnly;
     }
 
@@ -51,30 +51,27 @@ public class DBController {
      *  Returns an ObservableList of all doctors in the database that is registered to the system. 
      */
     public static ObservableList<User> getDoctors() {
-	   	 ObservableList<User> doctorsOnly = FXCollections.observableArrayList(); 
-		 
-		 for(int i=0; i<users.size(); i++) {
-			 if (users.get(i).getRole().equals("Doctor")) {
-				 doctorsOnly.add(users.get(i));
-			 }
-		 }
+	   	 ObservableList<User> doctorsOnly = FXCollections.observableArrayList();
+
+        for (User user : users) {
+            if (user.getRole().equals("Doctor")) {
+                doctorsOnly.add(user);
+            }
+        }
 		 return doctorsOnly;
     }
     
 	/* --- loadAppointments() 
 	 * Loads or refreshes all appointments from the database and load to an ObservableList appointments.
 	 */
-	public void loadAppointments() 
-    {
+	public void loadAppointments() {
 		 try {
 	            con = ConnectDB.getConnection();
-	        } catch (ClassNotFoundException ex) {
-	            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-	        } catch (SQLException ex) {
+	        } catch (ClassNotFoundException | SQLException ex) {
 	            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
 	        }
-		
-        try{
+
+		try{
 	        pst = con.prepareStatement("SELECT * FROM clinic_tool.appointments");
 	        rs = pst.executeQuery();
 	        while (rs.next())
@@ -90,17 +87,14 @@ public class DBController {
 	/* --- loadUsers() 
 	 * Loads or refreshes all users logged from the database and load to an ObservableList users.
 	 */
-	public void loadUsers() 
-    {
+	public void loadUsers() {
 		 try {
 	            con = ConnectDB.getConnection();
-	        } catch (ClassNotFoundException ex) {
-	            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-	        } catch (SQLException ex) {
+	        } catch (ClassNotFoundException | SQLException ex) {
 	            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
 	        }
-		
-        try{
+
+		try{
 	        pst = con.prepareStatement("SELECT * FROM clinic_tool.users");
 	        rs = pst.executeQuery();
 	        while (rs.next())
@@ -148,6 +142,7 @@ public class DBController {
 	       Logger.getLogger(Appointment.class.getName()).log(Level.SEVERE, null, ex);
 	    } 
 	 }
+
 	 /* --- createNewUser
 	  * Creates a new user data 
 	  */
@@ -173,6 +168,7 @@ public class DBController {
 		       Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
 	    } 
 	 }
+
 	 /* --- deleteAppointmentForC()  
 	  * When an appointment for a specific time is to be cancelled by a client
 	  */
@@ -249,12 +245,12 @@ public class DBController {
 	  * same time)
 	 */
 	  public void updateAppointmentDate(String patientname, int day, int month, int year) {
-		    int refID = 0; 
-		    
-		  	for (int i=0; i<appointments.size(); i++) {
-		  		if (patientname.equals(appointments.get(i).getPatient()))
-		  			refID = appointments.get(i).getAppointmentID();
-		  	}
+		    int refID = 0;
+
+          for (Appointment appointment : appointments) {
+              if (patientname.equals(appointment.getPatient()))
+                  refID = appointment.getAppointmentID();
+          }
 	    
 	        String sql = "UPDATE clinic_tool.appointments SET Day = ?, Month = ?, Year = ? WHERE AppointmentID = ?";
 	        try{    
@@ -278,12 +274,12 @@ public class DBController {
 	   * When details for an appointment time was modified (parameters contains the name of the patient, new time)
 	   */
 	  public void updateAppointmentTime(String patientname, int starthr, int startmin, int endhr, int endmin) {
-		    int refID = 0; 
-		    
-		  	for (int i=0; i<appointments.size(); i++) {
-		  		if (patientname.equals(appointments.get(i).getPatient()))
-		  			refID = appointments.get(i).getAppointmentID();
-		  	}
+		    int refID = 0;
+
+          for (Appointment appointment : appointments) {
+              if (patientname.equals(appointment.getPatient()))
+                  refID = appointment.getAppointmentID();
+          }
 		    
 	        String sql = "UPDATE clinic_tool.appointments SET StartHour = ?, StartMinute = ?, "
 	        		+ "EndHour = ?, EndMinute = ? WHERE Patient = ?";
