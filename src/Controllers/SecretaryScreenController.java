@@ -14,13 +14,15 @@ public class SecretaryScreenController{
 	@FXML
 	public GridPane calendarGrid;
 	@FXML
-	public Button btnNext;
+	public Button nextMonth;
 	@FXML
-	public Button btnPrev;
+	public Button prevMonth;
 	@FXML
 	public Label monthLabel;
 	@FXML
 	public Label yearLabel;
+	@FXML
+	public Button notifyButton;
 	
 	private int yearBound;
 	public int monthToday;
@@ -66,9 +68,9 @@ public class SecretaryScreenController{
 		int nod, som, i;
 			
 		if (month == 0 && year <= yearBound-10)
-	                btnPrev.setDisable(true);
+	                prevMonth.setDisable(true);
 		if (month == 11 && year >= yearBound+100)
-	                btnNext.setDisable(true);
+	                nextMonth.setDisable(true);
 		
 		System.out.println(month);
 		System.out.println(year);
