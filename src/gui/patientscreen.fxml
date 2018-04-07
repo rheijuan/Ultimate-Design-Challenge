@@ -207,6 +207,15 @@
                         <AnchorPane layoutX="62.0" layoutY="44.0" prefHeight="322.0" prefWidth="590.0">
                            <children>
                               <ListView layoutX="125.0" layoutY="31.0" prefHeight="322.4" prefWidth="590.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <AnchorPane prefHeight="49.0" prefWidth="590.0" style="-fx-background-color: #3E454D;">
+                                 <children>
+                                    <Label fx:id="agendaLabel" alignment="CENTER" layoutX="8.0" layoutY="9.0" text="Month Day, Year" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                         <Button layoutX="527.0" layoutY="382.0" mnemonicParsing="false" text="Cancel Appointment" />
