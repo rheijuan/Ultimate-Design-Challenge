@@ -15,11 +15,7 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8FCFDA;">
                      <children>
-                        <AnchorPane layoutX="94.0" layoutY="104.0" prefHeight="263.0" prefWidth="503.0" style="-fx-background-color: #3E454D;">
-                           <children>
-                              <Button layoutX="448.0" layoutY="223.0" mnemonicParsing="false" text="Back" />
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane layoutX="94.0" layoutY="104.0" prefHeight="263.0" prefWidth="503.0" style="-fx-background-color: #3E454D;" />
                         <AnchorPane layoutX="95.0" layoutY="45.0" prefHeight="49.0" prefWidth="502.0" style="-fx-background-color: #DC654D;">
                            <children>
                               <Label fx:id="agendaLabel" alignment="CENTER" layoutX="8.0" layoutY="9.0" text="                             Cancelled Appointments" textFill="WHITE">
@@ -29,6 +25,7 @@
                               </Label>
                            </children>
                         </AnchorPane>
+                        <Button layoutX="511.0" layoutY="374.0" mnemonicParsing="false" text="Back to Main" />
                      </children>
                   </AnchorPane>
                </content>

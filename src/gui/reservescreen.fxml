@@ -55,7 +55,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="378.0" layoutY="106.0" prefHeight="263.0" prefWidth="309.0" style="-fx-background-color: #3E454D;">
                            <children>
-                              <Button layoutX="175.0" layoutY="226.0" mnemonicParsing="false" text="Apply" />
+                              <Button layoutX="252.0" layoutY="223.0" mnemonicParsing="false" text="Apply" />
                               <CheckBox layoutX="15.0" layoutY="22.0" mnemonicParsing="false" text="Every Monday" textFill="WHITE" />
                               <CheckBox layoutX="15.0" layoutY="62.0" mnemonicParsing="false" text="Every Tuesday" textFill="WHITE" />
                               <CheckBox layoutX="15.0" layoutY="101.0" mnemonicParsing="false" text="Every Wednesday" textFill="WHITE" />
@@ -64,9 +64,9 @@
                               <CheckBox layoutX="175.0" layoutY="62.0" mnemonicParsing="false" text="Every Saturday" textFill="WHITE" />
                               <CheckBox layoutX="175.0" layoutY="101.0" mnemonicParsing="false" text="Every Week" textFill="WHITE" />
                               <CheckBox layoutX="175.0" layoutY="143.0" mnemonicParsing="false" text="Every Month" textFill="WHITE" />
-                              <Button layoutX="238.0" layoutY="226.0" mnemonicParsing="false" text="Cancel" />
                            </children>
                         </AnchorPane>
+                        <Button layoutX="601.0" layoutY="382.0" mnemonicParsing="false" text="Back to Main" />
                      </children>
                   </AnchorPane>
                </content>
