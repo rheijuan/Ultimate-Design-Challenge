@@ -6,7 +6,7 @@ public class User {
 	private String name; 
 	private String role;
 	
-	public User(String username, String password, String name, String role) {
+	User(String username, String password, String name, String role) {
 		this.username = username; 
 		this.password = password; 
 		this.name = name; 
@@ -48,4 +48,5 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
 }

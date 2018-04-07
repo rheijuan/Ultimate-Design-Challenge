@@ -1,6 +1,6 @@
 package database;
-
-public class Appointment {
+import model.*;
+public class Appointment extends CalendarItem {
 
 	private int appointmentID;
 	private String patient; 
