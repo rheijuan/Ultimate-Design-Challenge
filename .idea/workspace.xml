@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae3c73ee-7347-49d0-b11d-b222dc2177cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/gui/Main.java" afterPath="$PROJECT_DIR$/src/gui/Main.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/gui/DayTableItem.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/DoctorScreenController.class" afterPath="$PROJECT_DIR$/bin/gui/DoctorScreenController.class" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/Main.class" afterPath="$PROJECT_DIR$/bin/gui/Main.class" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/doctorscreen.fxml" afterPath="$PROJECT_DIR$/bin/gui/doctorscreen.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" afterPath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
       <change beforePath="$PROJECT_DIR$/src/gui/doctorscreen.fxml" afterPath="$PROJECT_DIR$/src/gui/doctorscreen.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -18,7 +23,7 @@
       <file leaf-file-name="LogInController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
+            <state relative-caret-position="520">
               <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -27,21 +32,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoctorScreenController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DoctorScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2028">
-              <caret line="152" column="1" lean-forward="false" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+            <state relative-caret-position="616">
+              <caret line="178" column="55" lean-forward="true" selection-start-line="178" selection-start-column="55" selection-end-line="178" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
-                <element signature="e#1389#1390#0" expanded="true" />
-                <element signature="e#1481#1482#0" expanded="true" />
-                <element signature="e#1529#1530#0" expanded="true" />
-                <element signature="e#1601#1602#0" expanded="true" />
+                <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="e#6972#6973#0" expanded="true" />
+                <element signature="e#7044#7045#0" expanded="true" />
+                <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Appointment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/Appointment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1300">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DayTableItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/DayTableItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="e#522#523#0" expanded="true" />
+                <element signature="e#555#556#0" expanded="true" />
+                <element signature="e#888#889#0" expanded="true" />
+                <element signature="e#919#920#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,8 +82,8 @@
       <file leaf-file-name="DBController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="61" />
+            <state relative-caret-position="390">
+              <caret line="114" column="78" lean-forward="false" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -60,7 +92,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
+            <state relative-caret-position="208">
               <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -69,16 +101,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="doctorscreen.fxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="doctorscreen.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="100" column="24" lean-forward="true" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="226" column="30" lean-forward="false" selection-start-line="226" selection-start-column="30" selection-end-line="226" selection-end-column="30" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -117,9 +149,10 @@
         <option value="$PROJECT_DIR$/src/gui/loginscreen.fxml" />
         <option value="$PROJECT_DIR$/src/gui/LogInController.java" />
         <option value="$PROJECT_DIR$/src/database/DBController.java" />
-        <option value="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
         <option value="$PROJECT_DIR$/src/gui/Main.java" />
         <option value="$PROJECT_DIR$/src/gui/doctorscreen.fxml" />
+        <option value="$PROJECT_DIR$/src/gui/DayTableItem.java" />
+        <option value="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
       </list>
     </option>
   </component>
@@ -129,8 +162,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
@@ -149,6 +182,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,10 +217,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,14 +366,18 @@
       <workItem from="1522941597085" duration="3166000" />
       <workItem from="1522982106556" duration="966000" />
       <workItem from="1522983100453" duration="477000" />
+      <workItem from="1523005026457" duration="181000" />
+      <workItem from="1523031157666" duration="2019000" />
+      <workItem from="1523084265957" duration="4380000" />
+      <workItem from="1523097451463" duration="4917000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10498000" />
+    <option name="totallyTimeSpent" value="21995000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -350,18 +387,18 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15677084" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -377,10 +414,248 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2652">
+          <caret line="114" column="78" lean-forward="false" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5876">
+          <caret line="226" column="30" lean-forward="false" selection-start-line="226" selection-start-column="30" selection-end-line="226" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4550">
+          <caret line="175" column="20" lean-forward="true" selection-start-line="175" selection-start-column="20" selection-end-line="175" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="72" column="48" lean-forward="false" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3458">
+          <caret line="133" column="30" lean-forward="false" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2652">
+          <caret line="114" column="78" lean-forward="false" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2028">
+          <caret line="152" column="1" lean-forward="false" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2600">
+          <caret line="100" column="24" lean-forward="false" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3952">
+          <caret line="152" column="1" lean-forward="false" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2600">
+          <caret line="100" column="24" lean-forward="true" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -399,10 +674,12 @@
             <element signature="imports" expanded="true" />
             <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="e#1389#1390#0" expanded="true" />
-            <element signature="e#1481#1482#0" expanded="true" />
-            <element signature="e#1529#1530#0" expanded="true" />
-            <element signature="e#1601#1602#0" expanded="true" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
           </folding>
@@ -420,14 +697,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10348">
           <caret line="398" column="48" lean-forward="true" selection-start-line="398" selection-start-column="48" selection-end-line="398" selection-end-column="48" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
@@ -456,10 +733,12 @@
             <element signature="imports" expanded="true" />
             <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="e#1389#1390#0" expanded="true" />
-            <element signature="e#1481#1482#0" expanded="true" />
-            <element signature="e#1529#1530#0" expanded="true" />
-            <element signature="e#1601#1602#0" expanded="true" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
           </folding>
@@ -477,14 +756,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
@@ -513,20 +792,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/loginscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="13" column="56" lean-forward="true" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
           <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/Appointment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1638">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -541,7 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -556,39 +827,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1664">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2028">
-          <caret line="152" column="1" lean-forward="false" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="e#1389#1390#0" expanded="true" />
-            <element signature="e#1481#1482#0" expanded="true" />
-            <element signature="e#1529#1530#0" expanded="true" />
-            <element signature="e#1601#1602#0" expanded="true" />
-            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
+        <state relative-caret-position="520">
           <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -596,9 +840,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.base/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="843" column="0" lean-forward="false" selection-start-line="843" selection-start-column="0" selection-end-line="843" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="226" column="30" lean-forward="false" selection-start-line="226" selection-start-column="30" selection-end-line="226" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
+        <state relative-caret-position="208">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -606,15 +868,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+    <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="100" column="24" lean-forward="true" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+        <state relative-caret-position="390">
+          <caret line="114" column="78" lean-forward="false" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/Appointment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1300">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DayTableItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+            <element signature="e#919#920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="178" column="55" lean-forward="true" selection-start-line="178" selection-start-column="55" selection-end-line="178" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
