@@ -17,20 +17,8 @@ import java.util.ResourceBundle;
 
 public class DoctorScreenController implements Initializable {
 
-    @FXML
-    private Label dateLabel;
-
-    @FXML
-    private Label dayLabel;
-
-    @FXML
-    private Label weekLabel;
-
-    @FXML
-    private Label agendaLabel;
-
-    @FXML
-    private GridPane miniCalendar;
+    @FXML private Label dateLabel,dayLabel,weekLabel,agendaLabel;
+    @FXML private GridPane miniCalendar;
 
     @FXML
     private void nextMonth() {

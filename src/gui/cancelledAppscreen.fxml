@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +16,6 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8FCFDA;">
                      <children>
-                        <AnchorPane layoutX="94.0" layoutY="104.0" prefHeight="263.0" prefWidth="503.0" style="-fx-background-color: #3E454D;" />
                         <AnchorPane layoutX="95.0" layoutY="45.0" prefHeight="49.0" prefWidth="502.0" style="-fx-background-color: #DC654D;">
                            <children>
                               <Label fx:id="agendaLabel" alignment="CENTER" layoutX="8.0" layoutY="9.0" text="                             Cancelled Appointments" textFill="WHITE">
@@ -25,7 +25,9 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <Button layoutX="511.0" layoutY="374.0" mnemonicParsing="false" text="Back to Main" />
+                        <Button fx:id="backCButton" layoutX="511.0" layoutY="374.0" mnemonicParsing="false" onAction="#goBack" text="Back to Main" />
+                        <ListView fx:id="cancelledAppListView" layoutX="95.0" layoutY="101.0" prefHeight="262.0" prefWidth="504.0" />
+                        <Button fx:id="deleteButton" layoutX="443.0" layoutY="374.0" mnemonicParsing="false" text="Delete" />
                      </children>
                   </AnchorPane>
                </content>

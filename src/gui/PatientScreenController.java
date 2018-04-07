@@ -9,74 +9,52 @@ import java.util.ResourceBundle;
 import database.Appointment;
 import database.DBController;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.*;
 
 public class PatientScreenController implements Initializable{
 		
-		@FXML
-		private Label dateLabel;
+		@FXML private Label dateLabel,dayLabel,weekLabel,agendaLabel;
+		@FXML private Button reserveButton,cancelButton,recurringButton,nextMonth,prevMonth;
+		@FXML private Stage stage;
+		@FXML private GridPane miniCalendar;
+		
+		private CalendarDate date = new CalendarDate();
 
-		@FXML
-		private Label dayLabel;
-		
-		@FXML
-		private Label weekLabel;
-
-		@FXML
-		private Label agendaLabel;
-    
-		@FXML
-		private Button reserveButton;
-		
-		@FXML
-		private Button cancelButton;
-		
-		@FXML
-		private Button recurringButton;
-		
-		@FXML
-		public Button nextMonth;
-		
-		@FXML
-		public Button prevMonth;
-		
-		@FXML
-		private Stage stage;
-		
-		@FXML
-	    private GridPane miniCalendar;
+		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		private Model model;
 		
 		 @FXML
 		    private void nextMonth() {
-		        if (monthToday == 11) {
-		            monthToday = 0;
-		            yearToday += 1;
-		        } else
-		            monthToday += 1;
+			 if (date.getMonthToday() == 11) {
+					date.setMonthToday(0);
+					date.setYearToday(date.getYearToday() + 1);
+				} else
+					date.setMonthToday(date.getMonthToday() + 1);
 
-		        dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-		        refreshCalendar(monthToday, yearToday, dayToday);
+				refreshCalendar(date.getMonthToday(), date.getYearToday());;
 		    }
 
 		    @FXML
 		    private void prevMonth() {
-		        if (monthToday == 0) {
-		            monthToday = 11;
-		            yearToday -= 1;
-		        } else
-		            monthToday -= 1;
+		    	if (date.getMonthToday() == 0) {
+					date.setMonthToday(11);
+					date.setYearToday(date.getYearToday() - 1);
+				} else
+					date.setMonthToday(date.getMonthToday() - 1);
 
-		        dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-		        refreshCalendar(monthToday, yearToday, dayToday);
+				refreshCalendar(date.getMonthToday(), date.getYearToday(),date.getDayToday());
 		    }
 
 		    @FXML
@@ -169,17 +147,21 @@ public class PatientScreenController implements Initializable{
 		    }
 		
 		@FXML
-		 private void openReserve() throws IOException{
-	        
-	    }
+		private void openReserve(ActionEvent event) throws IOException {
+			Parent newload_parent = FXMLLoader.load(getClass().getResource("../view/reservescreen.fxml"));
+			Scene newload_scene = new Scene(newload_parent);
+			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			app_stage.setScene(newload_scene);
+			app_stage.show();
+		}
 
 	    @FXML
-	    private void openCancelledApp() throws IOException{
-
-	    }
-	    @FXML
-	    private void openRecurring() throws IOException{
-
+	    private void openCancelledApp(ActionEvent event) throws IOException{
+	    	Parent newload_parent = FXMLLoader.load(getClass().getResource("../view/cancelledAppscreen.fxml"));
+			Scene newload_scene = new Scene(newload_parent);
+			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			app_stage.setScene(newload_scene);
+			app_stage.show();
 	    }
 	    
 	    private int yearToday;
