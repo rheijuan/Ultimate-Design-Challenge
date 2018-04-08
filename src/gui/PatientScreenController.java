@@ -43,7 +43,11 @@ public class PatientScreenController implements Initializable{
 				} else
 					date.setMonthToday(date.getMonthToday() + 1);
 
-				refreshCalendar(date.getMonthToday(), date.getYearToday());;
+<<<<<<< HEAD
+				refreshCalendar(date.getMonthToday(), date.getYearToday(), date.getDayToday());;
+=======
+				refreshCalendar(date.getMonthToday(), date.getYearToday(), date.getDayToday());
+>>>>>>> 653739ff1b5038c4498a540d03253ad570937d55
 		    }
 
 		    @FXML
