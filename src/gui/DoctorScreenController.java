@@ -289,7 +289,13 @@ public class DoctorScreenController implements Initializable {
             }
 
             GridPane finalTemp = temp;
+<<<<<<< HEAD
+            int finalI = i;
+            button.setOnAction(event -> {
+                boolean t = false;
+=======
             button.setOnAction((ActionEvent event) -> {
+>>>>>>> 4e85d02df335e67ee56b88b0b0710629a55596da
                 daySelected = Integer.parseInt(((Button) event.getSource()).getText());
                 button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #dc654d; -fx-text-fill: #FFFFFF");
 
@@ -300,6 +306,9 @@ public class DoctorScreenController implements Initializable {
 
                 for (Node node : finalTemp.getChildren()) {
                     if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
+<<<<<<< HEAD
+
+=======
                         if (Calendar.equals("mini")) {
                             // TODO implement the thingymobob
                             node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
@@ -307,13 +316,35 @@ public class DoctorScreenController implements Initializable {
                         else {
                             node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #000000");
                         }
+>>>>>>> 4e85d02df335e67ee56b88b0b0710629a55596da
                     }
+//                    if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
+//                        for (Appointment app : appointments)
+//                            if(eventToday(app, finalI))
+//                                t = true;
+//                        if (Calendar.equals("mini")) {
+//                            if (t)
+//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
+//                            else
+//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
+//                        }
+//                        else {
+//                            if (t)
+//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
+//                            else
+//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
+//                        }
+//                    }
                 }
             });
 
             for (Appointment app: appointments)
                 if(eventToday(app, i)) {
+<<<<<<< HEAD
+                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #98ff98");
+=======
                     button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
+>>>>>>> 4e85d02df335e67ee56b88b0b0710629a55596da
                     break;
                 }
 
