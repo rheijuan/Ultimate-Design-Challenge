@@ -4,6 +4,7 @@ import database.Appointment;
 import database.DBController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -24,8 +25,6 @@ public class DoctorScreenController implements Initializable {
 
     @FXML private Label agendaLabel;
 
-    @FXML private Label miniDateCalendar;
-
     @FXML private Label doctorTag;
 
     @FXML private GridPane miniCalendar;
@@ -33,16 +32,6 @@ public class DoctorScreenController implements Initializable {
     @FXML private AnchorPane createPane;
 
     @FXML private AnchorPane profilePane;
-
-    @FXML private GridPane datePicker;
-
-    @FXML private ComboBox<String> sTimeHour;
-
-    @FXML private ComboBox<String> sTimeMin;
-
-    @FXML private ComboBox<String> eTimeHour;
-
-    @FXML private ComboBox<String> eTimeMin;
 
     @FXML private TableView<DayTableItem> dayTableView;
 
@@ -59,7 +48,7 @@ public class DoctorScreenController implements Initializable {
             monthToday += 1;
 
         dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-        refreshCalendar(monthToday, yearToday, dayToday, "mini");
+        refreshCalendar(monthToday, yearToday, dayToday);
     }
 
     @FXML
@@ -71,7 +60,7 @@ public class DoctorScreenController implements Initializable {
             monthToday -= 1;
 
         dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-        refreshCalendar(monthToday, yearToday, dayToday, "mini");
+        refreshCalendar(monthToday, yearToday, dayToday);
     }
 
     @FXML
@@ -86,28 +75,15 @@ public class DoctorScreenController implements Initializable {
         profilePane.setVisible(false);
         createPane.setVisible(true);
 
-        datePicker.getChildren().clear();
-
-        refreshCalendar(monthToday, yearToday, dayToday, "picker");
-
-        for(int i = 8; i <= 17; i++) {
-            sTimeHour.getItems().add(String.valueOf(i));
-            eTimeHour.getItems().add(String.valueOf(i));
-        }
-
-        sTimeMin.getItems().add("00");
-        sTimeMin.getItems().add("30");
-
-        eTimeMin.getItems().add("00");
-        eTimeMin.getItems().add("30");
+        refreshCalendar(monthToday, yearToday, dayToday);
     }
 
     @FXML
     private void cancelAdding() {
         createPane.setVisible(false);
         profilePane.setVisible(true);
+        refreshCalendar(monthToday, yearToday, daySelected);
     }
-
 
     @FXML
     private ObservableList<DayTableItem> getDayAppointments() {
@@ -231,14 +207,13 @@ public class DoctorScreenController implements Initializable {
 
         dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
-        refreshCalendar(monthToday, yearToday, dayToday, "mini");
+        refreshCalendar(monthToday, yearToday, dayToday);
     }
 
-    private void refreshCalendar(int month, int year, int day, String Calendar) {
+    private void refreshCalendar(int month, int year, int day) {
         miniCalendar.getChildren().clear();
-        datePicker.getChildren().clear();
 
-        GridPane temp;
+        GridPane temp = null;
 
         dateLabel.setText(convert(month) + " " + day + ", " + year);
 
@@ -253,61 +228,29 @@ public class DoctorScreenController implements Initializable {
             Button button = new Button(String.valueOf(i));
             button.setMaxSize(28, 35);
 
-            if(Calendar.equals("mini")) {
-                button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-                temp = miniCalendar;
-            }
-            else {
-                button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #FFFFFF; -fx-text-fill: #000000");
-                temp = datePicker;
-            }
+            button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
+            temp = miniCalendar;
 
             GridPane finalTemp = temp;
-            int finalI = i;
-            button.setOnAction(event -> {
-                boolean t = false;
+            button.setOnAction((ActionEvent event) -> {
                 daySelected = Integer.parseInt(((Button) event.getSource()).getText());
                 button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #dc654d; -fx-text-fill: #FFFFFF");
-
-                if (Calendar.equals("mini"))
-                    dateLabel.setText(convert(month) + " " + daySelected + ", " + year);
-                else
-                    miniDateCalendar.setText(convert(month) + " " + daySelected + ", " + year);
+                dateLabel.setText(convert(month) + " " + daySelected + ", " + year);
 
                 for (Node node : finalTemp.getChildren()) {
                     if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-
+                        // TODO implement the thingymobob
+                        node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
                     }
-//                    if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-//                        for (Appointment app : appointments)
-//                            if(eventToday(app, finalI))
-//                                t = true;
-//                        if (Calendar.equals("mini")) {
-//                            if (t)
-//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
-//                            else
-//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-//                        }
-//                        else {
-//                            if (t)
-//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
-//                            else
-//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-//                        }
-//                    }
                 }
             });
 
             for (Appointment app: appointments)
                 if(eventToday(app, i)) {
-                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #98ff98");
+                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
                     break;
                 }
-
-            if (Calendar.equals("mini"))
                 miniCalendar.add(button, column, row);
-            else
-                datePicker.add(button, column, row);
         }
     }
 
