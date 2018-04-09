@@ -9,8 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.*;
@@ -73,40 +76,49 @@ public class DoctorScreenController implements Initializable {
 
     @FXML
     private void displayDateView() {
-
-
         dayLabel.setText(convert(monthToday) + " " + daySelected + ", " + yearToday);
-    }
 
-    @FXML
-    private void createAppointment() {
-        profilePane.setVisible(false);
-        createPane.setVisible(true);
+        timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+        eventColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
+        eventColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
 
-        for (int i = 8; i <= 17; i++) {
-            eTimeHour.getItems().add(String.valueOf(i));
-            sTimeHour.getItems().add(String.valueOf(i));
-        }
+                if (item == null || empty) {
+                    setText(null);
+                    setStyle("");
+                }
+                else {
+                    setText(item);
+                    DayTableItem sample = getTableView().getItems().get(getIndex());
 
-        sTimeMin.getItems().add("00");
-        sTimeMin.getItems().add("30");
-        eTimeMin.getItems().add("00");
-        eTimeMin.getItems().add("30");
+                    if (sample.getStatus() == 0) {
+                        setText(sample.getPatient());
+                        setTextFill(Color.WHITE);
+                        setStyle("-fx-background-color: #78B4BF");
+                    } else {
+                        setText(sample.getPatient());
+                        setTextFill(Color.WHITE);
+                        setStyle("-fx-background-color: #DC654D");
+                    }
+                }
+            }
+        });
 
-        refreshCalendar(monthToday, yearToday, dayToday);
-    }
+        dayTableView.addEventFilter(ScrollEvent.ANY, scrollEvent -> {
+            dayTableView.refresh();
+            dayTableView.edit(-1, null);
+        });
 
-    @FXML
-    private void cancelAdding() {
-        createPane.setVisible(false);
-        profilePane.setVisible(true);
-        refreshCalendar(monthToday, yearToday, daySelected);
+        dayTableView.setItems(getDayAppointments());
+
     }
 
     @FXML
     private ObservableList<DayTableItem> getDayAppointments() {
         // TODO replace this line when converting to MVC
-        ArrayList<Appointment> items = (ArrayList<Appointment>) DBController.getAppointments();
+        ObservableList<Appointment> items = DBController.getAppointments();
         ArrayList<Appointment> itemsToDisplay = new ArrayList<>();
 
         ArrayList<DayTableItem> toTableItems = new ArrayList<>();
@@ -183,20 +195,38 @@ public class DoctorScreenController implements Initializable {
 
                 if (displayStartTime == startTime && displayEndTime == endTime) {
                     displayTime.setPatient(item.getPatient());
-
-                    if (item.getPatient() != null)
-                        displayTime.occupy();
-
                     break;
                 } else if (displayStartTime == startTime) {
                     displayTime.setPatient(item.getPatient());
-
-                    if (item.getPatient() != null)
-                        displayTime.occupy();
                 }
             }
         }
         return FXCollections.observableArrayList(toTableItems);
+    }
+
+    @FXML
+    private void createAppointment() {
+        profilePane.setVisible(false);
+        createPane.setVisible(true);
+
+        for (int i = 8; i <= 17; i++) {
+            eTimeHour.getItems().add(String.valueOf(i));
+            sTimeHour.getItems().add(String.valueOf(i));
+        }
+
+        sTimeMin.getItems().add("00");
+        sTimeMin.getItems().add("30");
+        eTimeMin.getItems().add("00");
+        eTimeMin.getItems().add("30");
+
+        refreshCalendar(monthToday, yearToday, dayToday);
+    }
+
+    @FXML
+    private void cancelAdding() {
+        createPane.setVisible(false);
+        profilePane.setVisible(true);
+        refreshCalendar(monthToday, yearToday, daySelected);
     }
 
     @FXML
