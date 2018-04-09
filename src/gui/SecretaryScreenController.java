@@ -1,5 +1,8 @@
 package gui;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,69 +22,61 @@ public class SecretaryScreenController {
 	@FXML
 	public Button btnPrev;
 	@FXML
-	public Label monthLabel;
-	@FXML
-	public Label yearLabel;
+	public Label dateLabel;
 
+	/*
 	private int yearBound;
 	public int monthToday;
 	public int yearToday;
+	*/
+	private int selectedDay;
+	private String selectedMonth;
+	private int selectedYear;
+
+	String[] months =  {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+	private CalendarDate date = new CalendarDate();
 
 	public void initialize() {
-		monthToday = 2;
-		yearToday = 2017;
-
-		refreshCalendar(monthToday, yearToday);
-
+		GregorianCalendar cal = new GregorianCalendar();
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		refreshCalendar(date.getMonthBound(), date.getYearBound());
 	}
 
 
 	public void nextMonth(ActionEvent e) {
-		if (monthToday == 11)
-		{
-			monthToday = 1;
-			yearToday += 1;
-		}
-		else
-		{
-			monthToday += 1;
-		}
-		refreshCalendar(monthToday, yearToday);
-	}
+		if (date.getMonthToday() == 11) {
+			date.setMonthToday(0);
+			date.setYearToday(date.getYearToday() + 1);
+		} else
+			date.setMonthToday(date.getMonthToday() + 1);
+
+		refreshCalendar(date.getMonthToday(), date.getYearToday());
+}
 	public void lastMonth(ActionEvent e){
-		if (monthToday == 1)
-		{
-			monthToday = 11;
-			yearToday -= 1;
-		}
-		else
-		{
-			monthToday -= 1;
-		}
-		refreshCalendar(monthToday, yearToday);
-	}
+		if (date.getMonthToday() == 0) {
+			date.setMonthToday(11);
+			date.setYearToday(date.getYearToday() - 1);
+		} else
+			date.setMonthToday(date.getMonthToday() - 1);
+
+		refreshCalendar(date.getMonthToday(), date.getYearToday());
+}
 
 
 	public void refreshCalendar(int month, int year){
-		String[] months =  {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 		int nod, som, i;
-
+		/*
 		if (month == 0 && year <= yearBound-10)
-			btnPrev.setDisable(true);
+            btnPrev.setDisable(true);
 		if (month == 11 && year >= yearBound+100)
-			btnNext.setDisable(true);
+            btnNext.setDisable(true);
+		*/
 
-		System.out.println(month);
-		System.out.println(year);
-
-		monthLabel.setText(months[month - 1]);
-		yearLabel.setText(Integer.toString(year));
-
+		dateLabel.setText(months[month] +" "+ Integer.toString(year));
 
 		calendarGrid.getChildren().clear();
 
-
-		GregorianCalendar cal = new GregorianCalendar(year, month - 1, 1);
+		GregorianCalendar cal = new GregorianCalendar(year, month, 1);
 		nod = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
 		som = cal.get(GregorianCalendar.DAY_OF_WEEK);
 
@@ -93,24 +88,36 @@ public class SecretaryScreenController {
 
 			Button button = new Button(Integer.toString(i));
 			button.setMinSize(32, 25);
-			button.setStyle("-fx-background-color: transparent");
+			button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
 			button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent event) {
-					button.setStyle("-fx-border-color: red");
+		            button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: orange; -fx-text-fill: #FFFFFF");
 
 				}
 
 			});
 			button.setOnMouseExited(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent event) {
-					button.setStyle("-fx-background-color: transparent");
+		            button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
+
 				}
 
 			});
-			calendarGrid.add(button, column, row);
 
+			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				public void handle(MouseEvent event) {
+					selectedDay = Integer.parseInt(button.getText());
+					selectedMonth = months[date.getMonthToday()];
+					selectedYear = date.getYearToday();
+
+					System.out.println(selectedDay + " " + selectedMonth + " " + selectedYear);
+
+				}
+
+			});
+
+			calendarGrid.add(button, column, row);
 		}
 
 	}
-
 }

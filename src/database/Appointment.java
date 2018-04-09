@@ -15,7 +15,9 @@ public class Appointment extends CalendarItem {
 	private int endhour; 
 	private int endmin;
 	
-	public Appointment(int appointmentID, String patient, String doctor, int day, int month, int year, int starthour, int startmin, int endhour, int endmin) {
+	private int status; 
+	
+	public Appointment(int appointmentID, String patient, String doctor, int day, int month, int year, int starthour, int startmin, int endhour, int endmin, int status) {
 		
 		this.appointmentID = appointmentID;
 		this.patient = patient; 
@@ -27,11 +29,12 @@ public class Appointment extends CalendarItem {
 		this.startmin = startmin; 
 		this.endhour = endhour; 
 		this.endmin = endmin;
+		this.status = status;
 	}
 	
 	public void printAppointment() {
 		System.out.println("Appointment No: " + appointmentID + ", Patient: " + patient + ", Doctor: " + doctor); 
-		System.out.println(" On " + day + "/" + month + "/" + year );
+		System.out.println(" On " + day + "/" + month + "/" + year + " (Status: " + status + ")");
 		System.out.println(" From " + starthour + ":" + startmin + ", To " + endhour + ":" + endmin);
 	}
 	
@@ -115,4 +118,11 @@ public class Appointment extends CalendarItem {
 		this.endmin = endmin;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 }
