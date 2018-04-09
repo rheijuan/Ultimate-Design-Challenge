@@ -33,6 +33,14 @@ public class DoctorScreenController implements Initializable {
 
     @FXML private AnchorPane profilePane;
 
+    @FXML private ComboBox<String> sTimeHour;
+
+    @FXML private ComboBox<String> sTimeMin;
+
+    @FXML private ComboBox<String> eTimeHour;
+
+    @FXML private ComboBox<String> eTimeMin;
+
     @FXML private TableView<DayTableItem> dayTableView;
 
     @FXML private TableColumn<DayTableItem, String> timeColumn;
@@ -74,6 +82,16 @@ public class DoctorScreenController implements Initializable {
     private void createAppointment() {
         profilePane.setVisible(false);
         createPane.setVisible(true);
+
+        for (int i = 8; i <= 17; i++) {
+            eTimeHour.getItems().add(String.valueOf(i));
+            sTimeHour.getItems().add(String.valueOf(i));
+        }
+
+        sTimeMin.getItems().add("00");
+        sTimeMin.getItems().add("30");
+        eTimeMin.getItems().add("00");
+        eTimeMin.getItems().add("30");
 
         refreshCalendar(monthToday, yearToday, dayToday);
     }
@@ -213,7 +231,7 @@ public class DoctorScreenController implements Initializable {
     private void refreshCalendar(int month, int year, int day) {
         miniCalendar.getChildren().clear();
 
-        GridPane temp = null;
+        GridPane temp;
 
         dateLabel.setText(convert(month) + " " + day + ", " + year);
 

@@ -33,6 +33,7 @@ CREATE TABLE `appointments` (
   `StartMinute` int(2) DEFAULT NULL,
   `EndHour` int(2) DEFAULT NULL,
   `EndMinute` int(2) DEFAULT NULL,
+  `Status` int(1) DEFAULT NULL,
   PRIMARY KEY (`AppointmentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -62,4 +63,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-08 22:30:23
+-- Dump completed on 2018-04-09 15:32:24

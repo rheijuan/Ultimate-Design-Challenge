@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `clinic_tool` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `clinic_tool`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: clinic_tool
@@ -16,11 +14,11 @@ USE `clinic_tool`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
+CREATE DATABASE clinic_tool;
 --
 -- Table structure for table `appointments`
 --
-
+USE clinic_tool;
 DROP TABLE IF EXISTS `appointments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -35,6 +33,7 @@ CREATE TABLE `appointments` (
   `StartMinute` int(2) DEFAULT NULL,
   `EndHour` int(2) DEFAULT NULL,
   `EndMinute` int(2) DEFAULT NULL,
+  `Status` int(1) DEFAULT NULL,
   PRIMARY KEY (`AppointmentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -45,7 +44,7 @@ CREATE TABLE `appointments` (
 
 LOCK TABLES `appointments` WRITE;
 /*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
-INSERT INTO `appointments` (`AppointmentID`, `Patient`, `Doctor`, `Day`, `Month`, `Year`, `StartHour`, `StartMinute`, `EndHour`, `EndMinute`) VALUES (9,'Mara H','Eric White',5,9,2018,18,30,19,0),(72,'Sofia M','Philip Kay',9,11,2018,9,0,9,30),(301,'Jon Bon','Eric White',5,9,2018,16,30,17,30),(494,'Sarah G','Philip Kay',5,6,2018,14,0,14,30);
+INSERT INTO `appointments` (`AppointmentID`, `Patient`, `Doctor`, `Day`, `Month`, `Year`, `StartHour`, `StartMinute`, `EndHour`, `EndMinute`, `Status`) VALUES (9,'Mara H','Eric White',5,9,2018,18,30,19,0,0),(72,'Sofia M','Philip Kay',9,11,2018,9,0,9,30,0),(301,'Jon Bon','Eric White',5,9,2018,16,30,17,30,0),(494,'Sarah G','Philip Kay',5,6,2018,14,0,14,30,0);
 /*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-08 22:28:28
+-- Dump completed on 2018-04-09 15:31:38

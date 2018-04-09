@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
@@ -30,87 +31,24 @@
                         </font>
                      </Label>
                   </AnchorPane>
-                  <Label layoutX="305.0" layoutY="147.0" text="End Time">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="305.0" layoutY="97.0" text="Start Time">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="483.0" layoutY="292.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Create" />
-                  <Button layoutX="401.0" layoutY="292.0" mnemonicParsing="false" onAction="#cancelAdding" prefHeight="26.0" prefWidth="58.0" text="Cancel" />
-                  <CheckBox layoutX="427.0" layoutY="218.0" mnemonicParsing="false" text="Every Week">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </CheckBox>
-                  <ComboBox fx:id="eTimeHour" layoutX="401.0" layoutY="147.0" prefHeight="26.0" prefWidth="58.0" />
-                  <ComboBox fx:id="eTimeMin" layoutX="483.0" layoutY="147.0" prefHeight="26.0" prefWidth="58.0" />
-                  <ComboBox fx:id="sTimeHour" layoutX="401.0" layoutY="96.0" prefHeight="26.0" prefWidth="58.0" />
-                  <ComboBox fx:id="sTimeMin" layoutX="483.0" layoutY="96.0" prefHeight="26.0" prefWidth="58.0" />
-                  <GridPane fx:id="datePicker" layoutX="40.0" layoutY="169.0" prefHeight="174.0" prefWidth="210.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-                  <Label alignment="CENTER" layoutX="42.0" layoutY="138.0" prefHeight="26.0" prefWidth="25.0" text="S">
-                     <font>
-                        <Font name="Avenir 85 Heavy" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="75.0" layoutY="138.0" prefHeight="26.0" prefWidth="25.0" text="M">
-                     <font>
-                        <Font name="Avenir 85 Heavy" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="104.0" layoutY="138.0" prefHeight="26.0" prefWidth="25.0" text="T">
-                     <font>
-                        <Font name="Avenir 85 Heavy" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="133.0" layoutY="138.0" prefHeight="26.0" prefWidth="25.0" text="W">
-                     <font>
-                        <Font name="Avenir 85 Heavy" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="162.0" layoutY="138.0" prefHeight="26.0" prefWidth="25.0" text="T">
-                     <font>
-                        <Font name="Avenir 85 Heavy" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="192.0" layoutY="138.0" prefHeight="26.0" prefWidth="25.0" text="F">
-                     <font>
-                        <Font name="Avenir 85 Heavy" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="221.0" layoutY="138.0" prefHeight="26.0" prefWidth="25.0" text="S">
-                     <font>
-                        <Font name="Avenir 85 Heavy" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="miniDateCalendar" alignment="CENTER" layoutX="19.0" layoutY="65.0" prefHeight="27.0" prefWidth="249.0" text="Month Date, Year">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="42.0" layoutY="104.0" mnemonicParsing="false" onAction="#createPrev" style="-fx-background-color: transparent;" text="&lt;" />
-                  <Button layoutX="221.0" layoutY="104.0" mnemonicParsing="false" onAction="#createNext" style="-fx-background-color: transparent;" text="&gt;" />
+                  <DatePicker fx:id="dateLabel1" layoutX="94.0" layoutY="107.0" prefHeight="25.0" prefWidth="129.0" promptText="Date" />
+                  <Label layoutX="42.0" layoutY="107.0" text="Date" />
+                  <Label layoutX="94.0" layoutY="201.0" text="to" />
+                  <Label layoutX="42.0" layoutY="158.0" text="Time" />
+                  <Button fx:id="reserveButton" layoutX="461.0" layoutY="282.0" mnemonicParsing="false" text="Create" />
+                  <Button layoutX="536.0" layoutY="282.0" mnemonicParsing="false" onAction="#cancelAdding" text="Cancel" />
+                  <CheckBox fx:id="monCheck" layoutX="323.0" layoutY="98.0" mnemonicParsing="false" text="Every Monday" />
+                  <CheckBox fx:id="tuesCheck" layoutX="323.0" layoutY="138.0" mnemonicParsing="false" text="Every Tuesday" />
+                  <CheckBox fx:id="wedCheck" layoutX="323.0" layoutY="177.0" mnemonicParsing="false" text="Every Wednesday" />
+                  <CheckBox fx:id="thursCheck" layoutX="323.0" layoutY="219.0" mnemonicParsing="false" text="Every Thursday" />
+                  <CheckBox fx:id="friCheck" layoutX="483.0" layoutY="98.0" mnemonicParsing="false" text="Every Friday" />
+                  <CheckBox fx:id="satCheck" layoutX="483.0" layoutY="138.0" mnemonicParsing="false" text="Every Saturday" />
+                  <CheckBox fx:id="monthCheck" layoutX="483.0" layoutY="219.0" mnemonicParsing="false" text="Every Month" />
+                  <CheckBox fx:id="thursCheck1" layoutX="483.0" layoutY="177.0" mnemonicParsing="false" text="Every Day" />
+                  <ComboBox fx:id="sTimeHour" layoutX="94.0" layoutY="157.0" prefHeight="26.0" prefWidth="63.0" />
+                  <ComboBox fx:id="sTimeMin" layoutX="177.0" layoutY="157.0" prefHeight="26.0" prefWidth="63.0" />
+                  <ComboBox fx:id="eTimeHour" layoutX="94.0" layoutY="223.0" prefHeight="26.0" prefWidth="63.0" />
+                  <ComboBox fx:id="eTimeMin" layoutX="177.0" layoutY="223.0" prefHeight="26.0" prefWidth="63.0" />
                </AnchorPane>
                <AnchorPane fx:id="profilePane">
                   <AnchorPane prefHeight="358.0" prefWidth="327.0" style="-fx-background-color: #FFFFFF;">
