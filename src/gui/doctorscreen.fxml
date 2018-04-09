@@ -38,6 +38,7 @@
                   <TextField fx:id="endtimeLabel" layoutX="201.0" layoutY="158.0" prefHeight="25.0" prefWidth="73.0" promptText="End Time" />
                   <Label layoutX="42.0" layoutY="158.0" text="Time" />
                   <Button fx:id="reserveButton" layoutX="461.0" layoutY="282.0" mnemonicParsing="false" text="Create" />
+                  <Button layoutX="536.0" layoutY="282.0" mnemonicParsing="false" text="Cancel" />
                   <CheckBox fx:id="monCheck" layoutX="323.0" layoutY="98.0" mnemonicParsing="false" text="Every Monday" />
                   <CheckBox fx:id="tuesCheck" layoutX="323.0" layoutY="138.0" mnemonicParsing="false" text="Every Tuesday" />
                   <CheckBox fx:id="wedCheck" layoutX="323.0" layoutY="177.0" mnemonicParsing="false" text="Every Wednesday" />
