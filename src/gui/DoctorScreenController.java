@@ -26,8 +26,6 @@ public class DoctorScreenController implements Initializable {
 
     @FXML private Label miniDateCalendar;
 
-    @FXML private Label doctorTag;
-
     @FXML private GridPane miniCalendar;
 
     @FXML private AnchorPane createPane;
@@ -217,19 +215,12 @@ public class DoctorScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dbController = new DBController();
         appointments = DBController.getAppointments();
 
-        doctorTag.setText("Welcome Doctor " + docName);
-
-        Calendar cal = Calendar.getInstance();
         yearToday = cal.get(GregorianCalendar.YEAR);
         monthToday = cal.get(GregorianCalendar.MONTH);
-        dayToday = cal.get(GregorianCalendar.DAY_OF_MONTH);
 
         daySelected = dayToday;
-
-        dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
         refreshCalendar(monthToday, yearToday, dayToday, "mini");
     }
@@ -274,34 +265,15 @@ public class DoctorScreenController implements Initializable {
 
                 for (Node node : finalTemp.getChildren()) {
                     if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-                        if (Calendar.equals("mini"))
-                            node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-                        else
-                            node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #000000");
                     }
                 }
             });
-
-            for(Appointment app: appointments) {
-                if(eventToday(app, i)) {
-                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #26FF25");
-                    break;
-                }
-            }
 
             if (Calendar.equals("mini"))
                 miniCalendar.add(button, column, row);
             else
                 datePicker.add(button, column, row);
         }
-    }
-
-    private boolean eventToday(Appointment a, int day) {
-        if (a.getYear() == yearToday)
-            if (a.getMonth() == monthToday)
-                return a.getDay() == dayToday;
-
-        return false;
     }
 
     private String convert(int month) {
@@ -334,15 +306,9 @@ public class DoctorScreenController implements Initializable {
         return "January";
     }
 
-    public static void setName(String name) {
-        docName = name;
-    }
-
     private int yearToday;
     private int monthToday;
     private int dayToday;
     private int daySelected;
-    private DBController dbController;
     private ObservableList<Appointment> appointments;
-    private static String docName;
 }

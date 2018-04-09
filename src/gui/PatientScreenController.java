@@ -10,7 +10,7 @@ import database.Appointment;
 import database.DBController;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import javafx.fxml.*;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -89,7 +89,6 @@ public class PatientScreenController implements Initializable{
 		    private void refreshCalendar(int month, int year, int day) {
 		        miniCalendar.getChildren().clear();
 
-		        dateLabel.setText(convert(month) + " " + day + ", " + year);
 
 		        GregorianCalendar cal = new GregorianCalendar(year, month, 1);
 		        int nod = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
