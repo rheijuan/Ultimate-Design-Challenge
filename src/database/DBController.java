@@ -71,8 +71,8 @@ public class DBController {
 	        pst = con.prepareStatement("SELECT * FROM clinic_tool.appointments");
 	        rs = pst.executeQuery();
 	        while (rs.next())
-	        	appointments.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10)));
-	        				     //(FORMAT: appointmentID, patient name,doctor name,day,month,year,starthour,startminute, endhour, endminute)
+	        	appointments.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11)));
+	        				     //(FORMAT: appointmentID, patient name,doctor name,day,month,year,starthour,startminute, endhour, endminute, status)
         } catch (SQLException ex){
           Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -104,14 +104,14 @@ public class DBController {
 	 * Creates an appointment for a client to the chosen doctor given date and time details (start time only
 	 * since end time is always 30 minutes from the start time)
 	 */
-	 public void createAppointment(String patient, String doctor, int day, int month, int year, int starthour, int startmin, int endhour, int endmin) {
+	 public void createAppointment(String patient, String doctor, int day, int month, int year, int starthour, int startmin, int endhour, int endmin, int status) {
 		 
 		Random rand = new Random();
 		int id = rand.nextInt(500) + 1;
-		Appointment newApp = new Appointment(id, patient, doctor, day, month, year, starthour, startmin, endhour, endmin);
+		Appointment newApp = new Appointment(id, patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
    	    appointments.add(newApp);
 		 
-        String sql = "INSERT INTO clinic_tool.appointments VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO clinic_tool.appointments VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	    try{    
 	    		pst = con.prepareStatement(sql);
 	           
@@ -125,6 +125,7 @@ public class DBController {
 				pst.setInt(8, newApp.getStartMin());
 				pst.setInt(9, newApp.getEndHour());
 				pst.setInt(10, newApp.getEndMin());
+				pst.setInt(11, newApp.getStatus());
 	                
 	            int i = pst.executeUpdate();
 	            if (i==1)
@@ -301,11 +302,11 @@ public class DBController {
 		 ObservableList<Appointment> bydoctor = FXCollections.observableArrayList(); 
 	     
 		 try {
-	    	  pst = con.prepareStatement("SELECT AppointmentID, Patient, Doctor, Day, Month, Year, StartHour, StartMinute , EndHour, EndMinute"
+	    	  pst = con.prepareStatement("SELECT AppointmentID, Patient, Doctor, Day, Month, Year, StartHour, StartMinute , EndHour, EndMinute, Status"
 	    	  		+ "FROM clinic_tool.appointments WHERE Doctor = '" + doctorName + "'");
 	    	  rs = pst.executeQuery();
 	    	  while (rs.next()){
-	    		  bydoctor.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10)));
+	    		  bydoctor.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11)));
 	    	  }
 	    	  return bydoctor;
 	     } catch (SQLException ex) {
@@ -323,11 +324,11 @@ public class DBController {
 		 ObservableList<Appointment> byMonth = FXCollections.observableArrayList(); 
 	     
 		 try {
-	    	  pst = con.prepareStatement("SELECT AppointmentID, Patient, Doctor, Day, Month, Year, StartHour, StartMinute, EndHour, EndMinute "
+	    	  pst = con.prepareStatement("SELECT AppointmentID, Patient, Doctor, Day, Month, Year, StartHour, StartMinute, EndHour, EndMinute, Status"
 	    	  		+ "FROM clinic_tool.appointments WHERE Month = " + month + " AND Year = " + year); 
 	    	  rs = pst.executeQuery();
 	    	  while (rs.next()){
-	    		  byMonth.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10)));
+	    		  byMonth.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11)));
 	    	  }
 	    	  return byMonth;
 	     } catch (SQLException ex) {
@@ -345,11 +346,11 @@ public class DBController {
 		 ObservableList<Appointment> byDay = FXCollections.observableArrayList(); 
 	     
 		 try {
-	    	  pst = con.prepareStatement("SELECT AppointmentID, Patient, Doctor, Day, Month, Year, StartHour, StartMinute, EndHour, EndMinute "
+	    	  pst = con.prepareStatement("SELECT AppointmentID, Patient, Doctor, Day, Month, Year, StartHour, StartMinute, EndHour, EndMinute, Status"
 	    	  		+ "FROM clinic_tool.appointments WHERE Day = " + day + " AND Month = " + month + " AND Year = " + year);  
 	    	  rs = pst.executeQuery();
 	    	  while (rs.next()){
-	    		  byDay.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10)));
+	    		  byDay.add(new Appointment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11)));
 		      }
 	    	  return byDay;
 	     } catch (SQLException ex) {
@@ -358,4 +359,28 @@ public class DBController {
 		 return null;
 	 }
 	 
+	 public void setStatus(int status, int day, int month, int year, int starthour, int startmin, int endhour, int endmin) {
+		  String sql = "UPDATE clinic_tool.appointments SET Status = ? WHERE Day = ? AND Month = ? AND "
+		  		+ " Year = ? AND StartHour = ? AND StartMinute = ? AND EndHour = ? AND EndMinute = ?";
+	        try{    
+	        	pst = con.prepareStatement(sql);
+	                	        
+	            pst.setInt(1, status);
+				pst.setInt(2, day);
+				pst.setInt(3, month);
+				pst.setInt(4, year);
+				pst.setInt(5, starthour);
+				pst.setInt(6, startmin);
+				pst.setInt(7, endhour);
+				pst.setInt(8, endmin);
+	                
+	            int i = pst.executeUpdate();
+	            if (i==1)
+	               System.out.println("DATA FOR APPOINTMENT STATUS UPDATED!!!");
+	                
+	        } catch (SQLException ex){
+	          Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+	        } 
+	 }
+
 }
