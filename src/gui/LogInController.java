@@ -40,7 +40,6 @@ public class LogInController implements Initializable {
             for (User user : users) {
                 if (userName.equals(user.getUsername())) {
                     if (password.equals(user.getPassword())) {
-                        System.out.println("Password match");
                         switch (user.getRole()) {
                             case "Doctor":
                                 found = true;
