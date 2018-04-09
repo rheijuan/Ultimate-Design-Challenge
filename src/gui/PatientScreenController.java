@@ -148,7 +148,6 @@ public class PatientScreenController implements Initializable{
 		
 		@FXML
 		private void openReserve(ActionEvent event) throws IOException {
-			Parent newload_parent = FXMLLoader.load(getClass().getResource("../view/reservescreen.fxml"));
 			Scene newload_scene = new Scene(newload_parent);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(newload_scene);
@@ -157,7 +156,6 @@ public class PatientScreenController implements Initializable{
 
 	    @FXML
 	    private void openCancelledApp(ActionEvent event) throws IOException{
-	    	Parent newload_parent = FXMLLoader.load(getClass().getResource("../view/cancelledAppscreen.fxml"));
 			Scene newload_scene = new Scene(newload_parent);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(newload_scene);

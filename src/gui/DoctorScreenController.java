@@ -108,7 +108,6 @@ public class DoctorScreenController implements Initializable {
         profilePane.setVisible(true);
     }
 
-
     @FXML
     private ObservableList<DayTableItem> getDayAppointments() {
         // TODO replace this line when converting to MVC
@@ -263,9 +262,6 @@ public class DoctorScreenController implements Initializable {
             }
 
             GridPane finalTemp = temp;
-            int finalI = i;
-            button.setOnAction(event -> {
-                boolean t = false;
                 daySelected = Integer.parseInt(((Button) event.getSource()).getText());
                 button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #dc654d; -fx-text-fill: #FFFFFF");
 
@@ -276,31 +272,12 @@ public class DoctorScreenController implements Initializable {
 
                 for (Node node : finalTemp.getChildren()) {
                     if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-
                     }
-//                    if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-//                        for (Appointment app : appointments)
-//                            if(eventToday(app, finalI))
-//                                t = true;
-//                        if (Calendar.equals("mini")) {
-//                            if (t)
-//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
-//                            else
-//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-//                        }
-//                        else {
-//                            if (t)
-//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
-//                            else
-//                                node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-//                        }
-//                    }
                 }
             });
 
             for (Appointment app: appointments)
                 if(eventToday(app, i)) {
-                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #98ff98");
                     break;
                 }
 
