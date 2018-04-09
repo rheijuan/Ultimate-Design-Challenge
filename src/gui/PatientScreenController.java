@@ -10,7 +10,7 @@ import database.Appointment;
 import database.DBController;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import javafx.fxml.*;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;

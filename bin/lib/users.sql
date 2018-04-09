@@ -1,1 +1,0 @@
-SELECT * FROM clinic_tool.users;

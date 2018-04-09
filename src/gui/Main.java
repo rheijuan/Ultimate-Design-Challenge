@@ -11,15 +11,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("doctorscreen.fxml"));
-       // Parent root = FXMLLoader.load(getClass().getResource("loginscreen.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("secretaryscreen.fxml"));
         primaryStage.setTitle("Calendar Application");
         primaryStage.setScene(new Scene(root, 715, 451));
         primaryStage.setResizable(false);
         primaryStage.show();
+        
     }
-
 
     public static void main(String[] args) {
         launch(args);
