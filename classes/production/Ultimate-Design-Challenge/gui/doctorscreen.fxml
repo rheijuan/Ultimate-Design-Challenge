@@ -104,10 +104,13 @@
                         <Font name="Avenir 85 Heavy" size="16.0" />
                      </font>
                   </Label>
+                  <Label fx:id="miniDateCalendar" alignment="CENTER" layoutX="19.0" layoutY="65.0" prefHeight="27.0" prefWidth="249.0" text="Month Date, Year">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Button layoutX="42.0" layoutY="104.0" mnemonicParsing="false" onAction="#createPrev" style="-fx-background-color: transparent;" text="&lt;" />
+                  <Button layoutX="221.0" layoutY="104.0" mnemonicParsing="false" onAction="#createNext" style="-fx-background-color: transparent;" text="&gt;" />
                </AnchorPane>
                <AnchorPane fx:id="profilePane">
                   <AnchorPane prefHeight="358.0" prefWidth="327.0" style="-fx-background-color: #FFFFFF;">
