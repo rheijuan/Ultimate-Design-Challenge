@@ -6,11 +6,11 @@ public class DayTableItem {
 
     private SimpleStringProperty time;
     private SimpleStringProperty patient;
-    private boolean occupied;
     private int valueStartHour;
     private int valueEndHour;
     private int valueStartMin;
     private int valueEndMin;
+    private int status;
 
     DayTableItem(String time, String patient) {
         this.time = new SimpleStringProperty(time);
@@ -32,15 +32,6 @@ public class DayTableItem {
     public void setPatient(String newPatient) {
         patient.set(newPatient);
     }
-
-    public void occupy() {
-        this.occupied = true;
-    }
-
-    public boolean isOccupied() {
-        return occupied;
-    }
-
 
     public int getValueStartHour() {
         return valueStartHour;
@@ -72,5 +63,13 @@ public class DayTableItem {
 
     public void setValueEndMin(int valueEndMin) {
         this.valueEndMin = valueEndMin;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
