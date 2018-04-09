@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae3c73ee-7347-49d0-b11d-b222dc2177cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DoctorScreenController.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DoctorScreenController.class" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/PatientScreenController.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/PatientScreenController.class" />
       <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/doctorscreen.fxml" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/doctorscreen.fxml" />
       <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/patientscreen.fxml" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/patientscreen.fxml" />
       <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/reservescreen.fxml" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/reservescreen.fxml" />
@@ -52,10 +49,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="LogInController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-220">
               <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -90,7 +85,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoctorScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="70">
@@ -412,12 +406,10 @@
       <workItem from="1523084265957" duration="4380000" />
       <workItem from="1523097451463" duration="5345000" />
       <workItem from="1523241099236" duration="1858000" />
-      <workItem from="1523243041569" duration="8238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32519000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1028,16 +1020,6 @@
         <state relative-caret-position="520">
           <caret line="81" column="22" lean-forward="true" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-220">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
