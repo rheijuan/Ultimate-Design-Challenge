@@ -3,6 +3,7 @@ package gui;
 import java.util.GregorianCalendar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+//import gui.secretaryscreen*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,7 +13,7 @@ import javafx.scene.layout.GridPane;
 
 public class SecretaryScreenController {
 	@FXML
-	public GridPane miniCalendar;
+	public GridPane calendarGrid;
 	@FXML
 	public Button btnNext;
 	@FXML
@@ -77,7 +78,7 @@ public class SecretaryScreenController {
 		yearLabel.setText(Integer.toString(year));
 
 
-		miniCalendar.getChildren().clear();
+		calendarGrid.getChildren().clear();
 
 
 		GregorianCalendar cal = new GregorianCalendar(year, month - 1, 1);
@@ -93,8 +94,6 @@ public class SecretaryScreenController {
 			Button button = new Button(Integer.toString(i));
 			button.setMinSize(32, 25);
 			button.setStyle("-fx-background-color: transparent");
-			
-			
 			button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent event) {
 					button.setStyle("-fx-border-color: red");
@@ -108,8 +107,7 @@ public class SecretaryScreenController {
 				}
 
 			});
-			
-			miniCalendar.add(button, column, row);
+			calendarGrid.add(button, column, row);
 
 		}
 
