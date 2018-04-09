@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.*;
@@ -217,11 +216,9 @@ public class DoctorScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         appointments = DBController.getAppointments();
-        Calendar cal = Calendar.getInstance();
 
         yearToday = cal.get(GregorianCalendar.YEAR);
         monthToday = cal.get(GregorianCalendar.MONTH);
-        dayToday = cal.get(GregorianCalendar.DAY_OF_WEEK);
 
         daySelected = dayToday;
 
@@ -268,10 +265,6 @@ public class DoctorScreenController implements Initializable {
 
                 for (Node node : finalTemp.getChildren()) {
                     if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-                        if (Calendar.equals("mini"))
-                            node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-                        else
-                            node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #000000");
                     }
                 }
             });

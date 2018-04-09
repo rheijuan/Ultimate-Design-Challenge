@@ -8,13 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="324.0" style="-fx-background-color: #8FCFDA;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LogInController">
-	<TextField fx:id="passwordText" layoutX="105.0" layoutY="257.0" />
-	<TextField fx:id="userText" layoutX="105.0" layoutY="203.0" />
 	<Button fx:id="enterButton" layoutX="140.0" layoutY="302.0" mnemonicParsing="false" onAction="#enterClinic" style="-fx-background-color: #3E454D;" text="Enter" textFill="WHITE" />
 	<Button fx:id="walkInButton" layoutX="111.0" layoutY="340.0" mnemonicParsing="false" style="-fx-background-color: #3E454D;" text="Book as Walk-in" textFill="WHITE" />
-	<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="87.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
 		<Image url="@pikachu.png" />
 	</ImageView>
-	<Label layoutX="39.0" layoutY="207.0" text="Username" />
-	<Label layoutX="39.0" layoutY="261.0" text="Password" />
 </AnchorPane>
