@@ -24,9 +24,14 @@ public class SecretaryScreenController {
 	@FXML
 	public Label dateLabel;
 
+	/*
 	private int yearBound;
 	public int monthToday;
 	public int yearToday;
+	*/
+	private int selectedDay;
+	private String selectedMonth;
+	private int selectedYear;
 
 	String[] months =  {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	private CalendarDate date = new CalendarDate();
@@ -84,11 +89,9 @@ public class SecretaryScreenController {
 			Button button = new Button(Integer.toString(i));
 			button.setMinSize(32, 25);
 			button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-
-			button.setStyle("-fx-background-color: transparent");
 			button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent event) {
-		            button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-border-color: blue");
+		            button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: orange; -fx-text-fill: #FFFFFF");
 
 				}
 
@@ -100,10 +103,21 @@ public class SecretaryScreenController {
 				}
 
 			});
-			calendarGrid.add(button, column, row);
 
+			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				public void handle(MouseEvent event) {
+					selectedDay = Integer.parseInt(button.getText());
+					selectedMonth = months[date.getMonthToday()];
+					selectedYear = date.getYearToday();
+
+					System.out.println(selectedDay + " " + selectedMonth + " " + selectedYear);
+
+				}
+
+			});
+
+			calendarGrid.add(button, column, row);
 		}
 
 	}
-
 }
