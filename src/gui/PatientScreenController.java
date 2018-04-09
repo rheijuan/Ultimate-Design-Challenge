@@ -89,6 +89,7 @@ public class PatientScreenController implements Initializable{
 		    private void refreshCalendar(int month, int year, int day) {
 		        miniCalendar.getChildren().clear();
 
+		        //dateLabel.setText(convert(month) + " " + day + ", " + year);
 
 		        GregorianCalendar cal = new GregorianCalendar(year, month, 1);
 		        int nod = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);

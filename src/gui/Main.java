@@ -12,10 +12,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
 
-       Parent root = FXMLLoader.load(getClass().getResource("loginscreen.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("secretaryscreen.fxml"));
 
         primaryStage.setTitle("Calendar Application");
-        primaryStage.setScene(new Scene(root, 324, 400));
+        primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
         
