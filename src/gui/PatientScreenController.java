@@ -10,7 +10,7 @@ import database.Appointment;
 import database.DBController;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.*;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -148,7 +148,7 @@ public class PatientScreenController implements Initializable{
 		
 		@FXML
 		private void openReserve(ActionEvent event) throws IOException {
-			Parent newload_parent = FXMLLoader.load(getClass().getResource("../view/reservescreen.fxml"));
+			Parent newload_parent = FXMLLoader.load(getClass().getResource("reservescreen.fxml"));
 			Scene newload_scene = new Scene(newload_parent);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(newload_scene);
@@ -157,7 +157,7 @@ public class PatientScreenController implements Initializable{
 
 	    @FXML
 	    private void openCancelledApp(ActionEvent event) throws IOException{
-	    	Parent newload_parent = FXMLLoader.load(getClass().getResource("../view/cancelledAppscreen.fxml"));
+	    	Parent newload_parent = FXMLLoader.load(getClass().getResource("cancelledAppscreen.fxml"));
 			Scene newload_scene = new Scene(newload_parent);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			app_stage.setScene(newload_scene);

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+//import gui.secretaryscreen*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,7 +16,7 @@ import javafx.scene.layout.GridPane;
 
 public class SecretaryScreenController {
 	@FXML
-	public GridPane miniCalendar;
+	public GridPane calendarGrid;
 	@FXML
 	public Button btnNext;
 	@FXML
@@ -77,7 +78,7 @@ public class SecretaryScreenController {
 		dateLabel.setText(months[month - 1] +" "+ Integer.toString(year));
 		
 
-		miniCalendar.getChildren().clear();
+		calendarGrid.getChildren().clear();
 
 
 		GregorianCalendar cal = new GregorianCalendar(year, month - 1, 1);
@@ -92,10 +93,14 @@ public class SecretaryScreenController {
 
 			Button button = new Button(Integer.toString(i));
 			button.setMinSize(32, 25);
+<<<<<<< HEAD
             button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
 
 			
 			
+=======
+			button.setStyle("-fx-background-color: transparent");
+>>>>>>> 4e85d02df335e67ee56b88b0b0710629a55596da
 			button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent event) {
 		            button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-border-color: blue");
@@ -110,8 +115,7 @@ public class SecretaryScreenController {
 				}
 
 			});
-			
-			miniCalendar.add(button, column, row);
+			calendarGrid.add(button, column, row);
 
 		}
 

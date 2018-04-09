@@ -104,13 +104,22 @@
                         <Font name="Avenir 85 Heavy" size="16.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
                   <Label fx:id="miniDateCalendar" alignment="CENTER" layoutX="52.0" layoutY="65.0" prefHeight="27.0" prefWidth="186.0" text="Month Date, Year">
+=======
+                  <Label fx:id="miniDateCalendar" alignment="CENTER" layoutX="19.0" layoutY="65.0" prefHeight="27.0" prefWidth="249.0" text="Month Date, Year">
+>>>>>>> 4e85d02df335e67ee56b88b0b0710629a55596da
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
                   <Button fx:id="prevButton1" layoutX="42.0" layoutY="104.0" mnemonicParsing="false" onAction="#prevMonth" style="-fx-background-color: transparent;" text="&lt;" />
                   <Button fx:id="nextButton1" layoutX="221.0" layoutY="104.0" mnemonicParsing="false" onAction="#nextMonth" style="-fx-background-color: transparent;" text="&gt;" />
+=======
+                  <Button layoutX="42.0" layoutY="104.0" mnemonicParsing="false" onAction="#createPrev" style="-fx-background-color: transparent;" text="&lt;" />
+                  <Button layoutX="221.0" layoutY="104.0" mnemonicParsing="false" onAction="#createNext" style="-fx-background-color: transparent;" text="&gt;" />
+>>>>>>> 4e85d02df335e67ee56b88b0b0710629a55596da
                </AnchorPane>
                <AnchorPane fx:id="profilePane">
                   <AnchorPane prefHeight="358.0" prefWidth="327.0" style="-fx-background-color: #FFFFFF;">
