@@ -10,7 +10,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 
@@ -24,6 +27,20 @@ public class SecretaryScreenController {
 	@FXML
 	public Label dateLabel;
 
+	@FXML
+	public Label dayViewDateLabel;
+	@FXML
+	private TabPane tabPane;
+	@FXML
+	private Tab profileTab;
+	@FXML
+	private Tab dayViewTab;
+	@FXML
+	private Tab weekViewTab;
+	@FXML
+	private Tab agendaViewTab;
+
+
 	/*
 	private int yearBound;
 	public int monthToday;
@@ -33,6 +50,8 @@ public class SecretaryScreenController {
 	private String selectedMonth;
 	private int selectedYear;
 
+
+
 	String[] months =  {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	private CalendarDate date = new CalendarDate();
 
@@ -40,6 +59,8 @@ public class SecretaryScreenController {
 		GregorianCalendar cal = new GregorianCalendar();
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 		refreshCalendar(date.getMonthBound(), date.getYearBound());
+
+		//tabPane.getTabs().add(profileTab, dayViewTab, weekViewTab, agendaViewTab);
 	}
 
 
@@ -89,6 +110,8 @@ public class SecretaryScreenController {
 			Button button = new Button(Integer.toString(i));
 			button.setMinSize(32, 25);
 			button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
+
+
 			button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent event) {
 		            button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: orange; -fx-text-fill: #FFFFFF");
@@ -106,11 +129,22 @@ public class SecretaryScreenController {
 
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent event) {
-					selectedDay = Integer.parseInt(button.getText());
-					selectedMonth = months[date.getMonthToday()];
-					selectedYear = date.getYearToday();
 
-					System.out.println(selectedDay + " " + selectedMonth + " " + selectedYear);
+
+					if (event.getClickCount() == 2) {
+						tabPane.getSelectionModel().select(dayViewTab);
+						selectedDay = Integer.parseInt(button.getText());
+						selectedMonth = months[date.getMonthToday()];
+						selectedYear = date.getYearToday();
+						dayViewDateLabel.setText(selectedMonth +" "+ selectedDay +" "+selectedYear);
+
+					}
+					else {
+						selectedDay = Integer.parseInt(button.getText());
+						selectedMonth = months[date.getMonthToday()];
+						selectedYear = date.getYearToday();
+						System.out.println(selectedDay + " " + selectedMonth + " " + selectedYear);
+					}
 
 				}
 
