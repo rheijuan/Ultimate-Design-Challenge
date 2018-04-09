@@ -65,11 +65,7 @@ public class DBController {
 	 * Loads or refreshes all appointments from the database and load to an ObservableList appointments.
 	 */
 	public void loadAppointments() {
-		 try {
-	            con = ConnectDB.getConnection();
-	        } catch (ClassNotFoundException | SQLException ex) {
-	            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-	        }
+		con = ConnectDB.getConnection();
 
 		try{
 	        pst = con.prepareStatement("SELECT * FROM clinic_tool.appointments");
@@ -88,11 +84,7 @@ public class DBController {
 	 * Loads or refreshes all users logged from the database and load to an ObservableList users.
 	 */
 	public void loadUsers() {
-		 try {
-	            con = ConnectDB.getConnection();
-	        } catch (ClassNotFoundException | SQLException ex) {
-	            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-	        }
+		con = ConnectDB.getConnection();
 
 		try{
 	        pst = con.prepareStatement("SELECT * FROM clinic_tool.users");

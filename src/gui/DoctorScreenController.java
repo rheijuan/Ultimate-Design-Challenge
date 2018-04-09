@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.*;
@@ -26,6 +25,8 @@ public class DoctorScreenController implements Initializable {
     @FXML private Label agendaLabel;
 
     @FXML private Label miniDateCalendar;
+
+    @FXML private Label doctorTag;
 
     @FXML private GridPane miniCalendar;
 
@@ -216,6 +217,7 @@ public class DoctorScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        doctorTag.setText("Welcome Doctor " + docName);
         appointments = DBController.getAppointments();
         Calendar cal = Calendar.getInstance();
 
@@ -313,9 +315,14 @@ public class DoctorScreenController implements Initializable {
         return "January";
     }
 
+    public static void setName(String name) {
+        docName = name;
+    }
+
     private int yearToday;
     private int monthToday;
     private int dayToday;
     private int daySelected;
     private ObservableList<Appointment> appointments;
+    private static String docName;
 }

@@ -29,30 +29,40 @@ public class LogInController implements Initializable {
 
     @FXML
     private void enterClinic(ActionEvent event) {
+        String userName = userText.getText();
+        String password = passwordText.getText();
+        boolean found = false;
 
-        for (User user : users) {
-            if (user.getName().equals(userText.getText()) &&
-                    user.getPassword().equals(passwordText.getText())) {
-                switch (user.getRole()) {
-                    case "Doctor":
-                        changeScene(event, "doctorscreen.fxml");
-                        // TODO load the screen of the Doctor
-                        System.out.println("The doctor is in");
-                        break;
-                    case "Secretary":
-                        // TODO load the screen of the Secretary
-                        System.out.println("The secretary is in");
-                        break;
-                    case "Patient":
-                        // TODO load the screen of the Patient
-                        System.out.println("The patient is in");
-                        break;
-                    default:
-                        invalidLabel.setVisible(true);
-                        break;
+        if (userName.equals("") || password.equals(""))
+            invalidLabel.setVisible(true);
+
+        else {
+            for (User user : users) {
+                if (userName.equals(user.getUsername())) {
+                    if (password.equals(user.getPassword())) {
+                        System.out.println("Password match");
+                        switch (user.getRole()) {
+                            case "Doctor":
+                                found = true;
+                                DoctorScreenController.setName(user.getName());
+                                changeScene(event, "doctorscreen.fxml");
+                                break;
+                            case "Patient":
+                                found = true;
+                                changeScene(event, "patientscreen.fxml");
+                                break;
+                            case "Secretary":
+                                found = true;
+                                changeScene(event, "secretaryscreen.fxml");
+                                break;
+                        }
+                    }
                 }
             }
         }
+
+        if (!found)
+            invalidLabel.setVisible(true);
     }
 
     private void changeScene(ActionEvent event, String url) {
@@ -72,14 +82,15 @@ public class LogInController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Hello");
-        users = DBController.getUsers();
+        dbController = new DBController();
+        dbController.loadAppointments();
+        dbController.loadUsers();
 
-        for (User user : users)
-            System.out.println(user.toString());
+        users = DBController.getUsers();
 
         invalidLabel.setVisible(false);
     }
 
     private ObservableList<User> users;
+    private DBController dbController;
 }

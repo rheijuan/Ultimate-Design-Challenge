@@ -2,10 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae3c73ee-7347-49d0-b11d-b222dc2177cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ultimate-Design-Challenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Ultimate-Design-Challenge.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/PatientScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/PatientScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Ultimate-Design-Challenge.iml" afterPath="$PROJECT_DIR$/Ultimate-Design-Challenge.iml" />
+      <change beforePath="$PROJECT_DIR$/bin/database/Appointment.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/database/ConnectDB.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/database/DBController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/database/TestDriverExtraLangTo.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/database/User.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/.project" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/DayTableItem.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/DoctorScreenController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/LogInController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/Main.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/PatientScreenController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/doctorscreen.fxml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/jigglypuff.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/loginscreen.fxml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/paperclip.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/patientscreen.fxml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/pikachu.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/gui/secretaryscreen.fxml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/appointments.sql" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/clinic_tool.sql" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/clinit_tool(no data).sql" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/mysql-connector-java-5.1.43-bin.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/mysql-connector-java-5.1.46.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/users.sql" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/database/ConnectDB.java" afterPath="$PROJECT_DIR$/src/database/ConnectDB.java" />
+      <change beforePath="$PROJECT_DIR$/src/database/DBController.java" afterPath="$PROJECT_DIR$/src/database/DBController.java" />
+      <change beforePath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" afterPath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
+      <change beforePath="$PROJECT_DIR$/src/gui/LogInController.java" afterPath="$PROJECT_DIR$/src/gui/LogInController.java" />
+      <change beforePath="$PROJECT_DIR$/src/gui/doctorscreen.fxml" afterPath="$PROJECT_DIR$/src/gui/doctorscreen.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/lib/mysql-connector-java-5.1.43-bin.jar" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,21 +50,118 @@
     <option name="GROUP_SCHEMA" value="true" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="clinic_tool@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="clinic_tool@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="clinic_tool@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="clinic_tool: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SecretaryScreenController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
+      <file leaf-file-name="LogInController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-407">
-              <caret line="56" column="12" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+            <state relative-caret-position="222">
+              <caret line="50" column="45" lean-forward="true" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="patientscreen.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/patientscreen.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PatientScreenController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gui/PatientScreenController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectDB.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/ConnectDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalendarItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/CalendarItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DoctorScreenController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="218" column="60" lean-forward="false" selection-start-line="218" selection-start-column="60" selection-end-line="218" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="e#6975#6976#0" expanded="true" />
+                <element signature="e#7047#7048#0" expanded="true" />
+                <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="e#11040#11041#0" expanded="true" />
+                <element signature="e#11070#11071#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,20 +189,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/database/User.java" />
         <option value="$PROJECT_DIR$/src/gui/loginscreen.fxml" />
-        <option value="$PROJECT_DIR$/src/gui/LogInController.java" />
-        <option value="$PROJECT_DIR$/src/database/DBController.java" />
-        <option value="$PROJECT_DIR$/src/gui/Main.java" />
         <option value="$PROJECT_DIR$/src/gui/DayTableItem.java" />
         <option value="$PROJECT_DIR$/src/gui/doctorscreen.fxml" />
-        <option value="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
-        <option value="$PROJECT_DIR$/src/gui/SecretaryScreenController.java" />
-        <option value="$PROJECT_DIR$/src/gui/PatientScreenController.java" />
+        <option value="$PROJECT_DIR$/src/gui/Main.java" />
         <option value="$PROJECT_DIR$/src/database/ConnectDB.java" />
+        <option value="$PROJECT_DIR$/src/database/DBController.java" />
+        <option value="$PROJECT_DIR$/src/gui/LogInController.java" />
+        <option value="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
       </list>
     </option>
   </component>
@@ -93,13 +222,24 @@
     <option name="height" value="880" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,12 +270,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Ultimate-Design-Challenge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Ultimate-Design-Challenge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -145,11 +279,13 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DESPA-Design-Challenge-2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lib/mysql-connector-java-5.1.46.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.146875" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/src/lib" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -163,36 +299,68 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestDriverExtraLangTo">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <option name="WIDTH" value="0" />
+      <option name="HEIGHT" value="0" />
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gui.Main" />
-      <module name="Ultimate-Design-Challenge" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
           <option name="PATTERN" value="gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="MAIN_CLASS_NAME" value="gui.Main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Ultimate-Design-Challenge" />
+      <envs />
     </configuration>
     <configuration name="TestDriverExtraLangTo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="database.TestDriverExtraLangTo" />
-      <module name="Ultimate-Design-Challenge" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
           <option name="PATTERN" value="database.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="MAIN_CLASS_NAME" value="database.TestDriverExtraLangTo" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Ultimate-Design-Challenge" />
+      <envs />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" />
@@ -202,13 +370,24 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
+      <envs />
       <patterns />
     </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
@@ -221,21 +400,17 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
+      <envs />
       <properties />
       <listeners />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
@@ -243,16 +418,19 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.TestDriverExtraLangTo" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="Application.TestDriverExtraLangTo" />
     </list>
     <recent_temporary>
-      <list>
-        <item itemvalue="Application.TestDriverExtraLangTo" />
-        <item itemvalue="Application.Main" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.TestDriverExtraLangTo" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -272,79 +450,48 @@
       <workItem from="1523031157666" duration="2019000" />
       <workItem from="1523084265957" duration="4380000" />
       <workItem from="1523097451463" duration="5345000" />
-      <workItem from="1523183904454" duration="347000" />
-      <workItem from="1523184435073" duration="2856000" />
-      <workItem from="1523188002981" duration="1294000" />
-      <workItem from="1523240281619" duration="941000" />
+      <workItem from="1523241099236" duration="1858000" />
+      <workItem from="1523243041569" duration="2660000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27861000" />
+    <option name="totallyTimeSpent" value="26941000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info id="Image Layers" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="0" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.25398514" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.3292011" />
-      <window_info anchor="bottom" id="Terminal" order="3" />
-      <window_info id="Capture Tool" order="0" />
-      <window_info id="Designer" order="1" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.12491867" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.26350033" />
-      <window_info id="Structure" order="4" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.3292011" />
-      <window_info anchor="right" id="Commander" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="2" />
-      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15677084" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -353,103 +500,45 @@
     <breakpoint-manager>
       <option name="time" value="2" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/Appointment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DayTableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="114" column="78" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/PatientScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DayTableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="114" column="78" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2652">
-          <caret line="114" column="78" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
+          <caret line="114" column="78" lean-forward="false" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
+          <folding>
+            <marker date="1523243863121" expanded="true" signature="2252:2290" ph="SELECT * FRO... appointments" />
+            <marker date="1523243863121" expanded="true" signature="3132:3163" ph="SELECT * FRO... users" />
+            <marker date="1523243863121" expanded="true" signature="4297:4371" ph="INSERT INTO clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="5441:5490" ph="INSERT INTO clinic_tool.users... " />
+            <marker date="1523243863121" expanded="true" signature="6725:6899" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="8170:8343" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="9408:9496" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="10525:10653" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="11586:11766" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="12604:12788" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="13635:13841" ph="SELECT Appoi... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5876">
+          <caret line="226" column="30" lean-forward="false" selection-start-line="226" selection-start-column="30" selection-end-line="226" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -457,104 +546,261 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4550">
           <caret line="175" column="20" lean-forward="true" selection-start-line="175" selection-start-column="20" selection-end-line="175" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="true" />
+            <element signature="e#7047#7048#0" expanded="true" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#11040#11041#0" expanded="true" />
+            <element signature="e#11070#11071#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1404">
-          <caret line="72" column="48" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
+          <caret line="72" column="48" lean-forward="false" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="true" />
+            <element signature="e#7047#7048#0" expanded="true" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#11040#11041#0" expanded="true" />
+            <element signature="e#11070#11071#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3458">
+          <caret line="133" column="30" lean-forward="false" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2652">
-          <caret line="114" column="78" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
+          <caret line="114" column="78" lean-forward="false" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
+          <folding>
+            <marker date="1523243863121" expanded="true" signature="2252:2290" ph="SELECT * FRO... appointments" />
+            <marker date="1523243863121" expanded="true" signature="3132:3163" ph="SELECT * FRO... users" />
+            <marker date="1523243863121" expanded="true" signature="4297:4371" ph="INSERT INTO clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="5441:5490" ph="INSERT INTO clinic_tool.users... " />
+            <marker date="1523243863121" expanded="true" signature="6725:6899" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="8170:8343" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="9408:9496" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="10525:10653" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="11586:11766" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="12604:12788" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="13635:13841" ph="SELECT Appoi... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2028">
-          <caret line="152" column="1" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+          <caret line="152" column="1" lean-forward="false" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="true" />
+            <element signature="e#7047#7048#0" expanded="true" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#11040#11041#0" expanded="true" />
+            <element signature="e#11070#11071#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="25" column="61" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="61" />
+          <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="61" />
+          <folding>
+            <marker date="1523243863121" expanded="true" signature="2252:2290" ph="SELECT * FRO... appointments" />
+            <marker date="1523243863121" expanded="true" signature="3132:3163" ph="SELECT * FRO... users" />
+            <marker date="1523243863121" expanded="true" signature="4297:4371" ph="INSERT INTO clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="5441:5490" ph="INSERT INTO clinic_tool.users... " />
+            <marker date="1523243863121" expanded="true" signature="6725:6899" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="8170:8343" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="9408:9496" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="10525:10653" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="11586:11766" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="12604:12788" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="13635:13841" ph="SELECT Appoi... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2600">
+          <caret line="100" column="24" lean-forward="false" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3952">
-          <caret line="152" column="1" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+          <caret line="152" column="1" lean-forward="false" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="true" />
+            <element signature="e#7047#7048#0" expanded="true" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#11040#11041#0" expanded="true" />
+            <element signature="e#11070#11071#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="650">
-          <caret line="25" column="61" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="61" />
+          <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="61" />
+          <folding>
+            <marker date="1523243863121" expanded="true" signature="2252:2290" ph="SELECT * FRO... appointments" />
+            <marker date="1523243863121" expanded="true" signature="3132:3163" ph="SELECT * FRO... users" />
+            <marker date="1523243863121" expanded="true" signature="4297:4371" ph="INSERT INTO clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="5441:5490" ph="INSERT INTO clinic_tool.users... " />
+            <marker date="1523243863121" expanded="true" signature="6725:6899" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="8170:8343" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="9408:9496" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="10525:10653" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="11586:11766" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="12604:12788" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="13635:13841" ph="SELECT Appoi... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2600">
+          <caret line="100" column="24" lean-forward="true" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="true" />
+            <element signature="e#7047#7048#0" expanded="true" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#11040#11041#0" expanded="true" />
+            <element signature="e#11070#11071#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -562,51 +808,136 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="14" column="84" lean-forward="true" selection-start-line="14" selection-start-column="84" selection-end-line="14" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10348">
+          <caret line="398" column="48" lean-forward="true" selection-start-line="398" selection-start-column="48" selection-end-line="398" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2444">
-          <caret line="106" column="87" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
+          <caret line="106" column="87" lean-forward="false" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
+          <folding>
+            <marker date="1523243863121" expanded="true" signature="2252:2290" ph="SELECT * FRO... appointments" />
+            <marker date="1523243863121" expanded="true" signature="3132:3163" ph="SELECT * FRO... users" />
+            <marker date="1523243863121" expanded="true" signature="4297:4371" ph="INSERT INTO clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="5441:5490" ph="INSERT INTO clinic_tool.users... " />
+            <marker date="1523243863121" expanded="true" signature="6725:6899" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="8170:8343" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="9408:9496" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="10525:10653" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="11586:11766" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="12604:12788" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="13635:13841" ph="SELECT Appoi... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="true" />
+            <element signature="e#7047#7048#0" expanded="true" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#11040#11041#0" expanded="true" />
+            <element signature="e#11070#11071#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2210">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding>
+            <marker date="1523243863121" expanded="true" signature="2252:2290" ph="SELECT * FRO... appointments" />
+            <marker date="1523243863121" expanded="true" signature="3132:3163" ph="SELECT * FRO... users" />
+            <marker date="1523243863121" expanded="true" signature="4297:4371" ph="INSERT INTO clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="5441:5490" ph="INSERT INTO clinic_tool.users... " />
+            <marker date="1523243863121" expanded="true" signature="6725:6899" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="8170:8343" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="9408:9496" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="10525:10653" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="11586:11766" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="12604:12788" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="13635:13841" ph="SELECT Appoi... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/TestDriverExtraLangTo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ultimate-Design-Challenge.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/loginscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="56" lean-forward="true" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -618,87 +949,178 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/SecretaryScreenController.java" />
-    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.base/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="843" selection-start-line="843" selection-end-line="843" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DayTableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/PatientScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/users.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/appointments.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="39" />
+          <caret line="843" column="0" lean-forward="false" selection-start-line="843" selection-start-column="0" selection-end-line="843" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/Appointment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="52">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DayTableItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#522#523#0" expanded="false" />
+            <element signature="e#555#556#0" expanded="false" />
+            <element signature="e#888#889#0" expanded="false" />
+            <element signature="e#919#920#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2340">
+          <caret line="90" column="38" lean-forward="false" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.base/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5538">
+          <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8be89236-8ba7-4ab9-a6ec-f409c6efedad/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/8a2ce595/8be89236-8ba7-4ab9-a6ec-f409c6efedad/clinic_tool.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/8a2ce595/8be89236-8ba7-4ab9-a6ec-f409c6efedad/clinic_tool.appointments">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/TestDriverExtraLangTo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/ConnectDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        <state relative-caret-position="416">
+          <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="114" column="78" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
+        <state relative-caret-position="40">
+          <caret line="105" column="7" lean-forward="true" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
+          <folding>
+            <marker date="1523243863121" expanded="true" signature="2252:2290" ph="SELECT * FRO... appointments" />
+            <marker date="1523243863121" expanded="true" signature="3132:3163" ph="SELECT * FRO... users" />
+            <marker date="1523243863121" expanded="true" signature="4297:4371" ph="INSERT INTO clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="5441:5490" ph="INSERT INTO clinic_tool.users... " />
+            <marker date="1523243863121" expanded="true" signature="6725:6899" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="8170:8343" ph="DELETE FROM clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="9408:9496" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="10525:10653" ph="UPDATE clinic_tool.appointments... " />
+            <marker date="1523243863121" expanded="true" signature="11586:11766" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="12604:12788" ph="SELECT Appoi... " />
+            <marker date="1523243863121" expanded="true" signature="13635:13841" ph="SELECT Appoi... " />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-407">
-          <caret line="56" column="12" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+        <state relative-caret-position="96">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CalendarItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="218" column="60" lean-forward="false" selection-start-line="218" selection-start-column="60" selection-end-line="218" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDateView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#cancelAdding#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="true" />
+            <element signature="e#7047#7048#0" expanded="true" />
+            <element signature="method#refreshCalendar#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#convert#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#11040#11041#0" expanded="true" />
+            <element signature="e#11070#11071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="50" column="45" lean-forward="true" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/patientscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/PatientScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
