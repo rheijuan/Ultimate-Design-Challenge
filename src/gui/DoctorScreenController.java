@@ -64,30 +64,6 @@ public class DoctorScreenController implements Initializable {
     }
 
     @FXML
-    private void createNext() {
-        if (monthToday == 11) {
-            monthToday = 0;
-            yearToday += 1;
-        } else
-            monthToday += 1;
-
-        dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-        refreshCalendar(monthToday, yearToday, dayToday);
-    }
-
-    @FXML
-    private void createPrev() {
-        if (monthToday == 0) {
-            monthToday = 11;
-            yearToday -= 1;
-        } else
-            monthToday -= 1;
-
-        dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-        refreshCalendar(monthToday, yearToday, dayToday);
-    }
-
-    @FXML
     private void displayDateView() {
 
 
@@ -231,7 +207,7 @@ public class DoctorScreenController implements Initializable {
 
         dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
-        refreshCalendar(monthToday, yearToday, dayToday, "mini");
+        refreshCalendar(monthToday, yearToday, dayToday);
     }
 
     private void refreshCalendar(int month, int year, int day) {
