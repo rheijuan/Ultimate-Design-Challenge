@@ -6,15 +6,22 @@ public class DayTableItem {
 
     private SimpleStringProperty time;
     private SimpleStringProperty patient;
+    private SimpleStringProperty doctor;
+
+    public String getDoctor() {
+        return doctor.get();
+    }
+
     private int valueStartHour;
     private int valueEndHour;
     private int valueStartMin;
     private int valueEndMin;
     private int status;
 
-    DayTableItem(String time, String patient) {
+    DayTableItem(String time, String patient, String doctor) {
         this.time = new SimpleStringProperty(time);
         this.patient = new SimpleStringProperty(patient);
+        this.doctor = new SimpleStringProperty(doctor);
     }
 
     public String getTime() {
@@ -31,6 +38,10 @@ public class DayTableItem {
 
     public void setPatient(String newPatient) {
         patient.set(newPatient);
+    }
+
+    public void setDoctor(String newDoctor) {
+        doctor.set(newDoctor);
     }
 
     public int getValueStartHour() {

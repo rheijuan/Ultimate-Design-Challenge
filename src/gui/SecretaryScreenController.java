@@ -41,32 +41,34 @@ public class SecretaryScreenController {
 	public Label dateLabel;
 
 	// For Day View
-	@FXML
-	private TableView<DayTableItem> dayTable;
-	@FXML
-	private TableColumn<DayTableItem, String> dayTime;
-	@FXML
-	private TableColumn<DayTableItem, String> dayEvent;
+    @FXML
+    private TableView<DayTableItem> dayTable;
+    @FXML
+    private TableColumn<DayTableItem, String> dayTime;
+    @FXML
+    private TableColumn<DayTableItem, String> dayEvent;
+    @FXML
+	private TableColumn<DayTableItem, String> dayDoctor;
 
-	// For Week View
-	@FXML
-	private TableView<WeekTableItem> weekTable;
-	@FXML
-	private TableColumn<WeekTableItem, String> weekTime;
-	@FXML
-	private TableColumn<WeekTableItem, String> weekSunEvent;
-	@FXML
-	private TableColumn<WeekTableItem, String> weekMonEvent;
-	@FXML
-	private TableColumn<WeekTableItem, String> weekTueEvent;
-	@FXML
-	private TableColumn<WeekTableItem, String> weekWedEvent;
-	@FXML
-	private TableColumn<WeekTableItem, String> weekThuEvent;
-	@FXML
-	private TableColumn<WeekTableItem, String> weekFriEvent;
-	@FXML
-	private TableColumn<WeekTableItem, String> weekSatEvent;
+    // For Week View
+    @FXML
+    private TableView<WeekTableItem> weekTable;
+    @FXML
+    private TableColumn<WeekTableItem, String> weekTime;
+    @FXML
+    private TableColumn<WeekTableItem, String> weekSunEvent;
+    @FXML
+    private TableColumn<WeekTableItem, String> weekMonEvent;
+    @FXML
+    private TableColumn<WeekTableItem, String> weekTueEvent;
+    @FXML
+    private TableColumn<WeekTableItem, String> weekWedEvent;
+    @FXML
+    private TableColumn<WeekTableItem, String> weekThuEvent;
+    @FXML
+    private TableColumn<WeekTableItem, String> weekFriEvent;
+    @FXML
+    private TableColumn<WeekTableItem, String> weekSatEvent;
 
 	@FXML
 	public Label dayViewDateLabel;
@@ -223,7 +225,7 @@ public class SecretaryScreenController {
 		ObservableList<DayTableItem> data = initializeDayView(db.getAppointments());
 		dayTime.setCellValueFactory(new PropertyValueFactory<DayTableItem, String>("time"));
 		dayEvent.setCellValueFactory(new PropertyValueFactory<DayTableItem, String>("patient"));
-
+		dayDoctor.setCellValueFactory(new PropertyValueFactory<DayTableItem, String>("doctor"));
 
 		dayEvent.setCellFactory(column -> {
 			return new TableCell<DayTableItem, String>() {
@@ -258,6 +260,40 @@ public class SecretaryScreenController {
 			};
 		});
 
+		dayDoctor.setCellFactory(column -> {
+			return new TableCell<DayTableItem, String>() {
+				@Override
+				protected void updateItem(String doctor, boolean empty) {
+					super.updateItem(doctor, empty);
+
+					if (doctor == null || empty) {
+						setText(null);
+						setStyle("");
+					} else {
+						setText(doctor);
+						DayTableItem currentItem = getTableView().getItems().get(getIndex());
+
+						/*
+						if (currentItem.getColor() != null) {
+							setTextFill(Color.WHITE);
+							if (currentItem.getColor() == Color.BLUE)
+								setStyle("-fx-background-color: blue");
+							else if (currentItem.getColor() == Color.DARKGREY)
+								setStyle("-fx-background-color: darkgray");
+							else
+								setStyle("-fx-background-color: green");
+						} else {
+
+							setTextFill(Color.BLACK);
+							setStyle("");
+						}
+						*/
+
+					}
+				}
+			};
+		});
+
 		dayTable.setItems(data);
 	}
 
@@ -276,13 +312,13 @@ public class SecretaryScreenController {
 			for (int min = 0; min <= 30; min += 30) {
 
 				if (min < 30) {
-					toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), ""));
-					toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
-					toTableItems.get(toTableItems.size() - 1).setValueStartMin(min);
-					toTableItems.get(toTableItems.size() - 1).setValueEndHour(hour);
-					toTableItems.get(toTableItems.size() - 1).setValueEndMin(min + 29);
+					toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), "", ""));
+					toTableItems.get(toTableItems.size()-1).setValueStartHour(hour);
+					toTableItems.get(toTableItems.size()-1).setValueStartMin(min);
+					toTableItems.get(toTableItems.size()-1).setValueEndHour(hour);
+					toTableItems.get(toTableItems.size()-1).setValueEndMin(min+29);
 				} else {
-					toTableItems.add(new DayTableItem("", ""));
+					toTableItems.add(new DayTableItem("", "", ""));
 					toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
 					toTableItems.get(toTableItems.size() - 1).setValueStartMin(min);
 					toTableItems.get(toTableItems.size() - 1).setValueEndHour(hour);
@@ -343,6 +379,7 @@ public class SecretaryScreenController {
 
 				if (displayStartTime == startTime && displayEndTime == endTime) {
 					displayTime.setPatient(item.getPatient());
+					displayTime.setDoctor(item.getDoctor());
 
 					/*
 					if (item instanceof Event)
@@ -356,6 +393,7 @@ public class SecretaryScreenController {
 					*/
 				} else if (displayStartTime == startTime) {
 					displayTime.setPatient(item.getPatient());
+					displayTime.setDoctor(item.getDoctor());
 					/*
 					if (item instanceof Event)
 						displayTime.setColor(Color.BLUE);
@@ -366,6 +404,7 @@ public class SecretaryScreenController {
 					*/
 				} else if (displayStartTime >= startTime && endTime >= displayEndTime) {
 					displayTime.setPatient(" ");
+					displayTime.setDoctor(" ");
 					/*
 					if (item instanceof Event)
 						displayTime.setColor(Color.BLUE);
@@ -379,6 +418,7 @@ public class SecretaryScreenController {
 				if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin &&
 						displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
 					displayTime.setPatient(item.getPatient());
+					displayTime.setDoctor(item.getDoctor());
 
 					/*
 					if (item instanceof Event)
@@ -389,7 +429,8 @@ public class SecretaryScreenController {
 					break;
 					*/
 				} else if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin) {
-					displayTime.setPatient(item.getTitle());
+					displayTime.setPatient(item.getPatient());
+					displayTime.setDoctor(item.getDoctor());
 
 					/*
 					if (item instanceof Event)
@@ -401,6 +442,7 @@ public class SecretaryScreenController {
 					if (displayTime.getValueStartHour() >= startHour && displayTime.getValueEndHour() <= endHour)
 						if (displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
 							displayTime.setPatient(" ");
+							displayTime.setDoctor(" ");
 
 							/*
 							if (item instanceof Event)
@@ -411,6 +453,7 @@ public class SecretaryScreenController {
 							*/
 						} else {
 							displayTime.setPatient(" ");
+							displayTime.setDoctor(" ");
 
 							/*
 							if (item instanceof Event)

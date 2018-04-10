@@ -127,13 +127,13 @@ public class DoctorScreenController implements Initializable {
             for (int min = 0; min <= 30; min+=30) {
 
                 if (min < 30) {
-                    toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), ""));
+                    toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), "", ""));
                     toTableItems.get(toTableItems.size()-1).setValueStartHour(hour);
                     toTableItems.get(toTableItems.size()-1).setValueStartMin(min);
                     toTableItems.get(toTableItems.size()-1).setValueEndHour(hour);
                     toTableItems.get(toTableItems.size()-1).setValueEndMin(min+29);
                 } else {
-                    toTableItems.add(new DayTableItem("", ""));
+                    toTableItems.add(new DayTableItem("", "", ""));
                     toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
                     toTableItems.get(toTableItems.size() - 1).setValueStartMin(min);
                     toTableItems.get(toTableItems.size() - 1).setValueEndHour(hour);
