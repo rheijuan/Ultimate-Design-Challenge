@@ -1,12 +1,22 @@
 package gui;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.paint.Color;
 
 public class DayTableItem {
 
     private SimpleStringProperty time;
     private SimpleStringProperty patient;
     private SimpleStringProperty doctor;
+    private String colorDoctor;
+
+    public String getColorDoctor() {
+        return colorDoctor;
+    }
+
+    public void setColorDoctor(String colorDoctor) {
+        this.colorDoctor = colorDoctor;
+    }
 
     public String getDoctor() {
         return doctor.get();

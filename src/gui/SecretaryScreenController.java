@@ -240,21 +240,14 @@ public class SecretaryScreenController {
 						setText(patient);
 						DayTableItem currentItem = getTableView().getItems().get(getIndex());
 
-						/*
-						if (currentItem.getColor() != null) {
+						if (currentItem.getColorDoctor().contains("#dc654d")) {
 							setTextFill(Color.WHITE);
-							if (currentItem.getColor() == Color.BLUE)
-								setStyle("-fx-background-color: blue");
-							else if (currentItem.getColor() == Color.DARKGREY)
-								setStyle("-fx-background-color: darkgray");
-							else
-								setStyle("-fx-background-color: green");
-						} else {
-
-							setTextFill(Color.BLACK);
-							setStyle("");
+							setStyle("-fx-background-color: #dc654d");
+						} else if (currentItem.getColorDoctor().contains("#000080")) {
+							setTextFill(Color.WHITE);
+							setStyle("-fx-background-color: #000080");
 						}
-						*/
+
 					}
 				}
 			};
@@ -273,21 +266,13 @@ public class SecretaryScreenController {
 						setText(doctor);
 						DayTableItem currentItem = getTableView().getItems().get(getIndex());
 
-						/*
-						if (currentItem.getColor() != null) {
+						if (currentItem.getColorDoctor().contains("#dc654d")) {
 							setTextFill(Color.WHITE);
-							if (currentItem.getColor() == Color.BLUE)
-								setStyle("-fx-background-color: blue");
-							else if (currentItem.getColor() == Color.DARKGREY)
-								setStyle("-fx-background-color: darkgray");
-							else
-								setStyle("-fx-background-color: green");
-						} else {
-
-							setTextFill(Color.BLACK);
-							setStyle("");
+							setStyle("-fx-background-color: #dc654d");
+						} else if (currentItem.getColorDoctor().contains("#000080")) {
+							setTextFill(Color.WHITE);
+							setStyle("-fx-background-color: #000080");
 						}
-						*/
 
 					}
 				}
@@ -312,13 +297,13 @@ public class SecretaryScreenController {
 			for (int min = 0; min <= 30; min += 30) {
 
 				if (min < 30) {
-					toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), "", ""));
+					toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), null, null));
 					toTableItems.get(toTableItems.size()-1).setValueStartHour(hour);
 					toTableItems.get(toTableItems.size()-1).setValueStartMin(min);
 					toTableItems.get(toTableItems.size()-1).setValueEndHour(hour);
 					toTableItems.get(toTableItems.size()-1).setValueEndMin(min+29);
 				} else {
-					toTableItems.add(new DayTableItem("", "", ""));
+					toTableItems.add(new DayTableItem("", null, null));
 					toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
 					toTableItems.get(toTableItems.size() - 1).setValueStartMin(min);
 					toTableItems.get(toTableItems.size() - 1).setValueEndHour(hour);
@@ -381,38 +366,29 @@ public class SecretaryScreenController {
 					displayTime.setPatient(item.getPatient());
 					displayTime.setDoctor(item.getDoctor());
 
-					/*
-					if (item instanceof Event)
-						displayTime.setColor(Color.BLUE);
-					else if (item instanceof Task && item.isDone() == false)
-						displayTime.setColor(Color.GREEN);
-					else
-						displayTime.setColor(Color.DARKGREY);
-
-					break;
-					*/
+					if (item.getDoctor().contains("Eric White")) {
+						displayTime.setColorDoctor("#dc654d");
+					} else {
+						displayTime.setColorDoctor("#000080");
+					}
 				} else if (displayStartTime == startTime) {
 					displayTime.setPatient(item.getPatient());
 					displayTime.setDoctor(item.getDoctor());
-					/*
-					if (item instanceof Event)
-						displayTime.setColor(Color.BLUE);
-					else if (item instanceof Task && item.isDone() == false)
-						displayTime.setColor(Color.GREEN);
-					else
-						displayTime.setColor(Color.DARKGREY);
-					*/
+
+					if (item.getDoctor().contains("Eric White")) {
+						displayTime.setColorDoctor("#dc654d");
+					} else {
+						displayTime.setColorDoctor("#000080");
+					}
 				} else if (displayStartTime >= startTime && endTime >= displayEndTime) {
 					displayTime.setPatient(" ");
 					displayTime.setDoctor(" ");
-					/*
-					if (item instanceof Event)
-						displayTime.setColor(Color.BLUE);
-					else if (item instanceof Task && item.isDone() == false)
-						displayTime.setColor(Color.GREEN);
-					else
-						displayTime.setColor(Color.DARKGREY);
-					*/
+
+					if (item.getDoctor().contains("Eric White")) {
+						displayTime.setColorDoctor("#dc654d");
+					} else {
+						displayTime.setColorDoctor("#000080");
+					}
 				}
 
 				if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin &&
@@ -420,47 +396,41 @@ public class SecretaryScreenController {
 					displayTime.setPatient(item.getPatient());
 					displayTime.setDoctor(item.getDoctor());
 
-					/*
-					if (item instanceof Event)
-						displayTime.setColor(Color.BLUE);
-					else
-						displayTime.setColor(Color.GREEN);
-
-					break;
-					*/
+					if (item.getDoctor().contains("Eric White")) {
+						displayTime.setColorDoctor("#dc654d");
+					} else {
+						displayTime.setColorDoctor("#000080");
+					}
 				} else if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin) {
 					displayTime.setPatient(item.getPatient());
 					displayTime.setDoctor(item.getDoctor());
 
-					/*
-					if (item instanceof Event)
-						displayTime.setColor(Color.BLUE);
-					else
-						displayTime.setColor(Color.GREEN);
-					*/
+
+					if (item.getDoctor().contains("Eric White")) {
+						displayTime.setColorDoctor("#dc654d");
+					} else {
+						displayTime.setColorDoctor("#000080");
+					}
 				} else {
 					if (displayTime.getValueStartHour() >= startHour && displayTime.getValueEndHour() <= endHour)
 						if (displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
 							displayTime.setPatient(" ");
 							displayTime.setDoctor(" ");
 
-							/*
-							if (item instanceof Event)
-								displayTime.setColor(Color.BLUE);
-							else
-								displayTime.setColor(Color.GREEN);
-							break;
-							*/
+							if (item.getDoctor().contains("Eric White")) {
+								displayTime.setColorDoctor("#dc654d");
+							} else {
+								displayTime.setColorDoctor("#000080");
+							}
 						} else {
 							displayTime.setPatient(" ");
 							displayTime.setDoctor(" ");
 
-							/*
-							if (item instanceof Event)
-								displayTime.setColor(Color.BLUE);
-							else
-								displayTime.setColor(Color.GREEN);
-							*/
+							if (item.getDoctor().contains("Eric White")) {
+								displayTime.setColorDoctor("#dc654d");
+							} else {
+								displayTime.setColorDoctor("#000080");
+							}
 						}
 				}
 
