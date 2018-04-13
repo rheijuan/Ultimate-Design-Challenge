@@ -3,23 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5c16ec7a-a001-4057-82b9-b4a8372c9595" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DayTableItem.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DayTableItem.class" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DoctorScreenController.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DoctorScreenController.class" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/LogInController.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/LogInController.class" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/Main.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/Main.class" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/SecretaryScreenController$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/SecretaryScreenController$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/SecretaryScreenController.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/SecretaryScreenController.class" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/secretaryscreen.fxml" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/secretaryscreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/lib/clinic_tool.sql" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/lib/clinic_tool.sql" />
-      <change beforePath="$PROJECT_DIR$/src/gui/DayTableItem.java" afterPath="$PROJECT_DIR$/src/gui/DayTableItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" afterPath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
-      <change beforePath="$PROJECT_DIR$/src/gui/LogInController.java" afterPath="$PROJECT_DIR$/src/gui/LogInController.java" />
-      <change beforePath="$PROJECT_DIR$/src/gui/Main.java" afterPath="$PROJECT_DIR$/src/gui/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/gui/SecretaryScreenController.java" afterPath="$PROJECT_DIR$/src/gui/SecretaryScreenController.java" />
-      <change beforePath="$PROJECT_DIR$/src/gui/doctorscreen.fxml" afterPath="$PROJECT_DIR$/src/gui/doctorscreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/gui/secretaryscreen.fxml" afterPath="$PROJECT_DIR$/src/gui/secretaryscreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/lib/clinic_tool.sql" afterPath="$PROJECT_DIR$/src/lib/clinic_tool.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-113">
-              <caret line="241" column="52" lean-forward="true" selection-start-line="241" selection-start-column="52" selection-end-line="241" selection-end-column="52" />
+              <caret line="241" column="52" lean-forward="false" selection-start-line="241" selection-start-column="52" selection-end-line="241" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
@@ -107,23 +90,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SecretaryScreenController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SecretaryScreenController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="398" column="35" lean-forward="false" selection-start-line="398" selection-start-column="35" selection-end-line="398" selection-end-column="35" />
+            <state relative-caret-position="355">
+              <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#nextMonth#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#prevMonth#0;class#SecretaryScreenController#0" expanded="false" />
                 <element signature="e#2383#3609#0" expanded="true" />
                 <element signature="e#3608#3609#0" expanded="true" />
-                <element signature="method#displayAgendaView#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#initialize#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#refreshCalendar#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#eventToday#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#convert#0;class#SecretaryScreenController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="misc.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,7 +130,7 @@
         <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="317">
-              <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding>
                 <element signature="method#enterClinic#0;class#LogInController#0" expanded="false" />
               </folding>
@@ -471,7 +457,7 @@
       <workItem from="1523549215454" duration="363000" />
       <workItem from="1523603010896" duration="4127000" />
       <workItem from="1523619894480" duration="6202000" />
-      <workItem from="1523631030781" duration="3294000" />
+      <workItem from="1523631030781" duration="3700000" />
     </task>
     <task id="LOCAL-00001" summary="updated doctor controller">
       <created>1523265465256</created>
@@ -508,11 +494,25 @@
       <option name="project" value="LOCAL" />
       <updated>1523623164942</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Updated Secretary Controller (No Week view and Bug on times)">
+      <created>1523634377404</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1523634377404</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated Secretary Controller (No Week view and Bug on times)">
+      <created>1523634519289</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1523634519289</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36728000" />
+    <option name="totallyTimeSpent" value="37134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -523,10 +523,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36004514" sideWeight="0.26770833" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295711" sideWeight="0.50208336" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36004514" sideWeight="0.73229164" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295711" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36004514" sideWeight="0.56354165" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -556,7 +556,8 @@
     <MESSAGE value="updated doctor controller" />
     <MESSAGE value="Can read data from Appointment and reflect on day view." />
     <MESSAGE value="Updated Patient &amp; Doctor on day view. (No colors yet)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Patient &amp; Doctor on day view. (No colors yet)" />
+    <MESSAGE value="Updated Secretary Controller (No Week view and Bug on times)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Secretary Controller (No Week view and Bug on times)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -565,26 +566,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="85" column="27" lean-forward="false" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
-          <folding>
-            <element signature="method#enterClinic#0;class#LogInController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="11" column="59" lean-forward="false" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
-          <folding>
-            <element signature="method#start#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/WeekTableItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2106">
@@ -764,15 +745,8 @@
           <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#nextMonth#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#prevMonth#0;class#SecretaryScreenController#0" expanded="false" />
             <element signature="e#2383#3609#0" expanded="true" />
             <element signature="e#3608#3609#0" expanded="true" />
-            <element signature="method#displayAgendaView#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#initialize#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#refreshCalendar#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#eventToday#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#convert#0;class#SecretaryScreenController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -912,15 +886,8 @@
           <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#nextMonth#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#prevMonth#0;class#SecretaryScreenController#0" expanded="false" />
             <element signature="e#2383#3609#0" expanded="true" />
             <element signature="e#3608#3609#0" expanded="true" />
-            <element signature="method#displayAgendaView#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#initialize#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#refreshCalendar#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#eventToday#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#convert#0;class#SecretaryScreenController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1060,15 +1027,8 @@
           <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#nextMonth#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#prevMonth#0;class#SecretaryScreenController#0" expanded="false" />
             <element signature="e#2383#3609#0" expanded="true" />
             <element signature="e#3608#3609#0" expanded="true" />
-            <element signature="method#displayAgendaView#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#initialize#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#refreshCalendar#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#eventToday#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#convert#0;class#SecretaryScreenController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1208,15 +1168,8 @@
           <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#nextMonth#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#prevMonth#0;class#SecretaryScreenController#0" expanded="false" />
             <element signature="e#2383#3609#0" expanded="true" />
             <element signature="e#3608#3609#0" expanded="true" />
-            <element signature="method#displayAgendaView#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#initialize#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#refreshCalendar#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#eventToday#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#convert#0;class#SecretaryScreenController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1402,6 +1355,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1501,7 +1455,7 @@
     <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
-          <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding>
             <element signature="method#enterClinic#0;class#LogInController#0" expanded="false" />
           </folding>
@@ -1511,7 +1465,7 @@
     <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-113">
-          <caret line="241" column="52" lean-forward="true" selection-start-line="241" selection-start-column="52" selection-end-line="241" selection-end-column="52" />
+          <caret line="241" column="52" lean-forward="false" selection-start-line="241" selection-start-column="52" selection-end-line="241" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#nextMonth#0;class#DoctorScreenController#0" expanded="false" />
@@ -1532,20 +1486,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="398" column="35" lean-forward="false" selection-start-line="398" selection-start-column="35" selection-end-line="398" selection-end-column="35" />
+        <state relative-caret-position="355">
+          <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#nextMonth#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#prevMonth#0;class#SecretaryScreenController#0" expanded="false" />
             <element signature="e#2383#3609#0" expanded="true" />
             <element signature="e#3608#3609#0" expanded="true" />
-            <element signature="method#displayAgendaView#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#initialize#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#refreshCalendar#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#eventToday#0;class#SecretaryScreenController#0" expanded="false" />
-            <element signature="method#convert#0;class#SecretaryScreenController#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DayTableItem.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
