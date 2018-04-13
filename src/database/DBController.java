@@ -182,7 +182,7 @@ public class DBController {
 		     pst = con.prepareStatement(sql); 
 		     
 	         pst.setString(1, patient);
-			 pst.setInt(2, day);
+			 pst.setInt(2, day );
 			 pst.setInt(3, month);
 			 pst.setInt(4, year);
 			 pst.setInt(5, starthour);
