@@ -6,8 +6,33 @@ import java.awt.Color;
 public class DayTableItem {
 
     public DayTableItem(String time, String patient, int status) {
+    private SimpleStringProperty time;
+    private SimpleStringProperty patient;
+    private SimpleStringProperty doctor;
+    private String colorDoctor;
+
+    public String getColorDoctor() {
+        return colorDoctor;
+    }
+
+    public void setColorDoctor(String colorDoctor) {
+        this.colorDoctor = colorDoctor;
+    }
+
+    public String getDoctor() {
+        return doctor.get();
+    }
+
+    private int valueStartHour;
+    private int valueEndHour;
+    private int valueStartMin;
+    private int valueEndMin;
+    private int status;
+
+    DayTableItem(String time, String patient, String doctor) {
         this.time = new SimpleStringProperty(time);
         this.patient = new SimpleStringProperty(patient);
+        this.doctor = new SimpleStringProperty(doctor);
         this.status = status;
     }
 
@@ -33,6 +58,10 @@ public class DayTableItem {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public void setDoctor(String newDoctor) {
+        doctor.set(newDoctor);
     }
 
     public int getValueStartHour() {

@@ -1,10 +1,40 @@
-package gui;
+package model;
+
 
 import javafx.beans.property.SimpleStringProperty;
-
-import java.awt.*;
+import javafx.scene.paint.Color;
 
 public class WeekTableItem {
+    private SimpleStringProperty time;
+    private SimpleStringProperty sunEvent;
+    private SimpleStringProperty monEvent;
+    private SimpleStringProperty tueEvent;
+    private SimpleStringProperty wedEvent;
+    private SimpleStringProperty thuEvent;
+    private SimpleStringProperty friEvent;
+    private SimpleStringProperty satEvent;
+    private Color sunColor;
+    private Color monColor;
+    private Color tueColor;
+    private Color wedColor;
+    private Color thuColor;
+    private Color friColor;
+    private Color satColor;
+    private int valueStartHour;
+    private int valueEndHour;
+    private int valueStartMin;
+    private int valueEndMin;
+    /*
+    private boolean isEnableSun;
+    private boolean isEnableMon;
+    private boolean isEnableTue;
+    private boolean isEnableWed;
+    private boolean isEnableThu;
+    private boolean isEnableFri;
+    private boolean isEnableSat;
+    */
+
+
 
     public WeekTableItem(String time) {
         this.time = new SimpleStringProperty(time);
@@ -57,12 +87,20 @@ public class WeekTableItem {
         return time.get();
     }
 
+    public SimpleStringProperty timeProperty() {
+        return time;
+    }
+
     public void setTime(String time) {
         this.time.set(time);
     }
 
     public String getSunEvent() {
         return sunEvent.get();
+    }
+
+    public SimpleStringProperty sunEventProperty() {
+        return sunEvent;
     }
 
     public void setSunEvent(String sunEvent) {
@@ -73,12 +111,20 @@ public class WeekTableItem {
         return monEvent.get();
     }
 
+    public SimpleStringProperty monEventProperty() {
+        return monEvent;
+    }
+
     public void setMonEvent(String monEvent) {
         this.monEvent.set(monEvent);
     }
 
     public String getTueEvent() {
         return tueEvent.get();
+    }
+
+    public SimpleStringProperty tueEventProperty() {
+        return tueEvent;
     }
 
     public void setTueEvent(String tueEvent) {
@@ -89,12 +135,20 @@ public class WeekTableItem {
         return wedEvent.get();
     }
 
+    public SimpleStringProperty wedEventProperty() {
+        return wedEvent;
+    }
+
     public void setWedEvent(String wedEvent) {
         this.wedEvent.set(wedEvent);
     }
 
     public String getThuEvent() {
         return thuEvent.get();
+    }
+
+    public SimpleStringProperty thuEventProperty() {
+        return thuEvent;
     }
 
     public void setThuEvent(String thuEvent) {
@@ -105,12 +159,20 @@ public class WeekTableItem {
         return friEvent.get();
     }
 
+    public SimpleStringProperty friEventProperty() {
+        return friEvent;
+    }
+
     public void setFriEvent(String friEvent) {
         this.friEvent.set(friEvent);
     }
 
     public String getSatEvent() {
         return satEvent.get();
+    }
+
+    public SimpleStringProperty satEventProperty() {
+        return satEvent;
     }
 
     public void setSatEvent(String satEvent) {
@@ -204,24 +266,4 @@ public class WeekTableItem {
     public void setValueEndMin(int valueEndMin) {
         this.valueEndMin = valueEndMin;
     }
-
-    private SimpleStringProperty time;
-    private SimpleStringProperty sunEvent;
-    private SimpleStringProperty monEvent;
-    private SimpleStringProperty tueEvent;
-    private SimpleStringProperty wedEvent;
-    private SimpleStringProperty thuEvent;
-    private SimpleStringProperty friEvent;
-    private SimpleStringProperty satEvent;
-    private Color sunColor;
-    private Color monColor;
-    private Color tueColor;
-    private Color wedColor;
-    private Color thuColor;
-    private Color friColor;
-    private Color satColor;
-    private int valueStartHour;
-    private int valueEndHour;
-    private int valueStartMin;
-    private int valueEndMin;
 }
