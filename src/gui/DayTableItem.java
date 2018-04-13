@@ -1,36 +1,38 @@
 package gui;
 
 import javafx.beans.property.SimpleStringProperty;
+import java.awt.Color;
 
 public class DayTableItem {
 
-    private SimpleStringProperty time;
-    private SimpleStringProperty patient;
-    private int valueStartHour;
-    private int valueEndHour;
-    private int valueStartMin;
-    private int valueEndMin;
-    private int status;
-
-    DayTableItem(String time, String patient) {
+    public DayTableItem(String time, String patient, int status) {
         this.time = new SimpleStringProperty(time);
         this.patient = new SimpleStringProperty(patient);
+        this.status = status;
     }
 
     public String getTime() {
         return time.get();
     }
 
+    public void setTime(String time) {
+        this.time.set(time);
+    }
+
     public String getPatient() {
         return patient.get();
     }
 
-    public void setTime(String newTime) {
-        time.set(newTime);
+    public void setPatient(String patient) {
+        this.patient.set(patient);
     }
 
-    public void setPatient(String newPatient) {
-        patient.set(newPatient);
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getValueStartHour() {
@@ -65,11 +67,20 @@ public class DayTableItem {
         this.valueEndMin = valueEndMin;
     }
 
-    public int getStatus() {
-        return status;
+    public Color getColor() {
+        return color;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setColor(Color color) {
+        this.color = color;
     }
+
+    private SimpleStringProperty time;
+    private SimpleStringProperty patient;
+    private int status;
+    private Color color;
+    private int valueStartHour;
+    private int valueEndHour;
+    private int valueStartMin;
+    private int valueEndMin;
 }

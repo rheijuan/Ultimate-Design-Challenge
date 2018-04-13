@@ -9,32 +9,29 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.*;
 
 public class DoctorScreenController implements Initializable {
 
+    @FXML private Label doctorTag;
+
     @FXML private Label dateLabel;
 
     @FXML private Label dayLabel;
 
-    @FXML private Label weekLabel;
-
     @FXML private Label agendaLabel;
 
-    @FXML private Label doctorTag;
+    @FXML private Label weekLabel;
 
     @FXML private GridPane miniCalendar;
-
-    @FXML private AnchorPane createPane;
-
-    @FXML private AnchorPane profilePane;
 
     @FXML private ComboBox<String> sTimeHour;
 
@@ -44,11 +41,15 @@ public class DoctorScreenController implements Initializable {
 
     @FXML private ComboBox<String> eTimeMin;
 
-    @FXML private TableView<DayTableItem> dayTableView;
+    @FXML private AnchorPane profilePane;
 
     @FXML private TableColumn<DayTableItem, String> timeColumn;
 
-    @FXML private TableColumn<DayTableItem, String> eventColumn;
+    @FXML private TableColumn<DayTableItem, String> patientColumn;
+
+    @FXML private TableView<DayTableItem> dayTableView;
+
+    @FXML private ListView<String> appointmentList;
 
     @FXML
     private void nextMonth() {
@@ -75,65 +76,79 @@ public class DoctorScreenController implements Initializable {
     }
 
     @FXML
-    private void displayDateView() {
-        dayLabel.setText(convert(monthToday) + " " + daySelected + ", " + yearToday);
+    private void setAppointment() {
+        profilePane.setVisible(false);
 
+        for (int i = 8; i <= 17; i++) {
+            eTimeHour.getItems().add(String.valueOf(i));
+            sTimeHour.getItems().add(String.valueOf(i));
+        }
+
+        sTimeMin.getItems().add("00");
+        sTimeMin.getItems().add("30");
+        eTimeMin.getItems().add("00");
+        eTimeMin.getItems().add("30");
+    }
+
+    @FXML
+    private void cancel() {
+        profilePane.setVisible(true);
+    }
+
+    @FXML
+    private void displayDayView() {
+        dayLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
+
+        ObservableList<DayTableItem> data = initializeDayView();
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
-        eventColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
-        eventColumn.setCellFactory(column -> new TableCell<>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
+        patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
 
-                if (item == null || empty) {
+        patientColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String event, boolean empty) {
+                super.updateItem(event, empty);
+
+                if (event == null || empty) {
                     setText(null);
                     setStyle("");
-                }
-                else {
-                    setText(item);
-                    DayTableItem sample = getTableView().getItems().get(getIndex());
+                } else {
+                    setText(event);
+                    DayTableItem currentItem = getTableView().getItems().get(getIndex());
+                    if (currentItem.getColor() != null) {
+                        setTextFill(javafx.scene.paint.Color.WHITE);
 
-                    if (sample.getStatus() == 0) {
-                        setText(sample.getPatient());
-                        setTextFill(Color.WHITE);
-                        setStyle("-fx-background-color: #78B4BF");
+                        if (currentItem.getColor().equals(Color.decode("#78B4BF")))
+                            setStyle("-fx-background-color: #78B4BF");
+                        else if (currentItem.getColor().equals(Color.decode("#DC654D")))
+                            setStyle("-fx-background-color: #DC654D");
+
                     } else {
-                        setText(sample.getPatient());
-                        setTextFill(Color.WHITE);
-                        setStyle("-fx-background-color: #DC654D");
+                        setTextFill(javafx.scene.paint.Color.BLACK);
+                        setStyle("");
                     }
                 }
             }
         });
 
-        dayTableView.addEventFilter(ScrollEvent.ANY, scrollEvent -> {
-            dayTableView.refresh();
-            dayTableView.edit(-1, null);
-        });
-
-        dayTableView.setItems(getDayAppointments());
-
+        dayTableView.setItems(data);
     }
 
-    @FXML
-    private ObservableList<DayTableItem> getDayAppointments() {
-        // TODO replace this line when converting to MVC
-        ObservableList<Appointment> items = DBController.getAppointments();
+    private ObservableList<DayTableItem> initializeDayView() {
         ArrayList<Appointment> itemsToDisplay = new ArrayList<>();
 
         ArrayList<DayTableItem> toTableItems = new ArrayList<>();
 
-        for (int hour = 0; hour <= 23; hour++)
-            for (int min = 0; min <= 30; min+=30) {
+        for (int hour = 8; hour <= 17; hour++)
+            for (int min = 0; min <= 30; min += 30) {
 
                 if (min < 30) {
-                    toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), ""));
+                    toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), "", 3));
                     toTableItems.get(toTableItems.size()-1).setValueStartHour(hour);
                     toTableItems.get(toTableItems.size()-1).setValueStartMin(min);
                     toTableItems.get(toTableItems.size()-1).setValueEndHour(hour);
                     toTableItems.get(toTableItems.size()-1).setValueEndMin(min+29);
                 } else {
-                    toTableItems.add(new DayTableItem("", ""));
+                    toTableItems.add(new DayTableItem("", "", 3));
                     toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
                     toTableItems.get(toTableItems.size() - 1).setValueStartMin(min);
                     toTableItems.get(toTableItems.size() - 1).setValueEndHour(hour);
@@ -141,16 +156,16 @@ public class DoctorScreenController implements Initializable {
                 }
             }
 
-        for (Appointment item : items)
-            if (item.getMonth() == monthToday && item.getDay() == dayToday && item.getYear() == yearToday)
-                itemsToDisplay.add(item);
+        for (Appointment app : appointments)
+            if (app.getMonth() == monthToday && app.getDay() == daySelected && app.getYear() == yearToday)
+                itemsToDisplay.add(app);
 
         itemsToDisplay.sort(Comparator.comparingInt(Appointment::getStartHour)
-                .thenComparingInt(Appointment::getStartMin));
+                .thenComparingInt(Appointment::getStartMinute));
 
         for (Appointment item: itemsToDisplay) {
             int startHour = item.getStartHour();
-            int startMin = item.getStartMin();
+            int startMin = item.getStartMinute();
             int endHour;
             int endMin;
 
@@ -159,23 +174,22 @@ public class DoctorScreenController implements Initializable {
 
             int startTime = Integer.parseInt(Integer.toString(startHour) + Integer.toString(startMin));
 
-            // First if is for the
-            if (startHour == item.getEndHour() && startMin == item.getEndMin()) {
+            if (startHour == item.getEndHour() && startMin == item.getEndMinute()) {
                 endHour = item.getEndHour();
 
-                if (item.getEndMin() == 0)
+                if (item.getEndMinute() == 0)
                     endMin = 29;
                 else
                     endMin = 59;
-            } else if (item.getEndMin() == 0) {
+            } else if (item.getEndMinute() == 0) {
                 endHour = item.getEndHour() - 1;
                 endMin = 59;
-            } else if (item.getEndMin() == 30) {
+            } else if (item.getEndMinute() == 30) {
                 endHour = item.getEndHour();
                 endMin = 29;
             } else {
                 endHour = item.getEndHour();
-                endMin = item.getEndMin();
+                endMin = item.getEndMinute();
             }
 
             int endTime = Integer.parseInt(Integer.toString(endHour) + Integer.toString(endMin));
@@ -195,9 +209,40 @@ public class DoctorScreenController implements Initializable {
 
                 if (displayStartTime == startTime && displayEndTime == endTime) {
                     displayTime.setPatient(item.getPatient());
+
+                    if (item.getStatus() == 0) {
+                        Color c = Color.decode("#78B4BF");
+                        displayTime.setColor(c);
+                    }
+                    else if (item.getStatus() == 1) {
+                        Color c = Color.decode("#DC654D");
+                        displayTime.setColor(c);
+                    }
+
                     break;
                 } else if (displayStartTime == startTime) {
                     displayTime.setPatient(item.getPatient());
+
+                    if (item.getStatus() == 0) {
+                        Color c = Color.decode("#78B4BF");
+                        displayTime.setColor(c);
+                    }
+                    else if (item.getStatus() == 1) {
+                        Color c = Color.decode("#DC654D");
+                        displayTime.setColor(c);
+                    }
+
+                } else if (displayStartTime >= startTime && endTime >= displayEndTime) {
+                    displayTime.setPatient(" ");
+
+                    if (item.getStatus() == 0) {
+                        Color c = Color.decode("#78B4BF");
+                        displayTime.setColor(c);
+                    }
+                    else if (item.getStatus() == 1) {
+                        Color c = Color.decode("#DC654D");
+                        displayTime.setColor(c);
+                    }
                 }
             }
         }
@@ -205,38 +250,25 @@ public class DoctorScreenController implements Initializable {
     }
 
     @FXML
-    private void createAppointment() {
-        profilePane.setVisible(false);
-        createPane.setVisible(true);
-
-        for (int i = 8; i <= 17; i++) {
-            eTimeHour.getItems().add(String.valueOf(i));
-            sTimeHour.getItems().add(String.valueOf(i));
-        }
-
-        sTimeMin.getItems().add("00");
-        sTimeMin.getItems().add("30");
-        eTimeMin.getItems().add("00");
-        eTimeMin.getItems().add("30");
-
-        refreshCalendar(monthToday, yearToday, dayToday);
-    }
-
-    @FXML
-    private void cancelAdding() {
-        createPane.setVisible(false);
-        profilePane.setVisible(true);
-        refreshCalendar(monthToday, yearToday, daySelected);
-    }
-
-    @FXML
     private void displayWeekView() {
-        weekLabel.setText(convert(monthToday) + " " + yearToday);
+        weekLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
+        // TODO implement the week view
     }
 
     @FXML
     private void displayAgendaView() {
-        agendaLabel.setText(convert(monthToday) + " " + daySelected + ", " + yearToday);
+        agendaLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
+
+        ObservableList<String> scheduledAppointments = FXCollections.observableArrayList();
+
+        for (Appointment appointment : appointments)
+            if (eventToday(appointment, daySelected))
+                if (!appointment.getPatient().equals(""))
+                    scheduledAppointments.add(appointment.getStartHour() + ":"
+                            + appointment.getStartMin() + "-" + appointment.getEndHour() + ":" + appointment.getEndMin() +
+                            " -- " + appointment.getPatient());
+
+        appointmentList.setItems(scheduledAppointments);
     }
 
     @Override
@@ -248,20 +280,19 @@ public class DoctorScreenController implements Initializable {
 
         Calendar cal = Calendar.getInstance();
         yearToday = cal.get(GregorianCalendar.YEAR);
-        monthToday = cal.get(GregorianCalendar.MONTH);
+        monthToday = cal.get(GregorianCalendar.MONTH) + 1;
         dayToday = cal.get(GregorianCalendar.DAY_OF_MONTH);
 
         daySelected = dayToday;
 
         dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-
         refreshCalendar(monthToday, yearToday, dayToday);
+
     }
 
     private void refreshCalendar(int month, int year, int day) {
+        month -= 1;
         miniCalendar.getChildren().clear();
-
-        GridPane temp;
 
         dateLabel.setText(convert(month) + " " + day + ", " + year);
 
@@ -276,29 +307,29 @@ public class DoctorScreenController implements Initializable {
             Button button = new Button(String.valueOf(i));
             button.setMaxSize(28, 35);
 
+            GridPane finalTemp = miniCalendar;
             button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-            temp = miniCalendar;
-
-            GridPane finalTemp = temp;
+            int finalMonth = month;
             button.setOnAction((ActionEvent event) -> {
                 daySelected = Integer.parseInt(((Button) event.getSource()).getText());
-                button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #dc654d; -fx-text-fill: #FFFFFF");
-                dateLabel.setText(convert(month) + " " + daySelected + ", " + year);
+                button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #8FCFDA; -fx-text-fill: #FFFFFF");
+                dateLabel.setText(convert(finalMonth) + " " + daySelected + ", " + year);
 
                 for (Node node : finalTemp.getChildren()) {
                     if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-                        // TODO implement the thingymobob
                         node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
                     }
                 }
             });
 
+            // Highlights the date when an event is on the day
             for (Appointment app: appointments)
                 if(eventToday(app, i)) {
-                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #00ff90");
+                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #dc654d; -fx-text-fill: #FFFFFF");
                     break;
                 }
-                miniCalendar.add(button, column, row);
+
+            miniCalendar.add(button, column, row);
         }
     }
 
@@ -312,30 +343,18 @@ public class DoctorScreenController implements Initializable {
 
     private String convert(int month) {
         switch (month) {
-            case 0:
-                return "January";
-            case 1:
-                return "February";
-            case 2:
-                return "March";
-            case 3:
-                return "April";
-            case 4:
-                return "May";
-            case 5:
-                return "June";
-            case 6:
-                return "July";
-            case 7:
-                return "August";
-            case 8:
-                return "September";
-            case 9:
-                return "October";
-            case 10:
-                return "November";
-            case 11:
-                return "December";
+            case 0: return "January";
+            case 1: return "February";
+            case 2: return "March";
+            case 3: return "April";
+            case 4: return "May";
+            case 5: return "June";
+            case 6: return "July";
+            case 7: return "August";
+            case 8: return "September";
+            case 9: return "October";
+            case 10: return "November";
+            case 11: return "December";
         }
         return "January";
     }
