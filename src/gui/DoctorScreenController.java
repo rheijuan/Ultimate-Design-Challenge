@@ -33,13 +33,9 @@ public class DoctorScreenController implements Initializable {
 
     @FXML private GridPane miniCalendar;
 
-    @FXML private ComboBox<String> sTimeHour;
+    @FXML private ComboBox<String> startTimeComboBox;
 
-    @FXML private ComboBox<String> sTimeMin;
-
-    @FXML private ComboBox<String> eTimeHour;
-
-    @FXML private ComboBox<String> eTimeMin;
+    @FXML private ComboBox<String> endTimeComboBox;
 
     @FXML private AnchorPane profilePane;
 
@@ -79,15 +75,24 @@ public class DoctorScreenController implements Initializable {
     private void setAppointment() {
         profilePane.setVisible(false);
 
-        for (int i = 8; i <= 17; i++) {
-            eTimeHour.getItems().add(String.valueOf(i));
-            sTimeHour.getItems().add(String.valueOf(i));
-        }
+        setTime(startTimeComboBox.getItems());
+        startTimeComboBox.getItems().add("17:00");
 
-        sTimeMin.getItems().add("00");
-        sTimeMin.getItems().add("30");
-        eTimeMin.getItems().add("00");
-        eTimeMin.getItems().add("30");
+        setTime(endTimeComboBox.getItems());
+        endTimeComboBox.getItems().add("17:00");
+    }
+
+    private void setTime(ObservableList<String> items) {
+        for (int i = 8; i < 17; i++) {
+            for (int j = 0; j < 60; j += 30) {
+                if (j % 60 == 0) {
+                    items.add(i + ":00");
+                    j = 0;
+                }
+                else
+                    items.add(i + ":30");
+            }
+        }
     }
 
     @FXML
@@ -250,7 +255,7 @@ public class DoctorScreenController implements Initializable {
 
     @FXML
     private void displayWeekView() {
-        weekLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
+        weekLabel.setText(convert(monthToday - 1) + " " + yearToday);
         // TODO implement the week view
     }
 
@@ -310,12 +315,15 @@ public class DoctorScreenController implements Initializable {
             int finalMonth = month;
             button.setOnAction((ActionEvent event) -> {
                 daySelected = Integer.parseInt(((Button) event.getSource()).getText());
-                button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #8FCFDA; -fx-text-fill: #FFFFFF");
+                button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #8FCFDA; -fx-text-fill: #FFFFFF");
                 dateLabel.setText(convert(finalMonth) + " " + daySelected + ", " + year);
 
                 for (Node node : finalTemp.getChildren()) {
                     if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-                        node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
+                        if (now(Integer.parseInt(((Button) node).getText())))
+                            node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #DC654D; -fx-text-fill: #FFFFFF");
+                        else
+                            node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
                     }
                 }
             });
@@ -323,12 +331,21 @@ public class DoctorScreenController implements Initializable {
             // Highlights the date when an event is on the day
             for (Appointment app: appointments)
                 if(eventToday(app, i)) {
-                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #dc654d; -fx-text-fill: #FFFFFF");
+                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #DC654D; -fx-text-fill: #FFFFFF");
                     break;
                 }
 
             miniCalendar.add(button, column, row);
         }
+    }
+
+    private boolean now(int day) {
+        for (Appointment app : appointments) {
+            if (app.getYear() == yearToday && app.getMonth() == monthToday && app.getDay() == day)
+                return true;
+        }
+
+        return false;
     }
 
     private boolean eventToday(Appointment a, int day) {

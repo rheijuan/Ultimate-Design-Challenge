@@ -33,7 +33,6 @@
                   </AnchorPane>
                   <DatePicker fx:id="dateLabel1" layoutX="94.0" layoutY="107.0" prefHeight="25.0" prefWidth="129.0" promptText="Date" />
                   <Label layoutX="42.0" layoutY="107.0" text="Date" />
-                  <Label layoutX="94.0" layoutY="201.0" text="to" />
                   <Label layoutX="42.0" layoutY="158.0" text="Time" />
                   <Button fx:id="reserveButton" layoutX="461.0" layoutY="282.0" mnemonicParsing="false" text="Create" />
                   <Button layoutX="536.0" layoutY="282.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
@@ -45,12 +44,11 @@
                   <CheckBox fx:id="satCheck" layoutX="483.0" layoutY="138.0" mnemonicParsing="false" text="Every Saturday" />
                   <CheckBox fx:id="monthCheck" layoutX="483.0" layoutY="219.0" mnemonicParsing="false" text="Every Month" />
                   <CheckBox fx:id="thursCheck1" layoutX="483.0" layoutY="177.0" mnemonicParsing="false" text="Every Day" />
-                  <ComboBox fx:id="sTimeHour" layoutX="94.0" layoutY="157.0" prefHeight="26.0" prefWidth="63.0" />
-                  <ComboBox fx:id="sTimeMin" layoutX="177.0" layoutY="157.0" prefHeight="26.0" prefWidth="63.0" />
-                  <ComboBox fx:id="eTimeHour" layoutX="94.0" layoutY="223.0" prefHeight="26.0" prefWidth="63.0" />
-                  <ComboBox fx:id="eTimeMin" layoutX="177.0" layoutY="223.0" prefHeight="26.0" prefWidth="63.0" />
+                  <ComboBox fx:id="startTimeComboBox" layoutX="94.0" layoutY="154.0" prefWidth="150.0" />
+                  <ComboBox fx:id="endTimeComboBox" layoutX="94.0" layoutY="215.0" prefWidth="150.0" />
+                  <Label layoutX="153.0" layoutY="186.0" text="to" />
                </AnchorPane>
-               <AnchorPane fx:id="profilePane">
+               <AnchorPane fx:id="profilePane" prefHeight="358.4" prefWidth="622.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <AnchorPane layoutX="327.0" prefHeight="358.0" prefWidth="294.0" style="-fx-background-color: #3E454D;">
                      <GridPane fx:id="miniCalendar" layoutX="42.0" layoutY="135.0" prefHeight="174.0" prefWidth="210.0">
                         <columnConstraints>
@@ -164,7 +162,7 @@
             </AnchorPane>
          </AnchorPane>
       </Tab>
-      <Tab text="Week View">
+      <Tab onSelectionChanged="#displayWeekView" text="Week View">
          <AnchorPane prefHeight="200.0" prefWidth="200.0">
             <AnchorPane layoutX="162.0" layoutY="31.0" prefHeight="358.0" prefWidth="502.0" style="-fx-background-color: #FFFFFF;">
                <TableView fx:id="weekTable" prefHeight="358.4" prefWidth="502.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
