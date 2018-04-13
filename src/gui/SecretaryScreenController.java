@@ -86,6 +86,8 @@ public class SecretaryScreenController {
 	private Button prevWeek;
 	@FXML
 	private Button nextWeek;
+	@FXML
+	private ListView  dayViewListView;
 
 
 	/*
@@ -111,7 +113,6 @@ public class SecretaryScreenController {
 		selectedMonth = date.getMonthBound() + 1;
 		selectedDay = date.getDayBound();
 		selectedYear = date.getYearBound();
-
 		refreshCalendar(date.getMonthBound(), date.getYearBound());
 		refreshDayPane(selectedMonth, selectedDay, selectedYear);
 		refreshWeekPane(selectedMonth, selectedDay);
@@ -130,7 +131,7 @@ public class SecretaryScreenController {
 		selectedYear = date.getYearToday();
 
 		refreshCalendar(date.getMonthToday(), date.getYearToday());
-		refreshWeekPane(date.getMonthToday(), date.getYearToday());
+		//refreshWeekPane(date.getMonthToday(), date.getYearToday());
 	}
 
 	public void lastMonth(ActionEvent e) {
@@ -144,7 +145,7 @@ public class SecretaryScreenController {
 		selectedYear = date.getYearToday();
 
 		refreshCalendar(date.getMonthToday(), date.getYearToday());
-		refreshWeekPane(date.getMonthToday(), date.getYearToday());
+		//refreshWeekPane(date.getMonthToday(), date.getYearToday());
 	}
 
 
@@ -756,11 +757,17 @@ public class SecretaryScreenController {
 
 		int monDate = 0, tueDate = 0, wedDate = 0, thuDate = 0, friDate = 0, satDate = 0, sunDate = 0;
 
-		forWeekCalendar.set(selectedYear, selectedYear - 1, selectedDay - 1);
+
+		System.out.println("SELECTED YEAR: " + selectedYear);
+		System.out.println("SELECTED MONTH: " + selectedMonth);
+		System.out.println("SELECTED DAY: " + selectedDay);
+
+		forWeekCalendar.set(selectedYear, selectedMonth, startDay );
 		String compareDay = sdf.format(forWeekCalendar.getTime()).substring(0, 3);
 		System.out.println(compareDay);
 
 		do {
+			//System.out.println("COMPARE DATE: " + compareDay);
 			if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))) {
 				switch (compareDay) {
 					case "Sun":
@@ -935,6 +942,41 @@ public class SecretaryScreenController {
 
 		}
 		return FXCollections.observableArrayList(toTableItems);
+	}
+	public void refreshAgendaView(){
+		ObservableList<Appointment> appointment = db.getAppointments();
+		ObservableList<String> s = FXCollections.observableArrayList();
+
+
+
+		for(int i = 0; i < appointment.size(); i++){
+			StringBuilder sb = new StringBuilder();
+
+			sb.append(appointment.get(i).getDoctor());
+			sb.append("   ||   ");
+			sb.append(appointment.get(i).getPatient());
+			sb.append("   ||   ");
+			sb.append(appointment.get(i).getStartHour());
+			sb.append(":");
+			sb.append(appointment.get(i).getStartMin());
+			sb.append(" - ");
+			sb.append(appointment.get(i).getEndHour());
+			sb.append(":");
+			sb.append(appointment.get(i).getEndMin());
+
+			String string = sb.toString();
+			System.out.println(string);
+			s.add(string);
+		}
+
+
+		dayViewListView.setItems(s);
+
+
+
+
+
+
 	}
 }
 
