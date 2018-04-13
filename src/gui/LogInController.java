@@ -48,11 +48,13 @@ public class LogInController implements Initializable {
                                 break;
                             case "Patient":
                                 found = true;
+                                PatientScreenController.setName(user.getName());
+                                PatientScreenController.setDoc1Name(doctors.get(0).getName());
+                                PatientScreenController.setDoc2Name(doctors.get(1).getName());
                                 changeScene(event, "patientscreen.fxml");
                                 break;
                             case "Secretary":
                                 found = true;
-                                ObservableList<User> doctors = DBController.getDoctors();
                                 SecretaryScreenController.setName(user.getName());
                                 SecretaryScreenController.setDoc1Name(doctors.get(0).getName());
                                 SecretaryScreenController.setDoc2Name(doctors.get(1).getName());
@@ -90,10 +92,12 @@ public class LogInController implements Initializable {
         dbController.loadUsers();
 
         users = DBController.getUsers();
+        doctors = DBController.getDoctors();
 
         invalidLabel.setVisible(false);
     }
 
     private ObservableList<User> users;
+    private ObservableList<User> doctors;
     private DBController dbController;
 }
