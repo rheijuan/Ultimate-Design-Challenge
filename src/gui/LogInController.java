@@ -1,5 +1,6 @@
 package gui;
 
+import database.Appointment;
 import database.DBController;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,9 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -66,7 +65,6 @@ public class LogInController implements Initializable {
                 }
             }
         }
-
         if (!found)
             invalidLabel.setVisible(true);
     }
@@ -94,6 +92,9 @@ public class LogInController implements Initializable {
 
         users = DBController.getUsers();
         doctors = DBController.getDoctors();
+
+        BookInController.setDoc1Name(doctors.get(0).getName());
+        BookInController.setDoc2Name(doctors.get(1).getName());
 
         invalidLabel.setVisible(false);
     }

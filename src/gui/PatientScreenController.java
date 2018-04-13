@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.*;
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -11,7 +9,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -21,10 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import model.*;
 
 public class PatientScreenController implements Initializable {
 
@@ -343,7 +337,6 @@ public class PatientScreenController implements Initializable {
 		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
 		dbController = new DBController();
-		appointments = DBController.getAppointments();
 
 		patientTag.setText("Welcome Patient " + patName);
 
@@ -354,6 +347,7 @@ public class PatientScreenController implements Initializable {
 
 		daySelected = dayToday;
 
+		appointments = DBController.getAppointments();
 		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);
 	}
