@@ -158,7 +158,7 @@
                <TableView fx:id="dayTableView" prefHeight="358.4" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <columns>
                      <TableColumn fx:id="timeColumn" minWidth="120.0" prefWidth="120.0" text="Time" />
-                     <TableColumn fx:id="patientColumn" minWidth="200.0" prefWidth="298.3999938964844" />
+                     <TableColumn fx:id="patientColumn" minWidth="200.0" prefWidth="298.3999938964844" text="Patient" />
                   </columns>
                </TableView>
             </AnchorPane>
