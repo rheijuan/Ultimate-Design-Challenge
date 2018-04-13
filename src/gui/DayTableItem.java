@@ -5,11 +5,11 @@ import java.awt.Color;
 
 public class DayTableItem {
 
-    public DayTableItem(String time, String patient, int status) {
-    private SimpleStringProperty time;
-    private SimpleStringProperty patient;
-    private SimpleStringProperty doctor;
-    private String colorDoctor;
+    DayTableItem(String time, String patient, int status) {
+        this.time = new SimpleStringProperty(time);
+        this.patient = new SimpleStringProperty(patient);
+        this.status = status;
+    }
 
     public String getColorDoctor() {
         return colorDoctor;
@@ -106,10 +106,8 @@ public class DayTableItem {
 
     private SimpleStringProperty time;
     private SimpleStringProperty patient;
-    private int status;
+    private SimpleStringProperty doctor;
+    private String colorDoctor;
     private Color color;
-    private int valueStartHour;
-    private int valueEndHour;
-    private int valueStartMin;
-    private int valueEndMin;
+
 }
