@@ -385,7 +385,10 @@ public class PatientScreenController implements Initializable {
 
 				for (Node node : finalTemp.getChildren()) {
 					if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-						node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
+						if (now(Integer.parseInt(((Button) node).getText())))
+							node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #DC654D; -fx-text-fill: #FFFFFF");
+						else
+							node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
 					}
 				}
 			});
@@ -399,6 +402,15 @@ public class PatientScreenController implements Initializable {
 
 			miniCalendar.add(button, column, row);
 		}
+	}
+
+	private boolean now(int day) {
+		for (Appointment app : appointments) {
+			if (app.getYear() == yearToday && app.getMonth() == monthToday && app.getDay() == day)
+				return true;
+		}
+
+		return false;
 	}
 
 	private boolean eventToday(Appointment a, int day) {

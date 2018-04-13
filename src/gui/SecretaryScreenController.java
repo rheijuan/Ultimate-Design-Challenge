@@ -143,10 +143,6 @@ public class SecretaryScreenController implements Initializable {
 
 	}
 
-
-
-
-
 	@FXML
 	private void nextMonth() {
 		if (monthToday == 11) {
@@ -393,22 +389,16 @@ public class SecretaryScreenController implements Initializable {
 
 			b.setStyle("-fx-background-color: transparent");
 
-			b.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent mouseEvent) {
-					if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-						if(mouseEvent.getClickCount() == 2){
-							deleteAppointment(appointment.getAppointmentID());
-							displayAgendaView();
-						}
-					}
-				}
-			});
-
+			b.setOnMouseClicked(mouseEvent -> {
+                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                    if(mouseEvent.getClickCount() == 2){
+                        deleteAppointment(appointment.getAppointmentID());
+                        displayAgendaView();
+                    }
+                }
+            });
 
 			agendaViewGridPane.add(b, 0,i);
-
-
 	}
 }
 
@@ -460,7 +450,10 @@ public class SecretaryScreenController implements Initializable {
 
 				for (Node node : finalTemp.getChildren()) {
 					if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-						node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
+						if (now(Integer.parseInt(((Button) node).getText())))
+							node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #DC654D; -fx-text-fill: #FFFFFF");
+						else
+							node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
 					}
 				}
 			});
@@ -474,6 +467,15 @@ public class SecretaryScreenController implements Initializable {
 
 			miniCalendar.add(button, column, row);
 		}
+	}
+
+	private boolean now(int day) {
+		for (Appointment app : appointments) {
+			if (app.getYear() == yearToday && app.getMonth() == monthToday && app.getDay() == day)
+				return true;
+		}
+
+		return false;
 	}
 
 	private boolean eventToday(Appointment a, int day) {
