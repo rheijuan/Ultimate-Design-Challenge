@@ -434,7 +434,7 @@ public class PatientScreenController implements Initializable {
 			case 8: return "September";
 			case 9: return "October";
 			case 10: return "November";
-			case 11: return "December";
+			case -1: return "December";
 		}
 		return "January";
 	}

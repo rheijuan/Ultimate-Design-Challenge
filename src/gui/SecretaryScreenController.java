@@ -33,29 +33,21 @@ import model.WeekTableItem;
 
 public class SecretaryScreenController implements Initializable {
 
-	@FXML
-	private Label dateLabel;
+	@FXML private Label dateLabel;
 
-	@FXML
-	private Label secretaryTag;
+	@FXML private Label secretaryTag;
 
-	@FXML
-	private Label dayLabel;
+	@FXML private Label dayLabel;
 
-	@FXML
-	private Label doc1Tag;
+	@FXML private Label doc1Tag;
 
-	@FXML
-	private Label doc2Tag;
+	@FXML private Label doc2Tag;
 
-	@FXML
-	private Label agendaLabel;
+	@FXML private Label agendaLabel;
 
-	@FXML
-	GridPane miniCalendar;
+	@FXML private GridPane miniCalendar;
 
-	@FXML
-	GridPane agendaViewGridPane;
+	@FXML private GridPane agendaViewGridPane;
 
 	@FXML
 	private TableView<DayTableItem> dayTableView;
@@ -66,14 +58,11 @@ public class SecretaryScreenController implements Initializable {
 	@FXML
 	private TableColumn<DayTableItem, String> patientColumn;
 
-	@FXML
-	private ListView<String> appointmentList;
+	@FXML private ListView<String> appointmentList;
 
-	@FXML
-	private AnchorPane agendaAnchor;
+	@FXML private AnchorPane agendaAnchor;
 
-	@FXML
-	private ScrollPane agendaScrollPane;
+	@FXML private ScrollPane agendaScrollPane;
 
 
 
@@ -130,17 +119,14 @@ public class SecretaryScreenController implements Initializable {
 
 	public void deleteAppointment(int ID) {
 		dbController.loadAppointments();
-		for (int i = 0; i < appointments.size(); i++) {
+		for (Appointment appointment : appointments) {
 			System.out.println(ID);
-			if (appointments.get(i).getAppointmentID() == ID) {
-				Appointment a = appointments.get(i);
+			if (appointment.getAppointmentID() == ID) {
+				Appointment a = appointment;
 				System.out.println(a.getPatient() + a.getDay() + a.getMonth() + a.getYear() + a.getStartHour() + a.getStartMin() + a.getEndHour() + a.getEndMin());
 				dbController.deleteAppointmentForC(a.getPatient(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
-
 			}
-
 		}
-
 	}
 
 	@FXML
@@ -487,6 +473,7 @@ public class SecretaryScreenController implements Initializable {
 	}
 
 	private String convert(int month) {
+		System.out.println(month);
 		switch (month) {
 			case 0: return "January";
 			case 1: return "February";
@@ -499,7 +486,7 @@ public class SecretaryScreenController implements Initializable {
 			case 8: return "September";
 			case 9: return "October";
 			case 10: return "November";
-			case 11: return "December";
+			case -1: return "December";
 		}
 		return "January";
 	}
