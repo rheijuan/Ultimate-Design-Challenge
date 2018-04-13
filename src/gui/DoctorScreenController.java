@@ -238,8 +238,7 @@ public class DoctorScreenController implements Initializable {
                     if (item.getStatus() == 0) {
                         Color c = Color.decode("#78B4BF");
                         displayTime.setColor(c);
-                    }
-                    else if (item.getStatus() == 1) {
+                    } else if (item.getStatus() == 1) {
                         Color c = Color.decode("#DC654D");
                         displayTime.setColor(c);
                     }
@@ -287,7 +286,6 @@ public class DoctorScreenController implements Initializable {
 
         dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
         refreshCalendar(monthToday, yearToday, dayToday);
-
     }
 
     private void refreshCalendar(int month, int year, int day) {

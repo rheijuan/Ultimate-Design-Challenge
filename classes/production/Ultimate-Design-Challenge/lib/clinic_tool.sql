@@ -1,1 +1,1 @@
-SELECT * FROM clinic_tool.appointments;
+SELECT * FROM clinic_tool.users;

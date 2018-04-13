@@ -22,13 +22,6 @@ public class DayTableItem {
     public String getDoctor() {
         return doctor.get();
     }
-
-    private int valueStartHour;
-    private int valueEndHour;
-    private int valueStartMin;
-    private int valueEndMin;
-    private int status;
-
     DayTableItem(String time, String patient, String doctor) {
         this.time = new SimpleStringProperty(time);
         this.patient = new SimpleStringProperty(patient);
@@ -109,5 +102,11 @@ public class DayTableItem {
     private SimpleStringProperty doctor;
     private String colorDoctor;
     private Color color;
+    private int valueStartHour;
+    private int valueEndHour;
+    private int valueStartMin;
+    private int valueEndMin;
+    private int status;
+
 
 }

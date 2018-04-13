@@ -52,6 +52,10 @@ public class LogInController implements Initializable {
                                 break;
                             case "Secretary":
                                 found = true;
+                                ObservableList<User> doctors = DBController.getDoctors();
+                                SecretaryScreenController.setName(user.getName());
+                                SecretaryScreenController.setDoc1Name(doctors.get(0).getName());
+                                SecretaryScreenController.setDoc2Name(doctors.get(1).getName());
                                 changeScene(event, "secretaryscreen.fxml");
                                 break;
                         }
