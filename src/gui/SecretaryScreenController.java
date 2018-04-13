@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.*;
 
 import database.Appointment;
@@ -14,6 +15,7 @@ import javafx.event.EventHandler;
 //import gui.secretaryscreen*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +23,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -30,27 +33,119 @@ import model.WeekTableItem;
 
 public class SecretaryScreenController implements Initializable {
 
-	@FXML private Label dateLabel;
+	@FXML
+	private Label dateLabel;
 
-	@FXML private Label secretaryTag;
+	@FXML
+	private Label secretaryTag;
 
-	@FXML private Label dayLabel;
+	@FXML
+	private Label dayLabel;
 
-	@FXML private Label doc1Tag;
+	@FXML
+	private Label doc1Tag;
 
-	@FXML private Label doc2Tag;
+	@FXML
+	private Label doc2Tag;
 
-	@FXML private Label agendaLabel;
+	@FXML
+	private Label agendaLabel;
 
-	@FXML GridPane miniCalendar;
+	@FXML
+	GridPane miniCalendar;
 
-	@FXML private TableView<DayTableItem> dayTableView;
+	@FXML
+	GridPane agendaViewGridPane;
 
-	@FXML private TableColumn<DayTableItem, String> timeColumn;
+	@FXML
+	private TableView<DayTableItem> dayTableView;
 
-	@FXML private TableColumn<DayTableItem, String> patientColumn;
+	@FXML
+	private TableColumn<DayTableItem, String> timeColumn;
 
-	@FXML private ListView<String> appointmentList;
+	@FXML
+	private TableColumn<DayTableItem, String> patientColumn;
+
+	@FXML
+	private ListView<String> appointmentList;
+
+	@FXML
+	private AnchorPane agendaAnchor;
+
+	@FXML
+	private ScrollPane agendaScrollPane;
+
+
+
+	/*
+	@FXML
+	private void reserveNewAppointment() {
+		System.out.println("reserved!");
+
+		int appointmentID = appointments.size() + 1;
+		String patient = nameLabel.getText();
+		String doctor = doctorLabel.getSelectionModel().getSelectedItem().toString();
+
+		int day = datePicker.getValue().getDayOfMonth();
+		int month = datePicker.getValue().getMonthValue();
+		int year = datePicker.getValue().getYear();
+
+		int starthour = Integer.parseInt(starttimeLabel.getText().split(":")[0]);
+		int startmin = Integer.parseInt(starttimeLabel.getText().split(":")[1]);
+		int endhour = Integer.parseInt(endtimeLabel.getText().split(":")[0]);
+		int endmin = Integer.parseInt(endtimeLabel.getText().split(":")[1]);
+
+		int status = 1;
+
+		Appointment newApp = new Appointment(appointmentID, patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
+
+		//check for conflict first
+		if (isValidTime(newApp) == true) {
+			dbController.createAppointment(patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
+			newApp.printAppointment();
+			appointments.add(newApp);
+		} else {
+			System.out.println("Invalid appointment slot");
+		}
+
+	}
+*/
+	public boolean isValidTime(Appointment appo) {
+		for (int i = 0; i < dbController.getAppointments().size(); i++) {
+			Appointment a = dbController.getAppointments().get(i);
+			if (appo.getMonth() == a.getMonth() && appo.getDay() == a.getDay() && appo.getYear() == a.getYear()) {
+
+				LocalTimeRange range1 = new LocalTimeRange(LocalTime.of(appo.getStartHour(), appo.getStartMinute()), LocalTime.of(appo.getEndHour(), appo.getEndMinute()));
+				LocalTimeRange range2 = new LocalTimeRange(LocalTime.of(a.getStartHour(), a.getStartMinute()), LocalTime.of(a.getEndHour(), a.getEndMinute()));
+				if (range1.overlaps(range2))
+					return false;
+			}
+		}
+		return true;
+	}
+
+	public void cancelAppointment(int ID) {
+		//dbController
+	}
+
+	public void deleteAppointment(int ID) {
+		dbController.loadAppointments();
+		for (int i = 0; i < appointments.size(); i++) {
+			System.out.println(ID);
+			if (appointments.get(i).getAppointmentID() == ID) {
+				Appointment a = appointments.get(i);
+				System.out.println(a.getPatient() + a.getDay() + a.getMonth() + a.getYear() + a.getStartHour() + a.getStartMin() + a.getEndHour() + a.getEndMin());
+				dbController.deleteAppointmentForC(a.getPatient(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
+
+			}
+
+		}
+
+	}
+
+
+
+
 
 	@FXML
 	private void nextMonth() {
@@ -281,17 +376,42 @@ public class SecretaryScreenController implements Initializable {
 	private void displayAgendaView() {
 		agendaLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
 
-		ObservableList<String> scheduledAppointments = FXCollections.observableArrayList();
+		//ObservableList<String> scheduledAppointments = FXCollections.observableArrayList();
+		agendaViewGridPane.getChildren().clear();
+		appointments.clear();
+		dbController.loadAppointments();
 
-		for (Appointment appointment : appointments)
-			if (eventToday(appointment, daySelected))
-				if (!appointment.getPatient().equals(""))
-					scheduledAppointments.add(appointment.getStartHour() + ":"
-							+ appointment.getStartMin() + "-" + appointment.getEndHour() + ":" + appointment.getEndMin() +
-							" -- " + appointment.getPatient() + " ** " + appointment.getDoctor());
 
-		appointmentList.setItems(scheduledAppointments);
+		for (int i =0; i < appointments.size(); i++) {
+			Appointment appointment = appointments.get(i);
+			Button b = new Button(appointment.getStartHour() + ":"
+						+ appointment.getStartMin() + "-" + appointment.getEndHour() + ":" + appointment.getEndMin() +
+						" -- " + appointment.getPatient() + " ** " + appointment.getDoctor());
+
+
+			agendaViewGridPane.setHalignment(b, HPos.CENTER);
+
+			b.setStyle("-fx-background-color: transparent");
+
+			b.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent mouseEvent) {
+					if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+						if(mouseEvent.getClickCount() == 2){
+							deleteAppointment(appointment.getAppointmentID());
+							displayAgendaView();
+						}
+					}
+				}
+			});
+
+
+			agendaViewGridPane.add(b, 0,i);
+
+
 	}
+}
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
