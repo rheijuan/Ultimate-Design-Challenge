@@ -26,6 +26,9 @@ public class LogInController implements Initializable {
     @FXML private PasswordField passwordText;
 
     @FXML private Label invalidLabel;
+    
+    @FXML private Button walkInButton;
+    @FXML private Button enterButton;
 
     @FXML
     private void enterClinic(ActionEvent event) {
@@ -67,6 +70,11 @@ public class LogInController implements Initializable {
         }
         if (!found)
             invalidLabel.setVisible(true);
+    }
+    
+    @FXML
+    private void bookWalkIn(ActionEvent event) {
+    	System.out.println("Book Walk in clicked");
     }
 
     private void changeScene(ActionEvent event, String url) {

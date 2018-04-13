@@ -29,7 +29,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import model.CalendarItem;
-import model.WeekTableItem;
 
 public class SecretaryScreenController implements Initializable {
 
@@ -164,7 +163,7 @@ public class SecretaryScreenController implements Initializable {
 		timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
 		patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
 
-		patientColumn.setCellFactory(column -> new TableCell<>() {
+		patientColumn.setCellFactory(column -> new TableCell<DayTableItem, String> () {
 			@Override
 			protected void updateItem(String event, boolean empty) {
 				super.updateItem(event, empty);

@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.*;
 
 import database.Appointment;
@@ -59,6 +60,10 @@ public class PatientScreenController implements Initializable {
 	@FXML private TableColumn<DayTableItem, String> patientColumn;
 
 	@FXML private ListView<String> appointmentList;
+	
+	@FXML private DatePicker datePicker;
+	
+	@FXML private TextField nameLabel;
 
 	@FXML
 	private void reserveSlot() {
@@ -121,7 +126,7 @@ public class PatientScreenController implements Initializable {
 		timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
 		patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
 
-		patientColumn.setCellFactory(column -> new TableCell<>() {
+		patientColumn.setCellFactory(column -> new TableCell<DayTableItem, String> (){
 			@Override
 			protected void updateItem(String event, boolean empty) {
 				super.updateItem(event, empty);
@@ -175,6 +180,53 @@ public class PatientScreenController implements Initializable {
 							" -- " + appointment.getPatient() + " ** " + appointment.getDoctor());
 
 		appointmentList.setItems(scheduledAppointments);
+	}
+	
+	@FXML
+	private void reserveNewAppointment(){
+		System.out.println("reserved!");
+		dbController.loadAppointments();
+
+		int appointmentID = appointments.size()+1;
+		String patient = nameLabel.getText(); 
+		String doctor = doctorBox.getSelectionModel().getSelectedItem().toString(); 
+
+		int day = datePicker.getValue().getDayOfMonth(); 
+		int month = datePicker.getValue().getMonthValue(); 
+		int year = datePicker.getValue().getYear(); 
+
+		int starthour = Integer.parseInt(sTimeHour.getSelectionModel().getSelectedItem().toString()); 
+		int startmin = Integer.parseInt(sTimeHour.getSelectionModel().getSelectedItem().toString());
+		int endhour = Integer.parseInt(eTimeHour.getSelectionModel().getSelectedItem().toString()); 
+		int endmin = Integer.parseInt(eTimeHour.getSelectionModel().getSelectedItem().toString());
+
+		int status = 1;
+
+		Appointment newApp = new Appointment (appointmentID, patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
+
+		//check for conflict first
+		if (isValidTime(newApp) == true) {
+			dbController.createAppointment(patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
+			newApp.printAppointment();
+			appointments.add(newApp);
+		} else {
+			System.out.println("Invalid appointment slot");
+		}
+
+	}
+
+	public boolean isValidTime(Appointment appo) {
+		for (int i=0; i<dbController.getAppointments().size(); i++) {
+			Appointment a = dbController.getAppointments().get(i);
+			if (appo.getMonth() == a.getMonth() && appo.getDay() == a.getDay() && appo.getYear() == a.getYear()) {
+
+				LocalTimeRange range1 = new LocalTimeRange(LocalTime.of(appo.getStartHour(), appo.getStartMinute()), LocalTime.of(appo.getEndHour(), appo.getEndMinute()));
+				LocalTimeRange range2 = new LocalTimeRange(LocalTime.of(a.getStartHour(), a.getStartMinute()), LocalTime.of(a.getEndHour(), a.getEndMinute()));
+				if (range1.overlaps(range2)) 
+					return false;
+			}
+		}
+		return true;
 	}
 
 	private ObservableList<DayTableItem> initializeDayView() {
@@ -346,7 +398,12 @@ public class PatientScreenController implements Initializable {
 		dayToday = cal.get(GregorianCalendar.DAY_OF_MONTH);
 
 		daySelected = dayToday;
-
+		
+		for (int i=0; i<dbController.getDoctors().size(); i++) {
+			System.out.println(dbController.getDoctors().get(i).getName());
+			doctorBox.getItems().add(dbController.getDoctors().get(i).getName());
+		}
+		
 		appointments = DBController.getAppointments();
 		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);

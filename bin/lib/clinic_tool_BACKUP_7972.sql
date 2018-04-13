@@ -15,9 +15,17 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+CREATE DATABASE clinic_tool; /* newly added*/
 --
 -- Table structure for table `appointments`
 --
+USE clinic_tool; /* addded rin */
+=======
+CREATE DATABASE clinic_tool;
+--
+-- Table structure for table `appointments`
+--
+USE clinic_tool;
 
 DROP TABLE IF EXISTS `appointments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -39,6 +47,16 @@ CREATE TABLE `appointments` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `appointments`
+--
+
+LOCK TABLES `appointments` WRITE;
+/*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
+INSERT INTO `appointments` (`AppointmentID`, `Patient`, `Doctor`, `Day`, `Month`, `Year`, `StartHour`, `StartMinute`, `EndHour`, `EndMinute`, `Status`) VALUES (9,'Mara H','Eric White',5,9,2018,18,30,19,0,0),(72,'Sofia M','Philip Kay',9,11,2018,9,0,9,30,0),(301,'Jon Bon','Eric White',5,9,2018,16,30,17,30,0),(494,'Sarah G','Philip Kay',5,6,2018,14,0,14,30,0);
+/*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -53,6 +71,16 @@ CREATE TABLE `users` (
   PRIMARY KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`Username`, `Password`, `Name`, `Role`) VALUES ('jamesbay','madwildluv','James Bay','Patient'),('josemari','123hello','Jose Mari','Patient'),('white_eric','D0ct0r','Eric White','Doctor');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -63,4 +91,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-09 15:32:24
+-- Dump completed on 2018-04-09 15:31:38

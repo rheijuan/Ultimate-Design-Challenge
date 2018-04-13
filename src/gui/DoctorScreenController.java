@@ -108,7 +108,7 @@ public class DoctorScreenController implements Initializable {
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
         patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
 
-        patientColumn.setCellFactory(column -> new TableCell<>() {
+        patientColumn.setCellFactory(column -> new TableCell<DayTableItem, String> () {
             @Override
             protected void updateItem(String event, boolean empty) {
                 super.updateItem(event, empty);
