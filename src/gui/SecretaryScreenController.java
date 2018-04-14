@@ -234,12 +234,14 @@ public class SecretaryScreenController implements Initializable {
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d");
 		SimpleDateFormat monthDeterminer = new SimpleDateFormat("M");
 
-		cal.set(Calendar.MONTH, monthToday);
+		cal.set(Calendar.MONTH, monthToday-1);
 		System.out.println(monthToday);
 		cal.set(Calendar.DATE, daySelected);
 		System.out.println(daySelected);
 		cal.set(Calendar.YEAR, yearToday);
 		System.out.println(yearToday);
+
+		System.out.println(cal.getTime());
 
 		int startWeekValue = -(cal.get(Calendar.DAY_OF_WEEK) - 1);
 
@@ -635,7 +637,7 @@ public class SecretaryScreenController implements Initializable {
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d");
 		SimpleDateFormat monthDeterminer = new SimpleDateFormat("M");
 
-		int month = Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime())) - 1;
+		int month = Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()));
 		int startDay = forWeekCalendar.get(Calendar.DATE);
 		String[] date = sdf.format(forWeekCalendar.getTime()).split("\\s+");
 		int endDay = forWeekCalendar.get(Calendar.DATE);
@@ -679,15 +681,15 @@ public class SecretaryScreenController implements Initializable {
 
 		int monDate = 0, tueDate = 0, wedDate = 0, thuDate = 0, friDate = 0, satDate = 0, sunDate = 0;
 
-		forWeekCalendar.set(yearToday, month, startDay);
+		forWeekCalendar.set(yearToday, month-1, startDay);
 
 		String compareDay = sdf.format(forWeekCalendar.getTime()).substring(0,3);
 		System.out.println(compareDay);
 
-
+		System.out.println(month);
 		System.out.println(Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8)));
 		do {
-			if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime())) - 1) {
+			if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))) {
 				switch (compareDay.trim()) {
 					case "Sun":
 						sunDate = Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8));
@@ -718,7 +720,7 @@ public class SecretaryScreenController implements Initializable {
 				break;
 		} while (!compareDay.equalsIgnoreCase("Sat"));
 
-		if (monthToday == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime())) - 1)
+		if (monthToday == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime())))
 			satDate = Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8));
 
 		if (sunDate > 0)
