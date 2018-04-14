@@ -11,16 +11,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
 public class CancelledAppScreenController implements Initializable {
-	
+
 	@FXML private ListView cancelledAppListView;
 	@FXML private Button deleteButton,backCButton;
-	
+
 	@Override
-    public void initialize(URL location, ResourceBundle resources) {
-      
-    }
+	public void initialize(URL location, ResourceBundle resources) {
+
+	}
 	@FXML //pag pinindot yung back to main
-	 private void goBacktoMain(ActionEvent event) throws IOException{
-		 
-	 }
+	private void goBacktoMain(ActionEvent event) throws IOException{
+
+	}
 }

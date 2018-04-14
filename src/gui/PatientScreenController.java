@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.util.*;
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
@@ -24,6 +26,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class PatientScreenController implements Initializable {
 
@@ -71,6 +75,35 @@ public class PatientScreenController implements Initializable {
 
 	@FXML private AnchorPane agendaViewPane;
 
+	@FXML
+	public void checkIfHaveAppointment() {
+		ObservableList<Appointment> users = DBController.getAppointments();
+
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getPatient().equalsIgnoreCase(patName) &&
+					(users.get(i).getYear() == yearNow && users.get(i).getDay() == dayNow && users.get(i).getMonth() == monthNow)) {
+				Notify();
+			}
+
+		}
+	}
+
+	private void Notify() {
+		final Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		Parent viewParent;
+		try {
+			viewParent = FXMLLoader.load(getClass().getResource("popUp.fxml"));
+			Scene sc = new Scene(viewParent);
+
+			stage.setScene(sc);
+			stage.show();
+
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	@FXML
 	private void reserveSlot() {
@@ -160,6 +193,7 @@ public class PatientScreenController implements Initializable {
 
 		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);
+		checkIfHaveAppointment();
 	}
 
 	@FXML
@@ -172,6 +206,7 @@ public class PatientScreenController implements Initializable {
 
 		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);
+		checkIfHaveAppointment();
 	}
 
 	@FXML
@@ -180,9 +215,6 @@ public class PatientScreenController implements Initializable {
 
 		doc1Tag.setText("Doctor " + docName1);
 		doc2Tag.setText("Doctor " + docName2);
-
-		d1Box.setText("Doctor " + docName1);
-		d2Box.setText("Doctor " + docName2);
 
 		ObservableList<DayTableItem> data = initializeDayView();
 		timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -218,7 +250,6 @@ public class PatientScreenController implements Initializable {
 						}
 
 					} else {
-						setTextFill(javafx.scene.paint.Color.BLACK);
 						setStyle("");
 					}
 				}
@@ -337,6 +368,7 @@ public class PatientScreenController implements Initializable {
 			dbController.createAppointment(patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
 			newApp.printAppointment();
 			appointments.add(newApp);
+			checkIfHaveAppointment();
 		} else {
 			System.out.println("Invalid appointment slot");
 		}
@@ -526,6 +558,10 @@ public class PatientScreenController implements Initializable {
 		monthToday = cal.get(GregorianCalendar.MONTH) + 1;
 		dayToday = cal.get(GregorianCalendar.DAY_OF_MONTH);
 
+		yearNow = cal.get(GregorianCalendar.YEAR);
+		monthNow = cal.get(GregorianCalendar.MONTH) + 1;
+		dayNow = cal.get(GregorianCalendar.DAY_OF_MONTH);
+
 		daySelected = dayToday;
 
 		for (int i=0; i<dbController.getDoctors().size(); i++) {
@@ -536,6 +572,7 @@ public class PatientScreenController implements Initializable {
 		appointments = DBController.getAppointments();
 		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);
+		checkIfHaveAppointment();
 	}
 
 	private void refreshCalendar(int month, int year, int day) {
@@ -639,4 +676,7 @@ public class PatientScreenController implements Initializable {
 	private static String patName;
 	private static String docName1;
 	private static String docName2;
+	private int yearNow;
+	private int monthNow;
+	private int dayNow;
 }

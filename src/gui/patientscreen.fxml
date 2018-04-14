@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -23,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PatientScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PatientScreenController">
    <children>
       <TabPane prefHeight="451.0" prefWidth="715.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -206,16 +200,6 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <CheckBox fx:id="d1Box" layoutX="26.0" layoutY="269.0" mnemonicParsing="false" text="Doctor" textFill="WHITE">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox fx:id="d2Box" layoutX="26.0" layoutY="301.0" mnemonicParsing="false" text="Doctor" textFill="WHITE">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </CheckBox>
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="266.0" layoutY="31.0" prefHeight="358.0" prefWidth="398.0">
@@ -226,59 +210,6 @@
                                     <TableColumn fx:id="patientColumn" minWidth="200.0" prefWidth="298.3999938964844" text="Appointments" />
                                  </columns>
                               </TableView>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab fx:id="weekViewTab" text="Week View">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8FCFDA;">
-                     <children>
-                        <AnchorPane layoutX="162.0" layoutY="31.0" prefHeight="358.0" prefWidth="502.0" style="-fx-background-color: #FFFFFF;">
-                           <children>
-                              <TableView prefHeight="358.4" prefWidth="502.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <columns>
-                                    <TableColumn fx:id="weekTime" minWidth="82.0" prefWidth="82.0" text="Time" />
-                                    <TableColumn fx:id="weekSunSched" minWidth="60.0" prefWidth="60.0" text="Sun" />
-                                    <TableColumn fx:id="weekMonSched" minWidth="60.0" prefWidth="60.0" text="Mon" />
-                                    <TableColumn fx:id="weekTuesSched" minWidth="60.0" prefWidth="60.0" text="Tues" />
-                                    <TableColumn fx:id="weekWedSched" minWidth="60.0" prefWidth="60.0" text="Wed" />
-                                    <TableColumn fx:id="weekThursSched" minWidth="60.0" prefWidth="60.0" text="Thurs" />
-                                    <TableColumn fx:id="weekFriSched" minWidth="60.0" prefWidth="60.0" text="Fri" />
-                                    <TableColumn fx:id="weekSatSched" minWidth="60.0" prefWidth="60.0" text="Sat" />
-                                 </columns>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="42.0" layoutY="31.0" prefHeight="358.0" prefWidth="121.0" style="-fx-background-color: #3E454D;">
-                           <children>
-                              <Label layoutX="27.0" layoutY="39.0" text="Legend" textFill="WHITE">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="19.0" layoutY="170.0" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: #DC654D;" />
-                              <Label layoutX="27.0" layoutY="199.0" text="Occupied" textFill="WHITE">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="18.0" layoutY="103.0" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: #78B4BF;" />
-                              <Label layoutX="28.0" layoutY="121.0" text="Available" textFill="WHITE">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="15.0" layoutY="14.0" text="January 2018" textFill="WHITE">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <CheckBox layoutX="7.0" layoutY="256.0" mnemonicParsing="false" text="My Appointments" textFill="#fffdfd" />
-                              <CheckBox layoutX="7.0" layoutY="289.0" mnemonicParsing="false" text="Doctor 1" textFill="#fffdfd" />
-                              <CheckBox layoutX="7.0" layoutY="319.0" mnemonicParsing="false" text="Doctor 2" textFill="#fffdfd" />
                            </children>
                         </AnchorPane>
                      </children>

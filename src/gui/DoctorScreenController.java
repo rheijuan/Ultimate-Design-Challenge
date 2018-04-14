@@ -396,13 +396,13 @@ public class DoctorScreenController implements Initializable {
                         if (currentItem.getSunColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getSunColor() == javafx.scene.paint.Color.CYAN) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.ORANGE) {
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
+                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.GREEN) {
                                 setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
+                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.YELLOW) {
                                 setTextFill(javafx.scene.paint.Color.BLACK);
                                 setStyle("-fx-background-color: #FDFD96");
                             }
@@ -431,13 +431,13 @@ public class DoctorScreenController implements Initializable {
                         if (currentItem.getMonColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getMonColor() == javafx.scene.paint.Color.CYAN) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.ORANGE) {
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
+                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.GREEN) {
                                 setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
+                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.YELLOW) {
                                 setTextFill(javafx.scene.paint.Color.BLACK);
                                 setStyle("-fx-background-color: #FDFD96");
                             }
@@ -466,13 +466,13 @@ public class DoctorScreenController implements Initializable {
                         if (currentItem.getTueColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getTueColor() == javafx.scene.paint.Color.CYAN) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.ORANGE) {
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
+                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.GREEN) {
                                 setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
+                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.YELLOW) {
                                 setTextFill(javafx.scene.paint.Color.BLACK);
                                 setStyle("-fx-background-color: #FDFD96");
                             }
@@ -536,13 +536,13 @@ public class DoctorScreenController implements Initializable {
                         if (currentItem.getThuColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getThuColor() == javafx.scene.paint.Color.CYAN) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.ORANGE) {
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
+                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.GREEN) {
                                 setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
+                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.YELLOW) {
                                 setTextFill(javafx.scene.paint.Color.BLACK);
                                 setStyle("-fx-background-color: #FDFD96");
                             }
@@ -571,13 +571,13 @@ public class DoctorScreenController implements Initializable {
                         if (currentItem.getFriColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getFriColor() == javafx.scene.paint.Color.CYAN) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.ORANGE) {
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
+                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.GREEN) {
                                 setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
+                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.YELLOW) {
                                 setTextFill(javafx.scene.paint.Color.BLACK);
                                 setStyle("-fx-background-color: #FDFD96");
                             }
@@ -606,13 +606,13 @@ public class DoctorScreenController implements Initializable {
                         if (currentItem.getSatColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getSatColor() == javafx.scene.paint.Color.CYAN) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.ORANGE) {
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
+                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.GREEN) {
                                 setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
+                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.YELLOW) {
                                 setTextFill(javafx.scene.paint.Color.BLACK);
                                 setStyle("-fx-background-color: #FDFD96");
                             }
@@ -805,9 +805,9 @@ public class DoctorScreenController implements Initializable {
                 if (displayStartTime == startTime && displayEndTime == endTime) {
                     displayTime.setEvent(item.getPatient(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
                     } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
                         displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
@@ -819,9 +819,9 @@ public class DoctorScreenController implements Initializable {
                 } else if (displayStartTime == startTime) {
                     displayTime.setEvent(item.getPatient(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
                     } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
                         displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
@@ -831,9 +831,9 @@ public class DoctorScreenController implements Initializable {
 
                 } else if (displayStartTime >= startTime && endTime >= displayEndTime) {
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
                     } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
                         displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
@@ -850,9 +850,9 @@ public class DoctorScreenController implements Initializable {
                         displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
                     displayTime.setEvent(item.getTitle(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
                     } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
                         displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
@@ -865,9 +865,9 @@ public class DoctorScreenController implements Initializable {
                 } else if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin) {
                     displayTime.setEvent(item.getTitle(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                         displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
                     } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
                         displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
@@ -880,9 +880,9 @@ public class DoctorScreenController implements Initializable {
                         if (displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
                             displayTime.setEvent(" ", dayOfItem);
 
-                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                                 displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                                 displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
                             } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
                                 displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
@@ -894,9 +894,9 @@ public class DoctorScreenController implements Initializable {
                         } else {
                             displayTime.setEvent(" ", dayOfItem);
 
-                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                                 displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase("mamamo")) {
+                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
                                 displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
                             } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
                                 displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
@@ -946,34 +946,34 @@ public class DoctorScreenController implements Initializable {
                 int dayinWeek = i+2;
 
                 dbController.loadAppointments();
-                dbController.createAppointment("", "", dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
             }
             if(date.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY && tuesCheck.isSelected()) {
                 int dayinWeek = i+2;
 
                 dbController.loadAppointments();
-                dbController.createAppointment("", "", dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
             }
 
             if(date.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY && wedCheck.isSelected()) {
                 int dayinWeek = i+2;
 
                 dbController.loadAppointments();
-                dbController.createAppointment("", "", dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
             }
 
             if(date.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY && thursCheck.isSelected()) {
                 int dayinWeek = i+2;
 
                 dbController.loadAppointments();
-                dbController.createAppointment("", "", dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
             }
 
             if(date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY && friCheck.isSelected()) {
                 int dayinWeek = i+2;
 
                 dbController.loadAppointments();
-                dbController.createAppointment("", "", dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
             }
 
 

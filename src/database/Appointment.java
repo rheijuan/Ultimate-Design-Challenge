@@ -3,41 +3,41 @@ import model.*;
 public class Appointment extends CalendarItem {
 
 	private int appointmentID;
-	private String patient; 
-	private String doctor; 
-	
-	private int day; 
-	private int month; 
-	private int year; 
-	
-	private int starthour; 
+	private String patient;
+	private String doctor;
+
+	private int day;
+	private int month;
+	private int year;
+
+	private int starthour;
 	private int startmin;
-	private int endhour; 
+	private int endhour;
 	private int endmin;
-	
-	private int status; 
-	
+
+	private int status;
+
 	public Appointment(int appointmentID, String patient, String doctor, int day, int month, int year, int starthour, int startmin, int endhour, int endmin, int status) {
-		
+
 		this.appointmentID = appointmentID;
-		this.patient = patient; 
-		this.doctor = doctor; 
-		this.day = day; 
-		this.month = month; 
+		this.patient = patient;
+		this.doctor = doctor;
+		this.day = day;
+		this.month = month;
 		this.year = year;
-		this.starthour = starthour; 
-		this.startmin = startmin; 
-		this.endhour = endhour; 
+		this.starthour = starthour;
+		this.startmin = startmin;
+		this.endhour = endhour;
 		this.endmin = endmin;
 		this.status = status;
 	}
-	
+
 	public void printAppointment() {
-		System.out.println("Appointment No: " + appointmentID + ", Patient: " + patient + ", Doctor: " + doctor); 
+		System.out.println("Appointment No: " + appointmentID + ", Patient: " + patient + ", Doctor: " + doctor);
 		System.out.println(" On " + day + "/" + month + "/" + year + " (Status: " + status + ")");
 		System.out.println(" From " + starthour + ":" + startmin + ", To " + endhour + ":" + endmin);
 	}
-	
+
 	public int getAppointmentID() {
 		return appointmentID;
 	}
@@ -105,15 +105,15 @@ public class Appointment extends CalendarItem {
 	public int getEndHour() {
 		return endhour;
 	}
-	
+
 	public void setEndHour(int endhour) {
-		this.endhour = endhour; 
+		this.endhour = endhour;
 	}
 
 	public int getEndMin() {
 		return endmin;
 	}
-	
+
 	public void setEndMin(int endmin) {
 		this.endmin = endmin;
 	}

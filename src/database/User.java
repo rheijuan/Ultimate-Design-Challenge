@@ -1,16 +1,16 @@
 package database;
 
 public class User {
-	private String username; 
-	private String password; 
-	private String name; 
+	private String username;
+	private String password;
+	private String name;
 	private String role;
-	
+
 	User(String username, String password, String name, String role) {
-		this.username = username; 
-		this.password = password; 
-		this.name = name; 
-		this.role = role;		
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.role = role;
 	}
 
 	public void printUser() {
@@ -48,5 +48,5 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
 }

@@ -33,6 +33,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.CalendarItem;
 
@@ -164,6 +165,26 @@ public class SecretaryScreenController implements Initializable {
 		return true;
 	}
 	*/
+
+
+	@FXML
+	private void Notify() {
+		final Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		Parent viewParent;
+		try {
+			viewParent = FXMLLoader.load(getClass().getResource("popUp.fxml"));
+			Scene sc = new Scene(viewParent);
+
+			stage.setScene(sc);
+			stage.show();
+
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	@FXML
 	private void initWalkIn(ActionEvent event){
 		dbController.loadAppointments();
@@ -186,36 +207,36 @@ public class SecretaryScreenController implements Initializable {
 	private void bookWalkIn(ActionEvent event) {
 
 
-			System.out.println("reserved!");
+		System.out.println("reserved!");
 
-			int appointmentID = appointments.size() + 1;
-			String patient = nameLabel.getText();
-			String doctor = doctorBox.getSelectionModel().getSelectedItem();
+		int appointmentID = appointments.size() + 1;
+		String patient = nameLabel.getText();
+		String doctor = doctorBox.getSelectionModel().getSelectedItem();
 
-			int day = datePicker.getValue().getDayOfMonth();
-			int month = datePicker.getValue().getMonthValue();
-			int year = datePicker.getValue().getYear();
+		int day = datePicker.getValue().getDayOfMonth();
+		int month = datePicker.getValue().getMonthValue();
+		int year = datePicker.getValue().getYear();
 
-			int starthour = Integer.parseInt(startTimeComboBox.getSelectionModel().getSelectedItem().split(":")[0]);
-			int startmin = Integer.parseInt(startTimeComboBox.getSelectionModel().getSelectedItem().split(":")[1]);
-			int endhour = Integer.parseInt(endTimeComboBox.getSelectionModel().getSelectedItem().split(":")[0]);
-			int endmin = Integer.parseInt(endTimeComboBox.getSelectionModel().getSelectedItem().split(":")[1]);
+		int starthour = Integer.parseInt(startTimeComboBox.getSelectionModel().getSelectedItem().split(":")[0]);
+		int startmin = Integer.parseInt(startTimeComboBox.getSelectionModel().getSelectedItem().split(":")[1]);
+		int endhour = Integer.parseInt(endTimeComboBox.getSelectionModel().getSelectedItem().split(":")[0]);
+		int endmin = Integer.parseInt(endTimeComboBox.getSelectionModel().getSelectedItem().split(":")[1]);
 
-			int status = 1;
+		int status = 1;
 
-			Appointment newApp = new Appointment(appointmentID, patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
+		Appointment newApp = new Appointment(appointmentID, patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
 
-			//check for conflict first
-			if (isValidTime(newApp)) {
-				dbController.createAppointment(patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
-				newApp.printAppointment();
-				appointments.add(newApp);
-				profilePane.setVisible(true);
-				reservePane.setVisible(false);
-			} else {
-				System.out.println("Invalid appointment slot");
-			}
+		//check for conflict first
+		if (isValidTime(newApp)) {
+			dbController.createAppointment(patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
+			newApp.printAppointment();
+			appointments.add(newApp);
+			profilePane.setVisible(true);
+			reservePane.setVisible(false);
+		} else {
+			System.out.println("Invalid appointment slot");
 		}
+	}
 
 	private void setTime(ObservableList<String> items) {
 		for (int i = 8; i < 17; i++) {
@@ -532,13 +553,13 @@ public class SecretaryScreenController implements Initializable {
 						if (currentItem.getSunColor() != null) {
 							setTextFill(Color.WHITE);
 
-							if (currentItem.getWedColor() == Color.CYAN) {
+							if (currentItem.getSunColor() == Color.CYAN) {
 								setStyle("-fx-background-color: #78B4BF");
-							} else if (currentItem.getWedColor() == Color.ORANGE) {
+							} else if (currentItem.getSunColor() == Color.ORANGE) {
 								setStyle("-fx-background-color: #DC654D");
-							} else if (currentItem.getWedColor() == Color.GREEN) {
+							} else if (currentItem.getSunColor() == Color.GREEN) {
 								setStyle("-fx-background-color: #98FF98");
-							} else if (currentItem.getWedColor() == Color.YELLOW) {
+							} else if (currentItem.getSunColor() == Color.YELLOW) {
 								setTextFill(Color.BLACK);
 								setStyle("-fx-background-color: #FDFD96");
 							}
@@ -567,13 +588,13 @@ public class SecretaryScreenController implements Initializable {
 						if (currentItem.getMonColor() != null) {
 							setTextFill(Color.WHITE);
 
-							if (currentItem.getWedColor() == Color.CYAN) {
+							if (currentItem.getMonColor() == Color.CYAN) {
 								setStyle("-fx-background-color: #78B4BF");
-							} else if (currentItem.getWedColor() == Color.ORANGE) {
+							} else if (currentItem.getMonColor() == Color.ORANGE) {
 								setStyle("-fx-background-color: #DC654D");
-							} else if (currentItem.getWedColor() == Color.GREEN) {
+							} else if (currentItem.getMonColor() == Color.GREEN) {
 								setStyle("-fx-background-color: #98FF98");
-							} else if (currentItem.getWedColor() == Color.YELLOW) {
+							} else if (currentItem.getMonColor() == Color.YELLOW) {
 								setTextFill(Color.BLACK);
 								setStyle("-fx-background-color: #FDFD96");
 							}
@@ -602,13 +623,13 @@ public class SecretaryScreenController implements Initializable {
 						if (currentItem.getTueColor() != null) {
 							setTextFill(Color.WHITE);
 
-							if (currentItem.getWedColor() == Color.CYAN) {
+							if (currentItem.getTueColor() == Color.CYAN) {
 								setStyle("-fx-background-color: #78B4BF");
-							} else if (currentItem.getWedColor() == Color.ORANGE) {
+							} else if (currentItem.getTueColor() == Color.ORANGE) {
 								setStyle("-fx-background-color: #DC654D");
-							} else if (currentItem.getWedColor() == Color.GREEN) {
+							} else if (currentItem.getTueColor() == Color.GREEN) {
 								setStyle("-fx-background-color: #98FF98");
-							} else if (currentItem.getWedColor() == Color.YELLOW) {
+							} else if (currentItem.getTueColor() == Color.YELLOW) {
 								setTextFill(Color.BLACK);
 								setStyle("-fx-background-color: #FDFD96");
 							}
@@ -672,13 +693,13 @@ public class SecretaryScreenController implements Initializable {
 						if (currentItem.getThuColor() != null) {
 							setTextFill(Color.WHITE);
 
-							if (currentItem.getWedColor() == Color.CYAN) {
+							if (currentItem.getThuColor() == Color.CYAN) {
 								setStyle("-fx-background-color: #78B4BF");
-							} else if (currentItem.getWedColor() == Color.ORANGE) {
+							} else if (currentItem.getThuColor() == Color.ORANGE) {
 								setStyle("-fx-background-color: #DC654D");
-							} else if (currentItem.getWedColor() == Color.GREEN) {
+							} else if (currentItem.getThuColor() == Color.GREEN) {
 								setStyle("-fx-background-color: #98FF98");
-							} else if (currentItem.getWedColor() == Color.YELLOW) {
+							} else if (currentItem.getThuColor() == Color.YELLOW) {
 								setTextFill(Color.BLACK);
 								setStyle("-fx-background-color: #FDFD96");
 							}
@@ -707,13 +728,13 @@ public class SecretaryScreenController implements Initializable {
 						if (currentItem.getFriColor() != null) {
 							setTextFill(Color.WHITE);
 
-							if (currentItem.getWedColor() == Color.CYAN) {
+							if (currentItem.getFriColor() == Color.CYAN) {
 								setStyle("-fx-background-color: #78B4BF");
-							} else if (currentItem.getWedColor() == Color.ORANGE) {
+							} else if (currentItem.getFriColor() == Color.ORANGE) {
 								setStyle("-fx-background-color: #DC654D");
-							} else if (currentItem.getWedColor() == Color.GREEN) {
+							} else if (currentItem.getFriColor() == Color.GREEN) {
 								setStyle("-fx-background-color: #98FF98");
-							} else if (currentItem.getWedColor() == Color.YELLOW) {
+							} else if (currentItem.getFriColor() == Color.YELLOW) {
 								setTextFill(Color.BLACK);
 								setStyle("-fx-background-color: #FDFD96");
 							}
@@ -742,13 +763,13 @@ public class SecretaryScreenController implements Initializable {
 						if (currentItem.getSatColor() != null) {
 							setTextFill(Color.WHITE);
 
-							if (currentItem.getWedColor() == Color.CYAN) {
+							if (currentItem.getSatColor() == Color.CYAN) {
 								setStyle("-fx-background-color: #78B4BF");
-							} else if (currentItem.getWedColor() == Color.ORANGE) {
+							} else if (currentItem.getSatColor() == Color.ORANGE) {
 								setStyle("-fx-background-color: #DC654D");
-							} else if (currentItem.getWedColor() == Color.GREEN) {
+							} else if (currentItem.getSatColor() == Color.GREEN) {
 								setStyle("-fx-background-color: #98FF98");
-							} else if (currentItem.getWedColor() == Color.YELLOW) {
+							} else if (currentItem.getSatColor() == Color.YELLOW) {
 								setTextFill(Color.BLACK);
 								setStyle("-fx-background-color: #FDFD96");
 							}
@@ -983,7 +1004,7 @@ public class SecretaryScreenController implements Initializable {
 					continue;
 				if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin &&
 						displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
-						displayTime.setEvent(item.getTitle(), dayOfItem);
+					displayTime.setEvent(item.getTitle(), dayOfItem);
 
 					if (item.getDoctor().equalsIgnoreCase(docName1) && !item.getPatient().equalsIgnoreCase("mamamo")) {
 						displayTime.setColor(Color.ORANGE, dayOfItem);
@@ -999,7 +1020,7 @@ public class SecretaryScreenController implements Initializable {
 
 					break;
 				} else if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin) {
-						displayTime.setEvent(item.getTitle(), dayOfItem);
+					displayTime.setEvent(item.getTitle(), dayOfItem);
 					if (item.getDoctor().equalsIgnoreCase(docName1) && !item.getPatient().equalsIgnoreCase("mamamo")) {
 						displayTime.setColor(Color.ORANGE, dayOfItem);
 					} else if (item.getDoctor().equalsIgnoreCase(docName2) && !item.getPatient().equalsIgnoreCase("mamamo")) {
@@ -1013,7 +1034,7 @@ public class SecretaryScreenController implements Initializable {
 				} else {
 					if (displayTime.getValueStartHour() >= startHour && displayTime.getValueEndHour() <= endHour) {
 						if (displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
-								displayTime.setEvent(" ", dayOfItem);
+							displayTime.setEvent(" ", dayOfItem);
 							if (item.getDoctor().equalsIgnoreCase(docName1) && !item.getPatient().equalsIgnoreCase("mamamo")) {
 								displayTime.setColor(Color.ORANGE, dayOfItem);
 							} else if (item.getDoctor().equalsIgnoreCase(docName2) && !item.getPatient().equalsIgnoreCase("mamamo")) {
@@ -1026,7 +1047,7 @@ public class SecretaryScreenController implements Initializable {
 
 							break;
 						} else {
-								displayTime.setEvent(" ", dayOfItem);
+							displayTime.setEvent(" ", dayOfItem);
 							if (item.getDoctor().equalsIgnoreCase(docName1) && !item.getPatient().equalsIgnoreCase("mamamo")) {
 								displayTime.setColor(Color.ORANGE, dayOfItem);
 							} else if (item.getDoctor().equalsIgnoreCase(docName2) && !item.getPatient().equalsIgnoreCase("mamamo")) {
@@ -1060,8 +1081,8 @@ public class SecretaryScreenController implements Initializable {
 		for (int i =0; i < appointments.size(); i++) {
 			Appointment appointment = appointments.get(i);
 			Button b = new Button(appointment.getStartHour() + ":"
-						+ appointment.getStartMin() + "-" + appointment.getEndHour() + ":" + appointment.getEndMin() +
-						" -- " + appointment.getPatient() + " ** " + appointment.getDoctor() + "-----" +appointment.getDay() + "/" + +appointment.getMonth() + "/" +appointment.getYear());
+					+ appointment.getStartMin() + "-" + appointment.getEndHour() + ":" + appointment.getEndMin() +
+					" -- " + appointment.getPatient() + " ** " + appointment.getDoctor() + "-----" +appointment.getDay() + "/" + +appointment.getMonth() + "/" +appointment.getYear());
 
 
 			agendaViewGridPane.setHalignment(b, HPos.CENTER);
@@ -1069,17 +1090,17 @@ public class SecretaryScreenController implements Initializable {
 			b.setStyle("-fx-background-color: transparent");
 
 			b.setOnMouseClicked(mouseEvent -> {
-                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-                    if(mouseEvent.getClickCount() == 2){
-                        deleteAppointment(appointment.getAppointmentID());
-                        displayAgendaView();
-                    }
-                }
-            });
+				if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+					if(mouseEvent.getClickCount() == 2){
+						deleteAppointment(appointment.getAppointmentID());
+						displayAgendaView();
+					}
+				}
+			});
 
 			agendaViewGridPane.add(b, 0,i);
+		}
 	}
-}
 
 
 	@Override
