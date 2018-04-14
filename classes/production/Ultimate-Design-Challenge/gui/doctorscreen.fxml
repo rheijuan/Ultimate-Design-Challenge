@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -31,10 +31,10 @@
                         </font>
                      </Label>
                   </AnchorPane>
-                  <DatePicker fx:id="dateLabel1" layoutX="94.0" layoutY="107.0" prefHeight="25.0" prefWidth="129.0" promptText="Date" />
+                  <DatePicker fx:id="datePick" layoutX="94.0" layoutY="107.0" prefHeight="25.0" prefWidth="129.0" promptText="Date" />
                   <Label layoutX="42.0" layoutY="107.0" text="Date" />
                   <Label layoutX="42.0" layoutY="158.0" text="Time" />
-                  <Button fx:id="reserveButton" layoutX="461.0" layoutY="282.0" mnemonicParsing="false" text="Create" />
+                  <Button fx:id="reserveButton" layoutX="461.0" layoutY="282.0" mnemonicParsing="false" onAction="#createNewAptTime" text="Create" />
                   <Button layoutX="536.0" layoutY="282.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
                   <CheckBox fx:id="monCheck" layoutX="323.0" layoutY="98.0" mnemonicParsing="false" text="Every Monday" />
                   <CheckBox fx:id="tuesCheck" layoutX="323.0" layoutY="138.0" mnemonicParsing="false" text="Every Tuesday" />
@@ -206,14 +206,41 @@
       </Tab>
       <Tab onSelectionChanged="#displayAgendaView" text="Agenda View">
          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <AnchorPane layoutX="62.0" layoutY="44.0" prefHeight="322.0" prefWidth="590.0">
-               <ListView fx:id="appointmentList" layoutX="-1.0" layoutY="48.0" prefHeight="274.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0" />
-               <AnchorPane layoutX="30.0" layoutY="-1.0" prefHeight="49.0" prefWidth="590.0" style="-fx-background-color: #3E454D;" AnchorPane.bottomAnchor="273.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                  <Label fx:id="agendaLabel" alignment="CENTER" layoutX="8.0" layoutY="9.0" text="Month Day, Year" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
+            <AnchorPane layoutX="31.0" layoutY="22.0" prefHeight="322.0" prefWidth="590.0">
+               <AnchorPane layoutX="10.0" layoutY="10.0" onMouseClicked="#displayAgendaView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8FCFDA;">
+                  <children>
+                     <AnchorPane fx:id="agendaViewPane" layoutX="11.0" layoutY="1.0" prefHeight="366.0" prefWidth="643.0">
+                        <children>
+                           <AnchorPane prefHeight="49.0" prefWidth="590.0" style="-fx-background-color: #3E454D;">
+                              <children>
+                                 <Label fx:id="agendaLabel2" alignment="CENTER" layoutX="8.0" layoutY="9.0" text="Agenda View" textFill="WHITE">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </AnchorPane>
+                           <AnchorPane layoutY="50.0" prefHeight="274.0" prefWidth="591.0" style="-fx-background-color: #FFFFFF;">
+                              <children>
+                                 <ScrollPane fx:id="agendaScrollPane" fitToWidth="true" layoutX="-2.0" prefHeight="280.0" prefWidth="594.0">
+                                    <content>
+                                       <GridPane fx:id="agendaViewGridPane" prefHeight="118.0" prefWidth="592.0">
+                                          <columnConstraints>
+                                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          </columnConstraints>
+                                          <rowConstraints>
+                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          </rowConstraints>
+                                       </GridPane>
+                                    </content>
+                                 </ScrollPane>
+                              </children>
+                           </AnchorPane>
+                        </children>
+                     </AnchorPane>
+                  </children>
                </AnchorPane>
             </AnchorPane>
          </AnchorPane>

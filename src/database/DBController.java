@@ -91,7 +91,7 @@ public class DBController {
 	        rs = pst.executeQuery();
 	        while (rs.next())
 	        	users.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
-	        				       //(FORMAT: username, password, name, role (patient, secretary, doc)
+	        				       //(FORMAT: username,   , name, role (patient, secretary, doc)
         } catch (SQLException ex){
           Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
         } 

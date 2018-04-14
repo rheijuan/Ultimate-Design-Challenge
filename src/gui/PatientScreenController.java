@@ -9,8 +9,10 @@ import database.DBController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +20,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -45,13 +49,9 @@ public class PatientScreenController implements Initializable {
 
 	@FXML private ComboBox<String> doctorBox;
 
-	@FXML private ComboBox<String> sTimeHour;
+	@FXML private ComboBox<String> sTime;
 
-	@FXML private ComboBox<String> sTimeMin;
-
-	@FXML private ComboBox<String> eTimeHour;
-
-	@FXML private ComboBox<String> eTimeMin;
+	@FXML private ComboBox<String> eTime;
 
 	@FXML private TableView<DayTableItem> dayTableView;
 
@@ -60,18 +60,43 @@ public class PatientScreenController implements Initializable {
 	@FXML private TableColumn<DayTableItem, String> patientColumn;
 
 	@FXML private ListView<String> appointmentList;
-	
+
 	@FXML private DatePicker datePicker;
-	
+
 	@FXML private TextField nameLabel;
+
+	@FXML private ScrollPane agendaScrollPane;
+
+	@FXML private GridPane agendaViewGridPane;
+
+	@FXML private AnchorPane agendaViewPane;
+
 
 	@FXML
 	private void reserveSlot() {
 		profilePane.setVisible(false);
 
+		doctorBox.getItems().clear();
+		sTime.getItems().clear();
+		eTime.getItems().clear();
 		doctorBox.getItems().add(docName1);
 		doctorBox.getItems().add(docName2);
 
+		for (int i = 8; i < 17; i++) {
+			for (int j = 0; j < 60; j += 30) {
+				if (j % 60 == 0) {
+					sTime.getItems().add(i + ":00");
+					//eTime.getItems().add(i + ":00");
+//                    j = 0;
+				}
+				else{
+					sTime.getItems().add(i + ":30");
+					//eTime.getItems().add(i + ":30");
+
+				}
+			}
+		}
+		/*
 		for (int i = 8; i <= 17; i++) {
 			eTimeHour.getItems().add(String.valueOf(i));
 			sTimeHour.getItems().add(String.valueOf(i));
@@ -81,6 +106,43 @@ public class PatientScreenController implements Initializable {
 		sTimeMin.getItems().add("30");
 		eTimeMin.getItems().add("00");
 		eTimeMin.getItems().add("30");
+		*/
+	}
+	// get this funtion as action performed of To box
+	@FXML
+	private void setTo(){
+		eTime.getItems().clear();
+		String startTime = sTime.getSelectionModel().getSelectedItem().toString();
+		if(startTime.split(":")[1].equalsIgnoreCase("30")){
+			for (int i = Integer.parseInt(startTime.split(":")[0])+1; i < 17; i++) {
+				for (int j = 0; j < 60; j += 30) {
+					if (j % 60 == 0) {
+						eTime.getItems().add(i + ":00");
+					}
+					else{
+						eTime.getItems().add(i + ":30");
+
+					}
+				}
+			}
+		}
+		else{
+			eTime.getItems().add(Integer.parseInt(startTime.split(":")[0])+":30");
+			for (int i = Integer.parseInt(startTime.split(":")[0])+1; i < 17; i++) {
+				for (int j = 0; j < 60; j += 30) {
+					if (j % 60 == 0) {
+						eTime.getItems().add(i + ":00");
+					}
+					else{
+						eTime.getItems().add(i + ":30");
+
+					}
+				}
+			}
+		}
+		eTime.getItems().add("17:00");
+
+
 	}
 
 	@FXML
@@ -168,37 +230,103 @@ public class PatientScreenController implements Initializable {
 
 	@FXML
 	private void displayAgendaView() {
-		agendaLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
+		//dbController.loadAppointments();
+		agendaViewPane.setVisible(true);
+		//agendaLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
 
-		ObservableList<String> scheduledAppointments = FXCollections.observableArrayList();
+		//ObservableList<String> scheduledAppointments = FXCollections.observableArrayList();
+		agendaViewGridPane.getChildren().clear();
+		appointments.clear();
+		dbController.loadAppointments();
 
-		for (Appointment appointment : appointments)
-			if (eventToday(appointment, daySelected))
-				if (appointment.getPatient().equals(patName))
-					scheduledAppointments.add(appointment.getStartHour() + ":"
-							+ appointment.getStartMin() + "-" + appointment.getEndHour() + ":" + appointment.getEndMin() +
-							" -- " + appointment.getPatient() + " ** " + appointment.getDoctor());
+		int ctr =0;
+		for (int i =0; i < appointments.size(); i++) {
+			Appointment appointment = appointments.get(i);
 
-		appointmentList.setItems(scheduledAppointments);
+			if(appointment.getPatient().equalsIgnoreCase(patName)){
+
+				Button b = new Button(appointment.getMonth() + "/" + appointment.getDay() + "/" + appointment.getYear() + " ~ " + appointment.getStartHour() + ":"
+						+ appointment.getStartMin() + "-" + appointment.getEndHour() + ":" + appointment.getEndMin() +
+						" -- " + appointment.getPatient() + " ** Dr." + appointment.getDoctor());
+				agendaViewGridPane.setHalignment(b, HPos.CENTER);
+
+				b.setStyle("-fx-background-color: transparent");
+
+				b.setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent mouseEvent) {
+						if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+							if(mouseEvent.getClickCount() == 2){
+								deleteAppointment(appointment.getAppointmentID()); // create function
+								displayAgendaView();
+							}
+						}
+					}
+
+					private void deleteAppointment(int ID) {
+						appointments.clear();
+						dbController.loadAppointments();
+						for (Appointment appointment : appointments) {
+							if (appointment.getAppointmentID() == ID) {
+								Appointment a = appointment;
+								dbController.deleteAppointmentForC(a.getPatient(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
+								break;
+							}
+						}
+					}
+				});
+				agendaViewGridPane.add(b, 0, ctr);
+				ctr++;
+			}
+
+
+
+
+
+
+		}
 	}
-	
+
+
+
 	@FXML
 	private void reserveNewAppointment(){
 		System.out.println("reserved!");
+		appointments.clear();
 		dbController.loadAppointments();
 
-		int appointmentID = appointments.size()+1;
-		String patient = nameLabel.getText(); 
-		String doctor = doctorBox.getSelectionModel().getSelectedItem().toString(); 
 
-		int day = datePicker.getValue().getDayOfMonth(); 
-		int month = datePicker.getValue().getMonthValue(); 
-		int year = datePicker.getValue().getYear(); 
+		int appointmentID;
+		if(appointments.size() ==0)
+			appointmentID = appointments.size()+1;
+		else{
+			int max =appointments.get(0).getAppointmentID();
+			for(int i=1; i<appointments.size(); i++){
+				if(max < appointments.get(i).getAppointmentID())
+					max = appointments.get(i).getAppointmentID();
+			}
+			appointmentID = max;
+		}
 
-		int starthour = Integer.parseInt(sTimeHour.getSelectionModel().getSelectedItem().toString()); 
-		int startmin = Integer.parseInt(sTimeHour.getSelectionModel().getSelectedItem().toString());
-		int endhour = Integer.parseInt(eTimeHour.getSelectionModel().getSelectedItem().toString()); 
-		int endmin = Integer.parseInt(eTimeHour.getSelectionModel().getSelectedItem().toString());
+		String patient = patName;
+
+		String doctor = doctorBox.getSelectionModel().getSelectedItem().toString();
+		/*
+		if(doctorBox.getSelectionModel().getSelectedItem().toString() != null){
+			doctor = doctorBox.getSelectionModel().getSelectedItem().toString();
+		}
+		else{
+			// tell user that its invalid
+		}
+		*/
+		int day = datePicker.getValue().getDayOfMonth();
+		int month = datePicker.getValue().getMonthValue();
+		int year = datePicker.getValue().getYear();
+
+		int starthour = Integer.parseInt(sTime.getSelectionModel().getSelectedItem().toString().split(":")[0]);
+		int startmin = Integer.parseInt(sTime.getSelectionModel().getSelectedItem().toString().split(":")[1]);
+		int endhour = Integer.parseInt(eTime.getSelectionModel().getSelectedItem().toString().split(":")[0]);
+		int endmin = Integer.parseInt(eTime.getSelectionModel().getSelectedItem().toString().split(":")[1]);
 
 		int status = 1;
 
@@ -212,6 +340,7 @@ public class PatientScreenController implements Initializable {
 		} else {
 			System.out.println("Invalid appointment slot");
 		}
+		profilePane.setVisible(true);
 
 	}
 
@@ -222,7 +351,7 @@ public class PatientScreenController implements Initializable {
 
 				LocalTimeRange range1 = new LocalTimeRange(LocalTime.of(appo.getStartHour(), appo.getStartMinute()), LocalTime.of(appo.getEndHour(), appo.getEndMinute()));
 				LocalTimeRange range2 = new LocalTimeRange(LocalTime.of(a.getStartHour(), a.getStartMinute()), LocalTime.of(a.getEndHour(), a.getEndMinute()));
-				if (range1.overlaps(range2)) 
+				if (range1.overlaps(range2))
 					return false;
 			}
 		}
@@ -255,7 +384,7 @@ public class PatientScreenController implements Initializable {
 		for (Appointment app : appointments)
 			if (app.getMonth() == monthToday && app.getDay() == daySelected && app.getYear() == yearToday)
 				itemsToDisplay.add(app);
-
+		// not this one
 		itemsToDisplay.sort(Comparator.comparingInt(Appointment::getStartHour)
 				.thenComparingInt(Appointment::getStartMinute));
 
@@ -398,12 +527,12 @@ public class PatientScreenController implements Initializable {
 		dayToday = cal.get(GregorianCalendar.DAY_OF_MONTH);
 
 		daySelected = dayToday;
-		
+
 		for (int i=0; i<dbController.getDoctors().size(); i++) {
 			System.out.println(dbController.getDoctors().get(i).getName());
 			doctorBox.getItems().add(dbController.getDoctors().get(i).getName());
 		}
-		
+
 		appointments = DBController.getAppointments();
 		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);
@@ -442,13 +571,16 @@ public class PatientScreenController implements Initializable {
 							node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
 					}
 				}
+
 			});
 
 			// Highlights the date when an event is on the day
 			for (Appointment app: appointments)
 				if(eventToday(app, i)) {
-					button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #dc654d; -fx-text-fill: #FFFFFF");
-					break;
+					if(app.getPatient().equalsIgnoreCase(patName)){
+						button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #dc654d; -fx-text-fill: #FFFFFF");
+						break;
+					}
 				}
 
 			miniCalendar.add(button, column, row);
@@ -457,8 +589,10 @@ public class PatientScreenController implements Initializable {
 
 	private boolean now(int day) {
 		for (Appointment app : appointments) {
-			if (app.getYear() == yearToday && app.getMonth() == monthToday && app.getDay() == day)
-				return true;
+			if(app.getPatient().equalsIgnoreCase(patName)){
+				if (app.getYear() == yearToday && app.getMonth() == monthToday && app.getDay() == day)
+					return true;
+			}
 		}
 
 		return false;

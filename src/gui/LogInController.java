@@ -1,6 +1,5 @@
 package gui;
 
-import database.Appointment;
 import database.DBController;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,9 +25,6 @@ public class LogInController implements Initializable {
     @FXML private PasswordField passwordText;
 
     @FXML private Label invalidLabel;
-    
-    @FXML private Button walkInButton;
-    @FXML private Button enterButton;
 
     @FXML
     private void enterClinic(ActionEvent event) {
@@ -71,10 +67,13 @@ public class LogInController implements Initializable {
         if (!found)
             invalidLabel.setVisible(true);
     }
-    
+
     @FXML
     private void bookWalkIn(ActionEvent event) {
-    	System.out.println("Book Walk in clicked");
+        BookInController.setDoc1Name(doctors.get(0).getName());
+        BookInController.setDoc2Name(doctors.get(1).getName());
+
+        changeScene(event, "bookIn.fxml");
     }
 
     private void changeScene(ActionEvent event, String url) {
@@ -101,8 +100,7 @@ public class LogInController implements Initializable {
         users = DBController.getUsers();
         doctors = DBController.getDoctors();
 
-        BookInController.setDoc1Name(doctors.get(0).getName());
-        BookInController.setDoc2Name(doctors.get(1).getName());
+
 
         invalidLabel.setVisible(false);
     }
