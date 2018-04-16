@@ -4,154 +4,47 @@ import database.Appointment;
 import database.DBController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 
 import java.awt.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class DoctorScreenController implements Initializable {
+public class DoctorScreenController extends AbstractController implements Initializable {
 
-    @FXML private Label doctorTag;
+    @FXML private CheckBox mondayBox;
 
-    @FXML private Label dateLabel;
+    @FXML private CheckBox tuesdayBox;
 
-    @FXML private Label dayLabel;
+    @FXML private CheckBox wednesdayBox;
 
-    @FXML private Label agendaLabel;
+    @FXML private CheckBox thursdayBox;
 
-    @FXML private Label weekLabel;
+    @FXML private CheckBox fridayBox;
 
-    @FXML private GridPane miniCalendar;
+    @FXML private CheckBox saturdayBox;
 
-    @FXML private ComboBox<String> startTimeComboBox;
+    @FXML private CheckBox everyMonthBox;
 
-    @FXML private ComboBox<String> endTimeComboBox;
+    @FXML private CheckBox everydayBox;
 
-    @FXML private AnchorPane profilePane;
-
-    @FXML private TableColumn<DayTableItem, String> timeColumn;
-
-    @FXML private TableColumn<DayTableItem, String> patientColumn;
-
-    @FXML private TableView<DayTableItem> dayTableView;
-
-    @FXML private ListView<String> appointmentList;
-
-    @FXML private DatePicker datePick;
-
-    @FXML private CheckBox monCheck;
-
-    @FXML private CheckBox tuesCheck;
-
-    @FXML private CheckBox wedCheck;
-
-    @FXML private CheckBox thursCheck;
-
-    @FXML private CheckBox friCheck;
-
-    @FXML private GridPane agendaViewGridPane;
-
-    @FXML private AnchorPane agendaViewPane;
-    @FXML
-    private TableView<WeekTableItem> weekTable;
-    @FXML
-    private TableColumn<WeekTableItem, String> weekTime;
-    @FXML
-    private TableColumn<WeekTableItem, String> weekSunEvent;
-    @FXML
-    private TableColumn<WeekTableItem, String> weekMonEvent;
-    @FXML
-    private TableColumn<WeekTableItem, String> weekTueEvent;
-    @FXML
-    private TableColumn<WeekTableItem, String> weekWedEvent;
-    @FXML
-    private TableColumn<WeekTableItem, String> weekThuEvent;
-    @FXML
-    private TableColumn<WeekTableItem, String> weekFriEvent;
-    @FXML
-    private TableColumn<WeekTableItem, String> weekSatEvent;
-
-
+    @FXML private Label userWeekTag;
 
     @FXML
-    private void nextMonth() {
-        if (monthToday == 11) {
-            monthToday = 0;
-            yearToday += 1;
-        } else
-            monthToday += 1;
-
-        dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-        refreshCalendar(monthToday, yearToday, dayToday);
-    }
-
-    @FXML
-    private void prevMonth() {
-        if (monthToday == 0) {
-            monthToday = 11;
-            yearToday -= 1;
-        } else
-            monthToday -= 1;
-
-        dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
-        refreshCalendar(monthToday, yearToday, dayToday);
-    }
-
-    @FXML
-    private void setAppointment() {
-        profilePane.setVisible(false);
-
-        setTime(startTimeComboBox.getItems());
-        startTimeComboBox.getItems().add("17:00");
-
-        setTime(endTimeComboBox.getItems());
-        endTimeComboBox.getItems().add("17:00");
-
-    }
-
-
-    private void setTime(ObservableList<String> items) {
-        for (int i = 8; i < 17; i++) {
-            for (int j = 0; j < 60; j += 30) {
-                if (j % 60 == 0) {
-                    items.add(i + ":00");
-                    j = 0;
-                }
-                else
-                    items.add(i + ":30");
-            }
-        }
-    }
-
-    @FXML
-    private void cancel() {
-        profilePane.setVisible(true);
-    }
-
-    @FXML
-    private void displayDayView() {
-        dayLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
+    void displayDayView() {
+        userDayTag.setText("Doctor " + name);
+        dayDateTag.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
         ObservableList<DayTableItem> data = initializeDayView();
-        timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
-        patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
+        dayTimeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+        dayPatientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
 
-        patientColumn.setCellFactory(column -> new TableCell<DayTableItem, String> () {
+        dayPatientColumn.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(String event, boolean empty) {
                 super.updateItem(event, empty);
@@ -160,16 +53,17 @@ public class DoctorScreenController implements Initializable {
                     setText(null);
                     setStyle("");
                 } else {
-                    setText(event);
                     DayTableItem currentItem = getTableView().getItems().get(getIndex());
+
                     if (currentItem.getColor() != null) {
                         setTextFill(javafx.scene.paint.Color.WHITE);
 
                         if (currentItem.getColor().equals(java.awt.Color.decode("#78B4BF")))
                             setStyle("-fx-background-color: #78B4BF");
-                        else if (currentItem.getColor().equals(java.awt.Color.decode("#DC654D")))
+                        else if (currentItem.getColor().equals(java.awt.Color.decode("#DC654D"))) {
+                            setText(event);
                             setStyle("-fx-background-color: #DC654D");
-
+                        }
                     } else {
                         setTextFill(javafx.scene.paint.Color.BLACK);
                         setStyle("");
@@ -177,11 +71,10 @@ public class DoctorScreenController implements Initializable {
                 }
             }
         });
-
-        dayTableView.setItems(data);
+        dayTable.setItems(data);
     }
 
-    private ObservableList<DayTableItem> initializeDayView() {
+    ObservableList<DayTableItem> initializeDayView() {
         ArrayList<Appointment> itemsToDisplay = new ArrayList<>();
 
         ArrayList<DayTableItem> toTableItems = new ArrayList<>();
@@ -191,10 +84,10 @@ public class DoctorScreenController implements Initializable {
 
                 if (min < 30) {
                     toTableItems.add(new DayTableItem(hour + ":" + String.format("%02d", min), "", 3));
-                    toTableItems.get(toTableItems.size()-1).setValueStartHour(hour);
-                    toTableItems.get(toTableItems.size()-1).setValueStartMin(min);
-                    toTableItems.get(toTableItems.size()-1).setValueEndHour(hour);
-                    toTableItems.get(toTableItems.size()-1).setValueEndMin(min+29);
+                    toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
+                    toTableItems.get(toTableItems.size() - 1).setValueStartMin(min);
+                    toTableItems.get(toTableItems.size() - 1).setValueEndHour(hour);
+                    toTableItems.get(toTableItems.size() - 1).setValueEndMin(min + 29);
                 } else {
                     toTableItems.add(new DayTableItem("", "", 3));
                     toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
@@ -205,13 +98,13 @@ public class DoctorScreenController implements Initializable {
             }
 
         for (Appointment app : appointments)
-            if (app.getMonth() == monthToday && app.getDay() == daySelected && app.getYear() == yearToday)
+            if (app.getMonth() == monthToday && app.getDay() == dayToday && app.getYear() == yearToday)
                 itemsToDisplay.add(app);
 
         itemsToDisplay.sort(Comparator.comparingInt(Appointment::getStartHour)
                 .thenComparingInt(Appointment::getStartMinute));
 
-        for (Appointment item: itemsToDisplay) {
+        for (Appointment item : itemsToDisplay) {
             int startHour = item.getStartHour();
             int startMin = item.getStartMinute();
             int endHour;
@@ -229,6 +122,7 @@ public class DoctorScreenController implements Initializable {
                     endMin = 29;
                 else
                     endMin = 59;
+
             } else if (item.getEndMinute() == 0) {
                 endHour = item.getEndHour() - 1;
                 endMin = 59;
@@ -242,12 +136,13 @@ public class DoctorScreenController implements Initializable {
 
             int endTime = Integer.parseInt(Integer.toString(endHour) + Integer.toString(endMin));
 
-            for (DayTableItem displayTime: toTableItems) {
+            for (DayTableItem displayTime : toTableItems) {
                 int displayStartTime;
 
                 if (displayTime.getValueStartMin() == 0)
                     displayStartTime = Integer.parseInt(Integer.toString(displayTime.getValueStartHour() * 10) +
                             Integer.toString(displayTime.getValueStartMin()));
+
                 else
                     displayStartTime = Integer.parseInt(Integer.toString(displayTime.getValueStartHour()) +
                             Integer.toString(displayTime.getValueStartMin()));
@@ -257,131 +152,60 @@ public class DoctorScreenController implements Initializable {
 
                 if (displayStartTime == startTime && displayEndTime == endTime) {
                     displayTime.setPatient(item.getPatient());
-
-                    if (item.getStatus() == 0) {
-                        Color c = Color.decode("#78B4BF");
-                        displayTime.setColor(c);
-                    }
-                    else if (item.getStatus() == 1) {
-                        Color c = Color.decode("#DC654D");
-                        displayTime.setColor(c);
-                    }
+                    setAppointmentColors(item, displayTime);
 
                     break;
                 } else if (displayStartTime == startTime) {
                     displayTime.setPatient(item.getPatient());
-
-                    if (item.getStatus() == 0) {
-                        Color c = Color.decode("#78B4BF");
-                        displayTime.setColor(c);
-                    }
-                    else if (item.getStatus() == 1) {
-                        Color c = Color.decode("#DC654D");
-                        displayTime.setColor(c);
-                    }
+                    setAppointmentColors(item, displayTime);
 
                 } else if (displayStartTime >= startTime && endTime >= displayEndTime) {
-                    displayTime.setPatient(" ");
-
-                    if (item.getStatus() == 0) {
-                        Color c = Color.decode("#78B4BF");
-                        displayTime.setColor(c);
-                    } else if (item.getStatus() == 1) {
-                        Color c = Color.decode("#DC654D");
-                        displayTime.setColor(c);
-                    }
+                    displayTime.setPatient("");
+                    setAppointmentColors(item, displayTime);
                 }
             }
         }
+
         return FXCollections.observableArrayList(toTableItems);
     }
 
-    @FXML
-    private void displayAgendaView() {
-        //dbController.loadAppointments();
-        agendaViewPane.setVisible(true);
-        //agendaLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
-
-        //ObservableList<String> scheduledAppointments = FXCollections.observableArrayList();
-        agendaViewGridPane.getChildren().clear();
-        appointments.clear();
-        dbController.loadAppointments();
-
-        int ctr =0;
-        for (int i =0; i < appointments.size(); i++) {
-            Appointment appointment = appointments.get(i);
-
-            if(appointment.getDoctor().equalsIgnoreCase(docName)){
-
-                Button b = new Button(appointment.getMonth() + "/" + appointment.getDay() + "/" + appointment.getYear() + " ~ " + appointment.getStartHour() + ":"
-                        + appointment.getStartMin() + "-" + appointment.getEndHour() + ":" + appointment.getEndMin() +
-                        " -- " + appointment.getPatient() + " ** Dr." + appointment.getDoctor());
-                agendaViewGridPane.setHalignment(b, HPos.CENTER);
-
-                b.setStyle("-fx-background-color: transparent");
-
-                b.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-                            if(mouseEvent.getClickCount() == 2){
-                                deleteAppointment(appointment.getAppointmentID()); // create function
-                                displayAgendaView();
-                            }
-                        }
-                    }
-
-                    private void deleteAppointment(int ID) {
-                        appointments.clear();
-                        dbController.loadAppointments();
-                        for (Appointment appointment : appointments) {
-                            if (appointment.getAppointmentID() == ID) {
-                                Appointment a = appointment;
-                                dbController.deleteAppointmentForD(a.getDoctor(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
-                                break;
-                            }
-                        }
-                    }
-                });
-                agendaViewGridPane.add(b, 0, ctr);
-                ctr++;
-            }
+    private void setAppointmentColors(Appointment item, DayTableItem displayTime) {
+        if (item.getStatus() == 0 && item.getDoctor().equals(name)) {
+            Color c = Color.decode("#78B4BF");
+            displayTime.setColor(c);
+        } else if (item.getStatus() == 1 && item.getDoctor().equals(name)) {
+            Color c = Color.decode("#DC654D");
+            displayTime.setColor(c);
         }
     }
 
-
     @FXML
-    private void displayWeekView() {
-
+    void displayWeekView() {
+        userWeekTag.setText("Doctor " + name);
         Date dateForWeek = new Date();
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d");
         SimpleDateFormat monthDeterminer = new SimpleDateFormat("M");
 
-        cal.set(Calendar.MONTH, monthToday-1);
-        System.out.println(monthToday);
-        cal.set(Calendar.DATE, daySelected);
-        System.out.println(daySelected);
+        cal.set(Calendar.MONTH, monthToday - 1);
+        cal.set(Calendar.DATE, dayToday);
         cal.set(Calendar.YEAR, yearToday);
-        System.out.println(yearToday);
-
-        System.out.println(cal.getTime());
 
         int startWeekValue = -(cal.get(Calendar.DAY_OF_WEEK) - 1);
 
         cal.add(Calendar.DATE, startWeekValue);
 
         ObservableList<WeekTableItem> data = initializeWeekView(cal);
-        weekTime.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("time"));
-        weekSunEvent.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("sunEvent"));
-        weekMonEvent.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("monEvent"));
-        weekTueEvent.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("tueEvent"));
-        weekWedEvent.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("wedEvent"));
-        weekThuEvent.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("thuEvent"));
-        weekFriEvent.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("friEvent"));
-        weekSatEvent.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("satEvent"));
+        weekTimeColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("time"));
+        sundayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("sunEvent"));
+        mondayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("monEvent"));
+        tuesdayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("tueEvent"));
+        wednesdayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("wedEvent"));
+        thursdayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("thuEvent"));
+        fridayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("friEvent"));
+        saturdayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("satEvent"));
 
-        weekSunEvent.setCellFactory(column -> {
+        weekTimeColumn.setCellFactory(column -> {
             return new TableCell<WeekTableItem, String>() {
                 @Override
                 protected void updateItem(String sunEvent, boolean empty) {
@@ -391,21 +215,22 @@ public class DoctorScreenController implements Initializable {
                         setText(null);
                         setStyle("");
                     } else {
-                        setText(sunEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
                         if (currentItem.getSunColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getSunColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
+                                setText(sunEvent);
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.GREEN) {
-                                setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.YELLOW) {
-                                setTextFill(javafx.scene.paint.Color.BLACK);
-                                setStyle("-fx-background-color: #FDFD96");
                             }
+//                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.GREEN) {
+//                                setStyle("-fx-background-color: #98FF98");
+//                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.YELLOW) {
+//                                setTextFill(javafx.scene.paint.Color.BLACK);
+//                                setStyle("-fx-background-color: #FDFD96");
+//                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
@@ -415,7 +240,7 @@ public class DoctorScreenController implements Initializable {
             };
         });
 
-        weekMonEvent.setCellFactory(column -> {
+        mondayColumn.setCellFactory(column -> {
             return new TableCell<WeekTableItem, String>() {
                 @Override
                 protected void updateItem(String monEvent, boolean empty) {
@@ -425,22 +250,28 @@ public class DoctorScreenController implements Initializable {
                         setText(null);
                         setStyle("");
                     } else {
-                        setText(monEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
 
                         if (currentItem.getMonColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getMonColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
+                                setText(monEvent);
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.GREEN) {
-                                setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.YELLOW) {
-                                setTextFill(javafx.scene.paint.Color.BLACK);
-                                setStyle("-fx-background-color: #FDFD96");
                             }
+
+//                            if (currentItem.getMonColor() == javafx.scene.paint.Color.CYAN) {
+//                                setStyle("-fx-background-color: #78B4BF");
+//                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.ORANGE) {
+//                                setStyle("-fx-background-color: #DC654D");
+//                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.GREEN) {
+//                                setStyle("-fx-background-color: #98FF98");
+//                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.YELLOW) {
+//                                setTextFill(javafx.scene.paint.Color.BLACK);
+//                                setStyle("-fx-background-color: #FDFD96");
+//                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
@@ -451,7 +282,7 @@ public class DoctorScreenController implements Initializable {
             };
         });
 
-        weekTueEvent.setCellFactory(column -> {
+        tuesdayColumn.setCellFactory(column -> {
             return new TableCell<WeekTableItem, String>() {
                 @Override
                 protected void updateItem(String tueEvent, boolean empty) {
@@ -461,21 +292,28 @@ public class DoctorScreenController implements Initializable {
                         setText(null);
                         setStyle("");
                     } else {
-                        setText(tueEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
-                        if (currentItem.getTueColor() != null) {
+
+                        if (currentItem.getMonColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getTueColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
+                                setText(tueEvent);
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.GREEN) {
-                                setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.YELLOW) {
-                                setTextFill(javafx.scene.paint.Color.BLACK);
-                                setStyle("-fx-background-color: #FDFD96");
                             }
+
+//                            if (currentItem.getTueColor() == javafx.scene.paint.Color.CYAN) {
+//                                setStyle("-fx-background-color: #78B4BF");
+//                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.ORANGE) {
+//                                setStyle("-fx-background-color: #DC654D");
+//                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.GREEN) {
+//                                setStyle("-fx-background-color: #98FF98");
+//                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.YELLOW) {
+//                                setTextFill(javafx.scene.paint.Color.BLACK);
+//                                setStyle("-fx-background-color: #FDFD96");
+//                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
@@ -486,7 +324,7 @@ public class DoctorScreenController implements Initializable {
             };
         });
 
-        weekWedEvent.setCellFactory(column -> {
+        wednesdayColumn.setCellFactory(column -> {
             return new TableCell<WeekTableItem, String>() {
                 @Override
                 protected void updateItem(String wedEvent, boolean empty) {
@@ -496,21 +334,28 @@ public class DoctorScreenController implements Initializable {
                         setText(null);
                         setStyle("");
                     } else {
-                        setText(wedEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
-                        setTextFill(javafx.scene.paint.Color.WHITE);
 
-                        if (currentItem.getWedColor() != null) {
-                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
+                        if (currentItem.getMonColor() != null) {
+                            setTextFill(javafx.scene.paint.Color.WHITE);
+
+                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
+                                setText(wedEvent);
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
-                                setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
-                                setTextFill(javafx.scene.paint.Color.BLACK);
-                                setStyle("-fx-background-color: #FDFD96");
                             }
+//                        if (currentItem.getWedColor() != null) {
+////                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
+////                                setStyle("-fx-background-color: #78B4BF");
+////                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
+////                                setStyle("-fx-background-color: #DC654D");
+////                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
+////                                setStyle("-fx-background-color: #98FF98");
+////                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
+////                                setTextFill(javafx.scene.paint.Color.BLACK);
+////                                setStyle("-fx-background-color: #FDFD96");
+////                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
@@ -521,7 +366,7 @@ public class DoctorScreenController implements Initializable {
             };
         });
 
-        weekThuEvent.setCellFactory(column -> {
+        thursdayColumn.setCellFactory(column -> {
             return new TableCell<WeekTableItem, String>() {
                 @Override
                 protected void updateItem(String event, boolean empty) {
@@ -531,21 +376,28 @@ public class DoctorScreenController implements Initializable {
                         setText(null);
                         setStyle("");
                     } else {
-                        setText(event);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
-                        if (currentItem.getThuColor() != null) {
+
+                        if (currentItem.getMonColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getThuColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
+                                setText(event);
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.GREEN) {
-                                setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.YELLOW) {
-                                setTextFill(javafx.scene.paint.Color.BLACK);
-                                setStyle("-fx-background-color: #FDFD96");
                             }
+
+//                            if (currentItem.getThuColor() == javafx.scene.paint.Color.CYAN) {
+//                                setStyle("-fx-background-color: #78B4BF");
+//                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.ORANGE) {
+//                                setStyle("-fx-background-color: #DC654D");
+//                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.GREEN) {
+//                                setStyle("-fx-background-color: #98FF98");
+//                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.YELLOW) {
+//                                setTextFill(javafx.scene.paint.Color.BLACK);
+//                                setStyle("-fx-background-color: #FDFD96");
+//                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
@@ -556,7 +408,7 @@ public class DoctorScreenController implements Initializable {
             };
         });
 
-        weekFriEvent.setCellFactory(column -> {
+        fridayColumn.setCellFactory(column -> {
             return new TableCell<WeekTableItem, String>() {
                 @Override
                 protected void updateItem(String event, boolean empty) {
@@ -566,21 +418,28 @@ public class DoctorScreenController implements Initializable {
                         setText(null);
                         setStyle("");
                     } else {
-                        setText(event);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
-                        if (currentItem.getFriColor() != null) {
+
+                        if (currentItem.getMonColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getFriColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
+                                setText(event);
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.GREEN) {
-                                setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.YELLOW) {
-                                setTextFill(javafx.scene.paint.Color.BLACK);
-                                setStyle("-fx-background-color: #FDFD96");
                             }
+
+//                            if (currentItem.getFriColor() == javafx.scene.paint.Color.CYAN) {
+//                                setStyle("-fx-background-color: #78B4BF");
+//                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.ORANGE) {
+//                                setStyle("-fx-background-color: #DC654D");
+//                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.GREEN) {
+//                                setStyle("-fx-background-color: #98FF98");
+//                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.YELLOW) {
+//                                setTextFill(javafx.scene.paint.Color.BLACK);
+//                                setStyle("-fx-background-color: #FDFD96");
+//                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
@@ -591,7 +450,7 @@ public class DoctorScreenController implements Initializable {
             };
         });
 
-        weekSatEvent.setCellFactory(column -> {
+        saturdayColumn.setCellFactory(column -> {
             return new TableCell<WeekTableItem, String>() {
                 @Override
                 protected void updateItem(String satEvent, boolean empty) {
@@ -601,21 +460,28 @@ public class DoctorScreenController implements Initializable {
                         setText(null);
                         setStyle("");
                     } else {
-                        setText(satEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
-                        if (currentItem.getSatColor() != null) {
+
+                        if (currentItem.getMonColor() != null) {
                             setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getSatColor() == javafx.scene.paint.Color.CYAN) {
+                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.ORANGE) {
+                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
+                                setText(satEvent);
                                 setStyle("-fx-background-color: #DC654D");
-                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.GREEN) {
-                                setStyle("-fx-background-color: #98FF98");
-                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.YELLOW) {
-                                setTextFill(javafx.scene.paint.Color.BLACK);
-                                setStyle("-fx-background-color: #FDFD96");
                             }
+
+//                            if (currentItem.getSatColor() == javafx.scene.paint.Color.CYAN) {
+//                                setStyle("-fx-background-color: #78B4BF");
+//                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.ORANGE) {
+//                                setStyle("-fx-background-color: #DC654D");
+//                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.GREEN) {
+//                                setStyle("-fx-background-color: #98FF98");
+//                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.YELLOW) {
+//                                setTextFill(javafx.scene.paint.Color.BLACK);
+//                                setStyle("-fx-background-color: #FDFD96");
+//                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
@@ -625,23 +491,21 @@ public class DoctorScreenController implements Initializable {
                 }
             };
         });
+
         weekTable.setItems(data);
     }
 
-    public ObservableList<WeekTableItem> initializeWeekView(Calendar forWeekCalendar) {
+    ObservableList<WeekTableItem> initializeWeekView(Calendar forWeekCalendar) {
         ArrayList<Appointment> itemsToDisplay = new ArrayList<>();
         ArrayList<WeekTableItem> toTableItems = new ArrayList<>();
 
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d");
         SimpleDateFormat monthDeterminer = new SimpleDateFormat("M");
 
-        int month = Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()));
+        int month = Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime())) - 1;
         int startDay = forWeekCalendar.get(Calendar.DATE);
         String[] date = sdf.format(forWeekCalendar.getTime()).split("\\s+");
         int endDay = forWeekCalendar.get(Calendar.DATE);
-
-        System.out.println("Week View: " + month + " " + startDay + " " + endDay);
-
 
         while (!date[0].equalsIgnoreCase("Sat")) {
             forWeekCalendar.add(Calendar.DATE, 1);
@@ -651,15 +515,14 @@ public class DoctorScreenController implements Initializable {
 
         toTableItems.add(new WeekTableItem(""));
 
-        for (int hour = 0; hour <= 23; hour++)
-            for (int min = 0; min <= 30; min+=30) {
-
+        for (int hour = 8; hour <= 17; hour++)
+            for (int min = 0; min <= 30; min += 30) {
                 if (min < 30) {
                     toTableItems.add(new WeekTableItem(hour + ":" + String.format("%02d", min)));
-                    toTableItems.get(toTableItems.size()-1).setValueStartHour(hour);
-                    toTableItems.get(toTableItems.size()-1).setValueStartMin(min);
-                    toTableItems.get(toTableItems.size()-1).setValueEndHour(hour);
-                    toTableItems.get(toTableItems.size()-1).setValueEndMin(min+29);
+                    toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
+                    toTableItems.get(toTableItems.size() - 1).setValueStartMin(min);
+                    toTableItems.get(toTableItems.size() - 1).setValueEndHour(hour);
+                    toTableItems.get(toTableItems.size() - 1).setValueEndMin(min + 29);
                 } else {
                     toTableItems.add(new WeekTableItem(""));
                     toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
@@ -669,23 +532,16 @@ public class DoctorScreenController implements Initializable {
                 }
             }
 
-        for (Appointment item : appointments) {
+        for (Appointment item : appointments)
             if (item.getMonth() == month && (item.getDay() >= startDay && item.getDay() <= endDay)
-                    && item.getYear() == yearToday) {
-                System.out.println(item.getDay() + " " + item.getMonth());
+                    && item.getYear() == yearToday)
                 itemsToDisplay.add(item);
-            }
-        }
 
         int monDate = 0, tueDate = 0, wedDate = 0, thuDate = 0, friDate = 0, satDate = 0, sunDate = 0;
 
-        forWeekCalendar.set(yearToday, month-1, startDay);
+        forWeekCalendar.set(yearToday, month, startDay);
+        String compareDay = sdf.format(forWeekCalendar.getTime()).substring(0, 3);
 
-        String compareDay = sdf.format(forWeekCalendar.getTime()).substring(0,3);
-        System.out.println(compareDay);
-
-        System.out.println(month);
-        System.out.println(Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8)));
         do {
             if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))) {
                 switch (compareDay.trim()) {
@@ -736,7 +592,7 @@ public class DoctorScreenController implements Initializable {
         if (satDate > 0)
             toTableItems.get(0).setEvent(Integer.toString(satDate), "Sat");
 
-        for (Appointment item: itemsToDisplay) {
+        for (Appointment item : itemsToDisplay) {
             int startHour = item.getStartHour();
             int startMin = item.getStartMinute();
             int endHour;
@@ -768,8 +624,6 @@ public class DoctorScreenController implements Initializable {
             int endTime = Integer.parseInt(Integer.toString(endHour) + Integer.toString(endMin));
 
             String dayOfItem = null;
-            System.out.println(item.getDay());
-            System.out.println(sunDate);
 
             if (sunDate == item.getDay()) {
                 dayOfItem = "Sun";
@@ -787,10 +641,8 @@ public class DoctorScreenController implements Initializable {
                 dayOfItem = "Sat";
             }
 
-            for (WeekTableItem displayTime: toTableItems) {
-                int displayStartTime = 0;
-
-                System.out.println(item.getPatient());
+            for (WeekTableItem displayTime : toTableItems) {
+                int displayStartTime;
 
                 if (displayTime.getValueStartMin() == 0)
                     displayStartTime = Integer.parseInt(Integer.toString(displayTime.getValueStartHour() * 10) +
@@ -805,304 +657,446 @@ public class DoctorScreenController implements Initializable {
                 if (displayStartTime == startTime && displayEndTime == endTime) {
                     displayTime.setEvent(item.getPatient(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#DC654D");
+                        displayTime.setColor(c, dayOfItem);
+                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#78B4BF");
+                        displayTime.setColor(c, dayOfItem);
                     }
+//                    } else if (item.getDoctor().equalsIgnoreCase(name) ) {
+//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(name)) {
+//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+//                    }
 
                     break;
                 } else if (displayStartTime == startTime) {
+                    System.out.println(item.getDay());
+                    System.out.println(item.getPatient() + " " + dayOfItem);
                     displayTime.setEvent(item.getPatient(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#DC654D");
+                        displayTime.setColor(c, dayOfItem);
+                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#78B4BF");
+                        displayTime.setColor(c, dayOfItem);
                     }
 
+//                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
+//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
+//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+//                    }
                 } else if (displayStartTime >= startTime && endTime >= displayEndTime) {
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#DC654D");
+                        displayTime.setColor(c, dayOfItem);
+                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#78B4BF");
+                        displayTime.setColor(c, dayOfItem);
                     }
+//                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
+//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
+//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+//                    }
 
                 }
 
-
                 if (displayTime.getTime().equalsIgnoreCase(""))
                     continue;
+
                 if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin &&
                         displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
                     displayTime.setEvent(item.getTitle(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#DC654D");
+                        displayTime.setColor(c, dayOfItem);
+                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#78B4BF");
+                        displayTime.setColor(c, dayOfItem);
                     }
-
+//                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
+//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
+//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+//                    }
 
                     break;
                 } else if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin) {
                     displayTime.setEvent(item.getTitle(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#DC654D");
+                        displayTime.setColor(c, dayOfItem);
+                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
+                        Color c = Color.decode("#78B4BF");
+                        displayTime.setColor(c, dayOfItem);
                     }
-
+//                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
+//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
+//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
+//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+//                    }
                 } else {
                     if (displayTime.getValueStartHour() >= startHour && displayTime.getValueEndHour() <= endHour) {
                         if (displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
-                            displayTime.setEvent(" ", dayOfItem);
+                            displayTime.setEvent("", dayOfItem);
 
-                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                                displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                                displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-                                displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-                                displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+                            if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
+                                Color c = Color.decode("#DC654D");
+                                displayTime.setColor(c, dayOfItem);
+                            } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
+                                Color c = Color.decode("#78B4BF");
+                                displayTime.setColor(c, dayOfItem);
                             }
+//                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                                displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
+//                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                                displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
+//                            } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
+//                                displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
+//                            } else if (item.getDoctor().equalsIgnoreCase(docName)) {
+//                                displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+//                            }
 
                             break;
                         } else {
-                            displayTime.setEvent(" ", dayOfItem);
+                            displayTime.setEvent("", dayOfItem);
 
-                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                                displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-                                displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-                                displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-                                displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+                            if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
+                                Color c = Color.decode("#DC654D");
+                                displayTime.setColor(c, dayOfItem);
+                            } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
+                                Color c = Color.decode("#78B4BF");
+                                displayTime.setColor(c, dayOfItem);
                             }
+//                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                                displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
+//                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
+//                                displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
+//                            } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
+//                                displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
+//                            } else if (item.getDoctor().equalsIgnoreCase(docName)) {
+//                                displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
+//                            }
 
                         }
                     }
                 }
 
+
             }
         }
-
         return FXCollections.observableArrayList(toTableItems);
     }
+
     @FXML
-    public void createNewAptTime() {
+    void freeAppointment() {
+        String appointment = appointmentList.getSelectionModel().getSelectedItem();
+        String[] parts = appointment.split(" - ");
 
-        int appointmentID = appointments.size() + 1;
-        int day = datePick.getValue().getDayOfMonth();
-        int month = datePick.getValue().getMonthValue();
-        int year = datePick.getValue().getYear();
+        String[] startTime = parts[0].split(":");
+        String[] endTime = parts[1].split(":");
+        String name = parts[2].replaceAll("\\s", "");
 
-        String[] startTime = startTimeComboBox.getSelectionModel().getSelectedItem().split(":");
-        String[] endTime = endTimeComboBox.getSelectionModel().getSelectedItem().split(":");
-
-        int starthour = Integer.parseInt(startTime[0]);
-        int startmin = Integer.parseInt(startTime[1]);
-        int endhour = Integer.parseInt(endTime[0]);
-        int endmin = Integer.parseInt(endTime[0]);
-
-        int status = 0;
-
-        Calendar date = Calendar.getInstance();
-        date.set(year, month, day);
-
-        int daysRemaining = date.getActualMaximum(Calendar.DAY_OF_MONTH) - day;
-        int maximum = date.getActualMaximum(Calendar.DAY_OF_MONTH);
-        System.out.println(daysRemaining);
-        System.out.println(day);
-
-        for (int i=daysRemaining; i<maximum+1; i++) {
-            date.set(year, month, i);
-
-            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY && monCheck.isSelected()) {
-                int dayinWeek = i+2;
-
-                dbController.loadAppointments();
-                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-            }
-            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY && tuesCheck.isSelected()) {
-                int dayinWeek = i+2;
-
-                dbController.loadAppointments();
-                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+        for (Appointment a : appointments)
+            if (a.getStartHour() == Integer.parseInt(startTime[0]) && a.getStartMin() == Integer.parseInt(startTime[1]) &&
+                    a.getEndHour() == Integer.parseInt(endTime[0]) && a.getEndMin() == Integer.parseInt(endTime[1]) && a.getPatient().equals(name)) {
+                deleteAppointment(a.getAppointmentID());
+                break;
             }
 
-            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY && wedCheck.isSelected()) {
-                int dayinWeek = i+2;
-
-                dbController.loadAppointments();
-                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-            }
-
-            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY && thursCheck.isSelected()) {
-                int dayinWeek = i+2;
-
-                dbController.loadAppointments();
-                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-            }
-
-            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY && friCheck.isSelected()) {
-                int dayinWeek = i+2;
-
-                dbController.loadAppointments();
-                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-            }
-
-
-        }
-
-        dbController = new DBController(); //NEWLY ADDEDDDD!
-        dbController.loadAppointments();
+        appointments.sort(Comparator.comparingInt(Appointment::getStartHour));
         appointments = DBController.getAppointments();
-        profilePane.setVisible(true);
 
-        datePick.getEditor().clear();
-        monCheck.setSelected(false);
-        tuesCheck.setSelected(false);
-        wedCheck.setSelected(false);
-        thursCheck.setSelected(false);
-        friCheck.setSelected(false);
+        if (monthBox.isSelected()) {
+            displayMonthlyEvents();
+        } else if (weekBox.isSelected()) {
+
+        } else {
+            displayDailyEvents(name);
+        }
+    }
+
+    private void displayDailyEvents(String name) {
+        appointmentList.getItems().clear();
+        for (Appointment a : appointments)
+            if (a.getDoctor().equals(name) && !a.getPatient().equals(""))
+                day(a);
+    }
+
+    private void displayMonthlyEvents() {
+        appointmentList.getItems().clear();
+        for (Appointment a : appointments)
+            if (a.getMonth() == monthToday && a.getYear() == yearToday && !a.getPatient().equals("") && a.getDoctor().equals(name)) {
+                String startMin, endMin;
+                if (a.getStartMin() == 0)
+                    startMin = "00";
+                else
+                    startMin = "30";
+                if (a.getEndMin() == 0)
+                    endMin = "00";
+                else
+                    endMin = "30";
+                appointmentList.getItems().add(convert(a.getMonth()) + " " + a.getDay() + ", " + a.getYear() + " - "
+                        + a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " ** " + a.getPatient());
+            }
 
     }
 
+    private void deleteAppointment(int ID) {
+        appointments.clear();
+        dbController.loadAppointments();
+        for (Appointment appointment : appointments) {
+            if (appointment.getAppointmentID() == ID) {
+                // TODO instead of deleting, set the patient to  ""
+                dbController.deleteAppointmentForD(appointment.getDoctor(), appointment.getDay(), appointment.getMonth(), appointment.getYear(), appointment.getStartHour(), appointment.getStartMin(), appointment.getEndHour(), appointment.getEndMin());
+                break;
+            }
+        }
+    }
 
+    @FXML
+    void displayAgenda() {
+
+        appointmentList.getItems().clear();
+        agendaDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
+
+        appointments.sort(Comparator.comparingInt(Appointment::getStartHour));
+
+        displayDailyEvents(name);
+    }
+
+    @FXML
+    void displayWeeklyAgenda() {
+        if (weekBox.isSelected()) {
+            monthBox.setSelected(false);
+            // TODO display all appointments for the week
+        } else if (!(weekBox.isSelected() && monthBox.isSelected())) {
+            appointmentList.getItems().clear();
+            displayDailyEvents(name);
+        }
+    }
+
+    @FXML
+    void displayMonthlyAgenda() {
+        if (monthBox.isSelected()) {
+            appointmentList.getItems().clear();
+            weekBox.setSelected(false);
+            appointments.sort(Comparator.comparingInt(Appointment::getDay));
+
+            displayMonthlyEvents();
+        } else if (!(weekBox.isSelected() && monthBox.isSelected())) {
+            appointmentList.getItems().clear();
+            for (Appointment a : appointments)
+                if (a.getDoctor().equals(name) && !a.getPatient().equals("") && a.getDoctor().equals(name))
+                    day(a);
+        }
+    }
+
+    private void day(Appointment a) {
+        if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday) {
+            String startMin, endMin;
+            if (a.getStartMin() == 0)
+                startMin = "00";
+            else
+                startMin = "30";
+            if (a.getEndMin() == 0)
+                endMin = "00";
+            else
+                endMin = "30";
+            appointmentList.getItems().add(a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " - " + a.getPatient());
+        }
+    }
+
+    @FXML
+    public void createAppointment () {
+        boolean oneDay = true;
+
+        if (mondayBox.isSelected()) { // Client booked appointment every mondays
+            oneDay = false;
+        }
+
+        if (tuesdayBox.isSelected()) { // Client booked appointment every tuesdays
+            oneDay = false;
+        }
+
+        if (wednesdayBox.isSelected()) { // Client booked appointment every wednesdays
+            oneDay = false;
+
+        }
+
+        if (thursdayBox.isSelected()) { // Client booked appointment every thursdays
+            oneDay = false;
+
+        }
+
+        if (fridayBox.isSelected()) { // Client booked appointment every fridays
+            oneDay = false;
+
+        }
+
+        if (saturdayBox.isSelected()) { // Client booked appointment every saturdays
+            oneDay = false;
+
+        }
+
+        if (everyMonthBox.isSelected()) { // Client booked appointment once a month
+            oneDay = false;
+
+        }
+
+        if (everydayBox.isSelected()) { // Client booked appointment every day **exclude sunday here
+            oneDay = false;
+
+        }
+
+        if (oneDay) { // Client booked for only one day
+
+        }
+//        int appointmentID = appointments.size() + 1;
+//        int day = datePick.getValue().getDayOfMonth();
+//        int month = datePick.getValue().getMonthValue();
+//        int year = datePick.getValue().getYear();
+//
+//        String[] startTime = startTimeComboBox.getSelectionModel().getSelectedItem().split(":");
+//        String[] endTime = endTimeComboBox.getSelectionModel().getSelectedItem().split(":");
+//
+//        int starthour = Integer.parseInt(startTime[0]);
+//        int startmin = Integer.parseInt(startTime[1]);
+//        int endhour = Integer.parseInt(endTime[0]);
+//        int endmin = Integer.parseInt(endTime[0]);
+//
+//        int status = 0;
+//
+//        Calendar date = Calendar.getInstance();
+//        date.set(year, month, day);
+//
+//        int daysRemaining = date.getActualMaximum(Calendar.DAY_OF_MONTH) - day;
+//        int maximum = date.getActualMaximum(Calendar.DAY_OF_MONTH);
+//        System.out.println(daysRemaining);
+//        System.out.println(day);
+//
+//        for (int i=daysRemaining; i<maximum+1; i++) {
+//            date.set(year, month, i);
+//
+//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY && monCheck.isSelected()) {
+//                int dayinWeek = i+2;
+//
+//                dbController.loadAppointments();
+//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+//            }
+//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY && tuesCheck.isSelected()) {
+//                int dayinWeek = i+2;
+//
+//                dbController.loadAppointments();
+//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+//            }
+//
+//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY && wedCheck.isSelected()) {
+//                int dayinWeek = i+2;
+//
+//                dbController.loadAppointments();
+//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+//            }
+//
+//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY && thursCheck.isSelected()) {
+//                int dayinWeek = i+2;
+//
+//                dbController.loadAppointments();
+//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+//            }
+//
+//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY && friCheck.isSelected()) {
+//                int dayinWeek = i+2;
+//
+//                dbController.loadAppointments();
+//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
+//            }
+//
+//
+//        }
+//
+//        dbController = new DBController(); //NEWLY ADDEDDDD!
+//        dbController.loadAppointments();
+//        appointments = DBController.getAppointments();
+//        profilePane.setVisible(true);
+//
+//        datePick.getEditor().clear();
+//        monCheck.setSelected(false);
+//        tuesCheck.setSelected(false);
+//        wedCheck.setSelected(false);
+//        thursCheck.setSelected(false);
+//        friCheck.setSelected(false);}
+    }
+
+    @FXML
+    private void setAppointment () {
+        profilePane.setVisible(false);
+        mondayBox.setSelected(false);
+        tuesdayBox.setSelected(false);
+        wednesdayBox.setSelected(false);
+        thursdayBox.setSelected(false);
+        fridayBox.setSelected(false);
+        saturdayBox.setSelected(false);
+        everydayBox.setSelected(false);
+        everyMonthBox.setSelected(false);
+        startTimeBox.getSelectionModel().selectFirst();
+        endTimeBox.getSelectionModel().selectLast();
+    }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize (URL location, ResourceBundle resources){
         dbController = new DBController();
         appointments = DBController.getAppointments();
 
-        doctorTag.setText("Welcome Doctor " + docName);
-
         Calendar cal = Calendar.getInstance();
         yearToday = cal.get(GregorianCalendar.YEAR);
-        monthToday = cal.get(GregorianCalendar.MONTH) + 1;
+        monthToday = cal.get(GregorianCalendar.MONTH);
         dayToday = cal.get(GregorianCalendar.DAY_OF_MONTH);
 
-        daySelected = dayToday;
-
-        dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
         refreshCalendar(monthToday, yearToday, dayToday);
+        initializeBoxes();
     }
 
-    private void refreshCalendar(int month, int year, int day) {
-        month -= 1;
-        miniCalendar.getChildren().clear();
-
-        dateLabel.setText(convert(month) + " " + day + ", " + year);
-
-        GregorianCalendar cal = new GregorianCalendar(year, month, 1);
-        int nod = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
-        int som = cal.get(GregorianCalendar.DAY_OF_WEEK);
-
-        for (int i = 1; i <= nod; i++) {
-            int row = (i + som - 2) / 7;
-            int column = (i + som - 2) % 7;
-
-            Button button = new Button(String.valueOf(i));
-            button.setMaxSize(28, 35);
-
-            GridPane finalTemp = miniCalendar;
-            button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-            int finalMonth = month;
-            button.setOnAction((ActionEvent event) -> {
-                daySelected = Integer.parseInt(((Button) event.getSource()).getText());
-                button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #8FCFDA; -fx-text-fill: #FFFFFF");
-                dateLabel.setText(convert(finalMonth) + " " + daySelected + ", " + year);
-
-                for (Node node : finalTemp.getChildren()) {
-                    if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
-                        if (now(Integer.parseInt(((Button) node).getText())))
-                            node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #DC654D; -fx-text-fill: #FFFFFF");
-                        else
-                            node.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: transparent; -fx-text-fill: #FFFFFF");
-                    }
-                }
-            });
-
-            // Highlights the date when an event is on the day
-            for (Appointment app: appointments)
-                if(eventToday(app, i)) {
-                    button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color: #DC654D; -fx-text-fill: #FFFFFF");
-                    break;
-                }
-
-            miniCalendar.add(button, column, row);
-        }
+    public static void setName (String name){
+        DoctorScreenController.name = name;
     }
 
-    private boolean now(int day) {
-        for (Appointment app : appointments) {
-            if (app.getYear() == yearToday && app.getMonth() == monthToday && app.getDay() == day)
+    boolean now (int day){
+        for (Appointment app : appointments)
+            if (app.getYear() == yearToday && app.getMonth() == monthToday && app.getDay() == day && app.getDoctor().equals(name))
                 return true;
-        }
-
         return false;
     }
 
-    private boolean eventToday(Appointment a, int day) {
+    boolean eventToday (Appointment a,int day){
         if (a.getYear() == yearToday)
-            if (a.getMonth() == monthToday)
+            if (a.getMonth() == monthToday && a.getDoctor().equals(name))
                 return a.getDay() == day;
-
         return false;
     }
 
-    private String convert(int month) {
-        switch (month) {
-            case 0: return "January";
-            case 1: return "February";
-            case 2: return "March";
-            case 3: return "April";
-            case 4: return "May";
-            case 5: return "June";
-            case 6: return "July";
-            case 7: return "August";
-            case 8: return "September";
-            case 9: return "October";
-            case 10: return "November";
-            case -1: return "December";
-        }
-        return "January";
-    }
-
-    public static void setName(String name) {
-        docName = name;
-    }
-
-    private int yearToday;
-    private int monthToday;
-    private int dayToday;
-    private int daySelected;
-    private DBController dbController;
-    private ObservableList<Appointment> appointments;
-    private static String docName;
+    private static String name;
 }

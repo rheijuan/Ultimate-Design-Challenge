@@ -2,7 +2,7 @@ package gui;
 
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.paint.Color;
+import java.awt.Color;
 
 public class WeekTableItem {
     private SimpleStringProperty time;
@@ -36,7 +36,7 @@ public class WeekTableItem {
 
 
 
-    public WeekTableItem(String time) {
+    WeekTableItem(String time) {
         this.time = new SimpleStringProperty(time);
         this.sunEvent = new SimpleStringProperty("");
         this.monEvent = new SimpleStringProperty("");

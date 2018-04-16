@@ -275,7 +275,7 @@ public class DBController {
 		}
 
 		String sql = "UPDATE clinic_tool.appointments SET StartHour = ?, StartMinute = ?, "
-				+ "EndHour = ?, EndMinute = ? WHERE Patient = ?";
+				+ "EndHour = ?, EndMinute = ? WHERE AppointmentID = ?";
 		try{
 			pst = con.prepareStatement(sql);
 
@@ -288,6 +288,34 @@ public class DBController {
 			int i = pst.executeUpdate();
 			if (i==1)
 				System.out.println("DATA FOR APPOINTMENT TIME UPDATED!!!");
+
+		} catch (SQLException ex){
+			Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	/* --- updateAppointmentName()
+	 * When details for an appointment name was modified (parameters contains the name of the patient, new time)
+	 */
+	public void updateAppointmentPatient(String patientName, String doctorName, int day, int month, int year, int starthr, int startmin, int endhr, int endmin) {
+		int refID = 0;
+
+		for (Appointment a : appointments) {
+			if (doctorName.equals(a.getDoctor()) && day == a.getDay() && month == a.getMonth() && year == a.getYear() && starthr == a.getStartHour() && startmin == a.getStartMin() && endhr == a.getEndHour() && endmin == a.getEndMin())
+				refID = a.getAppointmentID();
+		}
+		System.out.println("UPDATED!");
+
+		String sql = "UPDATE clinic_tool.appointments SET Patient = ? WHERE AppointmentID = ?";
+		try{
+			pst = con.prepareStatement(sql);
+
+			pst.setString(1, patientName);
+			pst.setInt(2, refID);
+
+			int i = pst.executeUpdate();
+			if (i==1)
+				System.out.println("DATA FOR APPOINTMENT PATIENT UPDATED!!!");
 
 		} catch (SQLException ex){
 			Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);

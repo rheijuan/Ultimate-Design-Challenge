@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -18,39 +18,96 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DoctorScreenController">
-   <TabPane prefHeight="451.0" prefWidth="715.0" style="-fx-background-color: #8FCFDA;" tabClosingPolicy="UNAVAILABLE">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DoctorScreenController">
+   <TabPane prefHeight="548.0" prefWidth="840.0" style="-fx-background-color: #8FCFDA;" tabClosingPolicy="UNAVAILABLE">
       <Tab text="Profile">
-         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8FCFDA;">
-            <AnchorPane layoutX="47.0" layoutY="31.0" prefHeight="358.0" prefWidth="621.0">
-               <AnchorPane fx:id="createPane" prefHeight="358.0" prefWidth="622.0" style="-fx-background-color: #FFFFFF;">
-                  <AnchorPane prefHeight="50.0" prefWidth="621.0" style="-fx-background-color: #3E454D;">
-                     <Label fx:id="agendaLabel1" alignment="CENTER" layoutX="8.0" layoutY="9.0" text="Create Appointment" textFill="WHITE">
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane layoutX="49.0" layoutY="35.0" prefHeight="446.0" prefWidth="742.0">
+               <AnchorPane fx:id="eventPane" prefHeight="446.0" prefWidth="745.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane prefHeight="67.0" prefWidth="738.0" style="-fx-background-color: #3E454D;">
+                     <Label layoutX="14.0" layoutY="16.0" text="Create an Appointment Slot" textFill="WHITE">
+                        <font>
+                           <Font name="Avenir 85 Heavy" size="25.0" />
+                        </font>
+                     </Label>
+                  </AnchorPane>
+                  <Label layoutX="75.0" layoutY="117.0" text="Date">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="164.0" text="Time">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="16.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="mondayBox" layoutX="352.0" layoutY="118.0" mnemonicParsing="false" text="Every Monday">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <Label layoutX="200.0" layoutY="212.0" text="to">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="datePicker" layoutX="133.0" layoutY="116.0" prefHeight="26.0" prefWidth="150.0" />
+                  <ComboBox fx:id="startTimeBox" layoutX="134.0" layoutY="163.0" prefWidth="150.0" />
+                  <ComboBox fx:id="endTimeBox" layoutX="133.0" layoutY="257.0" prefWidth="150.0" />
+                  <CheckBox fx:id="wednesdayBox" layoutX="352.0" layoutY="211.0" mnemonicParsing="false" text="Every Wednesday">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="saturdayBox" layoutX="524.0" layoutY="165.0" mnemonicParsing="false" text="Every Saturday">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="thursdayBox" layoutX="352.0" layoutY="259.0" mnemonicParsing="false" text="Every Thursday">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="fridayBox" layoutX="524.0" layoutY="118.0" mnemonicParsing="false" text="Every Friday">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="tuesdayBox" layoutX="352.0" layoutY="165.0" mnemonicParsing="false" text="Every Tuesday">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="everydayBox" layoutX="525.0" layoutY="211.0" mnemonicParsing="false" text="Every Day">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="everyMonthBox" layoutX="524.0" layoutY="259.0" mnemonicParsing="false" text="Every Month">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <Button fx:id="cancelButton" layoutX="585.0" layoutY="339.0" mnemonicParsing="false" onAction="#cancel" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #DC654D; -fx-background-radius: 25;" text="Cancel" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="478.0" layoutY="339.0" mnemonicParsing="false" onAction="#createAppointment" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #DC654D; -fx-background-radius: 25;" text="Create" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="16.0" />
+                     </font>
+                  </Button>
+               </AnchorPane>
+               <AnchorPane fx:id="profilePane" prefHeight="446.0" prefWidth="732.0" style="-fx-background-color: #FFFFFF;">
+                  <AnchorPane layoutX="371.0" prefHeight="446.0" prefWidth="371.0" style="-fx-background-color: #3E454D;">
+                     <Label fx:id="profileDateLabel" alignment="CENTER" layoutY="59.0" prefWidth="371.0" text="Month Day, Year" textFill="WHITE">
                         <font>
                            <Font size="20.0" />
                         </font>
                      </Label>
-                  </AnchorPane>
-                  <DatePicker fx:id="datePick" layoutX="94.0" layoutY="107.0" prefHeight="25.0" prefWidth="129.0" promptText="Date" />
-                  <Label layoutX="42.0" layoutY="107.0" text="Date" />
-                  <Label layoutX="42.0" layoutY="158.0" text="Time" />
-                  <Button fx:id="reserveButton" layoutX="461.0" layoutY="282.0" mnemonicParsing="false" onAction="#createNewAptTime" text="Create" />
-                  <Button layoutX="536.0" layoutY="282.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
-                  <CheckBox fx:id="monCheck" layoutX="323.0" layoutY="98.0" mnemonicParsing="false" text="Every Monday" />
-                  <CheckBox fx:id="tuesCheck" layoutX="323.0" layoutY="138.0" mnemonicParsing="false" text="Every Tuesday" />
-                  <CheckBox fx:id="wedCheck" layoutX="323.0" layoutY="177.0" mnemonicParsing="false" text="Every Wednesday" />
-                  <CheckBox fx:id="thursCheck" layoutX="323.0" layoutY="219.0" mnemonicParsing="false" text="Every Thursday" />
-                  <CheckBox fx:id="friCheck" layoutX="483.0" layoutY="98.0" mnemonicParsing="false" text="Every Friday" />
-                  <CheckBox fx:id="satCheck" layoutX="483.0" layoutY="138.0" mnemonicParsing="false" text="Every Saturday" />
-                  <CheckBox fx:id="monthCheck" layoutX="483.0" layoutY="219.0" mnemonicParsing="false" text="Every Month" />
-                  <CheckBox fx:id="thursCheck1" layoutX="483.0" layoutY="177.0" mnemonicParsing="false" text="Every Day" />
-                  <ComboBox fx:id="startTimeComboBox" layoutX="94.0" layoutY="154.0" prefWidth="150.0" />
-                  <ComboBox fx:id="endTimeComboBox" layoutX="94.0" layoutY="215.0" prefWidth="150.0" />
-                  <Label layoutX="153.0" layoutY="186.0" text="to" />
-               </AnchorPane>
-               <AnchorPane fx:id="profilePane" prefHeight="358.4" prefWidth="622.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                  <AnchorPane layoutX="327.0" prefHeight="358.0" prefWidth="294.0" style="-fx-background-color: #3E454D;">
-                     <GridPane fx:id="miniCalendar" layoutX="42.0" layoutY="135.0" prefHeight="174.0" prefWidth="210.0">
+                     <GridPane fx:id="miniCalendar" layoutX="52.0" layoutY="153.0" prefHeight="236.0" prefWidth="289.0">
                         <columnConstraints>
                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -68,180 +125,165 @@
                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                      </GridPane>
-                     <Label alignment="CENTER" layoutX="44.0" layoutY="104.0" prefHeight="26.0" prefWidth="25.0" text="S" textFill="WHITE">
+                     <Label alignment="CENTER" layoutX="59.0" layoutY="127.0" prefHeight="26.0" prefWidth="25.0" text="S" textFill="WHITE">
                         <font>
-                           <Font name="Avenir 85 Heavy" size="16.0" />
+                           <Font name="Avenir 85 Heavy" size="17.0" />
                         </font>
                      </Label>
-                     <Label alignment="CENTER" layoutX="77.0" layoutY="104.0" prefHeight="26.0" prefWidth="25.0" text="M" textFill="WHITE">
+                     <Label alignment="CENTER" layoutX="100.0" layoutY="127.0" prefHeight="26.0" prefWidth="25.0" text="M" textFill="WHITE">
                         <font>
-                           <Font name="Avenir 85 Heavy" size="16.0" />
+                           <Font name="Avenir 85 Heavy" size="17.0" />
                         </font>
                      </Label>
-                     <Label alignment="CENTER" layoutX="106.0" layoutY="104.0" prefHeight="26.0" prefWidth="25.0" text="T" textFill="WHITE">
+                     <Label alignment="CENTER" layoutX="142.0" layoutY="127.0" prefHeight="26.0" prefWidth="25.0" text="T" textFill="WHITE">
                         <font>
-                           <Font name="Avenir 85 Heavy" size="16.0" />
+                           <Font name="Avenir 85 Heavy" size="17.0" />
                         </font>
                      </Label>
-                     <Label alignment="CENTER" layoutX="135.0" layoutY="104.0" prefHeight="26.0" prefWidth="25.0" text="W" textFill="WHITE">
+                     <Label alignment="CENTER" layoutX="184.0" layoutY="127.0" prefHeight="26.0" prefWidth="25.0" text="W" textFill="WHITE">
                         <font>
-                           <Font name="Avenir 85 Heavy" size="16.0" />
+                           <Font name="Avenir 85 Heavy" size="17.0" />
                         </font>
                      </Label>
-                     <Label alignment="CENTER" layoutX="164.0" layoutY="104.0" prefHeight="26.0" prefWidth="25.0" text="T" textFill="WHITE">
+                     <Label alignment="CENTER" layoutX="225.0" layoutY="127.0" prefHeight="26.0" prefWidth="25.0" text="T" textFill="WHITE">
                         <font>
-                           <Font name="Avenir 85 Heavy" size="16.0" />
+                           <Font name="Avenir 85 Heavy" size="17.0" />
                         </font>
                      </Label>
-                     <Label alignment="CENTER" layoutX="194.0" layoutY="104.0" prefHeight="26.0" prefWidth="25.0" text="F" textFill="WHITE">
+                     <Label alignment="CENTER" layoutX="267.0" layoutY="127.0" prefHeight="26.0" prefWidth="25.0" text="F" textFill="WHITE">
                         <font>
-                           <Font name="Avenir 85 Heavy" size="16.0" />
+                           <Font name="Avenir 85 Heavy" size="17.0" />
                         </font>
                      </Label>
-                     <Label alignment="CENTER" layoutX="223.0" layoutY="104.0" prefHeight="26.0" prefWidth="25.0" text="S" textFill="WHITE">
+                     <Label alignment="CENTER" layoutX="308.0" layoutY="127.0" prefHeight="26.0" prefWidth="25.0" text="S" textFill="WHITE">
                         <font>
-                           <Font name="Avenir 85 Heavy" size="16.0" />
+                           <Font name="Avenir 85 Heavy" size="17.0" />
                         </font>
                      </Label>
-                     <Label fx:id="dateLabel" alignment="CENTER" layoutY="42.0" prefHeight="27.0" prefWidth="294.0" text="Month Date, Year" textFill="WHITE">
+                     <Button layoutX="54.0" layoutY="89.0" mnemonicParsing="false" onAction="#prevMonth" style="-fx-background-color: transparent;" text="&lt;" textFill="WHITE">
                         <font>
-                           <Font size="18.0" />
+                           <Font name="System Bold" size="16.0" />
                         </font>
-                     </Label>
-                     <Button fx:id="prevButton" layoutX="44.0" layoutY="70.0" mnemonicParsing="false" onAction="#prevMonth" style="-fx-background-color: transparent;" text="&lt;" textFill="WHITE" />
-                     <Button fx:id="nextButton" layoutX="223.0" layoutY="70.0" mnemonicParsing="false" onAction="#nextMonth" style="-fx-background-color: transparent;" text="&gt;" textFill="WHITE" />
+                     </Button>
+                     <Button layoutX="304.0" layoutY="89.0" mnemonicParsing="false" onAction="#nextMonth" style="-fx-background-color: transparent;" text="&gt;" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="16.0" />
+                        </font>
+                     </Button>
                   </AnchorPane>
-                  <AnchorPane prefHeight="358.0" prefWidth="327.0" style="-fx-background-color: #FFFFFF;">
-                     <Label fx:id="doctorTag" alignment="CENTER" layoutY="44.0" prefHeight="40.0" prefWidth="327.0" text="Welcome Doctor J">
+                  <AnchorPane prefHeight="446.0" prefWidth="371.0" style="-fx-background-color: #FFFFFF;">
+                     <Label fx:id="userTag" alignment="CENTER" layoutY="55.0" prefHeight="34.0" prefWidth="371.0" text="Welcome &lt;Role&gt; &lt;Name&gt;">
                         <font>
-                           <Font size="18.0" />
+                           <Font name="Avenir 85 Heavy" size="20.0" />
                         </font>
                      </Label>
-                     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="80.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@paperclip.png" />
+                     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@doctor.png" />
                      </ImageView>
-                     <Button fx:id="setButton" layoutX="66.0" layoutY="283.0" mnemonicParsing="false" onAction="#setAppointment" style="-fx-background-color: #DC654D;" text="Set An Appointment Schedule" textFill="WHITE" />
+                     <Button layoutX="35.0" layoutY="335.0" mnemonicParsing="false" onAction="#setAppointment" prefHeight="44.0" prefWidth="301.0" style="-fx-background-color: #DC654D;" text="Set An Appointment Slot" textFill="WHITE">
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Button>
                   </AnchorPane>
                </AnchorPane>
             </AnchorPane>
          </AnchorPane>
       </Tab>
       <Tab onSelectionChanged="#displayDayView" text="Day View">
-         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="358.0" prefWidth="420.0" style="-fx-background-color: #8FCFDA;">
-            <AnchorPane layoutX="44.0" layoutY="31.0" prefHeight="357.0" prefWidth="200.0" style="-fx-background-color: #3E454D;">
-               <Label layoutX="67.0" layoutY="69.0" text="Legend" textFill="WHITE">
-                  <font>
-                     <Font size="20.0" />
-                  </font>
-               </Label>
-               <Label layoutX="57.0" layoutY="247.0" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: #DC654D;" />
-               <Label layoutX="66.0" layoutY="265.0" text="Occupied" textFill="WHITE">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-               <Label layoutX="56.0" layoutY="136.0" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: #78B4BF;" />
-               <Label layoutX="68.0" layoutY="154.0" text="Available" textFill="WHITE">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-               <Label fx:id="dayLabel" alignment="CENTER" layoutY="21.0" prefHeight="27.0" prefWidth="200.0" text="January 1, 2018" textFill="WHITE">
-                  <font>
-                     <Font size="18.0" />
-                  </font>
-               </Label>
-            </AnchorPane>
-            <AnchorPane layoutX="244.0" layoutY="31.0" prefHeight="358.0" prefWidth="420.0">
-               <TableView fx:id="dayTableView" prefHeight="358.4" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="548.0" prefWidth="840.0">
+            <AnchorPane layoutX="48.0" layoutY="35.0" prefHeight="446.0" prefWidth="742.0" style="-fx-background-color: #FFFFFF;">
+               <AnchorPane prefHeight="446.0" prefWidth="274.0" style="-fx-background-color: #3E454D;">
+                  <Label fx:id="dayDateTag" alignment="CENTER" layoutY="100.0" prefWidth="274.0" text="Month Day, Year" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="userDayTag" alignment="CENTER" layoutY="27.0" prefWidth="274.0" text="Doctor &lt;Name&gt;" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="195.0" prefWidth="274.0" text="Available" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="314.0" prefWidth="274.0" text="Occupied" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="69.0" layoutY="223.0" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #78B4BF;" />
+                  <Label layoutX="69.0" layoutY="342.0" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #DC654D;" />
+               </AnchorPane>
+               <TableView fx:id="dayTable" layoutX="274.0" prefHeight="446.0" prefWidth="468.0">
                   <columns>
-                     <TableColumn fx:id="timeColumn" minWidth="120.0" prefWidth="120.0" text="Time" />
-                     <TableColumn fx:id="patientColumn" minWidth="200.0" prefWidth="298.3999938964844" text="Patient" />
+                     <TableColumn fx:id="dayTimeColumn" prefWidth="142.4000244140625" text="Time" />
+                     <TableColumn fx:id="dayPatientColumn" prefWidth="324.79998779296875" text="Patient" />
                   </columns>
                </TableView>
             </AnchorPane>
          </AnchorPane>
       </Tab>
       <Tab onSelectionChanged="#displayWeekView" text="Week View">
-         <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <AnchorPane layoutX="162.0" layoutY="31.0" prefHeight="358.0" prefWidth="502.0" style="-fx-background-color: #FFFFFF;">
-               <TableView fx:id="weekTable" prefHeight="358.4" prefWidth="502.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane layoutX="49.0" layoutY="35.0" prefHeight="446.0" prefWidth="742.0" style="-fx-background-color: #FFFFFF;">
+               <AnchorPane layoutY="330.0" prefHeight="116.0" prefWidth="742.0" style="-fx-background-color: #3E454D;">
+                  <Label fx:id="userWeekTag" alignment="CENTER" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="229.0" text="Doctor &lt;Name&gt;" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="353.0" layoutY="72.0" prefHeight="28.0" prefWidth="144.0" text="Occupied" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="353.0" layoutY="30.0" prefWidth="144.0" text="Available" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="497.0" layoutY="30.0" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #78B4BF;" />
+                  <Label layoutX="497.0" layoutY="72.0" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #DC654D;" />
+               </AnchorPane>
+               <TableView fx:id="weekTable" prefHeight="330.0" prefWidth="744.0">
                   <columns>
-                     <TableColumn fx:id="weekTime" minWidth="82.0" prefWidth="82.0" text="Time" />
-                     <TableColumn fx:id="weekSunEvent" minWidth="60.0" prefWidth="60.0" />
-                     <TableColumn fx:id="weekMonEvent" minWidth="60.0" prefWidth="60.0" />
-                     <TableColumn fx:id="weekTueEvent" minWidth="60.0" prefWidth="60.0" />
-                     <TableColumn fx:id="weekWedEvent" minWidth="60.0" prefWidth="60.0" />
-                     <TableColumn fx:id="weekThuEvent" minWidth="60.0" prefWidth="60.0" />
-                     <TableColumn fx:id="weekFriEvent" minWidth="60.0" prefWidth="60.0" />
-                     <TableColumn fx:id="weekSatEvent" minWidth="60.0" prefWidth="60.0" />
+                     <TableColumn fx:id="weekTimeColumn" prefWidth="93.0" text="Time" />
+                     <TableColumn fx:id="sundayColumn" prefWidth="93.0" />
+                     <TableColumn fx:id="mondayColumn" prefWidth="93.0" />
+                     <TableColumn fx:id="tuesdayColumn" prefWidth="93.0" />
+                     <TableColumn fx:id="wednesdayColumn" prefWidth="93.0" />
+                     <TableColumn fx:id="thursdayColumn" prefWidth="93.0" />
+                     <TableColumn fx:id="fridayColumn" prefWidth="93.0" />
+                     <TableColumn fx:id="saturdayColumn" prefWidth="88.0" />
                   </columns>
                </TableView>
             </AnchorPane>
-            <AnchorPane layoutX="42.0" layoutY="31.0" prefHeight="358.0" prefWidth="121.0" style="-fx-background-color: #3E454D;">
-               <Label layoutX="28.0" layoutY="72.0" text="Legend" textFill="WHITE">
-                  <font>
-                     <Font size="20.0" />
-                  </font>
-               </Label>
-               <Label layoutX="18.0" layoutY="226.0" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: #DC654D;" />
-               <Label layoutX="27.0" layoutY="252.0" text="Occupied" textFill="WHITE">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-               <Label layoutX="17.0" layoutY="139.0" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: #78B4BF;" />
-               <Label layoutX="29.0" layoutY="169.0" text="Available" textFill="WHITE">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-               <Label fx:id="weekLabel" alignment="CENTER" layoutX="-1.0" layoutY="22.0" prefHeight="26.0" prefWidth="121.0" text="January 2018" textFill="WHITE">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-            </AnchorPane>
          </AnchorPane>
       </Tab>
-      <Tab onSelectionChanged="#displayAgendaView" text="Agenda View">
-         <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <AnchorPane layoutX="31.0" layoutY="22.0" prefHeight="322.0" prefWidth="590.0">
-               <AnchorPane layoutX="10.0" layoutY="10.0" onMouseClicked="#displayAgendaView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8FCFDA;">
-                  <children>
-                     <AnchorPane fx:id="agendaViewPane" layoutX="11.0" layoutY="1.0" prefHeight="366.0" prefWidth="643.0">
-                        <children>
-                           <AnchorPane prefHeight="49.0" prefWidth="590.0" style="-fx-background-color: #3E454D;">
-                              <children>
-                                 <Label fx:id="agendaLabel2" alignment="CENTER" layoutX="8.0" layoutY="9.0" text="Agenda View" textFill="WHITE">
-                                    <font>
-                                       <Font size="20.0" />
-                                    </font>
-                                 </Label>
-                              </children>
-                           </AnchorPane>
-                           <AnchorPane layoutY="50.0" prefHeight="274.0" prefWidth="591.0" style="-fx-background-color: #FFFFFF;">
-                              <children>
-                                 <ScrollPane fx:id="agendaScrollPane" fitToWidth="true" layoutX="-2.0" prefHeight="280.0" prefWidth="594.0">
-                                    <content>
-                                       <GridPane fx:id="agendaViewGridPane" prefHeight="118.0" prefWidth="592.0">
-                                          <columnConstraints>
-                                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          </columnConstraints>
-                                          <rowConstraints>
-                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          </rowConstraints>
-                                       </GridPane>
-                                    </content>
-                                 </ScrollPane>
-                              </children>
-                           </AnchorPane>
-                        </children>
-                     </AnchorPane>
-                  </children>
+      <Tab onSelectionChanged="#displayAgenda" text="Agenda View">
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane layoutX="54.0" layoutY="35.0" prefHeight="446.0" prefWidth="732.0" style="-fx-background-color: #FFFFFF;">
+               <AnchorPane prefHeight="67.0" prefWidth="732.0" style="-fx-background-color: #3E454D;">
+                  <Label fx:id="agendaDateLabel" layoutX="14.0" layoutY="16.0" prefHeight="34.0" prefWidth="316.0" text="Day Month, Year" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="25.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="weekBox" layoutX="515.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayWeeklyAgenda" text="Weekly" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="monthBox" layoutX="612.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayMonthlyAgenda" text="Monthly" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="15.0" />
+                     </font>
+                  </CheckBox>
                </AnchorPane>
+               <ListView fx:id="appointmentList" layoutY="67.0" onMouseClicked="#freeAppointment" prefHeight="382.0" prefWidth="732.0" />
             </AnchorPane>
          </AnchorPane>
       </Tab>
