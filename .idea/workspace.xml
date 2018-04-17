@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c16ec7a-a001-4057-82b9-b4a8372c9595" name="Default" comment="Added Agenda View to the Patient">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5c16ec7a-a001-4057-82b9-b4a8372c9595" name="Default" comment="Updated secretary init dayview">
+      <change afterPath="$PROJECT_DIR$/src/database/Doctor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/popUp.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Observer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/database/ConnectDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/database/ConnectDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DoctorScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DoctorScreenController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/PatientScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/PatientScreenController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/ConnectDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ConnectDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,16 +17,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SecretaryScreenController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SecretaryScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="852" column="43" selection-start-line="852" selection-start-column="43" selection-end-line="852" selection-end-column="43" />
+            <state relative-caret-position="221">
+              <caret line="999" column="21" lean-forward="true" selection-start-line="999" selection-start-column="21" selection-end-line="999" selection-end-column="21" />
               <folding>
                 <element signature="e#841#845#0" />
                 <element signature="e#6620#17351#0" />
                 <element signature="e#17354#30048#0" />
-                <element signature="e#31817#37158#0" />
                 <element signature="e#37367#38746#0" />
                 <element signature="e#38749#38863#0" />
                 <element signature="e#38866#39533#0" />
@@ -47,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoctorScreenController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DoctorScreenController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="592">
@@ -205,11 +201,11 @@
         <option value="$PROJECT_DIR$/src/gui/LogInController.java" />
         <option value="$PROJECT_DIR$/src/gui/ProblemSolver.java" />
         <option value="$USER_HOME$/Downloads/PatientScreenController (1).java" />
-        <option value="$PROJECT_DIR$/src/gui/SecretaryScreenController.java" />
         <option value="$PROJECT_DIR$/src/gui/MainController.java" />
         <option value="$PROJECT_DIR$/src/gui/PatientScreenController.java" />
         <option value="$PROJECT_DIR$/src/database/ConnectDB.java" />
         <option value="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
+        <option value="$PROJECT_DIR$/src/gui/SecretaryScreenController.java" />
       </list>
     </option>
   </component>
@@ -446,7 +442,7 @@
       <workItem from="1523942524809" duration="2606000" />
       <workItem from="1523955805861" duration="12495000" />
       <workItem from="1523973349271" duration="2859000" />
-      <workItem from="1523976660401" duration="2149000" />
+      <workItem from="1523976660401" duration="3191000" />
     </task>
     <task id="LOCAL-00001" summary="updated doctor controller">
       <created>1523265465256</created>
@@ -602,11 +598,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523965308191</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Updated Doctor">
+      <created>1523980968845</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1523980968845</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135372000" />
+    <option name="totallyTimeSpent" value="136414000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -621,7 +624,7 @@
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.515625" side_tool="true" weight="0.064156204" />
       <window_info anchor="right" id="Maven Projects" order="0" />
       <window_info anchor="bottom" id="Database Changes" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.484375" visible="true" weight="0.21103448" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.484375" visible="true" weight="0.08413793" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49166667" weight="0.30586907" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info id="Capture Tool" order="0" />
@@ -689,7 +692,9 @@
     <MESSAGE value="Final!!!!! (medj lang doe)" />
     <MESSAGE value="Updated Day View of everything (Patient still has bug though)" />
     <MESSAGE value="Added Agenda View to the Patient" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Agenda View to the Patient" />
+    <MESSAGE value="Updated Doctor" />
+    <MESSAGE value="Updated secretary init dayview" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated secretary init dayview" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -733,7 +738,6 @@
             <element signature="e#841#845#0" />
             <element signature="e#6620#17351#0" />
             <element signature="e#17354#30048#0" />
-            <element signature="e#31817#37158#0" />
             <element signature="e#37367#38746#0" />
             <element signature="e#38749#38863#0" />
             <element signature="e#38866#39533#0" />
@@ -826,7 +830,6 @@
             <element signature="e#841#845#0" />
             <element signature="e#6620#17351#0" />
             <element signature="e#17354#30048#0" />
-            <element signature="e#31817#37158#0" />
             <element signature="e#37367#38746#0" />
             <element signature="e#38749#38863#0" />
             <element signature="e#38866#39533#0" />
@@ -1037,31 +1040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="852" column="43" selection-start-line="852" selection-start-column="43" selection-end-line="852" selection-end-column="43" />
-          <folding>
-            <element signature="e#841#845#0" />
-            <element signature="e#6620#17351#0" />
-            <element signature="e#17354#30048#0" />
-            <element signature="e#31817#37158#0" />
-            <element signature="e#37367#38746#0" />
-            <element signature="e#38749#38863#0" />
-            <element signature="e#38866#39533#0" />
-            <element signature="e#39536#40383#0" />
-            <element signature="e#40386#41173#0" />
-            <element signature="e#41176#41607#0" />
-            <element signature="e#41610#44271#0" />
-            <element signature="e#44274#47171#0" />
-            <element signature="e#47174#50073#0" />
-            <element signature="e#50076#50348#0" />
-            <element signature="e#50351#50592#0" />
-            <element signature="e#50662#51696#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/PatientScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
@@ -1130,6 +1108,30 @@
             <element signature="method#initialize#0;class#DoctorScreenController#0" />
             <element signature="method#now#0;class#DoctorScreenController#0" />
             <element signature="method#eventToday#0;class#DoctorScreenController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="999" column="21" lean-forward="true" selection-start-line="999" selection-start-column="21" selection-end-line="999" selection-end-column="21" />
+          <folding>
+            <element signature="e#841#845#0" />
+            <element signature="e#6620#17351#0" />
+            <element signature="e#17354#30048#0" />
+            <element signature="e#37367#38746#0" />
+            <element signature="e#38749#38863#0" />
+            <element signature="e#38866#39533#0" />
+            <element signature="e#39536#40383#0" />
+            <element signature="e#40386#41173#0" />
+            <element signature="e#41176#41607#0" />
+            <element signature="e#41610#44271#0" />
+            <element signature="e#44274#47171#0" />
+            <element signature="e#47174#50073#0" />
+            <element signature="e#50076#50348#0" />
+            <element signature="e#50351#50592#0" />
+            <element signature="e#50662#51696#0" />
           </folding>
         </state>
       </provider>
