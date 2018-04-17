@@ -297,7 +297,8 @@ public class DBController {
 	/* --- updateAppointmentName()
 	 * When details for an appointment name was modified (parameters contains the name of the patient, new time)
 	 */
-	public void updateAppointmentPatient(String patientName, String doctorName, int day, int month, int year, int starthr, int startmin, int endhr, int endmin) {
+	//GINALAW KO TO -CHESIE
+	public void updateAppointmentPatient(int status, String patientName, String doctorName, int day, int month, int year, int starthr, int startmin, int endhr, int endmin) {
 		int refID = 0;
 
 		for (Appointment a : appointments) {
@@ -306,12 +307,13 @@ public class DBController {
 		}
 		System.out.println("UPDATED!");
 
-		String sql = "UPDATE clinic_tool.appointments SET Patient = ? WHERE AppointmentID = ?";
+		String sql = "UPDATE clinic_tool.appointments SET Patient = ?, Status = ? WHERE AppointmentID = ?";
 		try{
 			pst = con.prepareStatement(sql);
 
 			pst.setString(1, patientName);
-			pst.setInt(2, refID);
+			pst.setInt(2, status);
+			pst.setInt(3, refID);
 
 			int i = pst.executeUpdate();
 			if (i==1)
@@ -387,20 +389,21 @@ public class DBController {
 		return null;
 	}
 
-	public void setStatus(int status, int day, int month, int year, int starthour, int startmin, int endhour, int endmin) {
-		String sql = "UPDATE clinic_tool.appointments SET Status = ? WHERE Day = ? AND Month = ? AND "
+	public void setStatus(int status, String doctorName, int day, int month, int year, int starthour, int startmin, int endhour, int endmin) { //GINALAW KO TO -CHESIE
+		String sql = "UPDATE clinic_tool.appointments SET Status = ? WHERE Doctor = ? AND Day = ? AND Month = ? AND "
 				+ " Year = ? AND StartHour = ? AND StartMinute = ? AND EndHour = ? AND EndMinute = ?";
 		try{
 			pst = con.prepareStatement(sql);
 
 			pst.setInt(1, status);
-			pst.setInt(2, day);
-			pst.setInt(3, month);
-			pst.setInt(4, year);
-			pst.setInt(5, starthour);
-			pst.setInt(6, startmin);
-			pst.setInt(7, endhour);
-			pst.setInt(8, endmin);
+			pst.setString(2,  doctorName);
+			pst.setInt(3, day);
+			pst.setInt(4, month);
+			pst.setInt(5, year);
+			pst.setInt(6, starthour);
+			pst.setInt(7, startmin);
+			pst.setInt(8, endhour);
+			pst.setInt(9, endmin);
 
 			int i = pst.executeUpdate();
 			if (i==1)

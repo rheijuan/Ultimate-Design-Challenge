@@ -19,7 +19,7 @@ public class MainController{
     public void refreshPC(ControllerParent pc){
         //((PatientScreenController) pc).displayWeekView();
         ((PatientScreenController) pc).displayDayView();
-        ((PatientScreenController) pc).displayAgenda();
+        ((PatientScreenController) pc).displayAgendaView();
     }
 
 
