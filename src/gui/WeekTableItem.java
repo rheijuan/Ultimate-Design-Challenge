@@ -24,6 +24,7 @@ public class WeekTableItem {
     private int valueEndHour;
     private int valueStartMin;
     private int valueEndMin;
+
     /*
     private boolean isEnableSun;
     private boolean isEnableMon;
