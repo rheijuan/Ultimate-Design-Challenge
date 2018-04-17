@@ -13,7 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class PatientScreenController extends AbstractController implements Initializable {
+public class PatientScreenController extends AbstractController implements Initializable, ControllerParent{
 
 	@FXML private Label doctor1WeekTag;
 
@@ -733,12 +733,19 @@ public class PatientScreenController extends AbstractController implements Initi
 
 	@FXML
 	private void reserveAppointment() {
+		mc.refreshAll();//refresh all
 		// TODO reserve appointment
 	}
 
 	@FXML
-	private void setAppointment() {}
+	private void setAppointment() {
+		mc.refreshAll();
+	}
 
+	public PatientScreenController(MainController mc){
+		this.mc = mc;
+
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		dbController = new DBController();
@@ -800,4 +807,5 @@ public class PatientScreenController extends AbstractController implements Initi
 	private static String name;
 	private static String docName1;
 	private static String docName2;
+	private MainController mc;
 }

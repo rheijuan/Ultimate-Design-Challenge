@@ -10,12 +10,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.print.Doc;
 import java.awt.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class DoctorScreenController extends AbstractController implements Initializable {
+public class DoctorScreenController extends AbstractController implements Initializable, ControllerParent {
 
     @FXML private CheckBox mondayBox;
 
@@ -824,6 +825,7 @@ public class DoctorScreenController extends AbstractController implements Initia
             if (a.getStartHour() == Integer.parseInt(startTime[0]) && a.getStartMin() == Integer.parseInt(startTime[1]) &&
                     a.getEndHour() == Integer.parseInt(endTime[0]) && a.getEndMin() == Integer.parseInt(endTime[1]) && a.getPatient().equals(name)) {
                 deleteAppointment(a.getAppointmentID());
+                mc.refreshAll();
                 break;
             }
 
@@ -837,6 +839,7 @@ public class DoctorScreenController extends AbstractController implements Initia
         } else {
             displayDailyEvents(name);
         }
+        mc.refreshAll();
     }
 
     private void displayDailyEvents(String name) {
@@ -872,6 +875,7 @@ public class DoctorScreenController extends AbstractController implements Initia
             if (appointment.getAppointmentID() == ID) {
                 // TODO instead of deleting, set the patient to  ""
                 dbController.deleteAppointmentForD(appointment.getDoctor(), appointment.getDay(), appointment.getMonth(), appointment.getYear(), appointment.getStartHour(), appointment.getStartMin(), appointment.getEndHour(), appointment.getEndMin());
+                mc.refreshAll();
                 break;
             }
         }
@@ -1049,10 +1053,12 @@ public class DoctorScreenController extends AbstractController implements Initia
 //        wedCheck.setSelected(false);
 //        thursCheck.setSelected(false);
 //        friCheck.setSelected(false);}
+            mc.refreshAll();
     }
 
     @FXML
     private void setAppointment () {
+        mc.refreshAll();
         profilePane.setVisible(false);
         mondayBox.setSelected(false);
         tuesdayBox.setSelected(false);
@@ -1066,6 +1072,10 @@ public class DoctorScreenController extends AbstractController implements Initia
         endTimeBox.getSelectionModel().selectLast();
     }
 
+    public DoctorScreenController(MainController mc){
+        this.mc = mc;
+
+    }
     @Override
     public void initialize (URL location, ResourceBundle resources){
         dbController = new DBController();
@@ -1099,4 +1109,5 @@ public class DoctorScreenController extends AbstractController implements Initia
     }
 
     private static String name;
+    private MainController mc;
 }

@@ -18,7 +18,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LogInController implements Initializable {
+public class LogInController implements Initializable{
+    @FXML private MainController mc;
 
     @FXML private TextField userText;
 
@@ -31,6 +32,7 @@ public class LogInController implements Initializable {
         String userName = userText.getText();
         String password = passwordText.getText();
         boolean found = false;
+        Stage newStage = new Stage();
 
         if (userName.equals("") || password.equals(""))
             invalidLabel.setVisible(true);
@@ -42,22 +44,31 @@ public class LogInController implements Initializable {
                         switch (user.getRole()) {
                             case "Doctor":
                                 found = true;
-                                DoctorScreenController.setName(user.getName());
-                                changeScene(event, "doctorscreen.fxml");
+                                DoctorScreenController dc=  new DoctorScreenController(mc);
+                                dc.setName(user.getName());
+                                mc.getControllerList().add(dc);
+                                changeToDoctorScene(event, "doctorscreen.fxml", dc );
+                                clearFields();
                                 break;
                             case "Patient":
                                 found = true;
-                                PatientScreenController.setName(user.getName());
-                                PatientScreenController.setDoc1Name(doctors.get(0).getName());
-                                PatientScreenController.setDoc2Name(doctors.get(1).getName());
-                                changeScene(event, "patientscreen.fxml");
+                                PatientScreenController pc = new PatientScreenController(mc);
+                                pc.setName(user.getName());
+                                pc.setDoc1Name(doctors.get(0).getName());
+                                pc.setDoc2Name(doctors.get(1).getName());
+                                mc.getControllerList().add(pc);
+                                changeToPatientScene(event, "patientscreen.fxml", pc);
+                                clearFields();
                                 break;
                             case "Secretary":
                                 found = true;
-                                SecretaryScreenController.setName(user.getName());
-                                SecretaryScreenController.setDoc1Name(doctors.get(0).getName());
-                                SecretaryScreenController.setDoc2Name(doctors.get(1).getName());
-                                changeScene(event, "secretaryscreen.fxml");
+                                SecretaryScreenController sc = new SecretaryScreenController(mc);
+                                sc.setName(user.getName());
+                                sc.setDoc1Name(doctors.get(0).getName());
+                                sc.setDoc2Name(doctors.get(1).getName());
+                                mc.getControllerList().add(sc);
+                                changeToSecretaryScene(event, "secretaryscreen.fxml", sc);
+                                clearFields();
                                 break;
                         }
                     }
@@ -67,25 +78,89 @@ public class LogInController implements Initializable {
         if (!found)
             invalidLabel.setVisible(true);
     }
+    private void clearFields(){
+        userText.clear();
+        passwordText.clear();
 
-    @FXML
-    private void bookWalkIn(ActionEvent event) {
-        BookInController.setDoc1Name(doctors.get(0).getName());
-        BookInController.setDoc2Name(doctors.get(1).getName());
-
-        changeScene(event, "bookIn.fxml");
     }
 
-    private void changeScene(ActionEvent event, String url) {
+    private void changeToDoctorScene(ActionEvent event, String url, DoctorScreenController controller) {
         Parent viewParent;
         try {
-            viewParent = FXMLLoader.load(getClass().getResource(url));
-            Scene viewScene = new Scene(viewParent);
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+            loader.setController(controller);
+            viewParent = loader.load();
 
-            window.setScene(viewScene);
-            window.show();
-            window.centerOnScreen();
+
+
+            Scene viewScene = new Scene(viewParent);
+            if(counter < 5){
+                Stage window = new Stage();
+                window.setScene(viewScene);
+                window.show();
+                window.centerOnScreen();
+            }
+            else if (counter == 5) {
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(viewScene);
+                window.show();
+                window.centerOnScreen();
+            }
+            counter++;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void changeToSecretaryScene(ActionEvent event, String url, SecretaryScreenController controller) {
+        Parent viewParent;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+            loader.setController(controller);
+            viewParent = loader.load();
+
+
+
+            Scene viewScene = new Scene(viewParent);
+            if(counter < 5){
+                Stage window = new Stage();
+                window.setScene(viewScene);
+                window.show();
+                window.centerOnScreen();
+            }
+            else if (counter == 5) {
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(viewScene);
+                window.show();
+                window.centerOnScreen();
+            }
+            counter++;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void changeToPatientScene(ActionEvent event, String url, PatientScreenController controller) {
+        Parent viewParent;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+            loader.setController(controller);
+            viewParent = loader.load();
+
+
+
+            Scene viewScene = new Scene(viewParent);
+            if(counter < 5){
+                Stage window = new Stage();
+                window.setScene(viewScene);
+                window.show();
+                window.centerOnScreen();
+            }
+            else if (counter == 5) {
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(viewScene);
+                window.show();
+                window.centerOnScreen();
+            }
+            counter++;
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,6 +174,7 @@ public class LogInController implements Initializable {
 
         users = DBController.getUsers();
         doctors = DBController.getDoctors();
+        mc = new MainController();
 
 
 
@@ -108,4 +184,5 @@ public class LogInController implements Initializable {
     private ObservableList<User> users;
     private ObservableList<User> doctors;
     private DBController dbController;
+    private static int counter = 0;
 }

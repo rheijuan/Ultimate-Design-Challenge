@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class SecretaryScreenController extends AbstractController implements Initializable {
+public class SecretaryScreenController extends AbstractController implements Initializable, ControllerParent{
 
 	@FXML private Label doctor1DayTag;
 
@@ -1034,12 +1034,14 @@ public class SecretaryScreenController extends AbstractController implements Ini
 //			// TODO pop up of invalid
 //			System.out.println("Invalid appointment slot");
 //		}
+		mc.refreshAll();
 	}
 
 	@FXML
 	private void bookWalkIn() {
 		profilePane.setVisible(false);
 		nameTextField.clear();
+		mc.refreshAll();
 	}
 
 	private boolean isValidTime(Appointment appo) {
@@ -1373,6 +1375,9 @@ public class SecretaryScreenController extends AbstractController implements Ini
 				return a.getDay() == day;
 		return false;
 	}
+	public SecretaryScreenController(MainController mc){
+		this.mc = mc;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -1415,5 +1420,6 @@ public class SecretaryScreenController extends AbstractController implements Ini
 	private static String docName1;
 	private static String docName2;
 	ObservableList<User> doctors;
+	private MainController mc;
 }
 
