@@ -33,15 +33,15 @@ import javafx.stage.Stage;
 
 public class PatientScreenController implements Initializable, ControllerParent{
 
-	@FXML private Label dateLabel;
+	@FXML private Label profileDateLabel;
 
-	@FXML private Label patientTag;
+	@FXML private Label userTag;
 
 	@FXML private Label dayLabel;
 
-	@FXML private Label doc1Tag;
+	@FXML private Label doctor1DayTag;
 
-	@FXML private Label doc2Tag;
+	@FXML private Label doctor2DayTag;
 
 	@FXML private Label agendaLabel;
 
@@ -61,9 +61,9 @@ public class PatientScreenController implements Initializable, ControllerParent{
 
 	@FXML private TableView<DayTableItem> dayTableView;
 
-	@FXML private TableColumn<DayTableItem, String> timeColumn;
+	@FXML private TableColumn<DayTableItem, String> dayTimeColumn;
 
-	@FXML private TableColumn<DayTableItem, String> patientColumn;
+	@FXML private TableColumn<DayTableItem, String> dayPatientColumn;
 
 	@FXML private ListView<String> appointmentList;
 
@@ -76,6 +76,8 @@ public class PatientScreenController implements Initializable, ControllerParent{
 	@FXML private GridPane agendaViewGridPane;
 
 	@FXML private AnchorPane agendaViewPane;
+	@FXML private ComboBox startTimeBox;
+	@FXML private ComboBox endTimeBox;
 
 	//	@FXML
 	//	public void checkIfHaveAppointment() {
@@ -112,16 +114,6 @@ public class PatientScreenController implements Initializable, ControllerParent{
 	private void setAppointment () {
 		mc.refreshAll();
 		profilePane.setVisible(false);
-		mondayBox.setSelected(false);
-		tuesdayBox.setSelected(false);
-		wednesdayBox.setSelected(false);
-		thursdayBox.setSelected(false);
-		fridayBox.setSelected(false);
-		saturdayBox.setSelected(false);
-		everydayBox.setSelected(false);
-		everyMonthBox.setSelected(false);
-		startTimeBox.getSelectionModel().selectFirst();
-		endTimeBox.getSelectionModel().selectLast();
 	}
 
 
@@ -213,7 +205,7 @@ public class PatientScreenController implements Initializable, ControllerParent{
 		} else
 			monthToday += 1;
 
-		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
+		profileDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);
 		//		checkIfHaveAppointment();
 	}
@@ -226,7 +218,7 @@ public class PatientScreenController implements Initializable, ControllerParent{
 		} else
 			monthToday -= 1;
 
-		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
+		profileDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);
 		//		checkIfHaveAppointment();
 	}
@@ -235,14 +227,14 @@ public class PatientScreenController implements Initializable, ControllerParent{
 	public void displayDayView() {
 		dayLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
 
-		doc1Tag.setText("Doctor " + docName1);
-		doc2Tag.setText("Doctor " + docName2);
+		doctor1DayTag.setText("Doctor " + docName1);
+		doctor2DayTag.setText("Doctor " + docName2);
 
 		ObservableList<DayTableItem> data = initializeDayView();
-		timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
-		patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
+		dayTimeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+		dayPatientColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
 
-		patientColumn.setCellFactory(column -> new TableCell<DayTableItem, String> (){
+		dayPatientColumn.setCellFactory(column -> new TableCell<DayTableItem, String> (){
 			@Override
 			protected void updateItem(String event, boolean empty) {
 				super.updateItem(event, empty);
@@ -288,7 +280,7 @@ public class PatientScreenController implements Initializable, ControllerParent{
 		//agendaLabel.setText(convert(monthToday - 1) + " " + daySelected + ", " + yearToday);
 
 		//ObservableList<String> scheduledAppointments = FXCollections.observableArrayList();
-		agendaViewGridPane.getChildren().clear();
+		appointmentList.getItems().clear();
 		appointments.clear();
 		dbController.loadAppointments();
 
@@ -329,7 +321,8 @@ public class PatientScreenController implements Initializable, ControllerParent{
 						}
 					}
 				});
-				agendaViewGridPane.add(b, 0, ctr);
+				// PLEASE EDIT
+				appointmentList.getItems().add(appointment.getPatient());
 				ctr++;
 			}
 		}
@@ -360,21 +353,21 @@ public class PatientScreenController implements Initializable, ControllerParent{
 		int year = datePicker.getValue().getYear();
 		int status = 1;
 
-		int startTime = (Integer.parseInt(sTime.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
-				(Integer.parseInt(sTime.getSelectionModel().getSelectedItem().toString().split(":")[1]));
-		int endTime = (Integer.parseInt(eTime.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
-				(Integer.parseInt(eTime.getSelectionModel().getSelectedItem().toString().split(":")[1]));
+		int startTime = (Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
+				(Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]));
+		int endTime = (Integer.parseInt(endTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
+				(Integer.parseInt(endTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]));
 
 		int startTimeBook = startTime;
 		int endTimeBook = endTime;
 
-		int starthour = Integer.parseInt(sTime.getSelectionModel().getSelectedItem().toString().split(":")[0]);
-		int startmin = Integer.parseInt(sTime.getSelectionModel().getSelectedItem().toString().split(":")[1]);
+		int starthour = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]);
+		int startmin = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]);
 		int endhour;
 		int endmin;
 
-		int starthourBook = Integer.parseInt(sTime.getSelectionModel().getSelectedItem().toString().split(":")[0]);
-		int startminBook = Integer.parseInt(sTime.getSelectionModel().getSelectedItem().toString().split(":")[1]);
+		int starthourBook = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]);
+		int startminBook = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]);
 		int endhourBook;
 		int endminBook;
 
@@ -965,11 +958,11 @@ public class PatientScreenController implements Initializable, ControllerParent{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
+		profileDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
 		dbController = new DBController();
 
-		patientTag.setText("Welcome Patient " + patName);
+		userTag.setText("Welcome Patient " + patName);
 
 		Calendar cal = Calendar.getInstance();
 		yearToday = cal.get(GregorianCalendar.YEAR);
@@ -982,13 +975,14 @@ public class PatientScreenController implements Initializable, ControllerParent{
 
 		daySelected = dayToday;
 
+		initializeBoxes();
 		for (int i=0; i<dbController.getDoctors().size(); i++) {
 			System.out.println(dbController.getDoctors().get(i).getName());
 			doctorBox.getItems().add(dbController.getDoctors().get(i).getName());
 		}
 
 		appointments = DBController.getAppointments();
-		dateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
+		profileDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		refreshCalendar(monthToday, yearToday, dayToday);
 		//		checkIfHaveAppointment();
 	}
@@ -997,7 +991,7 @@ public class PatientScreenController implements Initializable, ControllerParent{
 		month -= 1;
 		miniCalendar.getChildren().clear();
 
-		dateLabel.setText(convert(month) + " " + day + ", " + year);
+		profileDateLabel.setText(convert(month) + " " + day + ", " + year);
 
 		GregorianCalendar cal = new GregorianCalendar(year, month, 1);
 		int nod = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
@@ -1016,7 +1010,7 @@ public class PatientScreenController implements Initializable, ControllerParent{
 			button.setOnAction((ActionEvent event) -> {
 				daySelected = Integer.parseInt(((Button) event.getSource()).getText());
 				button.setStyle("-fx-font-family: 'Avenir 85 Heavy'; -fx-font-size: 10px; -fx-background-color:  #8FCFDA; -fx-text-fill: #FFFFFF");
-				dateLabel.setText(convert(finalMonth) + " " + daySelected + ", " + year);
+				profileDateLabel.setText(convert(finalMonth) + " " + daySelected + ", " + year);
 
 				for (Node node : finalTemp.getChildren()) {
 					if (node instanceof Button && Integer.parseInt(((Button) node).getText()) != daySelected) {
@@ -1040,6 +1034,64 @@ public class PatientScreenController implements Initializable, ControllerParent{
 
 			miniCalendar.add(button, column, row);
 		}
+	}
+	@FXML
+	void displayWeeklyAgenda() {
+//		dbController.loadAppointments();
+//		if (weekBox.isSelected()) {
+//			monthBox.setSelected(false);
+//
+//			if (agendaDoc1Box.isSelected()) {
+//
+//			} else if (agendaDoc2Box.isSelected()) {
+//
+//			}
+//			// TODO display all appointments for the week
+//		} else if (!(weekBox.isSelected() && monthBox.isSelected())) {
+//			dbController.loadAppointments();
+//			displayEventsToday();
+//		}
+	}
+
+	@FXML
+	void displayMonthlyAgenda() {
+		// TODO
+				}
+
+
+
+	// TODO filter day view to only doc1 when checkbox is selected
+	@FXML
+	private void doc1Only() {
+
+	}
+
+	// TODO filter day view to only doc2 when checkbox is selected
+	@FXML
+	private void doc2Only() {
+
+	}
+	@FXML
+	void displayAgenda() {
+		appointmentList.getItems().clear();
+		//agendaDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
+
+		appointments.sort(Comparator.comparingInt(Appointment::getStartHour));
+
+		for (Appointment a : appointments)
+			if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && (a.getDoctor().equals(docName1) || a.getDoctor().equals(docName2))) {
+				String startMin, endMin;
+				if (a.getStartMin() == 0)
+					startMin = "00";
+				else
+					startMin = "30";
+				if (a.getEndMin() == 0)
+					endMin = "00";
+				else
+					endMin = "30";
+				appointmentList.getItems().add(a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin
+						+ " - " + a.getPatient() + " - " + a.getDoctor());
+			}
 	}
 
 	private boolean now(int day) {
@@ -1078,6 +1130,23 @@ public class PatientScreenController implements Initializable, ControllerParent{
 		}
 		return "January";
 	}
+	void initializeBoxes() {
+		for (int i = 8; i < 17; i++) {
+			for (int j = 0; j < 60; j += 30) {
+				if (j % 60 == 0) {
+					startTimeBox.getItems().add(i + ":00");
+					endTimeBox.getItems().add(i + ":00");
+				}
+				else {
+					startTimeBox.getItems().add(i + ":30");
+					endTimeBox.getItems().add(i + ":30");
+				}
+			}
+		}
+
+		startTimeBox.getItems().add("17:00");
+		endTimeBox.getItems().add("17:00");
+	}
 
 	public static void setName(String name) { patName = name; }
 
@@ -1098,4 +1167,5 @@ public class PatientScreenController implements Initializable, ControllerParent{
 	private int monthNow;
 	private int dayNow;
 	private MainController mc;
+
 }
