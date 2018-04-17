@@ -932,123 +932,130 @@ public class DoctorScreenController extends AbstractController implements Initia
 
     @FXML
     public void createAppointment () {
-        boolean oneDay = true;
 
-        if (mondayBox.isSelected()) { // Client booked appointment every mondays
-            oneDay = false;
+        int appointmentID = appointments.size() + 1;
+        int day = datePicker.getValue().getDayOfMonth();
+        int month = datePicker.getValue().getMonthValue() - 1;
+        int year = datePicker.getValue().getYear();
+
+        String[] startTime = startTimeBox.getSelectionModel().getSelectedItem().split(":");
+        String[] endTime = endTimeBox.getSelectionModel().getSelectedItem().split(":");
+
+        int starthour = Integer.parseInt(startTime[0]);
+        int startmin = Integer.parseInt(startTime[1]);
+        int endhour = Integer.parseInt(endTime[0]);
+        int endmin = Integer.parseInt(endTime[1]);
+
+        int status = 0;
+
+        Calendar date = Calendar.getInstance();
+
+        int maximum = 0;
+        if (monthToday % 2 == 1 && monthToday < 8 && monthToday > 0)
+            maximum = 31;
+        else if (monthToday % 2 == 0 && monthToday < 8 && monthToday > 0 && monthToday != 2)
+            maximum = 30;
+        else if (monthToday % 2 == 1 && monthToday > 7 && monthToday < 13)
+            maximum = 30;
+        else if (monthToday % 2 == 0 && monthToday > 7 && monthToday < 13)
+            maximum = 31;
+
+        if (!(mondayBox.isSelected() && tuesdayBox.isSelected() && wednesdayBox.isSelected() && thursdayBox.isSelected() && fridayBox.isSelected() &&
+                saturdayBox.isSelected() && everydayBox.isSelected() && everyMonthBox.isSelected())) { // Client booked for only one da
+            dbController.loadAppointments();
+
+            for (int i = starthour; i < endhour; i++) {
+                for (int j = startmin; i < 60; j += 30) {
+                    if (j == 30) {
+                        dbController.createAppointment("", name, day, month, year, i, j, i+1, 0, status);
+                        j = 0;
+                    } else
+                        dbController.createAppointment("", name, day, month, year, i, j, i, 30, status);
+                }
+            }
         }
 
-        if (tuesdayBox.isSelected()) { // Client booked appointment every tuesdays
-            oneDay = false;
+        else {
+            for (int i = day; i < maximum; i++) {
+                date.set(year, month, i);
+
+                if (mondayBox.isSelected()) { // Client booked appointment every mondays
+                    int dayinWeek = i + 2;
+                    System.out.println("MONDAY DAY IN A WEEK: " + dayinWeek);
+
+                    dbController.loadAppointments();
+                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                }
+
+                if (tuesdayBox.isSelected()) { // Client booked appointment every tuesdays
+                    int dayinWeek = i + 2;
+                    System.out.println("TUES DAY IN A WEEK: " + dayinWeek);
+
+                    dbController.loadAppointments();
+                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                }
+
+                if (wednesdayBox.isSelected()) { // Client booked appointment every wednesdays
+                    int dayinWeek = i + 2;
+
+                    System.out.println("WED DAY IN A WEEK: " + dayinWeek);
+                    dbController.loadAppointments();
+                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                }
+
+                if (thursdayBox.isSelected()) { // Client booked appointment every thursdays
+                    int dayinWeek = i + 2;
+
+                    System.out.println("THURS DAY IN A WEEK: " + dayinWeek);
+
+                    dbController.loadAppointments();
+                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                }
+
+                if (fridayBox.isSelected()) { // Client booked appointment every fridays
+                    int dayinWeek = i + 2;
+
+                    System.out.println("FRI DAY IN A WEEK: " + dayinWeek);
+
+                    dbController.loadAppointments();
+                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                }
+
+                if (saturdayBox.isSelected()) { // Client booked appointment every saturdays
+                    int dayinWeek = i + 2;
+
+                    System.out.println("SAT DAY IN A WEEK: " + dayinWeek);
+
+                    dbController.loadAppointments();
+                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                }
+
+//                if (everyMonthBox.isSelected()) { // Client booked appointment once a month
+//
+//
+//                }
+
+                if (everydayBox.isSelected()) { // Client booked appointment every day **exclude sunday here
+                    int dayinWeek = i + 2;
+
+                    dbController.loadAppointments();
+                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                }
+            }
         }
 
-        if (wednesdayBox.isSelected()) { // Client booked appointment every wednesdays
-            oneDay = false;
+        dbController.loadAppointments();
+        appointments = DBController.getAppointments();
+        profilePane.setVisible(true);
 
-        }
-
-        if (thursdayBox.isSelected()) { // Client booked appointment every thursdays
-            oneDay = false;
-
-        }
-
-        if (fridayBox.isSelected()) { // Client booked appointment every fridays
-            oneDay = false;
-
-        }
-
-        if (saturdayBox.isSelected()) { // Client booked appointment every saturdays
-            oneDay = false;
-
-        }
-
-        if (everyMonthBox.isSelected()) { // Client booked appointment once a month
-            oneDay = false;
-
-        }
-
-        if (everydayBox.isSelected()) { // Client booked appointment every day **exclude sunday here
-            oneDay = false;
-
-        }
-
-        if (oneDay) { // Client booked for only one day
-
-        }
-//        int appointmentID = appointments.size() + 1;
-//        int day = datePick.getValue().getDayOfMonth();
-//        int month = datePick.getValue().getMonthValue();
-//        int year = datePick.getValue().getYear();
-//
-//        String[] startTime = startTimeComboBox.getSelectionModel().getSelectedItem().split(":");
-//        String[] endTime = endTimeComboBox.getSelectionModel().getSelectedItem().split(":");
-//
-//        int starthour = Integer.parseInt(startTime[0]);
-//        int startmin = Integer.parseInt(startTime[1]);
-//        int endhour = Integer.parseInt(endTime[0]);
-//        int endmin = Integer.parseInt(endTime[0]);
-//
-//        int status = 0;
-//
-//        Calendar date = Calendar.getInstance();
-//        date.set(year, month, day);
-//
-//        int daysRemaining = date.getActualMaximum(Calendar.DAY_OF_MONTH) - day;
-//        int maximum = date.getActualMaximum(Calendar.DAY_OF_MONTH);
-//        System.out.println(daysRemaining);
-//        System.out.println(day);
-//
-//        for (int i=daysRemaining; i<maximum+1; i++) {
-//            date.set(year, month, i);
-//
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY && monCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY && tuesCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY && wedCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY && thursCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY && friCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//
-//
-//        }
-//
-//        dbController = new DBController(); //NEWLY ADDEDDDD!
-//        dbController.loadAppointments();
-//        appointments = DBController.getAppointments();
-//        profilePane.setVisible(true);
-//
-//        datePick.getEditor().clear();
-//        monCheck.setSelected(false);
-//        tuesCheck.setSelected(false);
-//        wedCheck.setSelected(false);
-//        thursCheck.setSelected(false);
-//        friCheck.setSelected(false);}
+        datePicker.getEditor().clear();
+        mondayBox.setSelected(false);
+        tuesdayBox.setSelected(false);
+        wednesdayBox.setSelected(false);
+        thursdayBox.setSelected(false);
+        fridayBox.setSelected(false);
+        saturdayBox.setSelected(false);
+        refreshCalendar(monthToday, yearToday, dayToday);
     }
 
     @FXML

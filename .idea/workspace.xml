@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5c16ec7a-a001-4057-82b9-b4a8372c9595" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/database/DBController.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/database/DBController.class" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DoctorScreenController.class" afterPath="$PROJECT_DIR$/classes/production/Ultimate-Design-Challenge/gui/DoctorScreenController.class" />
+      <change beforePath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" afterPath="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,31 +19,46 @@
       <file leaf-file-name="AbstractController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/AbstractController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="43" />
+            <state relative-caret-position="3302">
+              <caret line="205" column="49" lean-forward="false" selection-start-line="205" selection-start-column="49" selection-end-line="205" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#nextMonth#0;class#AbstractController#0" expanded="false" />
                 <element signature="method#prevMonth#0;class#AbstractController#0" expanded="false" />
                 <element signature="method#refreshCalendar#0;class#AbstractController#0" expanded="false" />
                 <element signature="method#convert#0;class#AbstractController#0" expanded="false" />
-                <element signature="method#initializeBoxes#0;class#AbstractController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoctorScreenController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DoctorScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1404">
-              <caret line="848" column="40" lean-forward="false" selection-start-line="848" selection-start-column="40" selection-end-line="848" selection-end-column="40" />
+            <state relative-caret-position="704">
+              <caret line="933" column="37" lean-forward="false" selection-start-line="933" selection-start-column="37" selection-end-line="933" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#displayDayView#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="e#1338#2461#0" expanded="true" />
+                <element signature="e#2460#2461#0" expanded="true" />
                 <element signature="method#initializeDayView#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#setAppointmentColors#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#displayWeekView#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="e#8627#10321#0" expanded="true" />
+                <element signature="e#10320#10321#0" expanded="true" />
+                <element signature="e#10403#12496#0" expanded="true" />
+                <element signature="e#12495#12496#0" expanded="true" />
+                <element signature="e#12579#14672#0" expanded="true" />
+                <element signature="e#14671#14672#0" expanded="true" />
+                <element signature="e#14757#16936#0" expanded="true" />
+                <element signature="e#16935#16936#0" expanded="true" />
+                <element signature="e#17020#19101#0" expanded="true" />
+                <element signature="e#19100#19101#0" expanded="true" />
+                <element signature="e#19183#21264#0" expanded="true" />
+                <element signature="e#21263#21264#0" expanded="true" />
+                <element signature="e#21348#23441#0" expanded="true" />
+                <element signature="e#23440#23441#0" expanded="true" />
                 <element signature="method#initializeWeekView#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#freeAppointment#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#displayDailyEvents#0;class#DoctorScreenController#0" expanded="false" />
@@ -55,98 +71,11 @@
                 <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#setAppointment#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+                <element signature="e#52706#52707#0" expanded="true" />
+                <element signature="e#52756#52757#0" expanded="true" />
                 <element signature="method#now#0;class#DoctorScreenController#0" expanded="false" />
                 <element signature="method#eventToday#0;class#DoctorScreenController#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecretaryScreenController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3042">
-              <caret line="1398" column="28" lean-forward="false" selection-start-line="1398" selection-start-column="8" selection-end-line="1399" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#765#769#0" expanded="false" />
-                <element signature="method#displayDayView#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#initializeDayView#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#doc1Only#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#doc2Only#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#displayWeekView#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#reserveAppointment#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#bookWalkIn#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#isValidTime#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#getValidApp#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#displayAgenda#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#displayWeeklyAgenda#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#displayMonthlyAgenda#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#doc1Agenda#0;class#SecretaryScreenController#0" expanded="false" />
-                <element signature="method#doc2Agenda#0;class#SecretaryScreenController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PatientScreenController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gui/PatientScreenController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="620" column="51" lean-forward="false" selection-start-line="620" selection-start-column="51" selection-end-line="620" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#665#673#0" expanded="false" />
-                <element signature="method#displayDayView#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#doc1Only#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#doc2Only#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#displayWeekView#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="e#23262#23263#0" expanded="true" />
-                <element signature="e#23280#23281#0" expanded="true" />
-                <element signature="method#displayAgenda#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#displayWeeklyAgenda#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#displayMonthlyAgenda#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#now#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#eventToday#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#reserveAppointment#0;class#PatientScreenController#0" expanded="false" />
-                <element signature="method#initialize#0;class#PatientScreenController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="patientscreen.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/patientscreen.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6630">
-              <caret line="255" column="73" lean-forward="false" selection-start-line="255" selection-start-column="73" selection-end-line="255" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="secretaryscreen.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/secretaryscreen.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6916">
-              <caret line="266" column="49" lean-forward="false" selection-start-line="266" selection-start-column="35" selection-end-line="266" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogInController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1690">
-              <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -162,7 +91,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>book</find>
       <find>startTimeCombo</find>
       <find>displayWeel</find>
       <find>displat</find>
@@ -192,6 +120,7 @@
       <find>loadAppo</find>
       <find>getPatient</find>
       <find>doctor1Week</find>
+      <find>endMin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -220,10 +149,10 @@
         <option value="$PROJECT_DIR$/src/database/DBController.java" />
         <option value="$USER_HOME$/AppData/Local/Temp/SecretaryScreenController.java" />
         <option value="$PROJECT_DIR$/src/gui/AbstractController.java" />
-        <option value="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
         <option value="$PROJECT_DIR$/src/gui/SecretaryScreenController.java" />
         <option value="$PROJECT_DIR$/src/gui/patientscreen.fxml" />
         <option value="$PROJECT_DIR$/src/gui/PatientScreenController.java" />
+        <option value="$PROJECT_DIR$/src/gui/DoctorScreenController.java" />
       </list>
     </option>
   </component>
@@ -272,7 +201,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -306,9 +234,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -504,7 +433,9 @@
       <workItem from="1523794759382" duration="7672000" />
       <workItem from="1523848723502" duration="19320000" />
       <workItem from="1523883945232" duration="19801000" />
-      <workItem from="1523933060208" duration="10000" />
+      <workItem from="1523933060208" duration="63000" />
+      <workItem from="1523942524809" duration="2606000" />
+      <workItem from="1523955805861" duration="37000" />
     </task>
     <task id="LOCAL-00001" summary="updated doctor controller">
       <created>1523265465256</created>
@@ -639,11 +570,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523908910659</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Updated Day View of everything (Patient still has bug though)">
+      <created>1523933084750</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1523933084750</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116888000" />
+    <option name="totallyTimeSpent" value="119584000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -653,10 +591,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36568847" sideWeight="0.49947917" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36568847" sideWeight="0.5015625" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30586907" sideWeight="0.49375" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36568847" sideWeight="0.5005208" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36568847" sideWeight="0.4984375" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -695,7 +633,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="27" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -746,9 +684,25 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#displayDayView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#1338#2461#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
             <element signature="method#initializeDayView#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#setAppointmentColors#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#displayWeekView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#8627#10321#0" expanded="true" />
+            <element signature="e#10320#10321#0" expanded="true" />
+            <element signature="e#10403#12496#0" expanded="true" />
+            <element signature="e#12495#12496#0" expanded="true" />
+            <element signature="e#12579#14672#0" expanded="true" />
+            <element signature="e#14671#14672#0" expanded="true" />
+            <element signature="e#14757#16936#0" expanded="true" />
+            <element signature="e#16935#16936#0" expanded="true" />
+            <element signature="e#17020#19101#0" expanded="true" />
+            <element signature="e#19100#19101#0" expanded="true" />
+            <element signature="e#19183#21264#0" expanded="true" />
+            <element signature="e#21263#21264#0" expanded="true" />
+            <element signature="e#21348#23441#0" expanded="true" />
+            <element signature="e#23440#23441#0" expanded="true" />
             <element signature="method#initializeWeekView#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#freeAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#displayDailyEvents#0;class#DoctorScreenController#0" expanded="false" />
@@ -761,6 +715,8 @@
             <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#setAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#52706#52707#0" expanded="true" />
+            <element signature="e#52756#52757#0" expanded="true" />
             <element signature="method#now#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#eventToday#0;class#DoctorScreenController#0" expanded="false" />
           </folding>
@@ -842,9 +798,25 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#displayDayView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#1338#2461#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
             <element signature="method#initializeDayView#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#setAppointmentColors#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#displayWeekView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#8627#10321#0" expanded="true" />
+            <element signature="e#10320#10321#0" expanded="true" />
+            <element signature="e#10403#12496#0" expanded="true" />
+            <element signature="e#12495#12496#0" expanded="true" />
+            <element signature="e#12579#14672#0" expanded="true" />
+            <element signature="e#14671#14672#0" expanded="true" />
+            <element signature="e#14757#16936#0" expanded="true" />
+            <element signature="e#16935#16936#0" expanded="true" />
+            <element signature="e#17020#19101#0" expanded="true" />
+            <element signature="e#19100#19101#0" expanded="true" />
+            <element signature="e#19183#21264#0" expanded="true" />
+            <element signature="e#21263#21264#0" expanded="true" />
+            <element signature="e#21348#23441#0" expanded="true" />
+            <element signature="e#23440#23441#0" expanded="true" />
             <element signature="method#initializeWeekView#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#freeAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#displayDailyEvents#0;class#DoctorScreenController#0" expanded="false" />
@@ -857,6 +829,8 @@
             <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#setAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#52706#52707#0" expanded="true" />
+            <element signature="e#52756#52757#0" expanded="true" />
             <element signature="method#now#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#eventToday#0;class#DoctorScreenController#0" expanded="false" />
           </folding>
@@ -938,9 +912,25 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#displayDayView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#1338#2461#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
             <element signature="method#initializeDayView#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#setAppointmentColors#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#displayWeekView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#8627#10321#0" expanded="true" />
+            <element signature="e#10320#10321#0" expanded="true" />
+            <element signature="e#10403#12496#0" expanded="true" />
+            <element signature="e#12495#12496#0" expanded="true" />
+            <element signature="e#12579#14672#0" expanded="true" />
+            <element signature="e#14671#14672#0" expanded="true" />
+            <element signature="e#14757#16936#0" expanded="true" />
+            <element signature="e#16935#16936#0" expanded="true" />
+            <element signature="e#17020#19101#0" expanded="true" />
+            <element signature="e#19100#19101#0" expanded="true" />
+            <element signature="e#19183#21264#0" expanded="true" />
+            <element signature="e#21263#21264#0" expanded="true" />
+            <element signature="e#21348#23441#0" expanded="true" />
+            <element signature="e#23440#23441#0" expanded="true" />
             <element signature="method#initializeWeekView#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#freeAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#displayDailyEvents#0;class#DoctorScreenController#0" expanded="false" />
@@ -953,6 +943,8 @@
             <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#setAppointment#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#52706#52707#0" expanded="true" />
+            <element signature="e#52756#52757#0" expanded="true" />
             <element signature="method#now#0;class#DoctorScreenController#0" expanded="false" />
             <element signature="method#eventToday#0;class#DoctorScreenController#0" expanded="false" />
           </folding>
@@ -1024,14 +1016,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/loginscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="13" column="111" lean-forward="false" selection-start-line="13" selection-start-column="111" selection-end-line="13" selection-end-column="111" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/ConnectDB.java">
@@ -1042,21 +1034,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/bookIn.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="35" column="95" lean-forward="false" selection-start-line="35" selection-start-column="95" selection-end-line="35" selection-end-column="95" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/ReserveScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-130">
           <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,25 +1070,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/doctorscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="285" column="85" lean-forward="false" selection-start-line="285" selection-start-column="85" selection-end-line="285" selection-end-column="85" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/BookInController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="43" column="52" lean-forward="false" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#changeScene#0;class#BookInController#0" expanded="false" />
-            <element signature="method#setTime#0;class#BookInController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1105,13 +1091,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/DoctorScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7410">
-          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1129,13 +1108,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/SecretaryScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="304" column="8" lean-forward="false" selection-start-line="304" selection-start-column="8" selection-end-line="304" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/SecretaryScreenController.java" />
     <entry file="file://$PROJECT_DIR$/src/database/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
@@ -1159,82 +1132,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="848" column="40" lean-forward="false" selection-start-line="848" selection-start-column="40" selection-end-line="848" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#displayDayView#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#initializeDayView#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#setAppointmentColors#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#displayWeekView#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#initializeWeekView#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#freeAppointment#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#displayDailyEvents#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#displayMonthlyEvents#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#deleteAppointment#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#displayAgenda#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#displayWeeklyAgenda#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#displayMonthlyAgenda#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#day#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#setAppointment#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#now#0;class#DoctorScreenController#0" expanded="false" />
-            <element signature="method#eventToday#0;class#DoctorScreenController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#nextMonth#0;class#AbstractController#0" expanded="false" />
-            <element signature="method#prevMonth#0;class#AbstractController#0" expanded="false" />
-            <element signature="method#refreshCalendar#0;class#AbstractController#0" expanded="false" />
-            <element signature="method#convert#0;class#AbstractController#0" expanded="false" />
-            <element signature="method#initializeBoxes#0;class#AbstractController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1690">
-          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/patientscreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6630">
           <caret line="255" column="73" lean-forward="false" selection-start-line="255" selection-start-column="73" selection-end-line="255" selection-end-column="73" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/secretaryscreen.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/secretaryscreen.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6916">
           <caret line="266" column="49" lean-forward="false" selection-start-line="266" selection-start-column="35" selection-end-line="266" selection-end-column="49" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/PatientScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="620" column="51" lean-forward="false" selection-start-line="620" selection-start-column="51" selection-end-line="620" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#665#673#0" expanded="false" />
+            <element signature="method#displayDayView#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#doc1Only#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#doc2Only#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#displayWeekView#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="e#23262#23263#0" expanded="true" />
+            <element signature="e#23280#23281#0" expanded="true" />
+            <element signature="method#displayAgenda#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#displayWeeklyAgenda#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#displayMonthlyAgenda#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#now#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#eventToday#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#reserveAppointment#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#initialize#0;class#PatientScreenController#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/SecretaryScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3042">
+        <state relative-caret-position="428">
           <caret line="1398" column="28" lean-forward="false" selection-start-line="1398" selection-start-column="8" selection-end-line="1399" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1257,26 +1203,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/PatientScreenController.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="620" column="51" lean-forward="false" selection-start-line="620" selection-start-column="51" selection-end-line="620" selection-end-column="51" />
+        <state relative-caret-position="26">
+          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/DoctorScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="295" column="0" lean-forward="false" selection-start-line="295" selection-start-column="0" selection-end-line="298" selection-end-column="137" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/AbstractController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3302">
+          <caret line="205" column="49" lean-forward="false" selection-start-line="205" selection-start-column="49" selection-end-line="205" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#665#673#0" expanded="false" />
-            <element signature="method#displayDayView#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#doc1Only#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#doc2Only#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#displayWeekView#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="e#23262#23263#0" expanded="true" />
-            <element signature="e#23280#23281#0" expanded="true" />
-            <element signature="method#displayAgenda#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#displayWeeklyAgenda#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#displayMonthlyAgenda#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#now#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#eventToday#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#reserveAppointment#0;class#PatientScreenController#0" expanded="false" />
-            <element signature="method#initialize#0;class#PatientScreenController#0" expanded="false" />
+            <element signature="method#nextMonth#0;class#AbstractController#0" expanded="false" />
+            <element signature="method#prevMonth#0;class#AbstractController#0" expanded="false" />
+            <element signature="method#refreshCalendar#0;class#AbstractController#0" expanded="false" />
+            <element signature="method#convert#0;class#AbstractController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DoctorScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="933" column="37" lean-forward="false" selection-start-line="933" selection-start-column="37" selection-end-line="933" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#displayDayView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#1338#2461#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
+            <element signature="method#initializeDayView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#setAppointmentColors#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayWeekView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#8627#10321#0" expanded="true" />
+            <element signature="e#10320#10321#0" expanded="true" />
+            <element signature="e#10403#12496#0" expanded="true" />
+            <element signature="e#12495#12496#0" expanded="true" />
+            <element signature="e#12579#14672#0" expanded="true" />
+            <element signature="e#14671#14672#0" expanded="true" />
+            <element signature="e#14757#16936#0" expanded="true" />
+            <element signature="e#16935#16936#0" expanded="true" />
+            <element signature="e#17020#19101#0" expanded="true" />
+            <element signature="e#19100#19101#0" expanded="true" />
+            <element signature="e#19183#21264#0" expanded="true" />
+            <element signature="e#21263#21264#0" expanded="true" />
+            <element signature="e#21348#23441#0" expanded="true" />
+            <element signature="e#23440#23441#0" expanded="true" />
+            <element signature="method#initializeWeekView#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#freeAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayDailyEvents#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayMonthlyEvents#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#deleteAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayAgenda#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayWeeklyAgenda#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#displayMonthlyAgenda#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#day#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#createAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#setAppointment#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#initialize#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="e#52706#52707#0" expanded="true" />
+            <element signature="e#52756#52757#0" expanded="true" />
+            <element signature="method#now#0;class#DoctorScreenController#0" expanded="false" />
+            <element signature="method#eventToday#0;class#DoctorScreenController#0" expanded="false" />
           </folding>
         </state>
       </provider>
