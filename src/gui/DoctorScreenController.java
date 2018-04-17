@@ -18,23 +18,32 @@ import java.util.*;
 
 public class DoctorScreenController extends AbstractController implements Initializable, ControllerParent {
 
-    @FXML private CheckBox mondayBox;
+    @FXML
+    private CheckBox mondayBox;
 
-    @FXML private CheckBox tuesdayBox;
+    @FXML
+    private CheckBox tuesdayBox;
 
-    @FXML private CheckBox wednesdayBox;
+    @FXML
+    private CheckBox wednesdayBox;
 
-    @FXML private CheckBox thursdayBox;
+    @FXML
+    private CheckBox thursdayBox;
 
-    @FXML private CheckBox fridayBox;
+    @FXML
+    private CheckBox fridayBox;
 
-    @FXML private CheckBox saturdayBox;
+    @FXML
+    private CheckBox saturdayBox;
 
-    @FXML private CheckBox everyMonthBox;
+    @FXML
+    private CheckBox everyMonthBox;
 
-    @FXML private CheckBox everydayBox;
+    @FXML
+    private CheckBox everydayBox;
 
-    @FXML private Label userWeekTag;
+    @FXML
+    private Label userWeekTag;
 
     @FXML
     void displayDayView() {
@@ -80,7 +89,7 @@ public class DoctorScreenController extends AbstractController implements Initia
 
         ArrayList<DayTableItem> toTableItems = new ArrayList<>();
 
-        for (int hour = 8; hour <= 17; hour++)
+        for (int hour = 8; hour < 17; hour++)
             for (int min = 0; min <= 30; min += 30) {
 
                 if (min < 30) {
@@ -935,7 +944,7 @@ public class DoctorScreenController extends AbstractController implements Initia
     }
 
     @FXML
-    public void createAppointment () {
+    public void createAppointment() {
 
         int appointmentID = appointments.size() + 1;
         int day = datePicker.getValue().getDayOfMonth();
@@ -971,15 +980,13 @@ public class DoctorScreenController extends AbstractController implements Initia
             for (int i = starthour; i < endhour; i++) {
                 for (int j = startmin; i < 60; j += 30) {
                     if (j == 30) {
-                        dbController.createAppointment("", name, day, month, year, i, j, i+1, 0, status);
+                        dbController.createAppointment("", name, day, month, year, i, j, i + 1, 0, status);
                         j = 0;
                     } else
                         dbController.createAppointment("", name, day, month, year, i, j, i, 30, status);
                 }
             }
-        }
-
-        else {
+        } else {
             for (int i = day; i < maximum; i++) {
                 date.set(year, month, i);
 
@@ -1051,83 +1058,7 @@ public class DoctorScreenController extends AbstractController implements Initia
         dbController.loadAppointments();
         appointments = DBController.getAppointments();
         profilePane.setVisible(true);
-
-        }
-//        int appointmentID = appointments.size() + 1;
-//        int day = datePick.getValue().getDayOfMonth();
-//        int month = datePick.getValue().getMonthValue();
-//        int year = datePick.getValue().getYear();
-//
-//        String[] startTime = startTimeComboBox.getSelectionModel().getSelectedItem().split(":");
-//        String[] endTime = endTimeComboBox.getSelectionModel().getSelectedItem().split(":");
-//
-//        int starthour = Integer.parseInt(startTime[0]);
-//        int startmin = Integer.parseInt(startTime[1]);
-//        int endhour = Integer.parseInt(endTime[0]);
-//        int endmin = Integer.parseInt(endTime[0]);
-//
-//        int status = 0;
-//
-//        Calendar date = Calendar.getInstance();
-//        date.set(year, month, day);
-//
-//        int daysRemaining = date.getActualMaximum(Calendar.DAY_OF_MONTH) - day;
-//        int maximum = date.getActualMaximum(Calendar.DAY_OF_MONTH);
-//        System.out.println(daysRemaining);
-//        System.out.println(day);
-//
-//        for (int i=daysRemaining; i<maximum+1; i++) {
-//            date.set(year, month, i);
-//
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY && monCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY && tuesCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY && wedCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY && thursCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//
-//            if(date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY && friCheck.isSelected()) {
-//                int dayinWeek = i+2;
-//
-//                dbController.loadAppointments();
-//                dbController.createAppointment("", docName, dayinWeek, month, year, starthour, startmin, endhour, endmin, status);
-//            }
-//
-//
-//        }
-//
-//        dbController = new DBController(); //NEWLY ADDEDDDD!
-//        dbController.loadAppointments();
-//        appointments = DBController.getAppointments();
-//        profilePane.setVisible(true);
-//
-//        datePick.getEditor().clear();
-//        monCheck.setSelected(false);
-//        tuesCheck.setSelected(false);
-//        wedCheck.setSelected(false);
-//        thursCheck.setSelected(false);
-//        friCheck.setSelected(false);}
-            mc.refreshAll();
+        mc.refreshAll();
         datePicker.getEditor().clear();
         mondayBox.setSelected(false);
         tuesdayBox.setSelected(false);
@@ -1154,12 +1085,13 @@ public class DoctorScreenController extends AbstractController implements Initia
         endTimeBox.getSelectionModel().selectLast();
     }
 
-    public DoctorScreenController(MainController mc){
+    DoctorScreenController(MainController mc){
         this.mc = mc;
-
     }
+
     @Override
-    public void initialize (URL location, ResourceBundle resources){
+    public void initialize (URL location, ResourceBundle resources) {
+        userTag.setText("Welcome Doctor " + name);
         dbController = new DBController();
         appointments = DBController.getAppointments();
 

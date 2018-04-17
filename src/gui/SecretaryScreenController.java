@@ -186,6 +186,7 @@ public class SecretaryScreenController extends AbstractController implements Ini
 //	}\
 //
 //
+
 	@FXML
 	public void displayWeekView() {
 		doctor1WeekTag.setText("Doctor " + docName1);
@@ -901,7 +902,7 @@ public class SecretaryScreenController extends AbstractController implements Ini
 
 		ArrayList<DayTableItem> toTableItems = new ArrayList<>();
 
-		for (int hour = 8; hour <= 17; hour++)
+		for (int hour = 8; hour < 17; hour++)
 			for (int min = 0; min <= 30; min += 30) {
 
 				if (min < 30) {
@@ -1057,23 +1058,6 @@ public class SecretaryScreenController extends AbstractController implements Ini
 	private void doc2Only() {
 
 	}
-
-	/*
-	// TODO still has missing codes
-	@FXML
-	void displayWeekView() {
-		doctor1WeekTag.setText("Doctor " + docName1);
-		doctor2WeekTag.setText("Doctor " + docName2);
-	}
-	*/
-
-	/*
-	// TODO fix this code
-	@Override
-	ObservableList<WeekTableItem> initializeWeekView(Calendar forWeekCalendar) {
-		return null;
-	}
-	*/
 
 	// TODO still thinking on how to fix this
 	@FXML
@@ -1448,7 +1432,8 @@ public class SecretaryScreenController extends AbstractController implements Ini
 				return a.getDay() == day;
 		return false;
 	}
-	public SecretaryScreenController(MainController mc){
+
+	SecretaryScreenController(MainController mc){
 		this.mc = mc;
 	}
 

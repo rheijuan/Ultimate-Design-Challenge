@@ -518,7 +518,7 @@ public class PatientScreenController extends AbstractController implements Initi
 
 		ArrayList<DayTableItem> toTableItems = new ArrayList<>();
 
-		for (int hour = 8; hour <= 17; hour++)
+		for (int hour = 8; hour < 17; hour++)
 			for (int min = 0; min <= 30; min += 30) {
 
 				if (min < 30) {
@@ -690,8 +690,25 @@ public class PatientScreenController extends AbstractController implements Initi
 
 	@FXML
 	void displayAgenda() {
+		appointmentList.getItems().clear();
 		agendaDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
+		appointments.sort(Comparator.comparingInt(Appointment::getStartHour));
+
+		for (Appointment a : appointments)
+			if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && a.getPatient().equals(name)) {
+				String startMin, endMin;
+				if (a.getStartMin() == 0)
+					startMin = "00";
+				else
+					startMin = "30";
+				if (a.getEndMin() == 0)
+					endMin = "00";
+				else
+					endMin = "30";
+				appointmentList.getItems().add(a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin
+						+ " - " + a.getPatient() + " - " + a.getDoctor());
+			}
 		// TODO display agenda for today
 	}
 
@@ -707,12 +724,235 @@ public class PatientScreenController extends AbstractController implements Initi
 
 	@FXML
 	void displayMonthlyAgenda() {
+		appointmentList.getItems().clear();
+
 		if (monthBox.isSelected()) {
 			weekBox.setSelected(false);
-			// TODO display all appointments for the month
-		}  else if (!(weekBox.isSelected() && monthBox.isSelected())) {
-			// TODO display all agenda for today
+
+			if (agendaDoc1Box.isSelected()) {
+				for (Appointment a : appointments)
+					if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getPatient().equals(name) && a.getDoctor().equals(docName1)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin
+								+ " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+			} else if (agendaDoc2Box.isSelected()) {
+				for (Appointment a : appointments)
+					if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getPatient().equals(name) && a.getDoctor().equals(docName2)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin
+								+ " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+			} else if (!(agendaDoc1Box.isSelected() && agendaDoc2Box.isSelected())) {
+				for (Appointment a : appointments)
+					if (a.getMonth() == monthToday && a.getYear() == yearToday && a.getPatient().equals(name)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(convert(a.getMonth()) + " " + a.getDay() + ", " + a.getYear() + " - "
+								+ a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+			}
+		} else if (!(monthBox.isSelected() && weekBox.isSelected())) {
+			for (Appointment a : appointments)
+				if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && (a.getDoctor().equals(docName1) || a.getDoctor().equals(docName2))) {
+					String startMin, endMin;
+					if (a.getStartMin() == 0)
+						startMin = "00";
+					else
+						startMin = "30";
+					if (a.getEndMin() == 0)
+						endMin = "00";
+					else
+						endMin = "30";
+					appointmentList.getItems().add(a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin
+							+ " - " + a.getPatient() + " - " + a.getDoctor());
+				}
 		}
+	}
+
+	@FXML
+	void doc1Agenda() {
+		appointmentList.getItems().clear();
+
+		if (agendaDoc1Box.isSelected()) {
+
+			if (monthBox.isSelected()) {
+				for (Appointment a : appointments)
+					if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getPatient().equals(name) && a.getDoctor().equals(docName1)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(convert(a.getMonth()) + " " + a.getDay() + ", " + a.getYear() + " - "
+								+ a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+
+
+			} else if (weekBox.isSelected()) {
+
+			} else if (!(monthBox.isSelected() && weekBox.isSelected())) {
+				for (Appointment a : appointments)
+					if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && a.getPatient().equals(name) && a.getDoctor().equals(docName1)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(convert(a.getMonth()) + " " + a.getDay() + ", " + a.getYear() + " - "
+								+ a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+
+			}
+
+		} else if (!agendaDoc1Box.isSelected()) {
+			if (monthBox.isSelected()) {
+				for (Appointment a : appointments)
+					if (a.getMonth() == monthToday && a.getYear() == yearToday && a.getPatient().equals(name)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(convert(a.getMonth()) + " " + a.getDay() + ", " + a.getYear() + " - "
+								+ a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+			} else if (weekBox.isSelected()) {
+
+			} else if (!(weekBox.isSelected() && monthBox.isSelected())) {
+				for (Appointment a : appointments)
+					if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && (a.getDoctor().equals(docName1) || a.getDoctor().equals(docName2))) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin
+								+ " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+			}
+		}
+	}
+
+	@FXML
+	void doc2Agenda() {
+
+		appointmentList.getItems().clear();
+
+		if (agendaDoc2Box.isSelected()) {
+
+			if (monthBox.isSelected()) {
+				for (Appointment a : appointments)
+					if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getPatient().equals(name) && a.getDoctor().equals(docName2)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(convert(a.getMonth()) + " " + a.getDay() + ", " + a.getYear() + " - "
+								+ a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+
+
+			} else if (weekBox.isSelected()) {
+
+			} else if (!(monthBox.isSelected() && weekBox.isSelected())) {
+				for (Appointment a : appointments)
+					if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && a.getPatient().equals(name) && a.getDoctor().equals(docName2)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(convert(a.getMonth()) + " " + a.getDay() + ", " + a.getYear() + " - "
+								+ a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+
+			}
+
+		} else if (!agendaDoc2Box.isSelected()) {
+			if (monthBox.isSelected()) {
+				for (Appointment a : appointments)
+					if (a.getMonth() == monthToday && a.getYear() == yearToday && a.getPatient().equals(name)) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(convert(a.getMonth()) + " " + a.getDay() + ", " + a.getYear() + " - "
+								+ a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin + " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+			} else if (weekBox.isSelected()) {
+
+			} else if (!(weekBox.isSelected() && monthBox.isSelected())) {
+				for (Appointment a : appointments)
+					if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && (a.getDoctor().equals(docName1) || a.getDoctor().equals(docName2))) {
+						String startMin, endMin;
+						if (a.getStartMin() == 0)
+							startMin = "00";
+						else
+							startMin = "30";
+						if (a.getEndMin() == 0)
+							endMin = "00";
+						else
+							endMin = "30";
+						appointmentList.getItems().add(a.getStartHour() + ":" + startMin + " - " + a.getEndHour() + ":" + endMin
+								+ " - " + a.getPatient() + " - " + a.getDoctor());
+					}
+			}
+		}
+
 	}
 
 	@Override
@@ -742,10 +982,11 @@ public class PatientScreenController extends AbstractController implements Initi
 		mc.refreshAll();
 	}
 
-	public PatientScreenController(MainController mc){
+	PatientScreenController(MainController mc){
 		this.mc = mc;
 
 	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		dbController = new DBController();

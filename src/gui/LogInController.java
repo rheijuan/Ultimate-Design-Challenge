@@ -91,8 +91,6 @@ public class LogInController implements Initializable{
             loader.setController(controller);
             viewParent = loader.load();
 
-
-
             Scene viewScene = new Scene(viewParent);
             if(counter < 5){
                 Stage window = new Stage();

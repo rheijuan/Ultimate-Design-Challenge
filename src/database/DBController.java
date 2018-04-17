@@ -169,7 +169,7 @@ public class DBController {
 
 		for (int i=0; i<appointments.size(); i++) {
 			Appointment a = appointments.get(i);
-			if (patient  == a.getPatient() && day == a.getDay() && month == a.getMonth() && year == a.getYear()
+			if (patient.equals(a.getPatient()) && day == a.getDay() && month == a.getMonth() && year == a.getYear()
 					&& starthour == a.getStartHour() && startmin == a.getStartMin() && endhour == a.getEndHour()
 					&& endmin == a.getEndMin()) {
 				System.out.println("REACHED");
