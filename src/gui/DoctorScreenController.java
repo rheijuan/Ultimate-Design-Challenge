@@ -882,9 +882,9 @@ public class DoctorScreenController extends AbstractController implements Initia
         dbController.loadAppointments();
         for (Appointment appointment : appointments) {
             if (appointment.getAppointmentID() == ID) {
-                // TODO instead of deleting, set the patient to  ""
-                dbController.deleteAppointmentForD(appointment.getDoctor(), appointment.getDay(), appointment.getMonth(), appointment.getYear(), appointment.getStartHour(), appointment.getStartMin(), appointment.getEndHour(), appointment.getEndMin());
-                mc.refreshAll();
+                Appointment a = appointment;
+                //GINALAW KO TO -CHESIE
+                dbController.updateAppointmentPatient(0, "", a.getDoctor(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
                 break;
             }
         }
@@ -892,7 +892,6 @@ public class DoctorScreenController extends AbstractController implements Initia
 
     @FXML
     void displayAgenda() {
-
         appointmentList.getItems().clear();
         agendaDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
@@ -929,7 +928,7 @@ public class DoctorScreenController extends AbstractController implements Initia
     }
 
     private void day(Appointment a) {
-        if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday) {
+        if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && !a.getPatient().equals("")) {
             String startMin, endMin;
             if (a.getStartMin() == 0)
                 startMin = "00";

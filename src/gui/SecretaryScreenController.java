@@ -1483,7 +1483,6 @@ public class SecretaryScreenController extends AbstractController implements Ini
 	private static String name;
 	private static String docName1;
 	private static String docName2;
-	ObservableList<User> doctors;
 	private MainController mc;
 }
 

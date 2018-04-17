@@ -54,7 +54,7 @@
                         <Font name="Avenir 85 Heavy" size="16.0" />
                      </font>
                   </Button>
-                  <Button layoutX="432.0" layoutY="297.0" mnemonicParsing="false" onAction="#reserveAppointment" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #DC654D; -fx-background-radius: 25;" text="Reserve" textFill="WHITE">
+                  <Button layoutX="432.0" layoutY="297.0" mnemonicParsing="false" onAction="#reserveNewAppointment" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #DC654D; -fx-background-radius: 25;" text="Reserve" textFill="WHITE">
                      <font>
                         <Font name="Avenir 85 Heavy" size="16.0" />
                      </font>
@@ -67,6 +67,21 @@
                   <ComboBox fx:id="doctorBox" layoutX="133.0" layoutY="209.0" prefWidth="150.0" />
                </AnchorPane>
                <AnchorPane fx:id="profilePane" prefHeight="446.0" prefWidth="732.0" style="-fx-background-color: #FFFFFF;">
+                  <AnchorPane prefHeight="446.0" prefWidth="371.0" style="-fx-background-color: #FFFFFF;">
+                     <Label fx:id="userTag" alignment="CENTER" layoutY="55.0" prefHeight="34.0" prefWidth="371.0" text="Welcome &lt;Role&gt; &lt;Name&gt;">
+                        <font>
+                           <Font name="Avenir 85 Heavy" size="20.0" />
+                        </font>
+                     </Label>
+                     <ImageView fitHeight="169.0" fitWidth="177.0" layoutX="101.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@patient.png" />
+                     </ImageView>
+                     <Button layoutX="35.0" layoutY="335.0" mnemonicParsing="false" onAction="#setAppointment" prefHeight="44.0" prefWidth="301.0" style="-fx-background-color: #DC654D;" text="Reserve an Appointment" textFill="WHITE">
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Button>
+                  </AnchorPane>
                   <AnchorPane layoutX="371.0" prefHeight="446.0" prefWidth="384.0" style="-fx-background-color: #3E454D;">
                      <Label fx:id="profileDateLabel" alignment="CENTER" layoutY="59.0" prefWidth="371.0" text="Month Day, Year" textFill="WHITE">
                         <font>
@@ -134,21 +149,6 @@
                      <Button layoutX="304.0" layoutY="89.0" mnemonicParsing="false" onAction="#nextMonth" style="-fx-background-color: transparent;" text="&gt;" textFill="WHITE">
                         <font>
                            <Font name="System Bold" size="16.0" />
-                        </font>
-                     </Button>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="446.0" prefWidth="371.0" style="-fx-background-color: #FFFFFF;">
-                     <Label fx:id="userTag" alignment="CENTER" layoutY="55.0" prefHeight="34.0" prefWidth="371.0" text="Welcome &lt;Role&gt; &lt;Name&gt;">
-                        <font>
-                           <Font name="Avenir 85 Heavy" size="20.0" />
-                        </font>
-                     </Label>
-                     <ImageView fitHeight="169.0" fitWidth="177.0" layoutX="101.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@patient.png" />
-                     </ImageView>
-                     <Button layoutX="35.0" layoutY="335.0" mnemonicParsing="false" onAction="#reserveAppointment" prefHeight="44.0" prefWidth="301.0" style="-fx-background-color: #DC654D;" text="Reserve an Appointment" textFill="WHITE">
-                        <font>
-                           <Font size="20.0" />
                         </font>
                      </Button>
                   </AnchorPane>
@@ -269,7 +269,7 @@
          </AnchorPane>
       </Tab>
       <Tab onSelectionChanged="#displayAgenda" text="Agenda View">
-         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <AnchorPane fx:id="agendaViewPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <AnchorPane layoutX="54.0" layoutY="35.0" prefHeight="446.0" prefWidth="732.0" style="-fx-background-color: #FFFFFF;">
                <AnchorPane prefHeight="67.0" prefWidth="732.0" style="-fx-background-color: #3E454D;">
                   <Label fx:id="agendaDateLabel" layoutX="14.0" layoutY="16.0" prefHeight="34.0" prefWidth="316.0" text="Day Month, Year" textFill="WHITE">
@@ -288,7 +288,7 @@
                      </font>
                   </CheckBox>
                </AnchorPane>
-               <ListView fx:id="appointmentList" layoutY="67.0" prefHeight="324.0" prefWidth="732.0" />
+               <ListView fx:id="appointmentList" layoutY="67.0" onMouseClicked="#freeAppointment" prefHeight="324.0" prefWidth="732.0" />
                <CheckBox fx:id="agendaDoc1Box" layoutX="519.0" layoutY="399.0" mnemonicParsing="false" onAction="#doc1Agenda" text="Doctor">
                   <font>
                      <Font name="Avenir 85 Heavy" size="15.0" />
