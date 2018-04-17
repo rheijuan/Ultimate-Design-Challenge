@@ -146,7 +146,7 @@
                      <ImageView fitHeight="169.0" fitWidth="177.0" layoutX="101.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@patient.png" />
                      </ImageView>
-                     <Button layoutX="35.0" layoutY="335.0" mnemonicParsing="false" onAction="#setAppointment" prefHeight="44.0" prefWidth="301.0" style="-fx-background-color: #DC654D;" text="Reserve an Appointment" textFill="WHITE">
+                     <Button layoutX="35.0" layoutY="335.0" mnemonicParsing="false" onAction="#reserveAppointment" prefHeight="44.0" prefWidth="301.0" style="-fx-background-color: #DC654D;" text="Reserve an Appointment" textFill="WHITE">
                         <font>
                            <Font size="20.0" />
                         </font>
