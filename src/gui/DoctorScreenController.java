@@ -14,6 +14,7 @@ import javax.print.Doc;
 import java.awt.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 public class DoctorScreenController extends AbstractController implements Initializable, ControllerParent {
@@ -943,130 +944,162 @@ public class DoctorScreenController extends AbstractController implements Initia
     }
 
     @FXML
-    public void createAppointment() {
+    public void createAppointment () {
 
-        int appointmentID = appointments.size() + 1;
-        int day = datePicker.getValue().getDayOfMonth();
-        int month = datePicker.getValue().getMonthValue() - 1;
-        int year = datePicker.getValue().getYear();
+        /* String[] startTime = startTimeBox.getSelectionModel().getSelectedItem().split(":");
+         String[] endTime = endTimeBox.getSelectionModel().getSelectedItem().split(":");
+*/
+    /*     int starthour = Integer.parseInt(startTime[0]);
+         int startmin = Integer.parseInt(startTime[1]);
+         int endhour = Integer.parseInt(endTime[0]);
+         int endmin = Integer.parseInt(endTime[1]);
+         */
 
-        String[] startTime = startTimeBox.getSelectionModel().getSelectedItem().split(":");
-        String[] endTime = endTimeBox.getSelectionModel().getSelectedItem().split(":");
+            int startTime = (Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
+                    (Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]));
+            int endTime = (Integer.parseInt(endTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
+                    (Integer.parseInt(endTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]));
 
-        int starthour = Integer.parseInt(startTime[0]);
-        int startmin = Integer.parseInt(startTime[1]);
-        int endhour = Integer.parseInt(endTime[0]);
-        int endmin = Integer.parseInt(endTime[1]);
+            int startTimeBook = startTime;
+            int endTimeBook = endTime;
 
-        int status = 0;
+            int starthour = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]);
+            int startmin = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]);
+            int endhour;
+            int endmin;
 
-        Calendar date = Calendar.getInstance();
-
-        int maximum = 0;
-        if (monthToday % 2 == 1 && monthToday < 8 && monthToday > 0)
-            maximum = 31;
-        else if (monthToday % 2 == 0 && monthToday < 8 && monthToday > 0 && monthToday != 2)
-            maximum = 30;
-        else if (monthToday % 2 == 1 && monthToday > 7 && monthToday < 13)
-            maximum = 30;
-        else if (monthToday % 2 == 0 && monthToday > 7 && monthToday < 13)
-            maximum = 31;
-
-        if (!(mondayBox.isSelected() && tuesdayBox.isSelected() && wednesdayBox.isSelected() && thursdayBox.isSelected() && fridayBox.isSelected() &&
-                saturdayBox.isSelected() && everydayBox.isSelected() && everyMonthBox.isSelected())) { // Client booked for only one da
-            dbController.loadAppointments();
-
-            for (int i = starthour; i < endhour; i++) {
-                for (int j = startmin; i < 60; j += 30) {
-                    if (j == 30) {
-                        dbController.createAppointment("", name, day, month, year, i, j, i + 1, 0, status);
-                        j = 0;
-                    } else
-                        dbController.createAppointment("", name, day, month, year, i, j, i, 30, status);
+            do {
+                if(startmin == 30){
+                    endhour = starthour + 1;
+                    endmin = 00;
                 }
-            }
-        } else {
-            for (int i = day; i < maximum; i++) {
-                date.set(year, month, i);
+                else {
+                    endhour = starthour;
+                    endmin = 30;
+                }
+                int status = 0;
+//---------------------------------------This is ung wala pa ung recent nagawa mo.-------------------------------------
+                Calendar date = Calendar.getInstance();
+                int hours = date.get(Calendar.HOUR_OF_DAY);
+                int minutes = date.get(Calendar.MINUTE);
 
-                if (mondayBox.isSelected()) { // Client booked appointment every mondays
-                    int dayinWeek = i + 2;
-                    System.out.println("MONDAY DAY IN A WEEK: " + dayinWeek);
-
-                    dbController.loadAppointments();
-                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                if (datePicker.getValue() != null) { // Client booked for only one day
+                    if(hours < starthour || hours == starthour && minutes < startmin) { //only allowed to add this time if time has not passed
+                        int day = datePicker.getValue().getDayOfMonth();
+                        int month = datePicker.getValue().getMonthValue();
+                        int year = datePicker.getValue().getYear();
+                        dbController.loadAppointments();
+                        dbController.createAppointment("", name, day, month-1, year, starthour, startmin, endhour, endmin, status);
+                    }
                 }
 
-                if (tuesdayBox.isSelected()) { // Client booked appointment every tuesdays
-                    int dayinWeek = i + 2;
-                    System.out.println("TUES DAY IN A WEEK: " + dayinWeek);
+                else{
+                    int currDay = dayToday;
+                    int currMonth = monthToday ;
 
-                    dbController.loadAppointments();
-                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
+                    if(hours > 17 || hours == 17 && minutes > 0) {
+                        currDay++;
+                    }
+//--------------------------------------This is ung added mo na sabi mo copy paste---------------------------------
+	     	/* Calendar date = Calendar.getInstance();
+
+	         if (datePicker.getValue() != null) { // Client booked for only one day
+
+		        	 int day = datePicker.getValue().getDayOfMonth();
+		         	 int month = datePicker.getValue().getMonthValue();
+		         	 int year = datePicker.getValue().getYear();
+		             dbController.loadAppointments();
+		             dbController.createAppointment("", name, day, month, year, starthour, startmin, endhour, endmin, status);
+	        	 }
+
+	         }
+
+	         // This is the recurring part, it aint finished yet.
+	      else{
+	     	 int currDay = dayToday;
+	     	 int currMonth = monthToday + 1;
+
+	     	 */
+//---------------------------------------------------------------------------------------
+
+                    if (everyMonthBox.isSelected()) { // Client booked appointment once a month
+                        for(int i = monthToday; i < 12; i++) {
+                            dbController.loadAppointments();
+                            dbController.createAppointment("", name, currDay, i-1, yearToday, starthour, startmin, endhour, endmin, status);
+                        }
+
+                    }
+
+                    for (int i = currDay; i <= date.getActualMaximum(date.DAY_OF_MONTH); i++) {
+                        //date.set(year, month, i);
+                        LocalDate ld = LocalDate.of(yearToday, currMonth + 1, i);
+
+                        if (mondayBox.isSelected()) { // Client booked appointment every mondays
+                            if(ld.getDayOfWeek().getValue() == 1) { //creates appointment only when say is monday
+                                dbController.loadAppointments();
+                                dbController.createAppointment("", name, i, currMonth, yearToday, starthour, startmin, endhour, endmin, status);
+                                System.out.println("MONDAY DAY IN A WEEK: " + i);
+                            }
+
+                        }  if (tuesdayBox.isSelected()) { // Client booked appointment every tuesdays
+                            if(ld.getDayOfWeek().getValue() == 2) { //creates appointment only when say is tuesday
+                                dbController.loadAppointments();
+                                dbController.createAppointment("", name, i, currMonth, yearToday, starthour, startmin, endhour, endmin, status);
+                                System.out.println("TUESDAY DAY IN A WEEK: " + i);
+                            }
+
+                        }  if (wednesdayBox.isSelected()) { // Client booked appointment every wednesdays
+                            if(ld.getDayOfWeek().getValue() == 3) { //creates appointment only when say is wednesday
+                                dbController.loadAppointments();
+                                dbController.createAppointment("", name, i, currMonth, yearToday, starthour, startmin, endhour, endmin, status);
+                                System.out.println("WEDNESDAY DAY IN A WEEK: " + i);
+                            }
+
+                        }  if (thursdayBox.isSelected()) { // Client booked appointment every thursdays
+                            if(ld.getDayOfWeek().getValue() == 4) { //creates appointment only when say is thursday
+                                dbController.loadAppointments();
+                                dbController.createAppointment("", name, i, currMonth, yearToday, starthour, startmin, endhour, endmin, status);
+                                System.out.println("THURSDAY DAY IN A WEEK: " + i);
+                            }
+
+                        }  if (fridayBox.isSelected()) { // Client booked appointment every fridays
+                            if(ld.getDayOfWeek().getValue() == 5) { //creates appointment only when say is friday
+                                dbController.loadAppointments();
+                                dbController.createAppointment("", name, i, currMonth, yearToday, starthour, startmin, endhour, endmin, status);
+                                System.out.println("FRIDAY DAY IN A WEEK: " + i);
+                            }
+
+                        }  if (saturdayBox.isSelected()) { // Client booked appointment every saturdays
+                            if(ld.getDayOfWeek().getValue() == 6) { //creates appointment only when say is saturday
+                                dbController.loadAppointments();
+                                dbController.createAppointment("", name, i, currMonth, yearToday, starthour, startmin, endhour, endmin, status);
+                                System.out.println("SATURDAY DAY IN A WEEK: " + i);
+                            }
+                        }
+
+                        else if (everydayBox.isSelected()) { // Client booked appointment every day **exclude sunday here
+                            if(ld.getDayOfWeek().getValue() !=7) { //creates appointment only when say is not a sunday
+                                dbController.loadAppointments();
+                                dbController.createAppointment("", name, i, currMonth, yearToday, starthour, startmin, endhour, endmin, status);
+                            }
+                        }
+                    }
                 }
+                starthour = endhour;
+                startmin = endmin;
+                startTime = (starthour * 100) + startmin;
 
-                if (wednesdayBox.isSelected()) { // Client booked appointment every wednesdays
-                    int dayinWeek = i + 2;
-
-                    System.out.println("WED DAY IN A WEEK: " + dayinWeek);
-                    dbController.loadAppointments();
-                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
-                }
-
-                if (thursdayBox.isSelected()) { // Client booked appointment every thursdays
-                    int dayinWeek = i + 2;
-
-                    System.out.println("THURS DAY IN A WEEK: " + dayinWeek);
-
-                    dbController.loadAppointments();
-                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
-                }
-
-                if (fridayBox.isSelected()) { // Client booked appointment every fridays
-                    int dayinWeek = i + 2;
-
-                    System.out.println("FRI DAY IN A WEEK: " + dayinWeek);
-
-                    dbController.loadAppointments();
-                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
-                }
-
-                if (saturdayBox.isSelected()) { // Client booked appointment every saturdays
-                    int dayinWeek = i + 2;
-
-                    System.out.println("SAT DAY IN A WEEK: " + dayinWeek);
-
-                    dbController.loadAppointments();
-                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
-                }
-
-//                if (everyMonthBox.isSelected()) { // Client booked appointment once a month
-//
-//
-//                }
-
-                if (everydayBox.isSelected()) { // Client booked appointment every day **exclude sunday here
-                    int dayinWeek = i + 2;
-
-                    dbController.loadAppointments();
-                    dbController.createAppointment("", name, dayinWeek, monthToday, yearToday, starthour, startmin, endhour, endmin, status);
-                }
-            }
+            }while((endTime > startTime));
+            datePicker.getEditor().clear();
+            mondayBox.setSelected(false);
+            tuesdayBox.setSelected(false);
+            wednesdayBox.setSelected(false);
+            thursdayBox.setSelected(false);
+            fridayBox.setSelected(false);
+            saturdayBox.setSelected(false);
+            everydayBox.setSelected(false);
+            mc.refreshAll();
         }
-
-        dbController.loadAppointments();
-        appointments = DBController.getAppointments();
-        profilePane.setVisible(true);
-        mc.refreshAll();
-        datePicker.getEditor().clear();
-        mondayBox.setSelected(false);
-        tuesdayBox.setSelected(false);
-        wednesdayBox.setSelected(false);
-        thursdayBox.setSelected(false);
-        fridayBox.setSelected(false);
-        saturdayBox.setSelected(false);
-        refreshCalendar(monthToday, yearToday, dayToday);
-    }
 
     @FXML
     private void setAppointment () {
