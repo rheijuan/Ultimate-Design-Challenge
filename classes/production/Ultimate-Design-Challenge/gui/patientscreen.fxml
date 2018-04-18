@@ -204,12 +204,12 @@
                         <Font name="Avenir 85 Heavy" size="14.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="doc1DayFilter" layoutX="38.0" layoutY="379.0" mnemonicParsing="false" onAction="#doc1Only" text="CheckBox" textFill="WHITE">
+                  <CheckBox fx:id="doc1DayFilter" layoutX="38.0" layoutY="379.0" mnemonicParsing="false" onAction="#displayDayView" text="CheckBox" textFill="WHITE">
                      <font>
                         <Font name="Avenir 85 Heavy" size="14.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="doc2DayFilter" layoutX="159.0" layoutY="379.0" mnemonicParsing="false" onAction="#doc2Only" text="CheckBox" textFill="WHITE">
+                  <CheckBox fx:id="doc2DayFilter" layoutX="159.0" layoutY="379.0" mnemonicParsing="false" onAction="#displayDayView" text="CheckBox" textFill="WHITE">
                      <font>
                         <Font name="Avenir 85 Heavy" size="14.0" />
                      </font>
@@ -224,7 +224,7 @@
             </AnchorPane>
          </AnchorPane>
       </Tab>
-      <Tab text="Week View">
+      <Tab onSelectionChanged="#displayWeekView" text="Week View">
          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <AnchorPane layoutX="49.0" layoutY="35.0" prefHeight="446.0" prefWidth="706.0" style="-fx-background-color: #FFFFFF;">
                <AnchorPane layoutY="330.0" prefHeight="116.0" prefWidth="748.0" style="-fx-background-color: #3E454D;">
@@ -252,10 +252,20 @@
                   </Label>
                   <Label layoutX="349.0" layoutY="63.0" prefHeight="18.0" prefWidth="136.0" style="-fx-background-color: #98FF98;" />
                   <Label layoutX="581.0" layoutY="63.0" prefHeight="18.0" prefWidth="136.0" style="-fx-background-color: #FDFD96;" />
+                  <CheckBox fx:id="doctor1WeekTag" layoutX="31.0" layoutY="17.0" mnemonicParsing="false" onAction="#displayWeekView" text="Doctor &lt;Name&gt;" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="doctor2WeekTag" layoutX="31.0" layoutY="62.0" mnemonicParsing="false" onAction="#displayWeekView" text="Doctor &lt;Name&gt;" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir 85 Heavy" size="18.0" />
+                     </font>
+                  </CheckBox>
                </AnchorPane>
                <TableView fx:id="weekTable" prefHeight="330.0" prefWidth="750.0">
                   <columns>
-                     <TableColumn prefWidth="93.0" text="Time" />
+                     <TableColumn fx:id="weekTimeColumn" prefWidth="93.0" text="Time" />
                      <TableColumn fx:id="sundayColumn" prefWidth="93.0" />
                      <TableColumn fx:id="mondayColumn" prefWidth="93.0" />
                      <TableColumn fx:id="tuesdayColumn" prefWidth="93.0" />

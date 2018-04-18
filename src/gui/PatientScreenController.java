@@ -287,7 +287,7 @@ public class PatientScreenController extends AbstractController implements Initi
 
         String[] startTime = parts[0].split(":");
         String[] endTime = parts[1].split(":");
-        String name = parts[2].replaceAll("\\s", "");
+        String name = parts[2];
 
         for (Appointment a : appointments)
             if (a.getStartHour() == Integer.parseInt(startTime[0]) && a.getStartMin() == Integer.parseInt(startTime[1]) &&
@@ -346,6 +346,8 @@ public class PatientScreenController extends AbstractController implements Initi
                 Appointment a = appointment;
                 //GINALAW KO TO -CHESIE
                 dbController.updateAppointmentPatient(0, "", a.getDoctor(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
+                System.out.println("Hello");
+                mc.refreshAll();
                 break;
             }
         }

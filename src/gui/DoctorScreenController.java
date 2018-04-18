@@ -774,11 +774,10 @@ public class DoctorScreenController extends AbstractController implements Initia
 
         String[] startTime = parts[0].split(":");
         String[] endTime = parts[1].split(":");
-        String name = parts[2].replaceAll("\\s", "");
 
         for (Appointment a : appointments)
             if (a.getStartHour() == Integer.parseInt(startTime[0]) && a.getStartMin() == Integer.parseInt(startTime[1]) &&
-                    a.getEndHour() == Integer.parseInt(endTime[0]) && a.getEndMin() == Integer.parseInt(endTime[1]) && a.getPatient().equals(name)) {
+                    a.getEndHour() == Integer.parseInt(endTime[0]) && a.getEndMin() == Integer.parseInt(endTime[1]) && a.getPatient().equals("")) {
                 deleteAppointment(a.getAppointmentID());
                 mc.refreshAll();
                 break;
@@ -800,14 +799,14 @@ public class DoctorScreenController extends AbstractController implements Initia
     private void displayDailyEvents(String name) {
         appointmentList.getItems().clear();
         for (Appointment a : appointments)
-            if (a.getDoctor().equals(name) && !a.getPatient().equals(""))
+            if (a.getDoctor().equals(name) && a.getPatient().equals(""))
                 day(a);
     }
 
     private void displayMonthlyEvents() {
         appointmentList.getItems().clear();
         for (Appointment a : appointments)
-            if (a.getMonth() == monthToday && a.getYear() == yearToday && !a.getPatient().equals("") && a.getDoctor().equals(name)) {
+            if (a.getMonth() == monthToday && a.getYear() == yearToday && a.getPatient().equals("") && a.getDoctor().equals(name)) {
                 String startMin, endMin;
                 if (a.getStartMin() == 0)
                     startMin = "00";
@@ -830,7 +829,8 @@ public class DoctorScreenController extends AbstractController implements Initia
             if (appointment.getAppointmentID() == ID) {
                 Appointment a = appointment;
                 //GINALAW KO TO -CHESIE
-                dbController.updateAppointmentPatient(0, "", a.getDoctor(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
+                dbController.deleteAppointmentForD(  name, a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
+                displayDailyEvents(name);
                 break;
             }
         }
@@ -868,13 +868,13 @@ public class DoctorScreenController extends AbstractController implements Initia
         } else if (!(weekBox.isSelected() && monthBox.isSelected())) {
             appointmentList.getItems().clear();
             for (Appointment a : appointments)
-                if (a.getDoctor().equals(name) && !a.getPatient().equals("") && a.getDoctor().equals(name))
+                if (a.getDoctor().equals(name) && a.getPatient().equals("") && a.getDoctor().equals(name))
                     day(a);
         }
     }
 
     private void day(Appointment a) {
-        if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && !a.getPatient().equals("")) {
+        if (a.getYear() == yearToday && a.getMonth() == monthToday && a.getDay() == dayToday && a.getPatient().equals("")) {
             String startMin, endMin;
             if (a.getStartMin() == 0)
                 startMin = "00";
@@ -891,14 +891,6 @@ public class DoctorScreenController extends AbstractController implements Initia
     @FXML
     public void createAppointment () {
 
-        /* String[] startTime = startTimeBox.getSelectionModel().getSelectedItem().split(":");
-         String[] endTime = endTimeBox.getSelectionModel().getSelectedItem().split(":");
-*/
-    /*     int starthour = Integer.parseInt(startTime[0]);
-         int startmin = Integer.parseInt(startTime[1]);
-         int endhour = Integer.parseInt(endTime[0]);
-         int endmin = Integer.parseInt(endTime[1]);
-         */
 
             int startTime = (Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
                     (Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]));
@@ -929,10 +921,11 @@ public class DoctorScreenController extends AbstractController implements Initia
                 int minutes = date.get(Calendar.MINUTE);
 
                 if (datePicker.getValue() != null) { // Client booked for only one day
-                    if(hours < starthour || hours == starthour && minutes < startmin) { //only allowed to add this time if time has not passed
                         int day = datePicker.getValue().getDayOfMonth();
                         int month = datePicker.getValue().getMonthValue();
                         int year = datePicker.getValue().getYear();
+                    if(todayAfter(dayToday,monthToday, yearToday, day, month, year).equals("after") ||todayAfter(dayToday,monthToday, yearToday, day, month, year).equals("today") && ( hours < starthour || hours == starthour && minutes < startmin)) { //only allowed to add this time if time has not passed
+
                         dbController.loadAppointments();
                         dbController.createAppointment("", name, day, month-1, year, starthour, startmin, endhour, endmin, status);
                     }
@@ -1099,6 +1092,22 @@ public class DoctorScreenController extends AbstractController implements Initia
         return false;
     }
 
+
+    private String todayAfter(int todayDay, int todayMonth, int todayYear, int otherDay, int otherMonth, int otherYear){
+        if(todayYear < otherYear){
+            return "after";
+        }
+        else {
+            if(todayMonth < otherMonth){
+                return "after";
+            }
+            else {
+                if(todayDay < otherDay)
+                    return "after";
+                else return "today";
+            }
+        }
+    }
     private static String name;
     private MainController mc;
 }
