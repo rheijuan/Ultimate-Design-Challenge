@@ -499,13 +499,13 @@ public class SecretaryScreenController extends AbstractController implements Ini
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d");
 		SimpleDateFormat monthDeterminer = new SimpleDateFormat("M");
 
-		int month = Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime())) - 1;
+		int month = monthToday;
+		int startMonth = forWeekCalendar.get(Calendar.MONTH);
 		int startDay = forWeekCalendar.get(Calendar.DATE);
 		String[] date = sdf.format(forWeekCalendar.getTime()).split("\\s+");
 		int endDay = forWeekCalendar.get(Calendar.DATE);
 
 		System.out.println("Week View: " + month + " " + startDay + " " + endDay);
-
 
 		while (!date[0].equalsIgnoreCase("Sat")) {
 			forWeekCalendar.add(Calendar.DATE, 1);
@@ -534,7 +534,8 @@ public class SecretaryScreenController extends AbstractController implements Ini
 			}
 
 		for (Appointment app : appointments)
-			if (app.getMonth() == monthToday && app.getDay() == dayToday && app.getYear() == yearToday) {
+			if (app.getMonth() == monthToday && (app.getDay() >= startDay && app.getDay() <= endDay) && app.getYear() == yearToday) {
+				System.out.println(app.getDoctor());
 				if (app.getDoctor().equalsIgnoreCase(docName1) && doctor1WeekTag.isSelected())
 					itemsToDisplay.add(app);
 				else if (app.getDoctor().equalsIgnoreCase(docName2) && doctor2WeekTag.isSelected())
@@ -543,13 +544,17 @@ public class SecretaryScreenController extends AbstractController implements Ini
 
 		int monDate = 0, tueDate = 0, wedDate = 0, thuDate = 0, friDate = 0, satDate = 0, sunDate = 0;
 
-		forWeekCalendar.set(yearToday, month, startDay);
+		System.out.println(forWeekCalendar.getTime());
+
+		forWeekCalendar.set(yearToday, startMonth, startDay);
 
 		String compareDay = sdf.format(forWeekCalendar.getTime()).substring(0,3);
 		System.out.println(compareDay);
 
-		System.out.println(month);
 		System.out.println(Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8)));
+		System.out.println(forWeekCalendar.getTime());
+		System.out.println(month);
+		System.out.println( (Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))-1)   );
 		do {
 			if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))-1) {
 				switch (compareDay.trim()) {
@@ -576,13 +581,13 @@ public class SecretaryScreenController extends AbstractController implements Ini
 						break;
 				}
 
-				forWeekCalendar.add(Calendar.DATE, 1);
-				compareDay = sdf.format(forWeekCalendar.getTime()).substring(0, 3);
-			} else
-				break;
+			}
+
+			forWeekCalendar.add(Calendar.DATE, 1);
+			compareDay = sdf.format(forWeekCalendar.getTime()).substring(0, 3);
 		} while (!compareDay.equalsIgnoreCase("Sat"));
 
-		if (monthToday == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))-1)
+		if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))-1)
 			satDate = Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8));
 
 		if (sunDate > 0)
