@@ -191,16 +191,22 @@ public class DoctorScreenController extends AbstractController implements Initia
     }
 
     @FXML
-    void displayWeekView() {
+    public void displayWeekView() {
         userWeekTag.setText("Doctor " + name);
+
         Date dateForWeek = new Date();
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d");
         SimpleDateFormat monthDeterminer = new SimpleDateFormat("M");
 
-        cal.set(Calendar.MONTH, monthToday - 1);
+        cal.set(Calendar.MONTH, monthToday);
+        System.out.println(monthToday);
         cal.set(Calendar.DATE, dayToday);
+        System.out.println(dayToday);
         cal.set(Calendar.YEAR, yearToday);
+        System.out.println(yearToday);
+
+        System.out.println(cal.getTime());
 
         int startWeekValue = -(cal.get(Calendar.DAY_OF_WEEK) - 1);
 
@@ -216,7 +222,7 @@ public class DoctorScreenController extends AbstractController implements Initia
         fridayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("friEvent"));
         saturdayColumn.setCellValueFactory(new PropertyValueFactory<WeekTableItem, String>("satEvent"));
 
-        weekTimeColumn.setCellFactory(column -> {
+        sundayColumn.setCellFactory(column -> {
             return new TableCell<WeekTableItem, String>() {
                 @Override
                 protected void updateItem(String sunEvent, boolean empty) {
@@ -226,22 +232,26 @@ public class DoctorScreenController extends AbstractController implements Initia
                         setText(null);
                         setStyle("");
                     } else {
+                        setText(sunEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
                         if (currentItem.getSunColor() != null) {
-                            setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
+                            if (currentItem.getSunColor().equals(Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
-                                setText(sunEvent);
-                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
                             }
-//                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.GREEN) {
-//                                setStyle("-fx-background-color: #98FF98");
-//                            } else if (currentItem.getSunColor() == javafx.scene.paint.Color.YELLOW) {
-//                                setTextFill(javafx.scene.paint.Color.BLACK);
-//                                setStyle("-fx-background-color: #FDFD96");
-//                            }
+                            else if (currentItem.getSunColor().equals(Color.decode("#DC654D"))) {
+                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
+                            }
+                            else if (currentItem.getSunColor().equals(Color.decode("#98FF98"))) {
+                                setStyle("-fx-background-color: #98FF98");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
+                            else if (currentItem.getSunColor().equals(Color.decode("#FDFD96"))) {
+                                setStyle("-fx-background-color: #FDFD96");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
@@ -261,32 +271,30 @@ public class DoctorScreenController extends AbstractController implements Initia
                         setText(null);
                         setStyle("");
                     } else {
+                        setText(monEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
 
                         if (currentItem.getMonColor() != null) {
-                            setTextFill(javafx.scene.paint.Color.WHITE);
 
-                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
+                            if (currentItem.getMonColor().equals(Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
-                                setText(monEvent);
-                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
                             }
-
-//                            if (currentItem.getMonColor() == javafx.scene.paint.Color.CYAN) {
-//                                setStyle("-fx-background-color: #78B4BF");
-//                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.ORANGE) {
-//                                setStyle("-fx-background-color: #DC654D");
-//                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.GREEN) {
-//                                setStyle("-fx-background-color: #98FF98");
-//                            } else if (currentItem.getMonColor() == javafx.scene.paint.Color.YELLOW) {
-//                                setTextFill(javafx.scene.paint.Color.BLACK);
-//                                setStyle("-fx-background-color: #FDFD96");
-//                            }
+                            else if (currentItem.getMonColor().equals(Color.decode("#DC654D"))) {
+                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
+                            }
+                            else if (currentItem.getMonColor().equals(Color.decode("#98FF98"))) {
+                                setStyle("-fx-background-color: #98FF98");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
+                            else if (currentItem.getMonColor().equals(Color.decode("#FDFD96"))) {
+                                setStyle("-fx-background-color: #FDFD96");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
-                            setStyle("");
                         }
                     }
                 }
@@ -303,32 +311,29 @@ public class DoctorScreenController extends AbstractController implements Initia
                         setText(null);
                         setStyle("");
                     } else {
+                        setText(tueEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
+                        if (currentItem.getTueColor() != null) {
 
-                        if (currentItem.getMonColor() != null) {
-                            setTextFill(javafx.scene.paint.Color.WHITE);
-
-                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
+                            if (currentItem.getTueColor().equals(Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
-                                setText(tueEvent);
-                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
                             }
-
-//                            if (currentItem.getTueColor() == javafx.scene.paint.Color.CYAN) {
-//                                setStyle("-fx-background-color: #78B4BF");
-//                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.ORANGE) {
-//                                setStyle("-fx-background-color: #DC654D");
-//                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.GREEN) {
-//                                setStyle("-fx-background-color: #98FF98");
-//                            } else if (currentItem.getTueColor() == javafx.scene.paint.Color.YELLOW) {
-//                                setTextFill(javafx.scene.paint.Color.BLACK);
-//                                setStyle("-fx-background-color: #FDFD96");
-//                            }
+                            else if (currentItem.getTueColor().equals(Color.decode("#DC654D"))) {
+                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
+                            }
+                            else if (currentItem.getTueColor().equals(Color.decode("#98FF98"))) {
+                                setStyle("-fx-background-color: #98FF98");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
+                            else if (currentItem.getTueColor().equals(Color.decode("#FDFD96"))) {
+                                setStyle("-fx-background-color: #FDFD96");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
-                            setStyle("");
                         }
                     }
                 }
@@ -345,32 +350,29 @@ public class DoctorScreenController extends AbstractController implements Initia
                         setText(null);
                         setStyle("");
                     } else {
+                        setText(wedEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
 
-                        if (currentItem.getMonColor() != null) {
-                            setTextFill(javafx.scene.paint.Color.WHITE);
-
-                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
+                        if (currentItem.getWedColor() != null) {
+                            if (currentItem.getWedColor().equals(Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
-                                setText(wedEvent);
-                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
                             }
-//                        if (currentItem.getWedColor() != null) {
-////                            if (currentItem.getWedColor() == javafx.scene.paint.Color.CYAN) {
-////                                setStyle("-fx-background-color: #78B4BF");
-////                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.ORANGE) {
-////                                setStyle("-fx-background-color: #DC654D");
-////                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.GREEN) {
-////                                setStyle("-fx-background-color: #98FF98");
-////                            } else if (currentItem.getWedColor() == javafx.scene.paint.Color.YELLOW) {
-////                                setTextFill(javafx.scene.paint.Color.BLACK);
-////                                setStyle("-fx-background-color: #FDFD96");
-////                            }
+                            else if (currentItem.getWedColor().equals(Color.decode("#DC654D"))) {
+                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
+                            }
+                            else if (currentItem.getWedColor().equals(Color.decode("#98FF98"))) {
+                                setStyle("-fx-background-color: #98FF98");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
+                            else if (currentItem.getWedColor().equals(Color.decode("#FDFD96"))) {
+                                setStyle("-fx-background-color: #FDFD96");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
-                            setStyle("");
                         }
                     }
                 }
@@ -387,32 +389,28 @@ public class DoctorScreenController extends AbstractController implements Initia
                         setText(null);
                         setStyle("");
                     } else {
+                        setText(event);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
-
-                        if (currentItem.getMonColor() != null) {
-                            setTextFill(javafx.scene.paint.Color.WHITE);
-
-                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
+                        if (currentItem.getThuColor() != null) {
+                            if (currentItem.getThuColor().equals(Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
-                                setText(event);
-                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
                             }
-
-//                            if (currentItem.getThuColor() == javafx.scene.paint.Color.CYAN) {
-//                                setStyle("-fx-background-color: #78B4BF");
-//                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.ORANGE) {
-//                                setStyle("-fx-background-color: #DC654D");
-//                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.GREEN) {
-//                                setStyle("-fx-background-color: #98FF98");
-//                            } else if (currentItem.getThuColor() == javafx.scene.paint.Color.YELLOW) {
-//                                setTextFill(javafx.scene.paint.Color.BLACK);
-//                                setStyle("-fx-background-color: #FDFD96");
-//                            }
+                            else if (currentItem.getThuColor().equals(Color.decode("#DC654D"))) {
+                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
+                            }
+                            else if (currentItem.getThuColor().equals(Color.decode("#98FF98"))) {
+                                setStyle("-fx-background-color: #98FF98");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
+                            else if (currentItem.getThuColor().equals(Color.decode("#FDFD96"))) {
+                                setStyle("-fx-background-color: #FDFD96");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
-                            setStyle("");
                         }
                     }
                 }
@@ -429,32 +427,28 @@ public class DoctorScreenController extends AbstractController implements Initia
                         setText(null);
                         setStyle("");
                     } else {
+                        setText(event);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
-
-                        if (currentItem.getMonColor() != null) {
-                            setTextFill(javafx.scene.paint.Color.WHITE);
-
-                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
+                        if (currentItem.getFriColor() != null) {
+                            if (currentItem.getFriColor().equals(Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
-                                setText(event);
-                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
                             }
-
-//                            if (currentItem.getFriColor() == javafx.scene.paint.Color.CYAN) {
-//                                setStyle("-fx-background-color: #78B4BF");
-//                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.ORANGE) {
-//                                setStyle("-fx-background-color: #DC654D");
-//                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.GREEN) {
-//                                setStyle("-fx-background-color: #98FF98");
-//                            } else if (currentItem.getFriColor() == javafx.scene.paint.Color.YELLOW) {
-//                                setTextFill(javafx.scene.paint.Color.BLACK);
-//                                setStyle("-fx-background-color: #FDFD96");
-//                            }
+                            else if (currentItem.getFriColor().equals(Color.decode("#DC654D"))) {
+                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
+                            }
+                            else if (currentItem.getFriColor().equals(Color.decode("#98FF98"))) {
+                                setStyle("-fx-background-color: #98FF98");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
+                            else if (currentItem.getFriColor().equals(Color.decode("#FDFD96"))) {
+                                setStyle("-fx-background-color: #FDFD96");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
-                            setStyle("");
                         }
                     }
                 }
@@ -471,52 +465,50 @@ public class DoctorScreenController extends AbstractController implements Initia
                         setText(null);
                         setStyle("");
                     } else {
+                        setText(satEvent);
                         WeekTableItem currentItem = getTableView().getItems().get(getIndex());
-
-                        if (currentItem.getMonColor() != null) {
-                            setTextFill(javafx.scene.paint.Color.WHITE);
-
-                            if (currentItem.getSunColor().equals(java.awt.Color.decode("#78B4BF"))) {
+                        if (currentItem.getSatColor() != null) {
+                            if (currentItem.getSatColor().equals(Color.decode("#78B4BF"))) {
                                 setStyle("-fx-background-color: #78B4BF");
-                            } else if (currentItem.getSunColor().equals(java.awt.Color.decode("#DC654D"))) {
-                                setText(satEvent);
-                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
                             }
-
-//                            if (currentItem.getSatColor() == javafx.scene.paint.Color.CYAN) {
-//                                setStyle("-fx-background-color: #78B4BF");
-//                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.ORANGE) {
-//                                setStyle("-fx-background-color: #DC654D");
-//                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.GREEN) {
-//                                setStyle("-fx-background-color: #98FF98");
-//                            } else if (currentItem.getSatColor() == javafx.scene.paint.Color.YELLOW) {
-//                                setTextFill(javafx.scene.paint.Color.BLACK);
-//                                setStyle("-fx-background-color: #FDFD96");
-//                            }
+                            else if (currentItem.getSatColor().equals(Color.decode("#DC654D"))) {
+                                setStyle("-fx-background-color: #DC654D");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
+                            }
+                            else if (currentItem.getSatColor().equals(Color.decode("#98FF98"))) {
+                                setStyle("-fx-background-color: #98FF98");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
+                            else if (currentItem.getSatColor().equals(Color.decode("#FDFD96"))) {
+                                setStyle("-fx-background-color: #FDFD96");
+                                setTextFill(javafx.scene.paint.Color.BLACK);
+                            }
 
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);
-                            setStyle("");
                         }
                     }
                 }
             };
         });
-
         weekTable.setItems(data);
     }
 
-    ObservableList<WeekTableItem> initializeWeekView(Calendar forWeekCalendar) {
+    public ObservableList<WeekTableItem> initializeWeekView(Calendar forWeekCalendar) {
         ArrayList<Appointment> itemsToDisplay = new ArrayList<>();
         ArrayList<WeekTableItem> toTableItems = new ArrayList<>();
 
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d");
         SimpleDateFormat monthDeterminer = new SimpleDateFormat("M");
 
-        int month = Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime())) - 1;
+        int month = monthToday;
+        int startMonth = forWeekCalendar.get(Calendar.MONTH);
         int startDay = forWeekCalendar.get(Calendar.DATE);
         String[] date = sdf.format(forWeekCalendar.getTime()).split("\\s+");
         int endDay = forWeekCalendar.get(Calendar.DATE);
+
+        System.out.println("Week View: " + month + " " + startDay + " " + endDay);
 
         while (!date[0].equalsIgnoreCase("Sat")) {
             forWeekCalendar.add(Calendar.DATE, 1);
@@ -527,13 +519,14 @@ public class DoctorScreenController extends AbstractController implements Initia
         toTableItems.add(new WeekTableItem(""));
 
         for (int hour = 8; hour <= 17; hour++)
-            for (int min = 0; min <= 30; min += 30) {
+            for (int min = 0; min <= 30; min+=30) {
+
                 if (min < 30) {
                     toTableItems.add(new WeekTableItem(hour + ":" + String.format("%02d", min)));
-                    toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
-                    toTableItems.get(toTableItems.size() - 1).setValueStartMin(min);
-                    toTableItems.get(toTableItems.size() - 1).setValueEndHour(hour);
-                    toTableItems.get(toTableItems.size() - 1).setValueEndMin(min + 29);
+                    toTableItems.get(toTableItems.size()-1).setValueStartHour(hour);
+                    toTableItems.get(toTableItems.size()-1).setValueStartMin(min);
+                    toTableItems.get(toTableItems.size()-1).setValueEndHour(hour);
+                    toTableItems.get(toTableItems.size()-1).setValueEndMin(min+29);
                 } else {
                     toTableItems.add(new WeekTableItem(""));
                     toTableItems.get(toTableItems.size() - 1).setValueStartHour(hour);
@@ -543,18 +536,28 @@ public class DoctorScreenController extends AbstractController implements Initia
                 }
             }
 
-        for (Appointment item : appointments)
-            if (item.getMonth() == month && (item.getDay() >= startDay && item.getDay() <= endDay)
-                    && item.getYear() == yearToday)
-                itemsToDisplay.add(item);
+        for (Appointment app : appointments)
+            if (app.getMonth() == monthToday && (app.getDay() >= startDay && app.getDay() <= endDay) && app.getYear() == yearToday) {
+                System.out.println(app.getDoctor());
+                if (app.getDoctor().equalsIgnoreCase(name))
+                    itemsToDisplay.add(app);
+            }
 
         int monDate = 0, tueDate = 0, wedDate = 0, thuDate = 0, friDate = 0, satDate = 0, sunDate = 0;
 
-        forWeekCalendar.set(yearToday, month, startDay);
-        String compareDay = sdf.format(forWeekCalendar.getTime()).substring(0, 3);
+        System.out.println(forWeekCalendar.getTime());
 
+        forWeekCalendar.set(yearToday, startMonth, startDay);
+
+        String compareDay = sdf.format(forWeekCalendar.getTime()).substring(0,3);
+        System.out.println(compareDay);
+
+        System.out.println(Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8)));
+        System.out.println(forWeekCalendar.getTime());
+        System.out.println(month);
+        System.out.println( (Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))-1)   );
         do {
-            if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))) {
+            if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))-1) {
                 switch (compareDay.trim()) {
                     case "Sun":
                         sunDate = Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8));
@@ -579,13 +582,13 @@ public class DoctorScreenController extends AbstractController implements Initia
                         break;
                 }
 
-                forWeekCalendar.add(Calendar.DATE, 1);
-                compareDay = sdf.format(forWeekCalendar.getTime()).substring(0, 3);
-            } else
-                break;
+            }
+
+            forWeekCalendar.add(Calendar.DATE, 1);
+            compareDay = sdf.format(forWeekCalendar.getTime()).substring(0, 3);
         } while (!compareDay.equalsIgnoreCase("Sat"));
 
-        if (monthToday == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime())))
+        if (month == Integer.parseInt(monthDeterminer.format(forWeekCalendar.getTime()))-1)
             satDate = Integer.parseInt(sdf.format(forWeekCalendar.getTime()).substring(8));
 
         if (sunDate > 0)
@@ -603,7 +606,7 @@ public class DoctorScreenController extends AbstractController implements Initia
         if (satDate > 0)
             toTableItems.get(0).setEvent(Integer.toString(satDate), "Sat");
 
-        for (Appointment item : itemsToDisplay) {
+        for (Appointment item: itemsToDisplay) {
             int startHour = item.getStartHour();
             int startMin = item.getStartMinute();
             int endHour;
@@ -635,6 +638,8 @@ public class DoctorScreenController extends AbstractController implements Initia
             int endTime = Integer.parseInt(Integer.toString(endHour) + Integer.toString(endMin));
 
             String dayOfItem = null;
+            System.out.println(item.getDay());
+            System.out.println(sunDate);
 
             if (sunDate == item.getDay()) {
                 dayOfItem = "Sun";
@@ -652,8 +657,8 @@ public class DoctorScreenController extends AbstractController implements Initia
                 dayOfItem = "Sat";
             }
 
-            for (WeekTableItem displayTime : toTableItems) {
-                int displayStartTime;
+            for (WeekTableItem displayTime: toTableItems) {
+                int displayStartTime = 0;
 
                 if (displayTime.getValueStartMin() == 0)
                     displayStartTime = Integer.parseInt(Integer.toString(displayTime.getValueStartHour() * 10) +
@@ -668,157 +673,97 @@ public class DoctorScreenController extends AbstractController implements Initia
                 if (displayStartTime == startTime && displayEndTime == endTime) {
                     displayTime.setEvent(item.getPatient(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#DC654D");
+                    if (item.getStatus() == 0) {
+                        java.awt.Color c = java.awt.Color.decode("#78B4BF");
                         displayTime.setColor(c, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#78B4BF");
+                    } else if (item.getStatus() == 1) {
+                        java.awt.Color c = java.awt.Color.decode("#DC654D");
                         displayTime.setColor(c, dayOfItem);
                     }
-//                    } else if (item.getDoctor().equalsIgnoreCase(name) ) {
-//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(name)) {
-//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
-//                    }
 
                     break;
                 } else if (displayStartTime == startTime) {
-                    System.out.println(item.getDay());
-                    System.out.println(item.getPatient() + " " + dayOfItem);
                     displayTime.setEvent(item.getPatient(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#DC654D");
+                    if (item.getStatus() == 0) {
+                        java.awt.Color c = java.awt.Color.decode("#78B4BF");
                         displayTime.setColor(c, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#78B4BF");
+                    } else if (item.getStatus() == 1) {
+                        java.awt.Color c = java.awt.Color.decode("#DC654D");
                         displayTime.setColor(c, dayOfItem);
                     }
 
-//                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
-//                    }
                 } else if (displayStartTime >= startTime && endTime >= displayEndTime) {
+                    displayTime.setEvent(" ", dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#DC654D");
+                    if (item.getStatus() == 0) {
+                        java.awt.Color c = java.awt.Color.decode("#78B4BF");
                         displayTime.setColor(c, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#78B4BF");
+                    } else if (item.getStatus() == 1) {
+                        java.awt.Color c = java.awt.Color.decode("#DC654D");
                         displayTime.setColor(c, dayOfItem);
                     }
-//                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
-//                    }
 
                 }
 
                 if (displayTime.getTime().equalsIgnoreCase(""))
                     continue;
-
                 if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin &&
                         displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
                     displayTime.setEvent(item.getTitle(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#DC654D");
+                    if (item.getStatus() == 0) {
+                        java.awt.Color c = java.awt.Color.decode("#78B4BF");
                         displayTime.setColor(c, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#78B4BF");
+                    } else if (item.getStatus() == 1) {
+                        java.awt.Color c = java.awt.Color.decode("#DC654D");
                         displayTime.setColor(c, dayOfItem);
                     }
-//                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
-//                    }
 
                     break;
                 } else if (displayTime.getValueStartHour() == startHour && displayTime.getValueStartMin() == startMin) {
                     displayTime.setEvent(item.getTitle(), dayOfItem);
 
-                    if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#DC654D");
+                    if (item.getStatus() == 0) {
+                        java.awt.Color c = java.awt.Color.decode("#78B4BF");
                         displayTime.setColor(c, dayOfItem);
-                    } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
-                        Color c = Color.decode("#78B4BF");
+                    } else if (item.getStatus() == 1) {
+                        java.awt.Color c = java.awt.Color.decode("#DC654D");
                         displayTime.setColor(c, dayOfItem);
                     }
-//                    if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                        displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                        displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-//                        displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-//                    } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-//                        displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
-//                    }
+
                 } else {
                     if (displayTime.getValueStartHour() >= startHour && displayTime.getValueEndHour() <= endHour) {
                         if (displayTime.getValueEndHour() == endHour && displayTime.getValueEndMin() == endMin) {
-                            displayTime.setEvent("", dayOfItem);
+                            displayTime.setEvent(" ", dayOfItem);
 
-                            if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
-                                Color c = Color.decode("#DC654D");
+                            if (item.getStatus() == 0) {
+                                java.awt.Color c = java.awt.Color.decode("#78B4BF");
                                 displayTime.setColor(c, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
-                                Color c = Color.decode("#78B4BF");
+                            } else if (item.getStatus() == 1) {
+                                java.awt.Color c = java.awt.Color.decode("#DC654D");
                                 displayTime.setColor(c, dayOfItem);
                             }
-//                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                                displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-//                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                                displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-//                            } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-//                                displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-//                            } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-//                                displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
-//                            }
 
                             break;
                         } else {
-                            displayTime.setEvent("", dayOfItem);
+                            displayTime.setEvent(" ", dayOfItem);
 
-                            if (item.getDoctor().equalsIgnoreCase(name) && !item.getPatient().equalsIgnoreCase("")) {
-                                Color c = Color.decode("#DC654D");
+                            if (item.getStatus() == 0) {
+                                java.awt.Color c = java.awt.Color.decode("#78B4BF");
                                 displayTime.setColor(c, dayOfItem);
-                            } else if (item.getDoctor().equalsIgnoreCase(name) && item.getPatient().equalsIgnoreCase("")) {
-                                Color c = Color.decode("#78B4BF");
+                            } else if (item.getStatus() == 1) {
+                                java.awt.Color c = java.awt.Color.decode("#DC654D");
                                 displayTime.setColor(c, dayOfItem);
                             }
-//                            if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                                displayTime.setColor(javafx.scene.paint.Color.ORANGE, dayOfItem);
-//                            } else if (item.getDoctor().equalsIgnoreCase(docName) && !item.getPatient().equalsIgnoreCase(" ")) {
-//                                displayTime.setColor(javafx.scene.paint.Color.YELLOW, dayOfItem);
-//                            } else if (item.getDoctor().equalsIgnoreCase(docName) ) {
-//                                displayTime.setColor(javafx.scene.paint.Color.CYAN, dayOfItem);
-//                            } else if (item.getDoctor().equalsIgnoreCase(docName)) {
-//                                displayTime.setColor(javafx.scene.paint.Color.GREEN, dayOfItem);
-//                            }
 
                         }
                     }
                 }
 
-
             }
         }
+
         return FXCollections.observableArrayList(toTableItems);
     }
 
