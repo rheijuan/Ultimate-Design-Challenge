@@ -48,6 +48,7 @@ public class DoctorScreenController extends AbstractController implements Initia
 
     @FXML
     void displayDayView() {
+        dbController.loadAppointments();
         userDayTag.setText("Doctor " + name);
         dayDateTag.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
@@ -192,6 +193,7 @@ public class DoctorScreenController extends AbstractController implements Initia
 
     @FXML
     public void displayWeekView() {
+        dbController.loadAppointments();
         userWeekTag.setText("Doctor " + name);
 
         Date dateForWeek = new Date();
@@ -838,10 +840,13 @@ public class DoctorScreenController extends AbstractController implements Initia
 
     @FXML
     void displayAgenda() {
+        appointments.clear();
+        dbController.loadAppointments();
         appointmentList.getItems().clear();
         agendaDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
         appointments.sort(Comparator.comparingInt(Appointment::getStartHour));
+        appointmentList.getItems().clear();
 
         displayDailyEvents(name);
     }
@@ -859,6 +864,8 @@ public class DoctorScreenController extends AbstractController implements Initia
 
     @FXML
     void displayMonthlyAgenda() {
+        appointments.clear();
+        dbController.loadAppointments();
         if (monthBox.isSelected()) {
             appointmentList.getItems().clear();
             weekBox.setSelected(false);

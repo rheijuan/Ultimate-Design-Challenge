@@ -32,6 +32,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 public class PatientScreenController extends AbstractController implements Initializable, ControllerParent{
 
 
@@ -49,6 +51,7 @@ public class PatientScreenController extends AbstractController implements Initi
 
     @FXML
     public void displayDayView() {
+        dbController.loadAppointments();
         userDayTag.setText("Patient " + name);
         dayDateTag.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
         doctor1DayTag.setText("Doctor " + docName1);
@@ -287,7 +290,7 @@ public class PatientScreenController extends AbstractController implements Initi
 
         String[] startTime = parts[0].split(":");
         String[] endTime = parts[1].split(":");
-        String name = parts[2];
+      //  String name = parts[2];
 
         for (Appointment a : appointments)
             if (a.getStartHour() == Integer.parseInt(startTime[0]) && a.getStartMin() == Integer.parseInt(startTime[1]) &&
@@ -346,6 +349,9 @@ public class PatientScreenController extends AbstractController implements Initi
                 Appointment a = appointment;
                 //GINALAW KO TO -CHESIE
                 dbController.updateAppointmentPatient(0, "", a.getDoctor(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
+                //'day, month, year, starthour, startmin, endhour, endmin);
+                // int status, String patientName, String doctorName, int day, int month, int year, int starthr, int startmin, int endhr, int endmin
+                dbController.deleteAppointmentForC( a.getPatient(), a.getDay(), a.getMonth(), a.getYear(), a.getStartHour(), a.getStartMin(), a.getEndHour(), a.getEndMin());
                 System.out.println("Hello");
                 mc.refreshAll();
                 break;
@@ -355,6 +361,7 @@ public class PatientScreenController extends AbstractController implements Initi
 
     @FXML
     public void displayWeekView() {
+        dbController.loadAppointments();
         doctor1WeekTag.setText("Doctor " + docName1);
         doctor2WeekTag.setText("Doctor " + docName2);
         Date dateForWeek = new Date();
@@ -1032,9 +1039,13 @@ public class PatientScreenController extends AbstractController implements Initi
 
     @FXML
     void displayAgenda() {
+        appointments.clear();
+        dbController.loadAppointments();
+//        dbController.loadAppointments();
         appointmentList.getItems().clear();
         agendaDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 
+        appointmentList.getItems().clear();
         appointments.sort(Comparator.comparingInt(Appointment::getStartHour));
 
         for (Appointment a : appointments)
@@ -1073,6 +1084,8 @@ public class PatientScreenController extends AbstractController implements Initi
 
     @FXML
     void displayMonthlyAgenda() {
+        appointments.clear();
+        dbController.loadAppointments();
         appointmentList.getItems().clear();
 
         if (monthBox.isSelected()) {
@@ -1423,6 +1436,8 @@ public class PatientScreenController extends AbstractController implements Initi
                 System.out.println("valid time");
                 bookIt = true;
             } else {
+                //insert joption pane NACANCEL
+                JOptionPane.showMessageDialog(null, "The appointment is cancelled.");
                 System.out.println("Invalid appointment slot/ Unavailable slot");
                 bookIt = false;
                 profilePane.setVisible(true);
@@ -1452,6 +1467,12 @@ public class PatientScreenController extends AbstractController implements Initi
                 startminBook = endminBook;
                 startTimeBook = (starthourBook * 100) + startminBook;
             }
+            mc.refreshAll();
+            refreshCalendar(monthToday, yearToday, dayToday);
+            //insert joption pane NARESERVE
+            JOptionPane.showMessageDialog(null, "The appointment is reserved!");
+            profilePane.setVisible(true);
+
         }
         refreshCalendar(monthToday, yearToday, dayToday);
         mc.refreshAll();

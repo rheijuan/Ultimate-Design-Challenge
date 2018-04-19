@@ -20,6 +20,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.swing.*;
+
 public class SecretaryScreenController extends AbstractController implements Initializable, ControllerParent {
 
 	@FXML private Label doctor1DayTag;
@@ -29,7 +31,138 @@ public class SecretaryScreenController extends AbstractController implements Ini
 	@FXML private TextField nameTextField;
 
 	@FXML ComboBox<String> doctorBox;
-///*
+
+	@FXML
+	private void reserveNewAppointment() {
+		System.out.println("reserved!");
+		appointments.clear();
+		dbController.loadAppointments();
+
+		int appointmentID;
+		if(appointments.size() ==0)
+			appointmentID = appointments.size()+1;
+		else{
+			int max =appointments.get(0).getAppointmentID();
+			for(int i=1; i<appointments.size(); i++){
+				if(max < appointments.get(i).getAppointmentID())
+					max = appointments.get(i).getAppointmentID();
+			}
+			appointmentID = max;
+		}
+
+		String patient = name;
+		String doctor = doctorBox.getSelectionModel().getSelectedItem();
+		int day = datePicker.getValue().getDayOfMonth();
+		int month = datePicker.getValue().getMonthValue() - 1;
+		int year = datePicker.getValue().getYear();
+		int status = 1;
+
+		int startTime = (Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
+				(Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]));
+		int endTime = (Integer.parseInt(endTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[0]) * 100) +
+				(Integer.parseInt(endTimeBox.getSelectionModel().getSelectedItem().toString().split(":")[1]));
+
+		int startTimeBook = startTime;
+		int endTimeBook = endTime;
+
+		int starthour = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().split(":")[0]);
+		int startmin = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().split(":")[1]);
+		int endhour;
+		int endmin;
+
+		int starthourBook = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().split(":")[0]);
+		int startminBook = Integer.parseInt(startTimeBox.getSelectionModel().getSelectedItem().split(":")[1]);
+		int endhourBook;
+		int endminBook;
+
+		boolean bookIt = true;
+
+		System.out.println(endTime +" > "+ startTime);
+		do{
+			if(startmin == 30){
+				endhour = starthour + 1;
+				endmin = 00;
+			}
+			else {
+				endhour = starthour;
+				endmin = 30;
+			}
+			System.out.println("starthour = " +starthour+ " startmin = " +startmin);
+			System.out.println("endhour = " +endhour+ " endmin = " +endmin);
+
+			Appointment newApp = new Appointment (appointmentID, patient, doctor, day, month, year, starthour, startmin, endhour, endmin, status);
+
+			//check for conflict first
+			if (isValidTime(newApp)) {
+				System.out.println("valid time");
+				bookIt = true;
+			} else {
+				//insert joption pane NACANCEL
+				JOptionPane.showMessageDialog(null, "The appointment is cancelled.");
+				System.out.println("Invalid appointment slot/ Unavailable slot");
+				bookIt = false;
+				profilePane.setVisible(true);
+				break;
+			}
+
+			starthour = endhour;
+			startmin = endmin;
+			startTime = (starthour * 100) + startmin;
+			System.out.println(endTime +" > "+ startTime);
+		}while (endTime > startTime);
+
+		if (bookIt){
+			while (endTimeBook > startTimeBook){
+				if(startminBook == 30){
+					endhourBook = starthourBook + 1;
+					endminBook = 00;
+				}
+				else {
+					endhourBook = starthourBook;
+					endminBook = 30;
+				}
+
+				dbController.updateAppointmentPatient(1, nameTextField.getText(), doctor, day, month, year, starthourBook, startminBook, endhourBook, endminBook);
+
+				starthourBook = endhourBook;
+				startminBook = endminBook;
+				startTimeBook = (starthourBook * 100) + startminBook;
+			}
+			mc.refreshAll();
+			refreshCalendar(monthToday, yearToday, dayToday);
+			//insert joption pane NARESERVE
+			JOptionPane.showMessageDialog(null, "The appointment is reserved!");
+			profilePane.setVisible(true);
+
+		}
+		refreshCalendar(monthToday, yearToday, dayToday);
+		mc.refreshAll();
+	}
+
+	private boolean isValidTime(Appointment appo) { //GINALAW KO TO -CHESIE
+		for (int i=0; i<dbController.getAppointments().size(); i++) {
+			Appointment a = dbController.getAppointments().get(i);
+
+			//filter per doctor
+			System.out.println(appo.getDoctor()+ " vs " +a.getDoctor());
+			if (appo.getMonth() == a.getMonth() &&
+					appo.getDay() == a.getDay() &&
+					appo.getYear() == a.getYear() &&
+					appo.getDoctor().equalsIgnoreCase(a.getDoctor())){
+
+				if (a.getStartHour() == appo.getStartHour() &&
+						a.getStartMin() == appo.getStartMin() &&
+						a.getEndHour() == appo.getEndHour() &&
+						a.getEndMin() == appo.getEndMin() &&
+						a.getStatus() == 0){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+
 //	@FXML
 //	private void reserveNewAppointment() {
 //		System.out.println("reserved!");
@@ -84,7 +217,7 @@ public class SecretaryScreenController extends AbstractController implements Ini
 //		}
 //		return true;
 //	}
-//	*/
+//
 
 
 //	@FXML
@@ -189,6 +322,7 @@ public class SecretaryScreenController extends AbstractController implements Ini
 
 	@FXML
 	public void displayWeekView() {
+		dbController.loadAppointments();
 		doctor1WeekTag.setText("Doctor " + docName1);
 		doctor2WeekTag.setText("Doctor " + docName2);
 		Date dateForWeek = new Date();
@@ -853,6 +987,7 @@ public class SecretaryScreenController extends AbstractController implements Ini
 
 	@FXML
 	void displayDayView() {
+		dbController.loadAppointments();
 		userDayTag.setText("Secretary " + name);
 		dayDateTag.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
 		doctor1DayTag.setText("Doctor " + docName1);
@@ -1106,19 +1241,19 @@ public class SecretaryScreenController extends AbstractController implements Ini
 		mc.refreshAll();
 	}
 
-	private boolean isValidTime(Appointment appo) {
-		for (int i = 0; i < dbController.getAppointments().size(); i++) {
-			Appointment a = dbController.getAppointments().get(i);
-			if (appo.getMonth() == a.getMonth() && appo.getDay() == a.getDay() && appo.getYear() == a.getYear()) {
-
-				LocalTimeRange range1 = new LocalTimeRange(LocalTime.of(appo.getStartHour(), appo.getStartMinute()), LocalTime.of(appo.getEndHour(), appo.getEndMinute()));
-				LocalTimeRange range2 = new LocalTimeRange(LocalTime.of(a.getStartHour(), a.getStartMinute()), LocalTime.of(a.getEndHour(), a.getEndMinute()));
-				if (range1.overlaps(range2))
-					return false;
-			}
-		}
-		return true;
-	}
+//	private boolean isValidTime(Appointment appo) {
+//		for (int i = 0; i < dbController.getAppointments().size(); i++) {
+//			Appointment a = dbController.getAppointments().get(i);
+//			if (appo.getMonth() == a.getMonth() && appo.getDay() == a.getDay() && appo.getYear() == a.getYear()) {
+//
+//				LocalTimeRange range1 = new LocalTimeRange(LocalTime.of(appo.getStartHour(), appo.getStartMinute()), LocalTime.of(appo.getEndHour(), appo.getEndMinute()));
+//				LocalTimeRange range2 = new LocalTimeRange(LocalTime.of(a.getStartHour(), a.getStartMinute()), LocalTime.of(a.getEndHour(), a.getEndMinute()));
+//				if (range1.overlaps(range2))
+//					return false;
+//			}
+//		}
+//		return true;
+//	}
 
 	private boolean getValidApp (Appointment app) {
 		for (Appointment curApp : appointments) {
@@ -1150,8 +1285,11 @@ public class SecretaryScreenController extends AbstractController implements Ini
 
 	@FXML
 	void displayAgenda() {
+		appointments.clear();
+		dbController.loadAppointments();
 		appointmentList.getItems().clear();
 		agendaDateLabel.setText(convert(monthToday) + " " + dayToday + ", " + yearToday);
+		appointmentList.getItems().clear();
 
 		appointments.sort(Comparator.comparingInt(Appointment::getStartHour));
 
@@ -1191,6 +1329,8 @@ public class SecretaryScreenController extends AbstractController implements Ini
 
 	@FXML
 	void displayMonthlyAgenda() {
+		appointments.clear();
+		dbController.loadAppointments();
 		appointmentList.getItems().clear();
 
 		if (monthBox.isSelected()) {
